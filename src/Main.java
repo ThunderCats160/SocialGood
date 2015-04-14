@@ -1,4 +1,6 @@
+import javax.swing.JApplet;
 
-public class Main {
 
+public class Main extends JApplet{
+	
 }

@@ -4,30 +4,33 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 public class StratPanel extends JPanel{
-	
-	ArrayList<Move> currentStrategy; 
-	
+
+	ArrayList<Move> currentStrat;
+
 	public StratPanel()
 	{
-		initGUI(); 
-		currentStrategy = new ArrayList<Move>(); 
+		initGUI();
+
+		currentStrat = new ArrayList<Move>();
+
 	}
-	public ArrayList<Move> getCurrentStrat(){
-		return  currentStrategy;  
-	}
-	
+
 	public void initGUI()
 	{
 		JButton b1 = new JButton();
 		b1.setText("HOLA");
-		
-		add(b1); 
-		 
+
+		add(b1);
 	}
-	
+
+	public ArrayList<Move> getCurrentStrat(){
+		return  currentStrat;
+	}
+
 	public void addMove(Move toAdd)
 	{
-		currentStrategy.add(toAdd); 
+		currentStrat.add(toAdd);
 	}
+
 
 }

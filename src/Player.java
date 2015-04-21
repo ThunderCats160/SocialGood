@@ -3,50 +3,50 @@ import java.awt.Graphics;
 
 
 public class Player extends Unit{
-	
-	private int xPos; 
-	private int yPos; 
-	
-	private int dim; 
-	
+
+	private int xPos;
+	private int yPos;
+
+	private int dim;
+
 	public Player(Color newColor, int xPos, int yPos, int newDim)
 	{
-		super(newColor, null); 
-		
-		xPos = xPos; 
-		yPos = yPos; 
-		dim = newDim; 
-		
+		super(newColor, null);
+
+		xPos = xPos;
+		yPos = yPos;
+		dim = newDim;
+
 	}
 	public int getX()
 	{
-		return xPos; 
-		
+		return xPos;
+
 	}
 	public int getY(){
-		return yPos; 
+		return yPos;
 	}
-	
+
 	public void setY(int newY)
 	{
-		yPos = newY; 
+		yPos = newY;
 	}
 	public void setX(int newX)
 	{
-		xPos= newX; 
+		xPos= newX;
 	}
-	
+
 	public int getDim()
 	{
-		return dim; 
+		return dim;
 	}
-	
-	public void draw(Graphics g, int topLeftX)
+
+	public void draw(Graphics g)
 	{
-		g.setColor(color); 
-		g.fillRect(topLeftX + xPos*dim,  yPos*dim,  dim, dim);
+		g.setColor(color);
+		g.fillRect(xPos*dim,  yPos*dim,  dim, dim);
 	}
-	
-	
+
+
 
 }

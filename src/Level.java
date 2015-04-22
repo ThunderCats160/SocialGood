@@ -56,9 +56,20 @@ public class Level {
 	}
 
 	
+	public void setDescription(String newDesc)
+	{
+		description = newDesc; 
+	}
+	
 	public void addGoalAtPosition(int X, int Y)
 	{
 		levelLayout.get(Y).set(X, new Goal(Color.yellow, null)); 
+	}
+	
+	public void setPlayerSpawnPosition(int X, int Y)
+	{
+		playerSpawnX = X; 
+		playerSpawnY = Y; 
 	}
 	
 	public void addObstacleAtPosition(int X, int Y)

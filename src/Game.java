@@ -32,11 +32,6 @@ public class Game extends Applet implements ActionListener {
 		stratPanel = new StratPanel();
 		selectPanel = new SelectPanel(stratPanel);
 
-		selectPanel.add(new JButton("A"));
-		//jp2.add(new JButton("B"));
-		//stratPanel.add(new JButton("C"));
-
-
 		
 		
 		selectPanel.setSelectOptions(levels.get(0).getAvailableMoves());
@@ -79,12 +74,13 @@ public class Game extends Applet implements ActionListener {
 		levels = new ArrayList<Level>(); 
 		
 		Level l1 = new Level(40, board);
-		l1.addGoalAtPosition(5,5); 
+		l1.addObstacleAtPosition(5, 5);
+		l1.addGoalAtPosition(5,9); 
 		levels.add(l1); 
 		
 		Level l2 = new Level(40, board); 
 		l2.addGoalAtPosition(3,  2);
-		l2.addObstacleAtPosition(5, 5);
+		
 		levels.add(l2); 
 		
 		

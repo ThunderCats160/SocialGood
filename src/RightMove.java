@@ -15,7 +15,7 @@ public class RightMove extends Move{
 		Level l = board.getCurrentLevel(); 
 		ArrayList<ArrayList<Unit>> layout = l.getLayout();
 		
-		if(player.getX() < layout.get(0).size() -1)
+		if(player.getX() < layout.get(0).size() -1 && !layout.get(player.getY()).get(player.getX() +1).isObstacle)
 		{
 			player.setX(player.getX()+1);
 		}

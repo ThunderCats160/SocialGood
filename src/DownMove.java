@@ -15,7 +15,7 @@ public class DownMove extends Move{
 		Level l = board.getCurrentLevel(); 
 		ArrayList<ArrayList<Unit>> layout = l.getLayout();
 		
-		if(player.getY() < layout.size() -1)
+		if(player.getY() < layout.size() -1 && !layout.get(player.getY() +1).get(player.getX()).isObstacle)
 		{
 			player.setY(player.getY()+1);
 		}

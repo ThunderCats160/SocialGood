@@ -61,6 +61,11 @@ public class Level {
 		levelLayout.get(Y).set(X, new Goal(Color.yellow, null)); 
 	}
 	
+	public void addObstacleAtPosition(int X, int Y)
+	{
+		levelLayout.get(Y).set(X,  new Obstacle(Color.gray, null)); 
+	}
+	
 	public ArrayList<ArrayList<Unit>> getLayout(){
 		return levelLayout;
 	}

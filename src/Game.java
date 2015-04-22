@@ -84,6 +84,7 @@ public class Game extends Applet implements ActionListener {
 		
 		Level l2 = new Level(40, board); 
 		l2.addGoalAtPosition(3,  2);
+		l2.addObstacleAtPosition(5, 5);
 		levels.add(l2); 
 		
 		

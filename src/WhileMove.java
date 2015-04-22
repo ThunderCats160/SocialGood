@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 import java.util.ArrayList; 
 
+
 public class WhileMove extends Move{
 
 	private ArrayList<Move> toDo; 

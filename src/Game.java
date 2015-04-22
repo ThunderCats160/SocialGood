@@ -22,9 +22,13 @@ public class Game extends Applet implements ActionListener {
 	
 	int currentLevelIndex; 
 	
+	JPanel mainGamePanel; 
+	JPanel introScreenPanel; 
 
 	public void init()
 	{
+		
+		
 		currentLevelIndex = 0; 
 		
 		setLayout(new BorderLayout());
@@ -46,16 +50,36 @@ public class Game extends Applet implements ActionListener {
 		
 		selectPanel.setSelectOptions(levels.get(0).getAvailableMoves());
 
+		mainGamePanel = new JPanel(); 
+		mainGamePanel.setLayout(new BorderLayout());
 		
 
-		add(selectPanel, "West");
-		add(board, "Center");
-		add(stratPanel, "East");
-		add(descriptionPanel, "South");
+		mainGamePanel.add(selectPanel, "West");
+		mainGamePanel.add(board, "Center");
+		mainGamePanel.add(stratPanel, "East");
+		mainGamePanel.add(descriptionPanel, "South");
+		
+		//add(mainGamePanel); 
+		
+		//add(new JButton("DSJFHDSK")); 
+		initIntroScreen(); 
 		
 
 	}
 
+	public void initIntroScreen()
+	{
+		introScreenPanel = new JPanel(); 
+		introScreenPanel.add(new JLabel("Welcome to the Game!!!")); 
+		JButton b = new JButton("Get Started!");
+		
+		b.addActionListener(new introPanelButtonAL(this));
+		
+		introScreenPanel.add(b); 
+		
+		add(introScreenPanel); 
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 

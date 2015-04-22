@@ -47,11 +47,6 @@ public class Game extends Applet implements ActionListener {
 		selectPanel.setSelectOptions(levels.get(0).getAvailableMoves());
 
 		
-		
-		
-		//descriptionPanel.add(goButton); 
-		//descriptionPanel.add(new JLabel("HELLP")); 
-		
 
 		add(selectPanel, "West");
 		add(board, "Center");
@@ -72,14 +67,9 @@ public class Game extends Applet implements ActionListener {
 				currentLevelIndex ++; 
 			
 			board.setCurrentLevel(levels.get(currentLevelIndex));
-			stratPanel.clearCurrentStrat(); 
-			
-			
-			
-			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());
-			
+			stratPanel.clearCurrentStrat(); 	
+			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());		
 		}
-
 	}
 
 	

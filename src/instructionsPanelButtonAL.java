@@ -1,0 +1,33 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class instructionsPanelButtonAL implements ActionListener{
+	
+	//Holds an instance of the Game
+	Game game; 
+	
+	//Constructor- Takes in the game so that when the button is called, it adds the instructions panel to the display
+	public instructionsPanelButtonAL(Game g)
+	{
+		game = g; 
+	}
+	
+	//When the button is pressed, this actionPerformed changes the display to the instructions page
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+
+		//adds the mainGamePanel
+		game.add(game.instructionalPanel); 
+		
+		//sets the intro screen panel to false
+		game.introScreenPanel.setVisible(false);
+		
+		
+		//sets the instructions panel to visible
+		game.instructionalPanel.setVisible(true);
+		
+		//Repaints the game, now with the instructions Panel displaying.	
+		game.repaint(); 		
+	}
+
+}

@@ -39,7 +39,9 @@ public class Game extends Applet implements ActionListener {
 	
 	//Instantiates the introduction page, which explains the basics of how the game is played.
 	//This page will also serve as an instructional page for Teachers to explain the value of this game.
-	JPanel introScreenPanel; 
+	JPanel introScreenPanel;
+	
+	JPanel instructionalPanel;
 
 	//Init function to put values into the instantiated objects above.
 	public void init()
@@ -87,8 +89,14 @@ public class Game extends Applet implements ActionListener {
 		mainGamePanel.add(stratPanel, "East");
 		mainGamePanel.add(descriptionPanel, "South");
 		
+		
+		//creates the instructions page
+		createInstructionPanel();
+		
 		//Show the introduction Screen
 		initIntroScreen(); 
+		
+		
 		
 
 	}
@@ -102,12 +110,16 @@ public class Game extends Applet implements ActionListener {
 		//TODO:Put more text in the JLabel about the game & how to play.
 		introScreenPanel = new JPanel(); 
 		introScreenPanel.add(new JLabel("Welcome to the Game!!!")); 
-		JButton b = new JButton("Get Started!");
+		JButton getStartedButton = new JButton("Get Started!");
+		JButton instructionsPageButton = new JButton("Instructions");
 		
 		//Make sure that the button on the JPanel has a listener.
-		b.addActionListener(new introPanelButtonAL(this));
+		getStartedButton.addActionListener(new introPanelButtonAL(this));
+		instructionsPageButton.addActionListener(new instructionsPanelButtonAL(this));
 		
-		introScreenPanel.add(b); 
+		//adds these two buttons to the Intro Screen Panel
+		introScreenPanel.add(getStartedButton); 
+		introScreenPanel.add(instructionsPageButton);
 		
 		add(introScreenPanel); 
 	}
@@ -168,6 +180,15 @@ public class Game extends Applet implements ActionListener {
 		//Load the correct Level.
 		board.setCurrentLevel(levels.get(0));
 		descriptionPanel.setDescription(levels.get(0).getDescription()); 
+	}
+	
+	public void createInstructionPanel()
+	{
+		instructionalPanel = new JPanel();
+		instructionalPanel.add(new JLabel("Instructions:"));
+		
+		
+		
 	}
 
 }

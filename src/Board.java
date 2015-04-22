@@ -36,14 +36,13 @@ public class Board extends JPanel{
 
 	public Boolean testStrategy(ArrayList<Move> moveList){
 
-		//AADEDEDED
 		Graphics g = getGraphics();
 
 
 		for(int i = 0; i < moveList.size(); i++){
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

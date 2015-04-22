@@ -1,4 +1,5 @@
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 public class LeftMove extends Move{
@@ -11,8 +12,10 @@ public class LeftMove extends Move{
 	
 	public void doMove(Player player)
 	{
+		Level l = board.getCurrentLevel(); 
+		ArrayList<ArrayList<Unit>> layout = l.getLayout();
 		
-		if(player.getX() > 0)
+		if(player.getX() > 0 && !layout.get(player.getY()).get(player.getX() -1).isObstacle)
 		{
 			player.setX(player.getX()-1);
 		}

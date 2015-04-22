@@ -16,7 +16,7 @@ public class Game extends Applet implements ActionListener {
 	Board board;
 	StratPanel stratPanel;
 	JButton goButton;
-	JPanel descriptionPanel; 
+	DescriptionPanel descriptionPanel; 
 	
 	ArrayList<Level> levels; 
 
@@ -44,16 +44,17 @@ public class Game extends Applet implements ActionListener {
 		goButton = new JButton("GO!");
 		goButton.addActionListener(this);
 		
-		descriptionPanel = new JPanel(); 
+		descriptionPanel = new DescriptionPanel(goButton, "HELLO"); 
 		descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
-		descriptionPanel.add(goButton); 
-		descriptionPanel.add(new JLabel("HELLP")); 
+		//descriptionPanel.add(goButton); 
+		//descriptionPanel.add(new JLabel("HELLP")); 
 		
 
 		add(selectPanel, "West");
 		add(board, "Center");
 		add(stratPanel, "East");
 		add(descriptionPanel, "South");
+		
 
 	}
 
@@ -65,6 +66,8 @@ public class Game extends Applet implements ActionListener {
 			System.out.println("YOU WIN"); 
 			board.setCurrentLevel(levels.get(1));
 			stratPanel.clearCurrentStrat(); 
+			
+			descriptionPanel.setDescription(levels.get(1).getDescription());
 			
 		}
 

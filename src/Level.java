@@ -64,7 +64,7 @@ public class Level {
 	public ArrayList<ArrayList<Unit>> getLayout(){
 		return levelLayout;
 	}
-	public String getDescripion(){
+	public String getDescription(){
 		return description;
 	}
 	public ArrayList<Move> getAvailableMoves(){

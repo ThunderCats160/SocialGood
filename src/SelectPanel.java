@@ -7,8 +7,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
+//The Select Panel holds an ArrayList of the move options for the level
+//It also holds a copy of the strategy panel (which gets inputs from the select Panel)
+//It also holds buttons to display the move options
 public class SelectPanel extends JPanel implements ActionListener {
+
 
 	ArrayList<Move> selectOptions;
 
@@ -16,7 +19,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	JButton goButton;
 
-
+	//Initiate a SelectPanel with a StratPanel
 	public SelectPanel(StratPanel newStratPanel)
 	{
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -27,13 +30,15 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	}
 
+	//Iterate through the ArrayList of Moves to create the buttons in the SelectPanel
 	public void setSelectOptions(ArrayList<Move> newOptions){
 
 		removeAll();
 		selectOptions = newOptions;
-
+		//Iterates through
 		for(int i = 0; i < selectOptions.size(); i ++)
 		{
+			//Create a new button for each option in the ArrayList
 			JButton b = new JButton();
 			b.setText(selectOptions.get(i).getName());
 			b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel));
@@ -44,6 +49,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	}
 
+	//InitGUI must be called as a default
 	public void initGUI()
 	{
 		JButton b1 = new JButton();

@@ -16,14 +16,17 @@ public class introPanelButtonAL implements ActionListener{
 	//When the button is pressed, this actionPerformed changes the display to the actual game.
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		//Removes the introPanel
-		game.removeAll(); 
+
 		//adds the mainGamePanel
 		game.add(game.mainGamePanel); 
-		//Sets the game Visible
-		game.setVisible(false); 
-		game.setVisible(true); 
-		//Repaints the game, now with the mainGamePanel displaying.
+		
+		//sets the intro screen panel to false
+		game.introScreenPanel.setVisible(false);
+		
+		//sets the main game panel to visible
+		game.mainGamePanel.setVisible(true);
+		
+		//Repaints the game, now with the mainGamePanel displaying.	
 		game.repaint(); 		
 	}
 

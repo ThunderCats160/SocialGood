@@ -37,6 +37,8 @@ public class SelectPanel extends JPanel implements ActionListener {
 			JButton b = new JButton();
 			b.setText(selectOptions.get(i).getName());
 			b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel));
+			
+			
 			add(b);
 		}
 

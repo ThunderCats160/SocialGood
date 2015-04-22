@@ -2,6 +2,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.BoxLayout;
 
 public class moveAdderAL implements ActionListener {
 
@@ -10,6 +14,7 @@ public class moveAdderAL implements ActionListener {
 	
 	public moveAdderAL(Move m, StratPanel newStratPanel)
 	{
+		
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 	}
@@ -17,6 +22,9 @@ public class moveAdderAL implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		stratPanel.addMove(toAdd); 
+		stratPanel.add(new JLabel(toAdd.name)); 
+		stratPanel.setVisible(false); 
+		stratPanel.setVisible(true); 
 		
 		
 		

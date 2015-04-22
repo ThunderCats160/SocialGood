@@ -1,4 +1,5 @@
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 public class RightMove extends Move{
@@ -11,7 +12,15 @@ public class RightMove extends Move{
 	
 	public void doMove(Player player)
 	{
-		player.setX(player.getX()+1);
+		Level l = board.getCurrentLevel(); 
+		ArrayList<ArrayList<Unit>> layout = l.getLayout();
+		
+		if(player.getX() < layout.get(0).size() -1)
+		{
+			player.setX(player.getX()+1);
+		}
+		
+		
 		
 	}
 }

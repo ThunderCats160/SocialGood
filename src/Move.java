@@ -5,11 +5,12 @@ public class Move {
 
 	private BufferedImage sprite; 
 	protected String name; 
-	private Board board; 
+	public Board board; 
 	
 	public Move(String desc, Board b, BufferedImage newSprite){
 		
 		name = ""; 
+		board = b; 
 	}
 	
 	public void doMove(Player player)

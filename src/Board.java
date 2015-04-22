@@ -21,11 +21,19 @@ public class Board extends JPanel{
 	public void setCurrentLevel(Level newLevel)
 	{
 		currentLevel = newLevel;
+		player.setX(currentLevel.playerSpawnX);
+		player.setY(currentLevel.playerSpawnY);
+		
+		setVisible(false); 
+		setVisible(true); 
+		
+	}
+	public Level getCurrentLevel()
+	{
+		return currentLevel; 		
 	}
 
 	public Boolean testStrategy(ArrayList<Move> moveList){
-
-		//currentStrat = moveList;
 
 
 		Graphics g = getGraphics();
@@ -34,7 +42,7 @@ public class Board extends JPanel{
 		for(int i = 0; i < moveList.size(); i++){
 
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -43,14 +51,25 @@ public class Board extends JPanel{
 			moveList.get(i).doMove(player);
 
 			paint(g);
+			 
 
-			System.out.println("HERE");
-			System.out.println(player.getX());
+			//check if the player is overlapping the goal
+			if(currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal)
+			{
+				return true; 
+			}
+			
+			setVisible(false); 
+			setVisible(true); 
+			
+			
 
 		}
-
-
-		moveList.clear();
+		
+		player.setX(currentLevel.playerSpawnX);
+		player.setY(currentLevel.playerSpawnY);
+		
+		paint(g); 
 
 		return false;
 

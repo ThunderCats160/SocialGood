@@ -14,19 +14,30 @@ public class Level {
 
 	int horizontalSize = 10;
 	int verticalSize = 10;
+	
+	int playerSpawnY; 
+	int playerSpawnX; 
+	
+	
 
 
-	public Level(int newDim)
+	public Level(int newDim, Board b)
 	{
-
+		playerSpawnY = 0; 
+		playerSpawnX = 0; 
+		
+		
+		
 		dim = newDim;
 
 		levelLayout = new ArrayList<ArrayList<Unit>>();
 		description = "Default";
 		availableMoves = new ArrayList<Move>();
 
-		availableMoves.add(new RightMove("Go right", null, null));
-		availableMoves.add(new DownMove("Go Down", null, null));
+		availableMoves.add(new RightMove("Go right", b, null));
+		availableMoves.add(new DownMove("Go down", b, null));
+		availableMoves.add(new LeftMove("Go left", b, null));
+		availableMoves.add(new UpMove("Go up", b, null));
 
 
 		for(int i =0; i < horizontalSize; i ++)
@@ -39,9 +50,17 @@ public class Level {
 
 			levelLayout.add(toAdd);
 		}
+		
+		 
 
 	}
 
+	
+	public void addGoalAtPosition(int X, int Y)
+	{
+		levelLayout.get(Y).set(X, new Goal(Color.yellow, null)); 
+	}
+	
 	public ArrayList<ArrayList<Unit>> getLayout(){
 		return levelLayout;
 	}
@@ -67,6 +86,8 @@ public class Level {
 				g.fillRect(j*dim + 1, i*dim+1, dim-2, dim-2);
 			}
 		}
+		
+		
 	}
 
 }

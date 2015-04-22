@@ -2,6 +2,7 @@ import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,6 +14,8 @@ public class Game extends Applet implements ActionListener {
 	Board board;
 	StratPanel stratPanel;
 	JButton goButton;
+	
+	ArrayList<Level> levels; 
 
 	public void init()
 	{
@@ -21,9 +24,7 @@ public class Game extends Applet implements ActionListener {
 
 		board = new Board();
 
-		Level l = new Level(40);
-
-		board.setCurrentLevel(l);
+		initLevels(); 
 
 		stratPanel = new StratPanel();
 		selectPanel = new SelectPanel(stratPanel);
@@ -33,7 +34,9 @@ public class Game extends Applet implements ActionListener {
 		//stratPanel.add(new JButton("C"));
 
 
-		selectPanel.setSelectOptions(l.getAvailableMoves());
+		
+		
+		selectPanel.setSelectOptions(levels.get(0).getAvailableMoves());
 
 		goButton = new JButton("GO!");
 		goButton.addActionListener(this);
@@ -48,9 +51,32 @@ public class Game extends Applet implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		board.testStrategy(stratPanel.getCurrentStrat());
+		if(board.testStrategy(stratPanel.getCurrentStrat()))
+		{
+			System.out.println("YOU WIN"); 
+			board.setCurrentLevel(levels.get(1));
+			stratPanel.clearCurrentStrat(); 
+			
+		}
 
 	}
 
+	
+	public void initLevels()
+	{
+		levels = new ArrayList<Level>(); 
+		
+		Level l1 = new Level(40, board);
+		l1.addGoalAtPosition(5,5); 
+		levels.add(l1); 
+		
+		Level l2 = new Level(40, board); 
+		l2.addGoalAtPosition(3,  2);
+		levels.add(l2); 
+		
+		
+
+		board.setCurrentLevel(levels.get(0));
+	}
 
 }

@@ -1,4 +1,5 @@
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 public class DownMove extends Move{
@@ -11,7 +12,14 @@ public class DownMove extends Move{
 	
 	public void doMove(Player player)
 	{
-		player.setY(player.getY()+1);
+		Level l = board.getCurrentLevel(); 
+		ArrayList<ArrayList<Unit>> layout = l.getLayout();
+		
+		if(player.getY() < layout.size() -1)
+		{
+			player.setY(player.getY()+1);
+		}
+		
 		
 	}
 }

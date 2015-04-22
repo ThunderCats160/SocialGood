@@ -8,10 +8,13 @@ public class Unit {
 	protected Color color; 
 	protected BufferedImage sprite; 
 	
+	public Boolean isgoal; 
+	
 	public Unit(Color newColor, BufferedImage newSprite)
 	{
 		color = newColor; 
 		sprite = newSprite; 
+		isgoal = false; 
 	}
 	
 	public void draw(Graphics g)

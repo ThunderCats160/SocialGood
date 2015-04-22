@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -14,6 +16,7 @@ public class Game extends Applet implements ActionListener {
 	Board board;
 	StratPanel stratPanel;
 	JButton goButton;
+	JPanel descriptionPanel; 
 	
 	ArrayList<Level> levels; 
 
@@ -40,11 +43,17 @@ public class Game extends Applet implements ActionListener {
 
 		goButton = new JButton("GO!");
 		goButton.addActionListener(this);
+		
+		descriptionPanel = new JPanel(); 
+		descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
+		descriptionPanel.add(goButton); 
+		descriptionPanel.add(new JLabel("HELLP")); 
+		
 
 		add(selectPanel, "West");
 		add(board, "Center");
 		add(stratPanel, "East");
-		add(goButton, "South");
+		add(descriptionPanel, "South");
 
 	}
 

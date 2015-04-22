@@ -35,7 +35,6 @@ public class Board extends JPanel{
 
 	public Boolean testStrategy(ArrayList<Move> moveList){
 
-		//AADEDEDED
 		Graphics g = getGraphics();
 
 

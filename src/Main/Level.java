@@ -1,7 +1,18 @@
+package Main;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.util.ArrayList;
+
+import Moves.DownMove;
+import Moves.LeftMove;
+import Moves.Move;
+import Moves.RightMove;
+import Moves.UpMove;
+import Moves.WhileMove;
+import Units.Goal;
+import Units.Obstacle;
+import Units.Unit;
 
 //The level class holds the layout for the level, the string description for the level, and the available moves for this level.
 //Depending on the currentLevel, these things will change.

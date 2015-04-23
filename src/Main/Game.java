@@ -1,3 +1,4 @@
+package Main;
 import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -9,50 +10,57 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Panels.DescriptionPanel;
+import Panels.SelectPanel;
+import Panels.StratPanel;
+import Panels.instructionsPanelButtonAL;
+import Panels.introPanelButtonAL;
+
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
 public class Game extends Applet implements ActionListener {
 
-	//Instantiates a board
-	Board board;
 	
-	//Instantiates the Panel which has buttons for the player to press to select a moving strategy.
-	SelectPanel selectPanel;
-	
-	//Instantiates the Panel which displays the moving strategy the player has selected.
-	StratPanel stratPanel;
-	
-	//Instantiates the button which runs the Player's strategy.
-	JButton goButton;
-	
-	//Instantiates the Panel which displays the description of the level.
-	DescriptionPanel descriptionPanel; 
-	
-	//Instantiates an ArrayList holding the levels implemented in the game.
-	ArrayList<Level> levels; 
-	
-	//Instantiates an integer which holds the current Level being implemented in the game.
-	//This index will be used to iterate through the ArrayList<Level> levels
-	int currentLevelIndex; 
-	
-	//Instantiates the main JPanel where the game will be played
-	JPanel mainGamePanel; 
-	
-	//Instantiates the introduction page, which explains the basics of how the game is played.
-	//This page will also serve as an instructional page for Teachers to explain the value of this game.
-	JPanel introScreenPanel;
-	
+	// PROPERTIES
+	Board board;						//Instantiates a board
+	SelectPanel selectPanel;			//Instantiates the Panel which has buttons for the player to press to select a moving strategy.
+	StratPanel stratPanel;				//Instantiates the Panel which displays the moving strategy the player has selected.
+	JButton goButton;					//Instantiates the button which runs the Player's strategy.
+	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
+	ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
+	int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
+	JPanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
+	JPanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	JPanel instructionalPanel;
+	
+	public final int FRAME_WIDTH = 700;	// width of our frame
+	public final int FRAME_HEIGHT = 503;// height of our frame
+	
+	/* PUBLIC SETTINGS */
+	public final String FONT_NAME = "Helvetica";
+	
+	
+	public Game(){
+		initGUI();
+	}
 
 	//Init function to put values into the instantiated objects above.
-	public void init()
-	{
-		
-		//When the game is first started, the initial level is level 0.
-		currentLevelIndex = 0; 
+	public void initGUI() {
 		
 		//sets the layout manager for this container
 		setLayout(new BorderLayout());
-
+		
+		//creates the instructions page
+		createInstructionPanel();
+		
+		//Show the introduction Screen
+		initIntroScreen(); 
+		
+	}
+	
+	/* Function to start a new game */
+	public void startNewGame(){
+		//When the game is first started, the initial level is level 0.
+		currentLevelIndex = 0; 
 		//Instantiate a new Board with a default constructor
 		board = new Board();
 		//Instantiate a new Button with text "Go". 
@@ -89,18 +97,9 @@ public class Game extends Applet implements ActionListener {
 		mainGamePanel.add(board, "Center");
 		mainGamePanel.add(stratPanel, "East");
 		mainGamePanel.add(descriptionPanel, "South");
-		
-		
-		//creates the instructions page
-		createInstructionPanel();
-		
-		//Show the introduction Screen
-		initIntroScreen(); 
-		
-		
-		
-
 	}
+	
+	
 	//The function to ensure that the Player sees the introduction screen before the mainGamePanel.
 	public void initIntroScreen()
 	{
@@ -202,19 +201,27 @@ public class Game extends Applet implements ActionListener {
 		levels.add(l4); 
 		
 		
-		
 		//Load the correct Level.
 		board.setCurrentLevel(levels.get(0));
 		descriptionPanel.setDescription(levels.get(0).getDescription()); 
 	}
 	
-	public void createInstructionPanel()
-	{
+	public void createInstructionPanel() {
 		instructionalPanel = new JPanel();
-		instructionalPanel.add(new JLabel("Instructions:"));
-		
-		
-		
+		instructionalPanel.add(new JLabel("Instructions:"));	
+	}
+	
+	// GETTERS FOR OUR PRIMARY PANELS	
+	public JPanel getInstructionPanel() {
+		return instructionalPanel;
+	}
+	
+	public JPanel getIntroScreenPanel(){
+		return introScreenPanel;
+	}
+	
+	public JPanel getMainGamePanel(){
+		return mainGamePanel;
 	}
 
 }

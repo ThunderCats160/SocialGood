@@ -1,5 +1,8 @@
+package Panels;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Main.Game;
 
 //When the Player indicates that they are ready to start playing the game from the button on the
 //introPanel, this class moves the display from the introPanel to the actual Game.
@@ -15,16 +18,17 @@ public class introPanelButtonAL implements ActionListener{
 	
 	//When the button is pressed, this actionPerformed changes the display to the actual game.
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
+		
+		game.startNewGame();
+		
 		//adds the mainGamePanel
-		game.add(game.mainGamePanel); 
+		game.add(game.getMainGamePanel()); 
 		
 		//sets the intro screen panel to false
-		game.introScreenPanel.setVisible(false);
+		game.getIntroScreenPanel().setVisible(false);
 		
 		//sets the main game panel to visible
-		game.mainGamePanel.setVisible(true);
+		game.getMainGamePanel().setVisible(true);
 		
 		//Repaints the game, now with the mainGamePanel displaying.	
 		game.repaint(); 		

@@ -1,9 +1,13 @@
+package Main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
+
+import Moves.Move;
+import Units.Player;
 
 //Board Class holds the implementation for the Board.
 //Uses JPanel

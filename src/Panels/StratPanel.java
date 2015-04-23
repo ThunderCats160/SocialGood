@@ -1,3 +1,4 @@
+package Panels;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -7,12 +8,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import Moves.Move;
+
 
 //The StratPanel holds an ArrayList of the currentStrategy the player has implemented
 public class StratPanel extends JPanel implements ActionListener{
 
-	ArrayList<Move> currentStrat;
-	SelectPanel selectPanel; 
+	private ArrayList<Move> currentStrat;
+	private SelectPanel selectPanel; 
 	
 	
 	//Default Constructor for the StratPanel
@@ -35,7 +38,7 @@ public class StratPanel extends JPanel implements ActionListener{
 		removeAll(); 
 		initGUI(); 
 		
-		selectPanel.addingToWhile = false; 
+		selectPanel.setAddToWhile(false); 
 		selectPanel.resetSelectOptions();
 		
 		
@@ -70,9 +73,6 @@ public class StratPanel extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		clearCurrentStrat(); 
 		
-		
-		
 	}
-
 
 }

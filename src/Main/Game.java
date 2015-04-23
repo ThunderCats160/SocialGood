@@ -2,6 +2,7 @@ package Main;
 import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,6 +53,12 @@ public class Game extends Applet implements ActionListener {
 
 	//Init function to put values into the instantiated objects above.
 	public void initGUI() {
+		Dimension dim = new Dimension(50000, 50000);
+		
+		setPreferredSize(dim);
+		setMinimumSize(dim);
+		setMaximumSize(dim);
+		setSize(dim);
 		
 		//sets the layout manager for this container
 		setLayout(new BorderLayout());

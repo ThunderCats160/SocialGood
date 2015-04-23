@@ -18,8 +18,9 @@ public class introPanelButtonAL implements ActionListener{
 	
 	//When the button is pressed, this actionPerformed changes the display to the actual game.
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
+		
+		game.startNewGame();
+		
 		//adds the mainGamePanel
 		game.add(game.getMainGamePanel()); 
 		

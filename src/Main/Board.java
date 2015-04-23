@@ -22,7 +22,7 @@ public class Board extends JPanel{
 
 
 	//Default constructor. Calls for the player to be made
-	public Board(){
+	public Board() {
 		player = new Player(Color.blue, 5, 10, 40);
 
 	}
@@ -137,9 +137,7 @@ public class Board extends JPanel{
 			return true; 
 		}
 		
-		//Flickers the screen to trigger a re-draw
-		setVisible(false); 
-		setVisible(true); 
+		revalidate();
 		
 		return false;
 	}

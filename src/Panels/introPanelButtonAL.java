@@ -13,7 +13,7 @@ public class introPanelButtonAL implements ActionListener{
 	//Constructor- Takes in the game so that when the button is called, it adds the maingamePanel to the display
 	public introPanelButtonAL(Game g)
 	{
-		game = g; 
+		game = g;
 	}
 	
 	//When the button is pressed, this actionPerformed changes the display to the actual game.

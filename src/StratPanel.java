@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 public class StratPanel extends JPanel implements ActionListener{
 
 	ArrayList<Move> currentStrat;
+	SelectPanel selectPanel; 
 	
 	
 	//Default Constructor for the StratPanel
@@ -22,12 +23,21 @@ public class StratPanel extends JPanel implements ActionListener{
 		currentStrat = new ArrayList<Move>();
 
 	}
+	public void setSelectPanel(SelectPanel newSelectPanel)
+	{
+		selectPanel = newSelectPanel; 
+	}
+	
 	//When the clear button is pressed, clear the current strategy and repaint the StratPanel
 	public void clearCurrentStrat()
 	{
 		currentStrat.clear(); 
 		removeAll(); 
 		initGUI(); 
+		
+		selectPanel.addingToWhile = false; 
+		selectPanel.resetSelectOptions();
+		
 		
 		setVisible(false); 
 		setVisible(true); 
@@ -59,6 +69,7 @@ public class StratPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		clearCurrentStrat(); 
+		
 		
 		
 	}

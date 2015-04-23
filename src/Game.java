@@ -73,6 +73,7 @@ public class Game extends Applet implements ActionListener {
 		//Instantiate a new SelectPanel
 		selectPanel = new SelectPanel(stratPanel);
 
+		stratPanel.setSelectPanel(selectPanel);
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
 		selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());
@@ -138,7 +139,9 @@ public class Game extends Applet implements ActionListener {
 			board.setCurrentLevel(levels.get(currentLevelIndex));
 			//Clear the Strategy Panel in preparation of the new level.
 			stratPanel.clearCurrentStrat(); 	
-			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());		
+			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());
+			
+			
 		}
 
 	}

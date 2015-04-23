@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.Graphics;
@@ -50,6 +49,7 @@ public class Level {
 		availableMoves.add(new DownMove("Go down", b, null));
 		availableMoves.add(new LeftMove("Go left", b, null));
 		availableMoves.add(new UpMove("Go up", b, null));
+		availableMoves.add(new WhileMove("While", b, null)); 
 
 		//TODO: I have no idea what this does.
 		for(int i =0; i < horizontalSize; i ++)

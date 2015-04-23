@@ -52,32 +52,48 @@ public class Board extends JPanel{
 		//Iterate through the list of moves in order to move the Player around the board.
 		for(int i = 0; i < moveList.size(); i++){
 			
-			//Sleep the thread to make the block moves discontinuous.
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 			//Carry out the current move in the iteration
-			moveList.get(i).doMove(player);
-			//Display the move that was just made.
-			paint(g);
-			 
-
-			//check if the player is overlapping the goal
-			if(currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal)
+			//The graphics item and board are passed so the whileMove can 
+			//create a loop similar to this one
+			if(!moveList.get(i).isWhileMove)
 			{
-				return true; 
+				if(doMove(moveList.get(i), g)){
+					return true; 
+				}
+				
+			}
+			else
+			{
+				//Get the list of moves that the whileMove is to perform over ad over
+				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
+				
+				//Only perform the loop 10 times in case of an infinite
+				for(int j = 0; j < 10; j++)
+				{
+					//System.out.println(whileList.size()); 
+					for(int p = 0; p < whileList.size(); p++)
+					{					
+						if(doMove(whileList.get(p), g))
+							return true; 
+					}
+				}
 			}
 			
-			//??
-			setVisible(false); 
-			setVisible(true); 
 			
 			
 
 		}
+		
+		//Sleep again so the User can see their final position
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		
 		//If this point is reached, the player's strategy has failed.
 		//We reset their location back to the spawn point
@@ -91,6 +107,38 @@ public class Board extends JPanel{
 
 	}
 
+	
+	//Sleeps to make things more visible, moves the player, then repaints and flickers the 
+	//screen in order to display the new state
+	private Boolean doMove(Move m, Graphics g)
+	{
+		//Sleep the thread to make the block moves discontinuous.
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.doMove(player, g);
+	
+		//Display the move that was just made.
+		paint(g);
+		 
+		 
+
+		//check if the player is overlapping the goal
+		if(currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal)
+		{
+			return true; 
+		}
+		
+		//Flickers the screen to trigger a re-draw
+		setVisible(false); 
+		setVisible(true); 
+		
+		return false;
+	}
 
 	//Super for drawing the Level and the Player on the board.
 	public void paint(Graphics g)

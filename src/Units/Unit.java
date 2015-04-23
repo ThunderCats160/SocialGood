@@ -15,20 +15,15 @@ public class Unit {
 	public Boolean isObstacle; 
 	
 	//Constructor 
-	public Unit(Color newColor, BufferedImage newSprite)
-	{
-		color = newColor; 
+	public Unit(Color newColor, BufferedImage newSprite) {
+		color = newColor;
 		sprite = newSprite; 
 		isgoal = false; 
 		isObstacle = false; 
 	}
 	
-	public void draw(Graphics g)
-	{
-		
-	}
-	public Color getColor()
-	{
+	
+	public Color getColor() {
 		return color; 
 	}
 	

@@ -22,22 +22,19 @@ public class Board extends JPanel{
 
 
 	//Default constructor. Calls for the player to be made
-	public Board(){
+	public Board() {
 		player = new Player(Color.blue, 5, 10, 40);
 
 	}
 	
 	//The Level of the game decides the initial location for the player and obstacles.
-	public void setCurrentLevel(Level newLevel)
-	{
-		//TODO: Implement  & Set Obstacle Locations
+	public void setCurrentLevel(Level newLevel){
 		
 		//Set the player's initial location based on the level's initial settings.
 		currentLevel = newLevel;
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		//??
 		setVisible(false); 
 		setVisible(true); 
 		
@@ -112,15 +109,13 @@ public class Board extends JPanel{
 	}
 
 	
-	//Sleeps to make things more visible, moves the player, then repaints and flickers the 
-	//screen in order to display the new state
+	//Sleeps to make things more visible, moves the player, then repaints and revalidates to display the new state
 	private Boolean doMove(Move m, Graphics g)
 	{
 		//Sleep the thread to make the block moves discontinuous.
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -128,18 +123,13 @@ public class Board extends JPanel{
 	
 		//Display the move that was just made.
 		paint(g);
-		 
-		 
 
 		//check if the player is overlapping the goal
-		if(currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal)
-		{
+		if (currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal) {
 			return true; 
 		}
 		
-		//Flickers the screen to trigger a re-draw
-		setVisible(false); 
-		setVisible(true); 
+		revalidate();
 		
 		return false;
 	}
@@ -149,7 +139,6 @@ public class Board extends JPanel{
 	{
 		currentLevel.draw(g);
 		player.draw(g);
-
 	}
 
 }

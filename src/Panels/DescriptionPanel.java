@@ -7,13 +7,12 @@ import javax.swing.JPanel;
 //Programming concepts used for this level. 
 public class DescriptionPanel extends JPanel{
 
-	//The description panel holds a "go" jbutton, and the jlabel to display the text.
+	// The description panel holds a "go" jbutton, and the jlabel to display the text.
 	JButton goButton; 
 	JLabel currentDesc; 
 	
 	//Constructor to add a button and description to the DescriptionPanel
-	public DescriptionPanel(JButton jb, String desc)
-	{
+	public DescriptionPanel(JButton jb, String desc) {
 		goButton = jb; 
 		currentDesc = new JLabel(desc); 
 		
@@ -21,10 +20,10 @@ public class DescriptionPanel extends JPanel{
 		add(currentDesc); 
 		
 	}
+	
 	//Allows us to set the currentDescription displayed on the Description Panel.
-	public void setDescription(String newDesc)
-	{
-		currentDesc.setText(newDesc); 
+	public void setDescription(String newDesc) {
+		currentDesc.setText("<html>" + newDesc + "</html>"); 
 	}
 	
 }

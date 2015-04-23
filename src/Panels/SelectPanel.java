@@ -18,16 +18,10 @@ import Moves.whileMoveAdderAL;
 //It also holds buttons to display the move options
 public class SelectPanel extends JPanel implements ActionListener {
 
-
+	/* PROPERTIES */
 	ArrayList<Move> selectOptions;
-
 	StratPanel stratPanel;
-
-	
 	private Boolean addingToWhile; 
-	
-
-	
 	
 
 	//Initiate a SelectPanel with a StratPanel
@@ -41,6 +35,13 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 		initGUI();
 
+	}
+	
+	//InitGUI must be called as a default
+	public void initGUI() {
+		JButton b1 = new JButton();
+		b1.setText("DSFHDSFKJS");
+		add(b1);
 	}
 	
 	public void setAddToWhile(boolean value){
@@ -84,17 +85,6 @@ public class SelectPanel extends JPanel implements ActionListener {
 			selectOptions.get(i).clearMoveList(); 
 			//System.out.println(selectOptions.get(i).getMoveList().size()); 
 		}
-	}
-
-	//InitGUI must be called as a default
-	public void initGUI()
-	{
-		JButton b1 = new JButton();
-		b1.setText("DSFHDSFKJS");
-
-		add(b1);
-
-
 	}
 
 

@@ -2,6 +2,7 @@ package Main;
 import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -80,6 +81,7 @@ public class Game extends Applet implements ActionListener {
 		
 		//Instantiate a new StrategyPanel
 		stratPanel = new StratPanel();
+		
 		//Instantiate a new SelectPanel
 		selectPanel = new SelectPanel(stratPanel);
 
@@ -96,9 +98,12 @@ public class Game extends Applet implements ActionListener {
 		//Put the Selection panel on the left side, the game board in the center, 
 		//the strategy panel on the right, and the description of the level on the bottom.
 		mainGamePanel.add(selectPanel, "West");
-		mainGamePanel.add(board, "Center");
+		mainGamePanel.add(board, BorderLayout.CENTER);
 		mainGamePanel.add(stratPanel, "East");
 		mainGamePanel.add(descriptionPanel, "South");
+		
+		mainGamePanel.setVisible(true);
+		mainGamePanel.revalidate();
 	}
 	
 	
@@ -141,8 +146,7 @@ public class Game extends Applet implements ActionListener {
 			//Clear the Strategy Panel in preparation of the new level.
 			stratPanel.clearCurrentStrat(); 	
 			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());
-			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());
-			
+			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());		
 		}
 
 	}

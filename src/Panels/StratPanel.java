@@ -40,9 +40,7 @@ public class StratPanel extends JPanel implements ActionListener{
 		
 		selectPanel.setAddToWhile(false); 
 		selectPanel.resetSelectOptions();
-		
-		
-		setVisible(false); 
+		 
 		setVisible(true); 
 	}
 	
@@ -63,16 +61,13 @@ public class StratPanel extends JPanel implements ActionListener{
 	}
 	
 	//When the user selects a move, it is added to the ArrayList
-	public void addMove(Move toAdd)
-	{
+	public void addMove(Move toAdd) {
 		currentStrat.add(toAdd);
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		clearCurrentStrat(); 
-		
 	}
 
 }

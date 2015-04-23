@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //The Select Panel holds an ArrayList of the move options for the level
@@ -17,7 +18,12 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	StratPanel stratPanel;
 
-	JButton goButton;
+	
+	Boolean addingToWhile; 
+	
+
+	
+	
 
 	//Initiate a SelectPanel with a StratPanel
 	public SelectPanel(StratPanel newStratPanel)
@@ -25,8 +31,12 @@ public class SelectPanel extends JPanel implements ActionListener {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
 		stratPanel = newStratPanel;
+		
+		addingToWhile = false; 
 
 		initGUI();
+		
+		
 
 	}
 
@@ -41,12 +51,29 @@ public class SelectPanel extends JPanel implements ActionListener {
 			//Create a new button for each option in the ArrayList
 			JButton b = new JButton();
 			b.setText(selectOptions.get(i).getName());
-			b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel));
 			
+			if(!selectOptions.get(i).isWhileMove)
+				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
+			else
+			{
+				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this));
+			}
+				 
 			
 			add(b);
 		}
-
+		
+	}
+	
+	//To reset what the whileMove holds. 
+	public void resetSelectOptions()
+	{
+		for(int i = 0; i< selectOptions.size(); i++)
+		{
+		
+			selectOptions.get(i).clearMoveList(); 
+			//System.out.println(selectOptions.get(i).getMoveList().size()); 
+		}
 	}
 
 	//InitGUI must be called as a default

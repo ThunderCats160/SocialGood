@@ -6,18 +6,22 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 
 //Action listener linked to each button
 //When a button is pressed, it adds a move to the current strategy list in stratPanel
-public class moveAdderAL implements ActionListener {
+public class whileMoveAdderAL implements ActionListener {
 
 	Move toAdd; 
 	StratPanel stratPanel; 
 	SelectPanel selectPanel; 
 	
+	
+	
 	//Constructor
-	public moveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel)
-	{		
+	public whileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel)
+	{
+		
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
@@ -27,17 +31,11 @@ public class moveAdderAL implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		//Add the selected move to the Strategy Panel
-		if(selectPanel.addingToWhile){
-			stratPanel.currentStrat.get(stratPanel.currentStrat.size()-1).moveList.add(toAdd); 
-		}
-			
-		else
-			stratPanel.addMove(toAdd); 
-		//Add the name of the Strategy to display
-		if(selectPanel.addingToWhile)
-			stratPanel.add(new JLabel(toAdd.name)); 
-		else
-			stratPanel.add(new JLabel(toAdd.name)); 
+		stratPanel.addMove(toAdd); 
+
+		stratPanel.add(new JLabel("While(true):")); 
+		selectPanel.addingToWhile = true; 
+		//Flicker the panel to make the change visible
 		stratPanel.setVisible(false); 
 		stratPanel.setVisible(true); 
 		

@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class RightMove extends Move{
 	}
 	
 	//Actually carries out the move when "moveList.get(i).doMove(player);" (Board 63) is called.
-	public void doMove(Player player)
+	public void doMove(Player player, Graphics g)
 	{
 		//Criteria for carrying out move:
 		//If there is not an obstacle in the way, the move is carried out.

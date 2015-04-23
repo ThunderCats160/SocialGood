@@ -1,6 +1,12 @@
+package Moves;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import Main.Board;
+import Main.Level;
+import Units.Player;
+import Units.Unit;
 
 //LeftMove is one of our move options
 //The LeftMove is differentiated by its name "LEFT"

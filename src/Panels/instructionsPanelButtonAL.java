@@ -1,5 +1,8 @@
+package Panels;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Main.Game;
 
 public class instructionsPanelButtonAL implements ActionListener{
 	
@@ -17,14 +20,14 @@ public class instructionsPanelButtonAL implements ActionListener{
 		// TODO Auto-generated method stub
 
 		//adds the mainGamePanel
-		game.add(game.instructionalPanel); 
+		game.add(game.getInstructionPanel()); 
 		
 		//sets the intro screen panel to false
-		game.introScreenPanel.setVisible(false);
+		game.getIntroScreenPanel().setVisible(false);
 		
 		
 		//sets the instructions panel to visible
-		game.instructionalPanel.setVisible(true);
+		game.getInstructionPanel().setVisible(true);
 		
 		//Repaints the game, now with the instructions Panel displaying.	
 		game.repaint(); 		

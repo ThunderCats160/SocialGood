@@ -1,3 +1,4 @@
+package Panels;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +8,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Moves.Move;
+import Moves.moveAdderAL;
+import Moves.whileMoveAdderAL;
 
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)
@@ -19,7 +24,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	StratPanel stratPanel;
 
 	
-	Boolean addingToWhile; 
+	private Boolean addingToWhile; 
 	
 
 	
@@ -35,11 +40,16 @@ public class SelectPanel extends JPanel implements ActionListener {
 		addingToWhile = false; 
 
 		initGUI();
-		
-		
 
 	}
+	
+	public void setAddToWhile(boolean value){
+		addingToWhile = value;
+	}
 
+	public boolean getAddToWhile(){
+		return addingToWhile;
+	}
 	//Iterate through the ArrayList of Moves to create the buttons in the SelectPanel
 	public void setSelectOptions(ArrayList<Move> newOptions){
 

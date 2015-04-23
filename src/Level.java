@@ -24,6 +24,8 @@ public class Level {
 	int playerSpawnY; 
 	int playerSpawnX; 
 	
+	Board board; 
+	
 	
 
 	//TODO: Different levels should have different available moves!
@@ -34,7 +36,7 @@ public class Level {
 		playerSpawnY = 0; 
 		playerSpawnX = 0; 
 		
-		
+		board = b; 
 		
 		dim = newDim;
 		
@@ -45,11 +47,8 @@ public class Level {
 		//Set the available moves
 		availableMoves = new ArrayList<Move>();
 
-		availableMoves.add(new RightMove("Go right", b, null));
-		availableMoves.add(new DownMove("Go down", b, null));
-		availableMoves.add(new LeftMove("Go left", b, null));
-		availableMoves.add(new UpMove("Go up", b, null));
-		availableMoves.add(new WhileMove("While", b, null)); 
+		
+		
 
 		//TODO: I have no idea what this does.
 		for(int i =0; i < horizontalSize; i ++)
@@ -65,6 +64,27 @@ public class Level {
 		
 		 
 
+	}
+	public void makeRightMoveAvailable()
+	{
+		availableMoves.add(new RightMove("Go right", board, null));
+		
+	}
+	public void makeDownMoveAvailable()
+	{
+		availableMoves.add(new DownMove("Go down", board, null));
+	}
+	public void makeLeftMoveAvailable()
+	{
+		availableMoves.add(new LeftMove("Go left", board, null));
+	}
+	public void makeUpMoveAvailable()
+	{
+		availableMoves.add(new UpMove("Go up", board, null));
+	}
+	public void makeWhileMoveAvailable()
+	{	
+		availableMoves.add(new WhileMove("While", board, null)); 
 	}
 
 	//Setter for the Description for the level.

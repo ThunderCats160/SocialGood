@@ -28,7 +28,6 @@ public class moveAdderAL implements ActionListener {
 		
 		//Add the selected move to the Strategy Panel
 		if(selectPanel.addingToWhile){
-			System.out.println("HERE"); 
 			stratPanel.currentStrat.get(stratPanel.currentStrat.size()-1).moveList.add(toAdd); 
 		}
 			

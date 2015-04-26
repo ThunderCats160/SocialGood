@@ -53,15 +53,15 @@ public class Game extends Applet implements ActionListener {
 
 	//Init function to put values into the instantiated objects above.
 	public void initGUI() {
-		Dimension dim = new Dimension(50000, 50000);
+		Dimension dim = new Dimension(50, 50);
+		
+		//sets the layout manager for this container
+		setLayout(new BorderLayout());
 		
 		setPreferredSize(dim);
 		setMinimumSize(dim);
 		setMaximumSize(dim);
-		setSize(dim);
-		
-		//sets the layout manager for this container
-		setLayout(new BorderLayout());
+		setSize(2000, 2000);
 		
 		//creates the instructions page
 		createInstructionPanel();
@@ -118,6 +118,7 @@ public class Game extends Applet implements ActionListener {
 		mainGamePanel.add(board, BorderLayout.CENTER);
 		mainGamePanel.add(stratPanel, "East");
 		mainGamePanel.add(descriptionPanel, "South");
+		
 		
 		mainGamePanel.setVisible(true);
 		mainGamePanel.revalidate();

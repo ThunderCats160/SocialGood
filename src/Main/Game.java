@@ -16,6 +16,7 @@ import ActionListeners.teacherPanelButtonAL;
 import Panels.DescriptionPanel;
 import Panels.MainGamePanel;
 
+
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
 public class Game extends Applet {
 
@@ -33,7 +34,8 @@ public class Game extends Applet {
 	
 	/* PUBLIC SETTINGS */
 	public final String FONT_NAME = "Helvetica";
-	
+	public static final int APPLET_WIDTH = 960;
+	public static final int APPLET_HEIGHT = 600;
 	
 	public Game(){
 		initGUI();

@@ -242,6 +242,10 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	{
 		numFunctions = 1; 
 	}
+	
+	public Game getGame(){
+		return game;
+	}
 
 	public ArrayList<Move> getSelectOptions() {
 		return selectOptions;

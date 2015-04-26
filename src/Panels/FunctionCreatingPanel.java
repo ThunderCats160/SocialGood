@@ -44,9 +44,8 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		setVisible(true);
 		validate();
 		repaint();
-		game.validate();
-		game.repaint();
 		
+		game.refreshApplet();
 	}
 	
 	public void addDoneButton()
@@ -73,6 +72,7 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 
 		revalidate();
 		repaint();
+		game.refreshApplet();
 	}
 	
 	//Clears the panel to be used next time
@@ -82,7 +82,6 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		removeAll(); 
 		addNameField(); 
 		addDoneButton(); 
-		
 		
 	}
 	

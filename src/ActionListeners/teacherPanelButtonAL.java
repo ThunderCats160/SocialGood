@@ -30,7 +30,7 @@ public class teacherPanelButtonAL implements ActionListener{
 		game.getTeacherPanel().setVisible(true);
 		
 		//Repaints the game, now with the instructions Panel displaying.	
-		game.repaint(); 		
+		game.refreshApplet(); 		
 	}
 
 }

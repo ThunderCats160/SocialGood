@@ -98,7 +98,7 @@ public class Game extends Applet {
 		setPreferredSize(dim);
 		setMinimumSize(dim);
 		setMaximumSize(dim);
-		setSize(2000, 2000);
+		setSize(APPLET_WIDTH,APPLET_HEIGHT);
 		
 		//creates the instructions page
 		createInstructionPanel();

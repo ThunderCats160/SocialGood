@@ -102,17 +102,23 @@ public class Board extends JPanel{
 			}
 			else if(moveList.get(i).isConditionalMove)
 			{
-				//get the list of moves that the conditionalMove is to perform over and over
-				ArrayList<Move> conditionalList = moveList.get(i).getMoveList();
+				
 				
 				if(checkConditional(moveList.get(i)))
 				{
+					//get the list of moves that the conditionalMove is to perform over and over
+					ArrayList<Move> conditionalList = moveList.get(i).getMoveList();
+					System.out.println(conditionalList.size());
 					
-					for(int m = 0; i < conditionalList.size(); i++)
+					
+					for(int index = 0; index < conditionalList.size(); index++)
 					{
-						System.out.println(m + ": move");
-						if(doMove(conditionalList.get(m), g))
+						System.out.println(index + ": move");
+						if(doMove(conditionalList.get(index), g))
+						{
+							System.out.println(index + ": insideMove");
 							return true;
+						}
 					}
 				}
 				
@@ -193,6 +199,7 @@ public class Board extends JPanel{
 
 		//check if the player is overlapping the goal
 		if (currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal) {
+			System.out.println("golden");
 			return true; 
 		}
 		

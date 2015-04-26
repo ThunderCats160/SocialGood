@@ -55,6 +55,7 @@ public class moveAdderAL implements ActionListener {
 			{
 				if(!toAdd.isWhileMove) {
 					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd);
+					//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.size());
 					stratPanel.decrementAvailableMoves();
 				}
 			}

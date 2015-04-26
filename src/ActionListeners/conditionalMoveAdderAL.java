@@ -1,6 +1,7 @@
 package ActionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -85,6 +86,15 @@ public class conditionalMoveAdderAL implements ActionListener {
 		}
 		else if(e.getSource().equals(bracket))
 		{
+			
+			
+			
+			ArrayList<Move> newMoveList = new ArrayList<Move>(); 
+			
+			for(int i=  0; i < toAdd.moveList.size(); i ++){
+				newMoveList.add(toAdd.moveList.get(i)); 
+			}
+			
 			stratPanel.add(new JLabel("}"));
 			
 			selectPanel.removeAll();
@@ -95,6 +105,8 @@ public class conditionalMoveAdderAL implements ActionListener {
 			selectPanel.repaint();
 			
 			selectPanel.setAddToConditional(false);
+			toAdd.moveList = newMoveList; 
+			
 		}
 		else{
 		//Only add the move if the user has moves available

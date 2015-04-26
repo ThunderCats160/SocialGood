@@ -1,9 +1,11 @@
 package Panels;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+
 
 
 
@@ -36,7 +40,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	}
 	
 	private void initGUI(){
-		setLayout(new BorderLayout());
+		
 		 
 		//Instantiate a new Board with a default constructor
 		board = new Board();
@@ -71,10 +75,27 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Create the layout of the game:
 		//Put the Selection panel on the left side, the game board in the center, 
 		//the strategy panel on the right, and the description of the level on the bottom.
-		add(selectPanel, "West");
-		add(board, BorderLayout.CENTER);
+		
+		
+		//Game.APPLET_WIDTH //600
+		//Game.APPLET_HEIGHT //960
+		//Dimension: Width, Height
+		BorderLayout b = new BorderLayout();
+		setLayout(b);
+		Dimension selP = new Dimension(Game.APPLET_WIDTH/4,(int) (Game.APPLET_HEIGHT/2.4));
+		Dimension bP = new Dimension((int)(Game.APPLET_WIDTH/1.333333), (int)(Game.APPLET_HEIGHT/2.133333));
+		Dimension strP = new Dimension((int)(Game.APPLET_WIDTH/6), (int)(Game.APPLET_HEIGHT/2.133333));
+		Dimension dP = new Dimension((int)(Game.APPLET_WIDTH/1), (int)(Game.APPLET_HEIGHT/9.6));
+		selectPanel.setPreferredSize(selP);
+		add(selectPanel, BorderLayout.LINE_START);
+		board.setPreferredSize(bP);
+		add(board, BorderLayout.CENTER);	
+		stratPanel.setPreferredSize(strP);
 		add(stratPanel, "East");
+		descriptionPanel.setPreferredSize(dP);
 		add(descriptionPanel, "South");
+		
+	
 		
 		
 		setVisible(true);
@@ -132,7 +153,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		//Level 1: Our introduction level.
 		//The player simply has to move the character 3 spaces to the right.
-		Level l1 = new Level(40, board); 
+		Level l1 = new Level(Board.unitDimension, board); 
 		l1.setPlayerSpawnPosition(4, 5);
 		l1.addGoalAtPosition(7,5, game.getImage(game.getBase(), "u.png")); 
 		l1.setDescription("Welcome to the game! Add your commands to your strategy using"
@@ -145,7 +166,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
-		Level l2 = new Level(40, board); 
+		Level l2 = new Level(Board.unitDimension, board); 
 		l2.setPlayerSpawnPosition(3, 5);
 		l2.addGoalAtPosition(7,2);
 		l2.setDescription("OH WOW! NOW YOU HAVE TO TURN!"); 
@@ -155,7 +176,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
-		Level l3 = new Level(40, board); 
+		Level l3 = new Level(Board.unitDimension, board); 
 		l3.setPlayerSpawnPosition(3, 5);
 		l3.addGoalAtPosition(7,5); 
 		l3.addObstacleAtPosition(5, 5, game.getImage(game.getBase(), "u.png"));
@@ -169,7 +190,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		levels.add(l3);
 		
 		//Level 4: This introduces while loops
-		Level l4 = new Level(40, board); 
+		Level l4 = new Level(Board.unitDimension, board); 
 		l4.setPlayerSpawnPosition(0, 5); 
 		l4.addGoalAtPosition(9, 5);
 		l4.setDescription("Wow, that goal sure is far away, Try using a while-loop "
@@ -186,11 +207,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Load the correct Level.
 		board.setCurrentLevel(levels.get(0));
 		descriptionPanel.setDescription(levels.get(0).getDescription()); 
-	}
-	
-	public void setPlayerImage(Image image)
-	{
-		board.setPlayerImage(image);
 	}
 
 }

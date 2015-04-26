@@ -166,7 +166,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		//levels.add(l1);
+		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -176,7 +176,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		//levels.add(l2); 
+		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
@@ -206,6 +206,16 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l4.setNumOfUsableMoves(10);
 		
 		getLevels().add(l4); 
+		
+		//Level 5: this introduces conditional Statements
+		Level l5 = new Level(Board.unitDimension, board);
+		l5.setPlayerSpawnPosition(0, 5);
+		l5.addGoalAtPosition(9, 5, game.getBufferedImage("doghouse.png"));
+		l5.addObstacleAtPosition(2, 6, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 7, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 8, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 9, game.getBufferedImage("dragon_new.png"));
+		
 		
 		
 		//Load the correct Level.

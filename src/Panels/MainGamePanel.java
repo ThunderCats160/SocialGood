@@ -84,17 +84,17 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Dimension: Width, Height
 		BorderLayout b = new BorderLayout();
 		setLayout(b);
-		Dimension selP = new Dimension(Game.APPLET_WIDTH/4,(int) (Game.APPLET_HEIGHT/2.4));
-		Dimension bP = new Dimension((int)(Game.APPLET_WIDTH/1.333333), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension strP = new Dimension((int)(Game.APPLET_WIDTH/6), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension dP = new Dimension((int)(Game.APPLET_WIDTH/1), (int)(Game.APPLET_HEIGHT/9.6));
-		selectPanel.setPreferredSize(selP);
+		Dimension selectP = new Dimension(Game.APPLET_WIDTH/6,(int) (Game.APPLET_HEIGHT/2.4));
+		Dimension boardP = new Dimension((int)(Game.APPLET_WIDTH/2), (int)(Game.APPLET_HEIGHT/2.133333));
+		Dimension stratP = new Dimension((int)(Game.APPLET_WIDTH/4), (int)(Game.APPLET_HEIGHT/2.133333));
+		Dimension descP = new Dimension((int)(Game.APPLET_WIDTH/1), (int)(Game.APPLET_HEIGHT/9.6));
+		selectPanel.setPreferredSize(selectP);
 		add(selectPanel, BorderLayout.LINE_START);
-		board.setPreferredSize(bP);
+		board.setPreferredSize(boardP);
 		add(board, BorderLayout.CENTER);	
-		stratPanel.setPreferredSize(strP);
+		stratPanel.setPreferredSize(stratP);
 		add(stratPanel, "East");
-		descriptionPanel.setPreferredSize(dP);
+		descriptionPanel.setPreferredSize(descP);
 		add(descriptionPanel, "South");
 		
 	
@@ -175,7 +175,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		levels.add(l2); 
+		//levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 

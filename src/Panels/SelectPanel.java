@@ -146,6 +146,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	{
 		JButton dfb = new JButton("Create a function!"); 
 		dfb.addActionListener(this); 
+
 		add(dfb); 
 	}
 	
@@ -154,6 +155,19 @@ public class SelectPanel extends JPanel implements ActionListener {
 	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
 	{
 		JButton b = new JButton(name); 
+		
+		String SMovesInFunction = "<html>";
+		 
+		//iterate through functionMoves
+		
+		for(int i = 0; i < functionMoves.size();i++)
+		{
+			SMovesInFunction = SMovesInFunction + functionMoves.get(i).getName() + " <br/> " ;
+		}
+		SMovesInFunction += "</html>";
+		
+		b.setToolTipText(SMovesInFunction);
+		add(Box.createRigidArea(new Dimension(5,5)));
 		add(b); 
 		
 		//System.out.println(functionMoves.size()); 

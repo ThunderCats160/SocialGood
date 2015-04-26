@@ -22,7 +22,7 @@ public class Board extends JPanel{
 	//Player holds the position of the user's character (currently a block) in XY format.
 	private Player player;
 	//Constants needed for drawing.
-	static public int unitDimension = 45;
+	static public int unitDimension = 55;
 
 
 	//Default constructor. Calls for the player to be made

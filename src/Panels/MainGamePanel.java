@@ -111,6 +111,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		Graphics2D the2DGraphic = (Graphics2D) theGraphic;
 //		the2DGraphic.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 //				RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		game.validate();
 		game.repaint();
 		

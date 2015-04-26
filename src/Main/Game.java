@@ -127,13 +127,13 @@ public class Game extends Applet {
 	@Override
 	public void paint(Graphics theGraphic) {
 		super.paint(theGraphic);
-		if (activeView == "Teacher Panel"){
-			teacherPanel.repaint();
-		} else if (activeView == "Main Game"){
-			mainGamePanel.repaint();
-		} else if (activeView == "Intro Screen"){
-			introScreenPanel.repaint();
-		}
+//		if (activeView == "Teacher Panel"){
+//			teacherPanel.repaint();
+//		} else if (activeView == "Main Game"){
+//			mainGamePanel.repaint();
+//		} else if (activeView == "Intro Screen"){
+//			introScreenPanel.repaint();
+//		}
 		
 	}
 	

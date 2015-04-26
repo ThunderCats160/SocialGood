@@ -1,9 +1,11 @@
 package Panels;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -106,6 +108,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 				 
 			
 			add(b);
+			add(Box.createRigidArea(new Dimension(5,5)));
 		}
 		
 		

@@ -42,7 +42,7 @@ public class Game extends Applet {
 	public static final int APPLET_WIDTH = 960;
 	public static final int APPLET_HEIGHT = 600;
 	
-	URL base; 							//the location of the Applet
+	private URL base; 							//the location of the Applet
 	
 	public Game(){
 		initGUI();
@@ -78,7 +78,7 @@ public class Game extends Applet {
 		
 		//HOW TO ADD AN IMAGE TO THE TEACHER'S SCREEN
 	
-		Image teacherPic = getImage(base, "r.png"); 
+		Image teacherPic = getImage(base, "u.png"); 
 		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
 					
 		teacherPanel.add(teacherPicLabel); 
@@ -212,4 +212,8 @@ public class Game extends Applet {
 		return mainGamePanel;
 	}
 
+	public URL getBase()
+	{
+		return base; 
+	}
 }

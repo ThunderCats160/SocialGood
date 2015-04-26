@@ -181,11 +181,15 @@ public class Board extends JPanel{
 				
 				if(current.getImage() != null)
 				{
-					System.out.println("NOT NULL"); 
+					//System.out.println("NOT NULL"); 
+					g.drawImage(current.getImage(), j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2, player); 
 				}
-				g.setColor(current.getColor());
+				else
+				{
+					g.setColor(current.getColor());
 
-				g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);
+					g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);
+				}
 			}
 		}
 		

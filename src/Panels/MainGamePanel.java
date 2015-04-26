@@ -134,7 +134,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//The player simply has to move the character 3 spaces to the right.
 		Level l1 = new Level(40, board); 
 		l1.setPlayerSpawnPosition(4, 5);
-		l1.addGoalAtPosition(7,5); 
+		l1.addGoalAtPosition(7,5, game.getImage(game.getBase(), "u.png")); 
 		l1.setDescription("Welcome to the game! Add your commands to your strategy using"
 						  +" the buttons on the right! Then, hit the GO! button and try and"
 						  +" see if you reach the goal!"); 

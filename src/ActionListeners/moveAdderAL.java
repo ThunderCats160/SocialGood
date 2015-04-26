@@ -45,8 +45,9 @@ public class moveAdderAL implements ActionListener {
 		
 		else if(selectPanel.addingToFunction){
 
-			selectPanel.createFunctionPanel.addMove(toAdd); 
-			
+			if(!toAdd.isWhileMove)
+				selectPanel.createFunctionPanel.addMove(toAdd); 
+				
 		}
 		
 		else{

@@ -37,8 +37,10 @@ public class DoneWithFunctionAL implements ActionListener{
 		//Remove the function panel and re-add the strat Panel
 		game.mainGamePanel.remove(fcPanel);
 		game.mainGamePanel.add(stratPanel, "East"); 
-		game.mainGamePanel.setVisible(false);
-		game.mainGamePanel.setVisible(true); 
+//		game.mainGamePanel.setVisible(false);
+//		game.mainGamePanel.setVisible(true); 
+		game.mainGamePanel.revalidate();
+		game.mainGamePanel.repaint();
 		
 		//Copy over all the moves so that they don't get deleted in reset()
 		ArrayList<Move> newMoveList = new ArrayList<Move>(); 

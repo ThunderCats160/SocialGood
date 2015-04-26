@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ActionListeners.conditionalMoveAdderAL;
 import ActionListeners.moveAdderAL;
 import ActionListeners.whileMoveAdderAL;
 import Main.Board;
@@ -25,6 +26,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	ArrayList<Move> selectOptions;
 	StratPanel stratPanel;
 	private Boolean addingToWhile; 
+	private Boolean addingToConditional;
 	Game game; 
 	Board board; 
 	
@@ -43,6 +45,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 		stratPanel = newStratPanel;
 		
 		addingToWhile = false; 
+		addingToConditional = false;
 
 		game = g; 
 		board = b; 
@@ -73,6 +76,15 @@ public class SelectPanel extends JPanel implements ActionListener {
 	public boolean getAddToWhile(){
 		return addingToWhile;
 	}
+	
+	public void setAddToConditional(boolean value){
+		addingToConditional = value;
+	}
+
+	public boolean getAddToConditional(){
+		return addingToConditional;
+	}
+	
 	//Iterate through the ArrayList of Moves to create the buttons in the SelectPanel
 	public void setSelectOptions(ArrayList<Move> newOptions, Boolean customFunctions){
 
@@ -85,12 +97,12 @@ public class SelectPanel extends JPanel implements ActionListener {
 			JButton b = new JButton();
 			b.setText(selectOptions.get(i).getName());
 			
-			if(!selectOptions.get(i).isWhileMove)
+			if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
 				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
-			else
-			{
+			else if(selectOptions.get(i).isWhileMove)
 				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
-			}
+			else if(selectOptions.get(i).isConditionalMove)
+				b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 				 
 			
 			add(b);

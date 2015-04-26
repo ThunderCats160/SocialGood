@@ -18,6 +18,7 @@ import Main.Board;
 import Main.Game;
 import Moves.FunctionMove;
 import Moves.Move;
+import Moves.conditionalMove;
 
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)
@@ -107,7 +108,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 			else if(selectOptions.get(i).isWhileMove)
 				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 			else if(selectOptions.get(i).isConditionalMove)
-				b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
+				b.addActionListener(new conditionalMoveAdderAL((conditionalMove)selectOptions.get(i), stratPanel, this, game.mainGamePanel));
 				 
 			
 			add(b);
@@ -138,7 +139,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 				else if(selectOptions.get(i).isWhileMove)
 					b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 				else if(selectOptions.get(i).isConditionalMove)
-					b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
+					b.addActionListener(new conditionalMoveAdderAL((conditionalMove)selectOptions.get(i), stratPanel, this, game.mainGamePanel));
 					 
 				
 				add(b);

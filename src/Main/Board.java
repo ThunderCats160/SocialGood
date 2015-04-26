@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JPanel;
 
 import Moves.Move;
+import Moves.conditionalMove;
 import Units.Player;
 import Units.Unit;
 
@@ -98,8 +99,25 @@ public class Board extends JPanel{
 						return true; 
 				}
 			}
+			else if(moveList.get(i).isConditionalMove)
+			{
+				//get the list of moves that the conditionalMove is to perform over and over
+				ArrayList<Move> conditionalList = moveList.get(i).getMoveList();
+				
+				if(checkConditional((conditionalMove) moveList.get(i)))
+				{
+					System.out.println("inside of loop");
+					for(int m = 0; i < conditionalList.size(); i++)
+					{
+						if(doMove(conditionalList.get(m), g))
+							return true;
+					}
+				}
+				
+			}
 			else
 			{
+				System.out.println("Inside the wrong loop");
 				if(doMove(moveList.get(i), g)){
 					return true; 
 				}
@@ -127,6 +145,22 @@ public class Board extends JPanel{
 		
 		//We return false to indicate that their strategy has failed.
 		return false;
+	}
+	
+	private Boolean checkConditional(conditionalMove move)
+	{
+		System.out.println("inside of check conditional");
+		Boolean checker = false;
+		
+		
+		
+		String condition = move.getConditionalMove();
+		
+		
+		
+		
+		
+		return checker;
 	}
 
 	

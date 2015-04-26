@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import Moves.Move;
+import Moves.conditionalMove;
 import Panels.FunctionCreatingPanel;
 import Panels.MainGamePanel;
 import Panels.SelectPanel;
@@ -17,7 +18,7 @@ import Panels.StratPanel;
 
 public class conditionalMoveAdderAL implements ActionListener {
 
-	Move toAdd; 
+	conditionalMove toAdd; 
 	StratPanel stratPanel; 
 	SelectPanel selectPanel; 
 	MainGamePanel mgp; 
@@ -30,7 +31,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 	
 	
 	//Constructor
-	public conditionalMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, MainGamePanel mainPanel)
+	public conditionalMoveAdderAL(conditionalMove m, StratPanel newStratPanel, SelectPanel newSelectPanel, MainGamePanel mainPanel)
 	{
 		toAdd = m; 
 		stratPanel = newStratPanel; 
@@ -64,6 +65,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 		if(e.getSource().equals(redSquare))
 		{
 			conditional = "Red Square";
+			toAdd.setConditionalMove("red square");
 			stratPanel.addMove(toAdd); 
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			selectPanel.removeAll();
@@ -76,6 +78,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 		else if(e.getSource().equals(blueSquare))
 		{
 			conditional = "Blue Square";
+			toAdd.setConditionalMove("blue square");
 			stratPanel.addMove(toAdd); 
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			selectPanel.removeAll();
@@ -93,6 +96,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			selectPanel.resetButtonsOnSelectPanel(true);
 			selectPanel.revalidate();
 			selectPanel.repaint();
+			selectPanel.setAddToConditional(false);
 			
 		}
 		else{

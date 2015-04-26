@@ -90,7 +90,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
 			else
 			{
-				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this));
+				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 			}
 				 
 			

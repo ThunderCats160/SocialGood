@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 
 import Moves.Move;
+import Panels.FunctionCreatingPanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
 
@@ -43,6 +44,7 @@ public class moveAdderAL implements ActionListener {
 			
 		
 		else if(selectPanel.addingToFunction){
+
 			selectPanel.createFunctionPanel.addMove(toAdd); 
 			
 		}

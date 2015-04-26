@@ -182,7 +182,7 @@ public class Game extends Applet implements ActionListener {
 		l1.makeRightMoveAvailable();
 		//l1.makeUpMoveAvailable();
 		
-		levels.add(l1); 
+		//levels.add(l1); 
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(40, board); 
@@ -192,7 +192,7 @@ public class Game extends Applet implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		levels.add(l2); 
+		//levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(40, board); 
@@ -205,7 +205,7 @@ public class Game extends Applet implements ActionListener {
 		l3.makeLeftMoveAvailable();
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
-		levels.add(l3);
+		//levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(40, board); 

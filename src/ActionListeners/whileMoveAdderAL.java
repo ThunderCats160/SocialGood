@@ -26,23 +26,35 @@ public class whileMoveAdderAL implements ActionListener {
 	
 	
 	//Constructor
-	public whileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel)
+	public whileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, FunctionCreatingPanel newFCP)
 	{
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
+		fcp = newFCP; 
 	}
 	
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {
-		//Add the selected move to the Strategy Panel
-		stratPanel.addMove(toAdd); 
-
-		stratPanel.add(new JLabel("While(true):")); 
-		selectPanel.setAddToWhile(true); 
 		
-		stratPanel.revalidate();
-		selectPanel.revalidate();
+		if(selectPanel.addingToFunction)
+		{
+			fcp.addMove(toAdd); 
+			fcp.revalidate(); 
+		}
+		else
+		{
+			//Add the selected move to the Strategy Panel
+			stratPanel.addMove(toAdd); 
+
+			stratPanel.add(new JLabel("While(true):")); 
+			selectPanel.setAddToWhile(true); 
+			
+			stratPanel.revalidate();
+			selectPanel.revalidate();
+		}
+		
+		
 		
 		
 		

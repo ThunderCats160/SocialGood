@@ -12,7 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ActionListeners.conditionalMoveAdderAL;
+import ActionListeners.functionMoveAdderAL;
 import ActionListeners.moveAdderAL;
+import ActionListeners.removeFunctionButtonAL;
 import ActionListeners.whileMoveAdderAL;
 import Interfaces.resettablePanel;
 import Main.Board;
@@ -39,6 +41,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	private int numFunctions; 
 	
 	public Boolean addingToFunction; 
+	private Boolean removingFunction; 
 	
 	public FunctionCreatingPanel createFunctionPanel; 
 
@@ -50,6 +53,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		stratPanel = newStratPanel;
 		
 		addingToWhile = false; 
+		removingFunction = false; 
 		addingToConditional = false;
 
 		game = g; 
@@ -192,7 +196,12 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		JButton dfb = new JButton("Create a function!"); 
 		dfb.addActionListener(this); 
 
+		JButton removeFunctionButton = new JButton("Remove a function"); 
+		removeFunctionButton.addActionListener(new removeFunctionButtonAL(this)); 
+		
+
 		add(dfb); 
+		add(removeFunctionButton); 
 	}
 	
 	//Takes the moves that the function will run and the name of the function
@@ -219,7 +228,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		
 		FunctionMove f = new FunctionMove("NOPE", board, null, functionMoves, name); 
 		
-		moveAdderAL m = new moveAdderAL(f, stratPanel, this);
+		functionMoveAdderAL m = new functionMoveAdderAL(f, stratPanel, this, b);
 		
 		b.addActionListener(m);
 		
@@ -240,6 +249,14 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 
 	public void setSelectOptions(ArrayList<Move> selectOptions) {
 		this.selectOptions = selectOptions;
+	}
+	public void setRemovingFunction(Boolean bool)
+	{
+		removingFunction = bool; 
+	}
+	public Boolean getRemovingFunction()
+	{
+		return removingFunction; 
 	}
 
 

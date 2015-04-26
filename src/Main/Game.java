@@ -218,7 +218,11 @@ public class Game extends Applet implements ActionListener {
 	
 	public void createInstructionPanel() {
 		instructionalPanel = new JPanel();
-		instructionalPanel.add(new JLabel("Instructions:"));	
+		instructionalPanel.add(new JLabel("Instructions:"));
+		
+		JButton b = new JButton("Go back"); 
+		b.addActionListener(new instructionPanelAL(this));
+		instructionalPanel.add(b); 
 	}
 	
 	// GETTERS FOR OUR PRIMARY PANELS	

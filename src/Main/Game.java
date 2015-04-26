@@ -13,14 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ActionListeners.InstructionPanelGoBackAL;
+import ActionListeners.TeacherPanelGoBackAL;
+import ActionListeners.instructionsPanelButtonAL;
+import ActionListeners.introPanelButtonAL;
+import ActionListeners.teacherPanelButtonAL;
 import Panels.DescriptionPanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
-import Panels.InstructionPanelGoBackAL;
-import Panels.TeacherPanelGoBackAL;
-import Panels.instructionsPanelButtonAL;
-import Panels.introPanelButtonAL;
-import Panels.teacherPanelButtonAL;
 
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
 public class Game extends Applet implements ActionListener {

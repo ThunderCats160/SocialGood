@@ -1,4 +1,4 @@
-package Moves;
+package ActionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import Moves.Move;
+import Panels.FunctionCreatingPanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
 
@@ -19,6 +21,7 @@ public class whileMoveAdderAL implements ActionListener {
 	Move toAdd; 
 	StratPanel stratPanel; 
 	SelectPanel selectPanel; 
+	FunctionCreatingPanel fcp; 
 	
 	
 	

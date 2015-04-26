@@ -1,22 +1,22 @@
-package Panels;
+package ActionListeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Main.Game;
 
-public class TeacherPanelGoBackAL implements ActionListener{
+public class InstructionPanelGoBackAL implements ActionListener{
 
 	Game game; 
 	
-	public TeacherPanelGoBackAL(Game g)
+	public InstructionPanelGoBackAL(Game g)
 	{
 		game = g; 
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		game.getTeacherPanel().setVisible(false); 
+		game.getInstructionPanel().setVisible(false); 
 		game.getIntroScreenPanel().setVisible(true); 
 		
 	}

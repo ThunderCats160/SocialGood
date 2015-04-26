@@ -8,13 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ActionListeners.DoneWithFunctionAL;
 import Main.Board;
 import Main.Game;
 import Moves.Move;
 
 public class FunctionCreatingPanel extends JPanel{
 
-	ArrayList<Move> moveList; 
+	public ArrayList<Move> moveList; 
 	
 	StratPanel stratPanel; 
 	FunctionCreatingPanel fcp; 
@@ -22,7 +23,7 @@ public class FunctionCreatingPanel extends JPanel{
 	Board board; 
 	Game game; 
 	
-	JTextField nameField; 
+	public JTextField nameField; 
 	
 	public FunctionCreatingPanel(StratPanel newStratPanel, 
 			SelectPanel newSp, Board b, Game g)

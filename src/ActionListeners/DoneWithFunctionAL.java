@@ -1,4 +1,4 @@
-package Panels;
+package ActionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -7,6 +7,9 @@ import Main.Board;
 import Main.Game;
 import Moves.FunctionMove;
 import Moves.Move;
+import Panels.FunctionCreatingPanel;
+import Panels.SelectPanel;
+import Panels.StratPanel;
 
 public class DoneWithFunctionAL implements ActionListener{
 

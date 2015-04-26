@@ -1,16 +1,9 @@
 package Main;
 import java.applet.Applet;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,8 +14,6 @@ import ActionListeners.introPanelButtonAL;
 import ActionListeners.teacherPanelButtonAL;
 import Panels.DescriptionPanel;
 import Panels.MainGamePanel;
-import Panels.SelectPanel;
-import Panels.StratPanel;
 
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
 public class Game extends Applet {

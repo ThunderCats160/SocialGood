@@ -40,7 +40,7 @@ public class Level {
 	Boolean customFunctionsAvailable; 
 	
 	//The number of moves that can be used for this
-	int numberOfUseableMoves; 
+	private int numOfUsableMoves; 
 	
 	
 
@@ -63,7 +63,7 @@ public class Level {
 		//Set the available moves
 		availableMoves = new ArrayList<Move>();
 
-		numberOfUseableMoves = 10; 
+		numOfUsableMoves = 10; 
 		
 
 		//TODO: I have no idea what this does.
@@ -83,8 +83,12 @@ public class Level {
 
 	}
 	
-	public void setNumberOfUseableMoves(int set){
-		numberOfUseableMoves = set; 
+	public void setNumOfUsableMoves(int set){
+		numOfUsableMoves = set; 
+	}
+	
+	public int getNumOfUsableMoves(){
+		return numOfUsableMoves;
 	}
 	
 	public void setCustomFunctionsAvailable(Boolean set)

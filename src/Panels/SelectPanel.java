@@ -119,7 +119,6 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	//Runs when the user clicks the "Create a function" button
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		
 		game.mainGamePanel.remove(stratPanel);
 		game.mainGamePanel.setVisible(false);

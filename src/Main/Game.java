@@ -115,6 +115,11 @@ public class Game extends Applet {
 	public void startNewGame(){
 		//Create the main game panel and set its layout.
 		mainGamePanel = new MainGamePanel(this); 
+		
+		Image i = getImage(base, "r.png"); 
+		if(i == null)
+			System.out.println("I NULL"); 
+		
 		mainGamePanel.setPlayerImage(getImage(base, "r.png")); 
 		
 		// add the panel to our applet

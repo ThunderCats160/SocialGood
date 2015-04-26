@@ -17,7 +17,6 @@ public class Player extends Unit implements ImageObserver{
 	private final Color traceColor = Color.LIGHT_GRAY;
 	private final Color playerColor = Color.blue;
 	
-	private Image image; 
 
 	public Player(Color newColor, int xPos, int yPos, int newDim)
 	{
@@ -68,13 +67,15 @@ public class Player extends Unit implements ImageObserver{
 	//Drawing is based off creating a rectangle. The top left corner of the rectangle is passed in and a rectangle is painted.
 	public void draw(Graphics g) {
 		g.setColor(color);
-		g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim - 2, dim -2);
+		//g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim - 2, dim -2);
 		
 		int x = xPos*dim +1; 
 		int y = yPos * dim +1; 
 		int w = dim -2; 
 		int h = dim -2; 
 		
+		//if(image == null)
+			//System.out.println("NULL"); 
 		g.drawImage(image, x, y, w, h, this); 
 	}
 	

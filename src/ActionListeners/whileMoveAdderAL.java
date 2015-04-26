@@ -44,14 +44,18 @@ public class whileMoveAdderAL implements ActionListener {
 		}
 		else
 		{
-			//Add the selected move to the Strategy Panel
-			stratPanel.addMove(toAdd); 
+			if(stratPanel.currentNumberMovesAvailable > 0)
+			{
+				//Add the selected move to the Strategy Panel
+				stratPanel.addMove(toAdd); 
 
-			stratPanel.add(new JLabel("While(true):")); 
-			selectPanel.setAddToWhile(true); 
+				stratPanel.add(new JLabel("While(true):")); 
+				selectPanel.setAddToWhile(true); 
+				
+				stratPanel.revalidate();
+				selectPanel.revalidate();
+			}
 			
-			stratPanel.revalidate();
-			selectPanel.revalidate();
 		}
 		
 		

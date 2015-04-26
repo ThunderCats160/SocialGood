@@ -95,8 +95,11 @@ public class Game extends Applet implements ActionListener {
 		stratPanel.setSelectPanel(selectPanel);
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());
+		selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves(), false);
 
+		//Sets the number of available moves
+		stratPanel.setMaxAvailableMoves(levels.get(currentLevelIndex).numberOfUseableMoves);
+		
 		//Create the main game panel and set its layout.
 		mainGamePanel = new JPanel(); 
 		mainGamePanel.setLayout(new BorderLayout());
@@ -158,7 +161,9 @@ public class Game extends Applet implements ActionListener {
 			//Clear the Strategy Panel in preparation of the new level.
 			stratPanel.clearCurrentStrat(); 	
 			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());
-			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());
+			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves(), levels.get(currentLevelIndex).getCustomFunctionsAvailable());
+			
+			stratPanel.setMaxAvailableMoves(levels.get(currentLevelIndex).numberOfUseableMoves); 
 			
 			selectPanel.resetNumFunctions();
 		}
@@ -180,6 +185,7 @@ public class Game extends Applet implements ActionListener {
 						  +" the buttons on the right! Then, hit the GO! button and try and"
 						  +" see if you reach the goal!"); 
 		l1.makeRightMoveAvailable();
+		l1.setNumberOfUseableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
 		//levels.add(l1); 
@@ -205,6 +211,7 @@ public class Game extends Applet implements ActionListener {
 		l3.makeLeftMoveAvailable();
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
+		l3.setCustomFunctionsAvailable(true);
 		//levels.add(l3);
 		
 		//Level 4: This introduces while loops
@@ -217,6 +224,7 @@ public class Game extends Applet implements ActionListener {
 		
 		l4.makeRightMoveAvailable();
 		l4.makeWhileMoveAvailable(); 
+		l4.setNumberOfUseableMoves(2);
 		
 		levels.add(l4); 
 		

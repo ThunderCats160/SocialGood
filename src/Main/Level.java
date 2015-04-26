@@ -37,6 +37,11 @@ public class Level {
 	
 	Board board; 
 	
+	Boolean customFunctionsAvailable; 
+	
+	//The number of moves that can be used for this
+	int numberOfUseableMoves; 
+	
 	
 
 	//TODO: Different levels should have different available moves!
@@ -58,7 +63,7 @@ public class Level {
 		//Set the available moves
 		availableMoves = new ArrayList<Move>();
 
-		
+		numberOfUseableMoves = 10; 
 		
 
 		//TODO: I have no idea what this does.
@@ -73,9 +78,24 @@ public class Level {
 			levelLayout.add(toAdd);
 		}
 		
+		customFunctionsAvailable = false; 
 		 
 
 	}
+	
+	public void setNumberOfUseableMoves(int set){
+		numberOfUseableMoves = set; 
+	}
+	
+	public void setCustomFunctionsAvailable(Boolean set)
+	{
+		customFunctionsAvailable = set; 
+	}
+	public Boolean getCustomFunctionsAvailable()
+	{
+		return customFunctionsAvailable; 
+	}
+	
 	public void makeRightMoveAvailable()
 	{
 		availableMoves.add(new RightMove("Go right", board, null));

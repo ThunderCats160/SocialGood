@@ -36,36 +36,40 @@ public class moveAdderAL implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		
-		//Add the selected move to the Strategy Panel 
-		if(selectPanel.getAddToWhile()){
-			stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
-		}
+		if(stratPanel.currentNumberMovesAvailable > 0)
+		{
 			
 		
-		else if(selectPanel.addingToFunction){
-
-			if(!toAdd.isWhileMove)
-				selectPanel.createFunctionPanel.addMove(toAdd); 
+			//Add the selected move to the Strategy Panel 
+			if(selectPanel.getAddToWhile()){
+				stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
+				stratPanel.decrementAvailableMoves();
+			
+			}
 				
-		}
-		
-		else{
-			stratPanel.addMove(toAdd); 
-			 
-		}
 			
-		
-		//Add the name of the Strategy to display
-		if(selectPanel.getAddToWhile() == true){
-			stratPanel.add(new JLabel(toAdd.name));
-		} else if(!selectPanel.addingToFunction){
-			stratPanel.add(new JLabel(toAdd.name)); 
-
+			else if(selectPanel.addingToFunction){
+	
+				if(!toAdd.isWhileMove)
+					selectPanel.createFunctionPanel.addMove(toAdd); 				
+			}
+			
+			else{
+				stratPanel.addMove(toAdd); 
+				 
+			}
+				
+			
+			//Add the name of the Strategy to display
+			if(selectPanel.getAddToWhile() == true){
+				stratPanel.add(new JLabel(toAdd.name));
+			} else if(!selectPanel.addingToFunction){
+				stratPanel.add(new JLabel(toAdd.name)); 
+	
+			}
+			stratPanel.setVisible(false); 
+			stratPanel.setVisible(true); 
 		}
-		stratPanel.setVisible(false); 
-		stratPanel.setVisible(true); 
-		
 		
 	}
 

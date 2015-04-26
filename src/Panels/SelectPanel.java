@@ -75,7 +75,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 		return addingToWhile;
 	}
 	//Iterate through the ArrayList of Moves to create the buttons in the SelectPanel
-	public void setSelectOptions(ArrayList<Move> newOptions){
+	public void setSelectOptions(ArrayList<Move> newOptions, Boolean customFunctions){
 
 		removeAll();
 		selectOptions = newOptions;
@@ -97,7 +97,10 @@ public class SelectPanel extends JPanel implements ActionListener {
 			add(b);
 		}
 		
-		addDefineFunctionButton(); 
+		
+		
+		if(customFunctions)
+			addDefineFunctionButton(); 
 		
 	}
 	

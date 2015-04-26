@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Moves.Move;
@@ -16,19 +17,39 @@ public class StratPanel extends JPanel implements ActionListener{
 
 	private ArrayList<Move> currentStrat;
 	private SelectPanel selectPanel; 
-	
+	public int currentNumberMovesAvailable; 
+	private int maxAvailableMoves; 
+	JLabel numAvailableMovesLabel; 
 	
 	//Default Constructor for the StratPanel
 	public StratPanel()
 	{
+		
+		maxAvailableMoves = 10; 
+		currentNumberMovesAvailable = maxAvailableMoves; 
 		initGUI();
 
-		currentStrat = new ArrayList<Move>();
+		currentStrat = new ArrayList<Move>();	 
 
 	}
 	public void setSelectPanel(SelectPanel newSelectPanel)
 	{
 		selectPanel = newSelectPanel; 
+	}
+	
+	public void setMaxAvailableMoves(int num)
+	{
+		maxAvailableMoves = num; 
+		currentNumberMovesAvailable = maxAvailableMoves; 
+		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+	}
+	
+	public void decrementAvailableMoves()
+	{
+		currentNumberMovesAvailable --; 
+		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		setVisible(false); 
+		setVisible(true); 
 	}
 	
 	//When the clear button is pressed, clear the current strategy and repaint the StratPanel
@@ -40,20 +61,30 @@ public class StratPanel extends JPanel implements ActionListener{
 		
 		selectPanel.setAddToWhile(false); 
 		selectPanel.resetSelectOptions();
-		 
+		
+		currentNumberMovesAvailable = maxAvailableMoves; 
+		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		
 		setVisible(false); 
 		setVisible(true); 
+		 
+		 
 	}
 	
 	//Instantiate the location of the Panel, and create the button that can be used to clear the current strategy
 	public void initGUI()
 	{
+		numAvailableMovesLabel = new JLabel("Moves Left: " + currentNumberMovesAvailable);
+		add(numAvailableMovesLabel); 
+		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		JButton clearButton = new JButton();
 		clearButton.setText("CLEAR");
 		clearButton.addActionListener(this);
 
 		add(clearButton);
+		
+		
 	}
 
 	//Getter for the current Strategy
@@ -63,7 +94,12 @@ public class StratPanel extends JPanel implements ActionListener{
 	
 	//When the user selects a move, it is added to the ArrayList
 	public void addMove(Move toAdd) {
+		
 		currentStrat.add(toAdd);
+		
+		currentNumberMovesAvailable --; 
+		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function

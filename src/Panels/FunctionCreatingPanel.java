@@ -53,7 +53,7 @@ public class FunctionCreatingPanel extends JPanel{
 	}
 	public void addNameField()
 	{
-		nameField = new JTextField("HEllo", 20); 
+		nameField = new JTextField("FunctionName", 20); 
 		nameField.setMaximumSize(new Dimension(300, 40));
 		add(nameField);
 	}

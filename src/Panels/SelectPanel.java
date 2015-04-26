@@ -134,12 +134,12 @@ public class SelectPanel extends JPanel implements ActionListener {
 	
 	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
 	{
-		JButton b = new JButton("Function n." + numFunctions); 
+		JButton b = new JButton(name); 
 		add(b); 
 		
 		//System.out.println(functionMoves.size()); 
 		
-		FunctionMove f = new FunctionMove("NOPE", board, null, functionMoves, "Function n." + numFunctions); 
+		FunctionMove f = new FunctionMove("NOPE", board, null, functionMoves, name); 
 		
 		moveAdderAL m = new moveAdderAL(f, stratPanel, this);
 		

@@ -39,7 +39,7 @@ public class DoneWithFunctionAL implements ActionListener{
 		for(int i = 0; i < fcPanel.moveList.size(); i++)
 			newMoveList.add(fcPanel.moveList.get(i)); 
 		
-		selectPanel.addNewFunctionButton(newMoveList, "Boof");
+		selectPanel.addNewFunctionButton(newMoveList, fcPanel.nameField.getText());
 		selectPanel.addingToFunction = false; 
 		
 		fcPanel.reset(); 

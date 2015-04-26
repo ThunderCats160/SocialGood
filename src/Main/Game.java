@@ -31,7 +31,7 @@ public class Game extends Applet implements ActionListener {
 	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
 	ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
 	int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
-	JPanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
+	public JPanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
 	JPanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	JPanel instructionalPanel;
 	
@@ -83,7 +83,7 @@ public class Game extends Applet implements ActionListener {
 		stratPanel = new StratPanel();
 		
 		//Instantiate a new SelectPanel
-		selectPanel = new SelectPanel(stratPanel);
+		selectPanel = new SelectPanel(stratPanel, this, board);
 
 		stratPanel.setSelectPanel(selectPanel);
 		
@@ -104,6 +104,8 @@ public class Game extends Applet implements ActionListener {
 		
 		mainGamePanel.setVisible(true);
 		mainGamePanel.revalidate();
+		
+		
 	}
 	
 	
@@ -146,7 +148,9 @@ public class Game extends Applet implements ActionListener {
 			//Clear the Strategy Panel in preparation of the new level.
 			stratPanel.clearCurrentStrat(); 	
 			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());
-			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());		
+			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves());
+			
+			selectPanel.resetNumFunctions();
 		}
 
 	}

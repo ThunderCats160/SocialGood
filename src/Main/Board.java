@@ -57,16 +57,9 @@ public class Board extends JPanel{
 			//Carry out the current move in the iteration
 			//The graphics item and board are passed so the whileMove can 
 			//create a loop similar to this one
-			if(!moveList.get(i).isWhileMove)
-			{
-				if(doMove(moveList.get(i), g)){
-					return true; 
-				}
-				
-			}
-			else
-			{
-				//Get the list of moves that the whileMove is to perform over ad over
+			if(moveList.get(i).isWhileMove)
+			{		
+				//Get the list of moves that the whileMove is to perform over and over
 				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
 				
 				//Only perform the loop 10 times in case of an infinite
@@ -78,6 +71,22 @@ public class Board extends JPanel{
 						if(doMove(whileList.get(p), g))
 							return true; 
 					}
+				}
+				
+			}
+			else if(moveList.get(i).isFunctionMove)
+			{
+				ArrayList<Move> functionList = moveList.get(i).getMoveList(); 
+				
+				for(int j = 0; j< functionList.size(); j++){
+					if(doMove(functionList.get(j), g))
+						return true; 
+				}
+			}
+			else
+			{
+				if(doMove(moveList.get(i), g)){
+					return true; 
 				}
 			}
 			

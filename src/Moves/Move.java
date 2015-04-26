@@ -17,10 +17,13 @@ public class Move {
 	protected ArrayList<Move> moveList; 
 	
 	public Boolean isWhileMove; 
+	public Boolean isFunctionMove; 
 	
 	public Move(String desc, Board b, BufferedImage newSprite){
 		
 		isWhileMove = false; 
+		isFunctionMove = false; 
+		
 		name = ""; 
 		board = b; 
 		moveList = new ArrayList<Move>(); 

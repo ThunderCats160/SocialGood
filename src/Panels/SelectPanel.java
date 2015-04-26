@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Main.Board;
+import Main.Game;
+import Moves.FunctionMove;
 import Moves.Move;
 import Moves.moveAdderAL;
 import Moves.whileMoveAdderAL;
@@ -22,10 +25,17 @@ public class SelectPanel extends JPanel implements ActionListener {
 	ArrayList<Move> selectOptions;
 	StratPanel stratPanel;
 	private Boolean addingToWhile; 
+	Game game; 
+	Board board; 
 	
+	private int numFunctions; 
+	
+	public Boolean addingToFunction; 
+	
+	public FunctionCreatingPanel createFunctionPanel; 
 
 	//Initiate a SelectPanel with a StratPanel
-	public SelectPanel(StratPanel newStratPanel)
+	public SelectPanel(StratPanel newStratPanel, Game g, Board b)
 	{
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
@@ -33,7 +43,20 @@ public class SelectPanel extends JPanel implements ActionListener {
 		
 		addingToWhile = false; 
 
+		game = g; 
+		board = b; 
+		
+		setupCreateFunctionPanel(); 
+		
+		addingToFunction = false; 
+		numFunctions = 1; 
+		
 		initGUI();
+
+	}
+	
+	public void setupCreateFunctionPanel(){
+		createFunctionPanel = new FunctionCreatingPanel(stratPanel, this, board, game); 
 
 	}
 	
@@ -74,6 +97,8 @@ public class SelectPanel extends JPanel implements ActionListener {
 			add(b);
 		}
 		
+		addDefineFunctionButton(); 
+		
 	}
 	
 	//To reset what the whileMove holds. 
@@ -90,11 +115,45 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-
-
+		
+		game.mainGamePanel.remove(stratPanel);
+		game.mainGamePanel.setVisible(false);
+		game.mainGamePanel.setVisible(true); 
+		game.mainGamePanel.add(createFunctionPanel, "East"); 
+		
+		addingToFunction = true; 
 
 	}
 
+	public void addDefineFunctionButton()
+	{
+		JButton dfb = new JButton("Create a function!"); 
+		dfb.addActionListener(this); 
+		add(dfb); 
+	}
+	
+	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
+	{
+		JButton b = new JButton("Function n." + numFunctions); 
+		add(b); 
+		
+		//System.out.println(functionMoves.size()); 
+		
+		FunctionMove f = new FunctionMove("NOPE", board, null, functionMoves, "Function n." + numFunctions); 
+		
+		moveAdderAL m = new moveAdderAL(f, stratPanel, this);
+		
+		b.addActionListener(m);
+		
+		numFunctions ++; 
+		
+		
+	}
+	
+	public void resetNumFunctions()
+	{
+		numFunctions = 1; 
+	}
 
 
 

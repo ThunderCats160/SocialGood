@@ -25,22 +25,39 @@ public class moveAdderAL implements ActionListener {
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
+		
+		//System.out.println("OKAY"); 
+		//System.out.println(toAdd.getName()); 
+		//System.out.println(toAdd.moveList.size()) ;
 	}
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {
 		
-		//Add the selected move to the Strategy Panel
+		
+		
+		//Add the selected move to the Strategy Panel 
 		if(selectPanel.getAddToWhile()){
 			stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
 		}
 			
-		else
+		
+		else if(selectPanel.addingToFunction){
+			selectPanel.createFunctionPanel.addMove(toAdd); 
+			
+		}
+		
+		else{
 			stratPanel.addMove(toAdd); 
+			 
+		}
+			
+		
 		//Add the name of the Strategy to display
 		if(selectPanel.getAddToWhile() == true){
 			stratPanel.add(new JLabel(toAdd.name));
-		} else {
+		} else if(!selectPanel.addingToFunction){
 			stratPanel.add(new JLabel(toAdd.name)); 
+
 		}
 		stratPanel.setVisible(false); 
 		stratPanel.setVisible(true); 

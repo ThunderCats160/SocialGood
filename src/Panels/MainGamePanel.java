@@ -32,8 +32,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	StratPanel stratPanel;				//Instantiates the Panel which displays the moving strategy the player has selected.
 	JButton goButton;					//Instantiates the button which runs the Player's strategy.
 	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
-	ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
-	int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
+	private ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
+	private int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
 	Game game;							// reference to the game
 	
 	public MainGamePanel(Game g) {
@@ -68,10 +68,10 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		stratPanel.setSelectPanel(selectPanel);
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves(), false);
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), false);
 
 		//Sets the number of available moves
-		stratPanel.setMaxAvailableMoves(levels.get(currentLevelIndex).getNumOfUsableMoves());
+		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
 		
 		
 		//Create the layout of the game:
@@ -112,16 +112,16 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		{
 			System.out.println("YOU WIN"); 
 			//If they're not at the final level, move them up to the next level.
-			if(currentLevelIndex < levels.size() -1)
-				currentLevelIndex ++; 
+			if(getCurrentLevelIndex() < getLevels().size() -1)
+				setCurrentLevelIndex(getCurrentLevelIndex() + 1); 
 			
-			board.setCurrentLevel(levels.get(currentLevelIndex));
+			board.setCurrentLevel(getLevels().get(getCurrentLevelIndex()));
 			//Clear the Strategy Panel in preparation of the new level.
 			stratPanel.clearCurrentStrat(); 	
-			descriptionPanel.setDescription(levels.get(currentLevelIndex).getDescription());
-			selectPanel.setSelectOptions(levels.get(currentLevelIndex).getAvailableMoves(), levels.get(currentLevelIndex).getCustomFunctionsAvailable());
+			descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
+			selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 			
-			stratPanel.setMaxAvailableMoves(levels.get(currentLevelIndex).getNumOfUsableMoves()); 
+			stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
 			
 			selectPanel.resetNumFunctions();
 			
@@ -151,7 +151,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	public void initLevels()
 	{
 		//levels will hold each of our created levels.
-		levels = new ArrayList<Level>(); 
+		setLevels(new ArrayList<Level>()); 
 		
 		//Level 1: Our introduction level.
 		//The player simply has to move the character 3 spaces to the right.
@@ -165,7 +165,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		levels.add(l1);
+		//levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -182,14 +182,14 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.setPlayerSpawnPosition(3, 5);
 		l3.addGoalAtPosition(7,5); 
 		l3.addObstacleAtPosition(5, 5, game.getImage(game.getBase(), "u.png"));
-		l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
+		//l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
 		
 		l3.makeDownMoveAvailable();
 		l3.makeLeftMoveAvailable();
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		l3.setCustomFunctionsAvailable(true);
-		levels.add(l3);
+		//levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -201,18 +201,36 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		l4.makeRightMoveAvailable();
 		l4.makeWhileMoveAvailable(); 
+		l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(2);
 		
-		levels.add(l4); 
+		getLevels().add(l4); 
 		
 		
 		//Load the correct Level.
-		board.setCurrentLevel(levels.get(0));
-		descriptionPanel.setDescription(levels.get(0).getDescription()); 
+		board.setCurrentLevel(getLevels().get(0));
+		descriptionPanel.setDescription(getLevels().get(0).getDescription()); 
 	}
 
 	public void setPlayerImage(Image image)
 	{
 		board.setPlayerImage(image);
+	}
+
+	public ArrayList<Level> getLevels() {
+		return levels;
+	}
+
+	public void setLevels(ArrayList<Level> levels) {
+		this.levels = levels;
+	}
+
+	public int getCurrentLevelIndex() {
+		return currentLevelIndex;
+	}
+
+	
+	public void setCurrentLevelIndex(int currentLevelIndex) {
+		this.currentLevelIndex = currentLevelIndex;
 	}
 }

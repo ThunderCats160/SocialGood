@@ -25,7 +25,8 @@ import Moves.Move;
 public class SelectPanel extends JPanel implements ActionListener {
 
 	/* PROPERTIES */
-	ArrayList<Move> selectOptions;
+	private ArrayList<Move> selectOptions;
+	
 	StratPanel stratPanel;
 	private Boolean addingToWhile; 
 	private Boolean addingToConditional;
@@ -87,6 +88,8 @@ public class SelectPanel extends JPanel implements ActionListener {
 		return addingToConditional;
 	}
 	
+	
+	
 	//Iterate through the ArrayList of Moves to create the buttons in the SelectPanel
 	public void setSelectOptions(ArrayList<Move> newOptions, Boolean customFunctions){
 
@@ -104,7 +107,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 			else if(selectOptions.get(i).isWhileMove)
 				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 			else if(selectOptions.get(i).isConditionalMove)
-				b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
+				b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
 				 
 			
 			add(b);
@@ -118,13 +121,53 @@ public class SelectPanel extends JPanel implements ActionListener {
 		
 	}
 	
+	public void resetButtonsOnSelectPanel(Boolean allMoves)
+	{
+		Boolean displayAllMoves = allMoves;
+		
+		if(displayAllMoves)
+		{
+			for(int i = 0; i < selectOptions.size(); i ++)
+			{
+				//Create a new button for each option in the ArrayList
+				JButton b = new JButton();
+				b.setText(selectOptions.get(i).getName());
+				
+				if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
+					b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
+				else if(selectOptions.get(i).isWhileMove)
+					b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
+				else if(selectOptions.get(i).isConditionalMove)
+					b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
+					 
+				
+				add(b);
+			}
+		}
+		
+		else{
+			
+			for(int i = 0; i < selectOptions.size(); i ++)
+			{
+			
+				if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove){
+					JButton b = new JButton();
+					b.setText(selectOptions.get(i).getName());
+					b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
+					add(b);
+				}
+		
+			}
+		}
+	}
+	
 	//To reset what the whileMove holds. 
 	public void resetSelectOptions()
 	{
-		for(int i = 0; i< selectOptions.size(); i++)
+		for(int i = 0; i< getSelectOptions().size(); i++)
 		{
 		
-			selectOptions.get(i).clearMoveList(); 
+			getSelectOptions().get(i).clearMoveList(); 
 			//System.out.println(selectOptions.get(i).getMoveList().size()); 
 		}
 	}
@@ -187,6 +230,14 @@ public class SelectPanel extends JPanel implements ActionListener {
 	public void resetNumFunctions()
 	{
 		numFunctions = 1; 
+	}
+
+	public ArrayList<Move> getSelectOptions() {
+		return selectOptions;
+	}
+
+	public void setSelectOptions(ArrayList<Move> selectOptions) {
+		this.selectOptions = selectOptions;
 	}
 
 

@@ -18,6 +18,7 @@ import Main.Board;
 import Main.Game;
 import Moves.FunctionMove;
 import Moves.Move;
+import Moves.conditionalMove;
 
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)

@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import Moves.Move;
+import Moves.conditionalMove;
 import Panels.FunctionCreatingPanel;
 import Panels.MainGamePanel;
 import Panels.SelectPanel;
@@ -64,6 +65,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 		if(e.getSource().equals(redSquare))
 		{
 			conditional = "Red Square";
+			((conditionalMove) toAdd).setConditionalMove("red square");
 			stratPanel.addMove(toAdd); 
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			selectPanel.removeAll();
@@ -76,6 +78,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 		else if(e.getSource().equals(blueSquare))
 		{
 			conditional = "Blue Square";
+			((conditionalMove) toAdd).setConditionalMove("blue square");
 			stratPanel.addMove(toAdd); 
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			selectPanel.removeAll();
@@ -93,6 +96,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			selectPanel.resetButtonsOnSelectPanel(true);
 			selectPanel.revalidate();
 			selectPanel.repaint();
+			selectPanel.setAddToConditional(false);
 			
 		}
 		else{

@@ -16,12 +16,17 @@ public class conditionalMove extends Move{
 		name = "Conditional"; 
 		//moveList.add(new LeftMove("d", b, s)); 
 		
-		isConditionalMove = true;
+		this.isConditionalMove = true;
 	}
 	
 	public String getConditionalMove()
 	{
 		return conditional;
+	}
+	
+	public void setConditionalMove(String condition)
+	{
+		conditional = condition;
 	}
 	
 	public void doMove(Player player, Graphics g)

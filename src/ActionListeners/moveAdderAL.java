@@ -41,18 +41,28 @@ public class moveAdderAL implements ActionListener {
 			
 		
 			//Add the selected move to the Strategy Panel 
-			if(selectPanel.getAddToWhile()){
+			if(selectPanel.getAddToWhile())
+			{
 				stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
 				stratPanel.decrementAvailableMoves();
 			
 			}
 				
 			
-			else if(selectPanel.addingToFunction){
+			else if(selectPanel.addingToFunction)
+			{
 				
 				//No while loops allowed in custom functions
 				if(!toAdd.isWhileMove) {
 					selectPanel.createFunctionPanel.addMove(toAdd);
+				}
+			}
+			
+			else if(selectPanel.getAddToConditional())
+			{
+				if(!toAdd.isWhileMove) {
+					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd);
+					stratPanel.decrementAvailableMoves();
 				}
 			}
 			

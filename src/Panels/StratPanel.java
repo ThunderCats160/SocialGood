@@ -41,6 +41,7 @@ public class StratPanel extends JPanel implements ActionListener{
 		selectPanel.setAddToWhile(false); 
 		selectPanel.resetSelectOptions();
 		 
+		setVisible(false); 
 		setVisible(true); 
 	}
 	

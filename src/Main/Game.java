@@ -3,7 +3,11 @@ import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,6 +43,25 @@ public class Game extends Applet {
 	
 	public Game(){
 		initGUI();
+		
+	}
+	
+	public void init()
+	{
+		
+		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
+		URL base = getDocumentBase(); 
+		Image instructionsPic = getImage(base, "r.png"); 
+		JLabel instructionsPicLabel = new JLabel(new ImageIcon(instructionsPic));
+	
+		instructionalPanel.add(instructionsPicLabel); 
+		
+		//HOW TO ADD AN IMAGE TO THE TEACHER'S SCREEN
+		
+		Image teacherPic = getImage(base, "r.png"); 
+		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
+				
+		teacherPanel.add(teacherPicLabel); 
 	}
 
 	//Init function to put values into the instantiated objects above.
@@ -76,6 +99,9 @@ public class Game extends Applet {
 		// repaint everything
 		validate();
 		repaint();
+		
+		
+		
 	}
 	
 	
@@ -109,6 +135,9 @@ public class Game extends Applet {
 	
 	public void createInstructionPanel() {
 		instructionalPanel = new JPanel();
+		
+		instructionalPanel.setLayout(new BoxLayout(instructionalPanel, BoxLayout.PAGE_AXIS));
+		
 		instructionalPanel.add(new JLabel("Instructions:"));
 		
 		JButton b = new JButton("Go back"); 
@@ -118,6 +147,9 @@ public class Game extends Applet {
 	
 	public void createTeacherPanel(){
 		teacherPanel = new JPanel(); 
+		
+		teacherPanel.setLayout(new BoxLayout(teacherPanel, BoxLayout.PAGE_AXIS));
+		
 		teacherPanel.add(new JLabel("Here is where the instructions for teachers goes")); 
 		
 		JButton b = new JButton("Go back"); 

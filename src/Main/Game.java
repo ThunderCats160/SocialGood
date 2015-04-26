@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.BoxLayout;
@@ -41,7 +42,7 @@ public class Game extends Applet {
 	public static final int APPLET_WIDTH = 960;
 	public static final int APPLET_HEIGHT = 600;
 	
-	URL base; 							//the location of the Applet
+	private URL base; 							//the location of the Applet
 	
 	public Game(){
 		initGUI();
@@ -51,19 +52,39 @@ public class Game extends Applet {
 	public void init()
 	{
 		
-		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
+		
+		//Manipulate base to get it to be the full directory of the applet
+		//basically so we can store images in places other than the bin
+		//directory
+		
 		base = getDocumentBase(); 
+		String path = base.toString(); 
+		int index = path.indexOf("bin");
+		String substr = path.substring(0,index); 
+		
+		try {
+			base = new URL(substr);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
+		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
 		Image instructionsPic = getImage(base, "r.png"); 
 		JLabel instructionsPicLabel = new JLabel(new ImageIcon(instructionsPic));
 	
 		instructionalPanel.add(instructionsPicLabel); 
 		
 		//HOW TO ADD AN IMAGE TO THE TEACHER'S SCREEN
-		
-		Image teacherPic = getImage(base, "r.png"); 
+	
+		Image teacherPic = getImage(base, "u.png"); 
 		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
-				
+					
 		teacherPanel.add(teacherPicLabel); 
+		
+		
+		
 		
 	}
 
@@ -94,6 +115,11 @@ public class Game extends Applet {
 	public void startNewGame(){
 		//Create the main game panel and set its layout.
 		mainGamePanel = new MainGamePanel(this); 
+		
+		Image i = getImage(base, "r.png"); 
+		if(i == null)
+			System.out.println("I NULL"); 
+		
 		mainGamePanel.setPlayerImage(getImage(base, "r.png")); 
 		
 		// add the panel to our applet
@@ -186,4 +212,8 @@ public class Game extends Applet {
 		return mainGamePanel;
 	}
 
+	public URL getBase()
+	{
+		return base; 
+	}
 }

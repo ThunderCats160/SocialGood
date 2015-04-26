@@ -1,5 +1,6 @@
 package Main;
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -137,6 +138,13 @@ public class Level {
 	{
 		levelLayout.get(Y).set(X, new Goal(Color.yellow, null)); 
 	}
+	//Sets the Goal for the level at the position indicated
+	public void addGoalAtPosition(int X, int Y, Image image)
+	{
+		levelLayout.get(Y).set(X, new Goal(Color.yellow, image)); 
+	}
+		
+	
 	
 	//Sets the Player's Spawn for the level.
 	public void setPlayerSpawnPosition(int X, int Y)
@@ -149,6 +157,12 @@ public class Level {
 	public void addObstacleAtPosition(int X, int Y)
 	{
 		levelLayout.get(Y).set(X,  new Obstacle(Color.gray, null)); 
+	}
+	
+	//Sets the obstacle in the level
+	public void addObstacleAtPosition(int X, int Y, Image image)
+	{
+		levelLayout.get(Y).set(X,  new Obstacle(Color.gray, image)); 
 	}
 	
 	//Getter for the Level's layout

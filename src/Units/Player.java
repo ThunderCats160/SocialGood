@@ -17,7 +17,6 @@ public class Player extends Unit implements ImageObserver{
 	private final Color traceColor = Color.LIGHT_GRAY;
 	private final Color playerColor = Color.blue;
 	
-	private Image image; 
 
 	public Player(Color newColor, int xPos, int yPos, int newDim)
 	{
@@ -78,10 +77,7 @@ public class Player extends Unit implements ImageObserver{
 		g.drawImage(image, x, y, w, h, this); 
 	}
 	
-	public void setImage(Image newImage)
-	{
-		image = newImage; 
-	}
+	
 	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
 			int arg4, int arg5) {
 		// TODO Auto-generated method stub

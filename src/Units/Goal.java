@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 //The Goal is the location that the player must reach to complete the level.
 public class Goal extends Unit{
 	
-	public Goal(Color newColor, Image newImage)
+	public Goal(Color newColor, BufferedImage newImage)
 	{
 		super(newColor, newImage); 
 		isgoal = true; 

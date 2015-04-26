@@ -9,6 +9,11 @@ import java.awt.image.ImageObserver;
 //dim = dimension holds the size of the xy "block" that makes up the game world.
 public class Player extends Unit implements ImageObserver{
 
+	public final int NORTH = 117; 
+	public final int SOUTH = 0; 
+	public final int WEST = 39; 
+	public final int EAST = 39*2; 
+	
 	private int xPos;
 	private int yPos;
 
@@ -17,6 +22,7 @@ public class Player extends Unit implements ImageObserver{
 	private final Color traceColor = Color.LIGHT_GRAY;
 	private final Color playerColor = Color.blue;
 	
+	private int direction; 
 
 	public Player(Color newColor, int xPos, int yPos, int newDim)
 	{
@@ -25,6 +31,8 @@ public class Player extends Unit implements ImageObserver{
 		xPos = xPos;
 		yPos = yPos;
 		dim = newDim;
+		
+		direction = EAST; 
 
 	}
 	//Getter for X
@@ -74,7 +82,9 @@ public class Player extends Unit implements ImageObserver{
 		int w = dim -2; 
 		int h = dim -2; 
 		
-		g.drawImage(image, x, y, w, h, this); 
+		Image subI = image.getSubimage(0,  direction,  38, 39); 
+		
+		g.drawImage(subI, x, y, w, h, this); 
 	}
 	
 	
@@ -83,6 +93,13 @@ public class Player extends Unit implements ImageObserver{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public void setDirection(int dir)
+	{
+		direction = dir; 
+	}
+	
+	
 
 
 

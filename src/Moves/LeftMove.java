@@ -35,6 +35,7 @@ public class LeftMove extends Move{
 		if(player.getX() > 0 && !layout.get(player.getY()).get(player.getX() -1).isObstacle)
 		{
 			player.setX(player.getX()-1);
+			player.setDirection(player.WEST);
 		}
 		
 		

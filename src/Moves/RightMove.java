@@ -35,6 +35,7 @@ public class RightMove extends Move{
 		if(player.getX() < layout.get(0).size() -1 && !layout.get(player.getY()).get(player.getX() +1).isObstacle)
 		{
 			player.setX(player.getX()+1);
+			player.setDirection(player.EAST);
 		}
 		
 		

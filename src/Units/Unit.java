@@ -9,20 +9,20 @@ import java.awt.image.BufferedImage;
 public class Unit {
 
 	protected Color color; 
-	protected Image image; 
+	protected BufferedImage image; 
 	
 	//a Unit can be a goal or an obstacle, but is default to be neither.
 	public Boolean isgoal; 
 	public Boolean isObstacle; 
 	
 	//Constructor 
-	public Unit(Color newColor, Image newImage) {
+	public Unit(Color newColor, BufferedImage newImage) {
 		color = newColor;
 		image = newImage; 
 		isgoal = false; 
 		isObstacle = false; 
 	}
-	public void setImage(Image newImage)
+	public void setImage(BufferedImage newImage)
 	{
 		image = newImage; 
 	}

@@ -10,11 +10,13 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 
 
 
@@ -157,7 +159,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//The player simply has to move the character 3 spaces to the right.
 		Level l1 = new Level(Board.unitDimension, board); 
 		l1.setPlayerSpawnPosition(4, 5);
-		l1.addGoalAtPosition(7,5, game.getImage(game.getBase(), "u.png")); 
+		l1.addGoalAtPosition(7,5, game.getBufferedImage("doghouse.png")); 
 		l1.setDescription("Welcome to the game! Add your commands to your strategy using"
 						  +" the buttons on the right! Then, hit the GO! button and try and"
 						  +" see if you reach the goal!"); 
@@ -165,36 +167,36 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		//levels.add(l1);
+		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
 		l2.setPlayerSpawnPosition(3, 5);
-		l2.addGoalAtPosition(7,2);
+		l2.addGoalAtPosition(7,2, game.getBufferedImage("doghouse.png"));
 		l2.setDescription("OH WOW! NOW YOU HAVE TO TURN!"); 
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		//levels.add(l2); 
+		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
 		l3.setPlayerSpawnPosition(3, 5);
-		l3.addGoalAtPosition(7,5); 
-		l3.addObstacleAtPosition(5, 5, game.getImage(game.getBase(), "u.png"));
-		//l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
+		l3.addGoalAtPosition(7,5, game.getBufferedImage("doghouse.png")); 
+		l3.addObstacleAtPosition(5, 5, game.getBufferedImage("dragon_new.png"));
+		l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
 		
 		l3.makeDownMoveAvailable();
 		l3.makeLeftMoveAvailable();
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		l3.setCustomFunctionsAvailable(true);
-		//levels.add(l3);
+		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
 		l4.setPlayerSpawnPosition(0, 5); 
-		l4.addGoalAtPosition(9, 5);
+		l4.addGoalAtPosition(9, 5, game.getBufferedImage("doghouse.png"));
 		l4.setDescription("Wow, that goal sure is far away, Try using a while-loop "
 				+ "to get yourself there without just using 'right' over and over again."
 				+ "The loop can do that for you!");
@@ -212,7 +214,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		descriptionPanel.setDescription(getLevels().get(0).getDescription()); 
 	}
 
-	public void setPlayerImage(Image image)
+	public void setPlayerImage(BufferedImage image)
 	{
 		board.setPlayerImage(image);
 	}

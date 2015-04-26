@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 //The Obstacle is a space where the Player cannot pass into.
 public class Obstacle extends Unit{
 	
-	public Obstacle(Color newColor, Image image)
+	public Obstacle(Color newColor, BufferedImage image)
 	{
 		super(newColor, image); 
 		isObstacle = true; 

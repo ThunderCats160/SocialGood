@@ -22,7 +22,6 @@ public class Unit {
 		isObstacle = false; 
 	}
 	
-	
 	public Color getColor() {
 		return color; 
 	}

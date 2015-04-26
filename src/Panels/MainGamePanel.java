@@ -77,7 +77,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		
 		setVisible(true);
-		revalidate();
+		validate();
 		repaint();
 		game.repaint();
 	}
@@ -108,13 +108,23 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	@Override
 	public void paint(Graphics theGraphic) {
 		super.paint(theGraphic);
-//		Graphics2D the2DGraphic = (Graphics2D) theGraphic;
+		Graphics2D the2DGraphic = (Graphics2D) theGraphic;
 //		the2DGraphic.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 //				RenderingHints.VALUE_ANTIALIAS_ON);
-//		selectPanel.paint(the2DGraphic);
-//		board.paint(the2DGraphic);
-//		stratPanel.paint(the2DGraphic);
-//		descriptionPanel.paint(the2DGraphic);
+		game.validate();
+		game.repaint();
+		
+		selectPanel.revalidate();
+		selectPanel.repaint();
+		
+		board.revalidate();
+		board.repaint();
+		
+		stratPanel.revalidate();
+		stratPanel.repaint();
+		
+		descriptionPanel.revalidate();
+		descriptionPanel.repaint();
 	}
 	
 	

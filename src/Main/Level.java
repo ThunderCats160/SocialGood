@@ -25,8 +25,7 @@ public class Level {
 	//The available moves that can be used for this level.
 	private ArrayList<Move> availableMoves;
 
-	//Constants needed for drawing.
-	int dim = 40;
+	
 
 	int horizontalSize = 10;
 	int verticalSize = 10;
@@ -54,7 +53,7 @@ public class Level {
 		
 		board = b; 
 		
-		dim = newDim;
+		board.setUnitDimension(newDim);
 		
 		
 		levelLayout = new ArrayList<ArrayList<Unit>>();
@@ -159,23 +158,11 @@ public class Level {
 	public ArrayList<Move> getAvailableMoves(){
 		return availableMoves;
 	}
-
+	
 	//Draw the layout grid.
 	public void draw(Graphics g)
 	{
-		for(int i = 0; i< levelLayout.size(); i++)
-		{
-			for(int j = 0; j < levelLayout.get(0).size(); j ++)
-			{
-				g.setColor(Color.black);
-				g.drawRect(j*dim,  i*dim, dim,  dim);
-
-				Unit current = levelLayout.get(i).get(j);
-				g.setColor(current.getColor());
-
-				g.fillRect(j*dim + 1, i*dim+1, dim-2, dim-2);
-			}
-		}
+		
 		
 		
 	}

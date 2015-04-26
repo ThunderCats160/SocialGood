@@ -99,7 +99,6 @@ public class StratPanel extends JPanel implements ActionListener{
 		
 		currentNumberMovesAvailable --; 
 		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
-
 		revalidate();
 		repaint();
 	}

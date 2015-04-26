@@ -11,6 +11,9 @@ public class Player extends Unit{
 	private int yPos;
 
 	private int dim;
+	
+	private final Color traceColor = Color.LIGHT_GRAY;
+	private final Color playerColor = Color.blue;
 
 	public Player(Color newColor, int xPos, int yPos, int newDim)
 	{
@@ -47,10 +50,19 @@ public class Player extends Unit{
 		return dim;
 	}
 	
+	// paints the player on the board	
+	public void paint(Graphics g) {
+		draw(g);
+	}
+	
+	public void drawVisitedMark(Graphics g){
+		g.setColor(traceColor);
+		g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim -2, dim - 2);
+	}
+	
 	//Code to draw the player's character.
 	//Drawing is based off creating a rectangle. The top left corner of the rectangle is passed in and a rectangle is painted.
-	public void draw(Graphics g)
-	{
+	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillRect(xPos*dim,  yPos*dim,  dim, dim);
 	}

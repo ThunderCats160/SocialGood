@@ -12,15 +12,18 @@ import Units.Player;
 public class Move {
 
 	private BufferedImage sprite; 
-	protected String name; 
+	public String name; 
 	public Board board; 
-	protected ArrayList<Move> moveList; 
+	public ArrayList<Move> moveList; 
 	
 	public Boolean isWhileMove; 
+	public Boolean isFunctionMove; 
 	
 	public Move(String desc, Board b, BufferedImage newSprite){
 		
 		isWhileMove = false; 
+		isFunctionMove = false; 
+		
 		name = ""; 
 		board = b; 
 		moveList = new ArrayList<Move>(); 

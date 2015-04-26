@@ -9,9 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ActionListeners.moveAdderAL;
+import ActionListeners.whileMoveAdderAL;
+import Main.Board;
+import Main.Game;
+import Moves.FunctionMove;
 import Moves.Move;
-import Moves.moveAdderAL;
-import Moves.whileMoveAdderAL;
 
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)
@@ -22,10 +25,18 @@ public class SelectPanel extends JPanel implements ActionListener {
 	ArrayList<Move> selectOptions;
 	StratPanel stratPanel;
 	private Boolean addingToWhile; 
+	Game game; 
+	Board board; 
 	
+	//Currently useless
+	private int numFunctions; 
+	
+	public Boolean addingToFunction; 
+	
+	public FunctionCreatingPanel createFunctionPanel; 
 
 	//Initiate a SelectPanel with a StratPanel
-	public SelectPanel(StratPanel newStratPanel)
+	public SelectPanel(StratPanel newStratPanel, Game g, Board b)
 	{
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
@@ -33,7 +44,20 @@ public class SelectPanel extends JPanel implements ActionListener {
 		
 		addingToWhile = false; 
 
+		game = g; 
+		board = b; 
+		
+		setupCreateFunctionPanel(); 
+		
+		addingToFunction = false; 
+		numFunctions = 1; 
+		
 		initGUI();
+
+	}
+	
+	public void setupCreateFunctionPanel(){
+		createFunctionPanel = new FunctionCreatingPanel(stratPanel, this, board, game); 
 
 	}
 	
@@ -52,7 +76,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 		return addingToWhile;
 	}
 	//Iterate through the ArrayList of Moves to create the buttons in the SelectPanel
-	public void setSelectOptions(ArrayList<Move> newOptions){
+	public void setSelectOptions(ArrayList<Move> newOptions, Boolean customFunctions){
 
 		removeAll();
 		selectOptions = newOptions;
@@ -67,12 +91,17 @@ public class SelectPanel extends JPanel implements ActionListener {
 				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
 			else
 			{
-				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this));
+				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 			}
 				 
 			
 			add(b);
 		}
+		
+		
+		
+		if(customFunctions)
+			addDefineFunctionButton(); 
 		
 	}
 	
@@ -88,13 +117,51 @@ public class SelectPanel extends JPanel implements ActionListener {
 	}
 
 
+	//Runs when the user clicks the "Create a function" button
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-
-
+		
+		game.mainGamePanel.remove(stratPanel);
+		game.mainGamePanel.setVisible(false);
+		game.mainGamePanel.setVisible(true); 
+		game.mainGamePanel.add(createFunctionPanel, "East"); 
+		
+		addingToFunction = true; 
 
 	}
 
+	public void addDefineFunctionButton()
+	{
+		JButton dfb = new JButton("Create a function!"); 
+		dfb.addActionListener(this); 
+		add(dfb); 
+	}
+	
+	//Takes the moves that the function will run and the name of the function
+	//Adds a button that will add the related function
+	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
+	{
+		JButton b = new JButton(name); 
+		add(b); 
+		
+		//System.out.println(functionMoves.size()); 
+		
+		FunctionMove f = new FunctionMove("NOPE", board, null, functionMoves, name); 
+		
+		moveAdderAL m = new moveAdderAL(f, stratPanel, this);
+		
+		b.addActionListener(m);
+		
+		numFunctions ++; 
+		
+		
+	}
+	
+	//Currently useless, just ignore
+	public void resetNumFunctions()
+	{
+		numFunctions = 1; 
+	}
 
 
 

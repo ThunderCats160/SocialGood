@@ -35,7 +35,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	
 	private void initGUI(){
 		setLayout(new BorderLayout());
-		
 		 
 		//Instantiate a new Board with a default constructor
 		board = new Board();
@@ -101,6 +100,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			stratPanel.setMaxAvailableMoves(levels.get(currentLevelIndex).getNumOfUsableMoves()); 
 			
 			selectPanel.resetNumFunctions();
+			
 		}
 
 	}
@@ -108,9 +108,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	@Override
 	public void paint(Graphics theGraphic) {
 		super.paint(theGraphic);
-		Graphics2D the2DGraphic = (Graphics2D) theGraphic;
-//		the2DGraphic.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//				RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		game.validate();
 		game.repaint();

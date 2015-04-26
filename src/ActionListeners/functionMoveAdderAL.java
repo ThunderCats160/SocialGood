@@ -1,12 +1,10 @@
 package ActionListeners;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
 
 import Moves.Move;
 import Panels.SelectPanel;
@@ -61,8 +59,7 @@ public class functionMoveAdderAL implements ActionListener {
 		}
 		
 		stratPanel.revalidate();
-		stratPanel.repaint();
-		
+		stratPanel.repaint();	
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import Main.Board;
 import Main.Game;
-import Moves.FunctionMove;
 import Moves.Move;
 import Panels.FunctionCreatingPanel;
 import Panels.SelectPanel;
@@ -37,8 +36,7 @@ public class DoneWithFunctionAL implements ActionListener{
 		//Remove the function panel and re-add the strat Panel
 		game.mainGamePanel.remove(fcPanel);
 		game.mainGamePanel.add(stratPanel, "East"); 
-//		game.mainGamePanel.setVisible(false);
-//		game.mainGamePanel.setVisible(true); 
+ 
 		game.mainGamePanel.revalidate();
 		game.mainGamePanel.repaint();
 		

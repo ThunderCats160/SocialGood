@@ -1,17 +1,12 @@
 package ActionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
 
 import Moves.Move;
 import Moves.conditionalMove;
-import Panels.FunctionCreatingPanel;
 import Panels.MainGamePanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
@@ -91,23 +86,20 @@ public class conditionalMoveAdderAL implements ActionListener {
 		else if(e.getSource().equals(bracket))
 		{
 			stratPanel.add(new JLabel("}"));
+			
 			selectPanel.removeAll();
 			selectPanel.resetSelectOptions();
 			selectPanel.reset(true);
+			
 			selectPanel.revalidate();
 			selectPanel.repaint();
-			selectPanel.setAddToConditional(false);
 			
+			selectPanel.setAddToConditional(false);
 		}
 		else{
 		//Only add the move if the user has moves available
-			if(stratPanel.currentNumberMovesAvailable > 0)
-			{
-				//Add the selected move to the Strategy Panel
+			if (stratPanel.currentNumberMovesAvailable > 0) {
 				
-			
-				
-			
 				selectPanel.setAddToConditional(true); 
 				selectPanel.resetSelectOptions();
 			

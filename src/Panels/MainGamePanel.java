@@ -158,7 +158,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		Level l3 = new Level(40, board); 
 		l3.setPlayerSpawnPosition(3, 5);
 		l3.addGoalAtPosition(7,5); 
-		l3.addObstacleAtPosition(5, 5);
+		l3.addObstacleAtPosition(5, 5, game.getImage(game.getBase(), "u.png"));
 		l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
 		
 		l3.makeDownMoveAvailable();

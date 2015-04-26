@@ -159,6 +159,12 @@ public class Level {
 		levelLayout.get(Y).set(X,  new Obstacle(Color.gray, null)); 
 	}
 	
+	//Sets the obstacle in the level
+	public void addObstacleAtPosition(int X, int Y, Image image)
+	{
+		levelLayout.get(Y).set(X,  new Obstacle(Color.gray, image)); 
+	}
+	
 	//Getter for the Level's layout
 	public ArrayList<ArrayList<Unit>> getLayout(){
 		return levelLayout;

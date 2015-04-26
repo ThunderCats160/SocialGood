@@ -70,7 +70,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		stratPanel.setSelectPanel(selectPanel);
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), false);
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 
 		//Sets the number of available moves
 		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
@@ -191,7 +191,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		l3.setCustomFunctionsAvailable(true);
-		//levels.add(l3);
+		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 

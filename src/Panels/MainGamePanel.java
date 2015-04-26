@@ -119,7 +119,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			
 			board.setCurrentLevel(getLevels().get(getCurrentLevelIndex()));
 			//Clear the Strategy Panel in preparation of the new level.
-			stratPanel.clearCurrentStrat(); 	
+			stratPanel.reset(false); 	
 			descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
 			selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 			

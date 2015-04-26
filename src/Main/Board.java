@@ -1,6 +1,7 @@
 package Main;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -32,6 +33,11 @@ public class Board extends JPanel{
 	
 	public void initGUI(){
 		
+	}
+	
+	public void setPlayerImage(Image image)
+	{
+		player.setImage(image); 
 	}
 	
 	//The Level of the game decides the initial location for the player and obstacles.

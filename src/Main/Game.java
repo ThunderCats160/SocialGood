@@ -2,6 +2,7 @@ package Main;
 import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,6 +26,7 @@ public class Game extends Applet {
 	JPanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	JPanel instructionalPanel;
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
+	String activeView;
 	
 	public final int FRAME_WIDTH = 700;	// width of our frame
 	public final int FRAME_HEIGHT = 503;// height of our frame
@@ -57,7 +59,7 @@ public class Game extends Applet {
 		
 		//Show the introduction Screen
 		initIntroScreen(); 
-		
+		activeView = "Intro Screen";
 	}
 	
 	/* Function to start a new game */
@@ -67,12 +69,11 @@ public class Game extends Applet {
 		
 		// add the panel to our applet
 		add(mainGamePanel);
+		activeView = "Main Game";
 		
 		// repaint everything
+		validate();
 		repaint();
-		mainGamePanel.repaint();
-		
-		
 	}
 	
 	
@@ -119,7 +120,21 @@ public class Game extends Applet {
 		
 		JButton b = new JButton("Go back"); 
 		b.addActionListener(new TeacherPanelGoBackAL(this)); 
-		teacherPanel.add(b); 
+		teacherPanel.add(b);
+		activeView = "Teacher Panel";
+	}
+	
+	@Override
+	public void paint(Graphics theGraphic) {
+		super.paint(theGraphic);
+		if (activeView == "Teacher Panel"){
+			teacherPanel.repaint();
+		} else if (activeView == "Main Game"){
+			mainGamePanel.repaint();
+		} else if (activeView == "Intro Screen"){
+			introScreenPanel.repaint();
+		}
+		
 	}
 	
 	// GETTERS FOR OUR PRIMARY PANELS	

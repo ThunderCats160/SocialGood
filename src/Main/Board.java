@@ -51,14 +51,13 @@ public class Board extends JPanel{
 		Graphics g = getGraphics();
 
 		//Iterate through the list of moves in order to move the Player around the board.
-		for(int i = 0; i < moveList.size(); i++){
+		for(int i = 0; i < moveList.size(); i++) {
 			
 			
 			//Carry out the current move in the iteration
 			//The graphics item and board are passed so the whileMove can 
 			//create a loop similar to this one
-			if(moveList.get(i).isWhileMove)
-			{		
+			if (moveList.get(i).isWhileMove) {		
 				//Get the list of moves that the whileMove is to perform over and over
 				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
 				
@@ -99,7 +98,6 @@ public class Board extends JPanel{
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -138,12 +136,13 @@ public class Board extends JPanel{
 			return true; 
 		}
 		
-		revalidate();
-		
+		validate();
+		repaint();
 		return false;
 	}
 
 	//Super for drawing the Level and the Player on the board.
+	@Override
 	public void paint(Graphics g)
 	{
 		currentLevel.draw(g);

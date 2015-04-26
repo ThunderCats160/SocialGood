@@ -1,6 +1,9 @@
 package Panels;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 
 import Main.Game;
 import Main.Board;
@@ -74,6 +78,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		setVisible(true);
 		revalidate();
+		repaint();
+		game.repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -98,6 +104,19 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		}
 
 	}
+	
+	@Override
+	public void paint(Graphics theGraphic) {
+		super.paint(theGraphic);
+//		Graphics2D the2DGraphic = (Graphics2D) theGraphic;
+//		the2DGraphic.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+//				RenderingHints.VALUE_ANTIALIAS_ON);
+//		selectPanel.paint(the2DGraphic);
+//		board.paint(the2DGraphic);
+//		stratPanel.paint(the2DGraphic);
+//		descriptionPanel.paint(the2DGraphic);
+	}
+	
 	
 	//We create the levels here.
 	public void initLevels()

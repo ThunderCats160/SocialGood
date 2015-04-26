@@ -1,6 +1,8 @@
 package Units;
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -67,7 +69,7 @@ public class Player extends Unit implements ImageObserver{
 	
 	// paints the player on the board	
 	public void paint(Graphics g) {
-		draw(g);
+		draw((Graphics2D) g);
 	}
 	
 	public void drawVisitedMark(Graphics g){
@@ -102,7 +104,7 @@ public class Player extends Unit implements ImageObserver{
 	//Code to draw the player's character.
 	//Drawing is based off creating a rectangle. The top left corner of the rectangle is passed in and a rectangle is painted.
 	public void draw(Graphics g) {
-		g.setColor(color);
+		//g.setColor(color);
 		//g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim - 2, dim -2);
 		
 		int x = xPos*dim +1; 
@@ -111,8 +113,17 @@ public class Player extends Unit implements ImageObserver{
 		int h = dim -2; 
 		
 		Image subI = image.getSubimage(0,  direction,  38, 39); 
+		/*
+		 BufferedImage tempsubI = new BufferedImage(subI.getWidth(null), subI.getHeight(null), 
+                  BufferedImage.TYPE_INT_ARGB);
+		 Graphics2D g2d = (Graphics2D) tempsubI.getGraphics();
+		 g2d.setComposite(AlphaComposite.SrcOver.derive(0.0f)); 
+		 // set the transparency level in range 0.0f - 1.0f 
+		 //g2d.drawImage(subI, 0, 0, null);
+		 subI = tempsubI;
+		 */
+		 g.drawImage(subI, x, y, w, h, this); 
 		
-		g.drawImage(subI, x, y, w, h, this); 
 	}
 	
 	

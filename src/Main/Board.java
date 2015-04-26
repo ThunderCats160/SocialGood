@@ -1,6 +1,7 @@
 package Main;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -205,6 +206,7 @@ public class Board extends JPanel{
 	public void paint(Graphics g)
 	{
 		// draw the grid
+		BufferedImage grass = Game.getBufferedImage("Grass.png");
 		super.paint(g);
 		
 		for(int i = 0; i< currentLevel.getLayout().size(); i++)
@@ -224,14 +226,15 @@ public class Board extends JPanel{
 				}
 				else
 				{
-					g.setColor(current.getColor());
-
-					g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);
+					//g.setColor(current.getColor());
+					g.drawImage(grass, j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2,null); 
+					//g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);
 				}
 			}
 		}
 		
-		currentLevel.draw(g);
+		//doesn't do anything
+		//currentLevel.draw(g);
 		player.draw(g);
 	}
 

@@ -45,7 +45,7 @@ public class Game extends Applet {
 	public static final int APPLET_WIDTH = 960;
 	public static final int APPLET_HEIGHT = 600;
 	
-	private URL base; 							//the location of the Applet
+	private static URL base; 							//the location of the Applet
 	
 	public Game(){
 		initGUI();
@@ -220,7 +220,7 @@ public class Game extends Applet {
 	{
 		return base; 
 	}
-	public BufferedImage getBufferedImage(String imageName)
+	public static BufferedImage getBufferedImage(String imageName)
 	{
 		try {
 			URL newU = new URL(base, imageName);

@@ -17,11 +17,13 @@ public class Move {
 	public ArrayList<Move> moveList; 
 	
 	public Boolean isWhileMove; 
-	public Boolean isFunctionMove; 
+	public Boolean isFunctionMove;
+	public Boolean isConditionalMove;
 	
 	public Move(String desc, Board b, BufferedImage newSprite){
 		
 		isWhileMove = false; 
+		isConditionalMove = false;
 		isFunctionMove = false; 
 		
 		name = ""; 

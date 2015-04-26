@@ -63,8 +63,10 @@ public class FunctionCreatingPanel extends JPanel{
 	{
 		moveList.add(toAdd); 
 		add(new JLabel(toAdd.getName()));
-		setVisible(false); 
-		setVisible(true); 
+//		setVisible(false); 
+//		setVisible(true); 
+		revalidate();
+		repaint();
 	}
 	
 	//Clears the panel to be used next time

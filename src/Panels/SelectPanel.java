@@ -63,9 +63,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	
 	//InitGUI must be called as a default
 	public void initGUI() {
-		JButton b1 = new JButton();
-		b1.setText("DSFHDSFKJS");
-		add(b1);
+		
 	}
 	
 	public void setAddToWhile(boolean value){

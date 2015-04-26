@@ -78,7 +78,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		setVisible(true);
 		validate();
 		repaint();
-		game.repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -109,16 +108,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	public void paint(Graphics theGraphic) {
 		super.paint(theGraphic);
 		
-		game.validate();
-		game.repaint();
-		
-		selectPanel.revalidate();
+		selectPanel.validate();
 		selectPanel.repaint();
 		
 		board.revalidate();
 		board.repaint();
 		
-		stratPanel.revalidate();
+		stratPanel.validate();
 		stratPanel.repaint();
 		
 		descriptionPanel.revalidate();

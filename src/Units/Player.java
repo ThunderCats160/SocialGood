@@ -74,8 +74,6 @@ public class Player extends Unit implements ImageObserver{
 		int w = dim -2; 
 		int h = dim -2; 
 		
-		//if(image == null)
-			//System.out.println("NULL"); 
 		g.drawImage(image, x, y, w, h, this); 
 	}
 	

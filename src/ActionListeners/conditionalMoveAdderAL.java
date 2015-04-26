@@ -69,7 +69,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			stratPanel.addMove(toAdd); 
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			selectPanel.removeAll();
-			selectPanel.resetButtonsOnSelectPanel(false);
+			selectPanel.reset(false);
 			selectPanel.add(bracket);
 			selectPanel.revalidate();
 			selectPanel.repaint();
@@ -82,7 +82,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			stratPanel.addMove(toAdd); 
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			selectPanel.removeAll();
-			selectPanel.resetButtonsOnSelectPanel(false);
+			selectPanel.reset(false);
 			selectPanel.add(bracket);
 			selectPanel.revalidate();
 			selectPanel.repaint();
@@ -93,7 +93,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			stratPanel.add(new JLabel("}"));
 			selectPanel.removeAll();
 			selectPanel.resetSelectOptions();
-			selectPanel.resetButtonsOnSelectPanel(true);
+			selectPanel.reset(true);
 			selectPanel.revalidate();
 			selectPanel.repaint();
 			selectPanel.setAddToConditional(false);

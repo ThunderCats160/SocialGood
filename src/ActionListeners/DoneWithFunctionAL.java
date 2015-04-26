@@ -51,7 +51,7 @@ public class DoneWithFunctionAL implements ActionListener{
 		selectPanel.addNewFunctionButton(newMoveList, fcPanel.nameField.getText());
 		selectPanel.addingToFunction = false; 
 		
-		fcPanel.reset(); 
+		fcPanel.reset(false); 
 	}
 
 }

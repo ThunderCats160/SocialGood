@@ -9,11 +9,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ActionListeners.DoneWithFunctionAL;
+import Interfaces.resettablePanel;
 import Main.Board;
 import Main.Game;
 import Moves.Move;
 
-public class FunctionCreatingPanel extends JPanel{
+public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 
 	public ArrayList<Move> moveList; 
 	
@@ -70,7 +71,7 @@ public class FunctionCreatingPanel extends JPanel{
 	}
 	
 	//Clears the panel to be used next time
-	public void reset()
+	public void reset(Boolean all)
 	{
 		moveList.clear(); 
 		removeAll(); 

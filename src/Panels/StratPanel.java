@@ -9,11 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Interfaces.resettablePanel;
 import Moves.Move;
 
 
 //The StratPanel holds an ArrayList of the currentStrategy the player has implemented
-public class StratPanel extends JPanel implements ActionListener{
+public class StratPanel extends JPanel implements ActionListener, resettablePanel{
 
 	private ArrayList<Move> currentStrat;
 	private SelectPanel selectPanel; 
@@ -53,7 +54,7 @@ public class StratPanel extends JPanel implements ActionListener{
 	}
 	
 	//When the clear button is pressed, clear the current strategy and repaint the StratPanel
-	public void clearCurrentStrat()
+	public void reset(Boolean all)
 	{
 		currentStrat.clear(); 
 		removeAll(); 
@@ -105,7 +106,7 @@ public class StratPanel extends JPanel implements ActionListener{
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function
 	public void actionPerformed(ActionEvent e) {
-		clearCurrentStrat(); 
+		reset(false); 
 	}
 
 }

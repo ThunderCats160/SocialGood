@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import ActionListeners.conditionalMoveAdderAL;
 import ActionListeners.moveAdderAL;
 import ActionListeners.whileMoveAdderAL;
+import Interfaces.resettablePanel;
 import Main.Board;
 import Main.Game;
 import Moves.FunctionMove;
@@ -23,7 +24,7 @@ import Moves.conditionalMove;
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)
 //It also holds buttons to display the move options
-public class SelectPanel extends JPanel implements ActionListener {
+public class SelectPanel extends JPanel implements ActionListener, resettablePanel {
 
 	/* PROPERTIES */
 	private ArrayList<Move> selectOptions;
@@ -122,7 +123,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 		
 	}
 	
-	public void resetButtonsOnSelectPanel(Boolean allMoves)
+	public void reset(Boolean allMoves)
 	{
 		Boolean displayAllMoves = allMoves;
 		

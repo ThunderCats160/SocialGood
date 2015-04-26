@@ -10,6 +10,7 @@ import Moves.Move;
 import Moves.RightMove;
 import Moves.UpMove;
 import Moves.WhileMove;
+import Moves.conditionalMove;
 import Units.Goal;
 import Units.Obstacle;
 import Units.Unit;
@@ -119,6 +120,10 @@ public class Level {
 	public void makeWhileMoveAvailable()
 	{	
 		availableMoves.add(new WhileMove("While", board, null)); 
+	}
+	public void makeConditionalMoveAvailable()
+	{
+		availableMoves.add(new conditionalMove("Conditional", board, null));
 	}
 
 	//Setter for the Description for the level.

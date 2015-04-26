@@ -67,8 +67,8 @@ public class StratPanel extends JPanel implements ActionListener{
 		
 		setVisible(false); 
 		setVisible(true); 
-		 
-		 
+
+		repaint();
 	}
 	
 	//Instantiate the location of the Panel, and create the button that can be used to clear the current strategy
@@ -99,7 +99,8 @@ public class StratPanel extends JPanel implements ActionListener{
 		
 		currentNumberMovesAvailable --; 
 		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
-		
+		revalidate();
+		repaint();
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function

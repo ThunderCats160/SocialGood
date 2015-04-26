@@ -31,7 +31,6 @@ public class DoneWithFunctionAL implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		//FunctionMove fm = new FunctionMove("A Function", board, null, fcPanel.moveList); 
 		//stratPanel.addMove(fm);
 		 

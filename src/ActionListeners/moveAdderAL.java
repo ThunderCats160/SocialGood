@@ -51,8 +51,9 @@ public class moveAdderAL implements ActionListener {
 			else if(selectPanel.addingToFunction){
 				
 				//No while loops allowed in custom functions
-				if(!toAdd.isWhileMove)
-					selectPanel.createFunctionPanel.addMove(toAdd); 				
+				if(!toAdd.isWhileMove) {
+					selectPanel.createFunctionPanel.addMove(toAdd);
+				}
 			}
 			
 			else{
@@ -65,11 +66,13 @@ public class moveAdderAL implements ActionListener {
 			if(selectPanel.getAddToWhile() == true){
 				stratPanel.add(new JLabel(toAdd.name));
 			} else if(!selectPanel.addingToFunction){
-				stratPanel.add(new JLabel(toAdd.name)); 
-	
+				stratPanel.add(new JLabel(toAdd.name));
+				
 			}
-			stratPanel.setVisible(false); 
-			stratPanel.setVisible(true); 
+			
+			stratPanel.validate();
+			stratPanel.repaint();
+			
 		}
 		
 	}

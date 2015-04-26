@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import Moves.Move;
 import Units.Player;
+import Units.Unit;
 
 //Board Class holds the implementation for the Board.
 //Uses JPanel
@@ -19,12 +20,18 @@ public class Board extends JPanel{
 	private Level currentLevel;
 	//Player holds the position of the user's character (currently a block) in XY format.
 	private Player player;
+	//Constants needed for drawing.
+	private int unitDimension = 40;
 
 
 	//Default constructor. Calls for the player to be made
 	public Board() {
-		player = new Player(Color.blue, 5, 10, 40);
-
+		player = new Player(Color.blue, 5, 10, unitDimension);
+		initGUI();
+	}
+	
+	public void initGUI(){
+		
 	}
 	
 	//The Level of the game decides the initial location for the player and obstacles.
@@ -51,14 +58,12 @@ public class Board extends JPanel{
 		Graphics g = getGraphics();
 
 		//Iterate through the list of moves in order to move the Player around the board.
-		for(int i = 0; i < moveList.size(); i++){
-			
+		for(int i = 0; i < moveList.size(); i++) {
 			
 			//Carry out the current move in the iteration
 			//The graphics item and board are passed so the whileMove can 
 			//create a loop similar to this one
-			if(moveList.get(i).isWhileMove)
-			{		
+			if (moveList.get(i).isWhileMove) {		
 				//Get the list of moves that the whileMove is to perform over and over
 				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
 				
@@ -99,10 +104,8 @@ public class Board extends JPanel{
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		
 		//If this point is reached, the player's strategy has failed.
@@ -110,11 +113,10 @@ public class Board extends JPanel{
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		paint(g); 
+		repaint(); 
+		
 		//We return false to indicate that their strategy has failed.
 		return false;
-
-
 	}
 
 	
@@ -128,24 +130,53 @@ public class Board extends JPanel{
 			e.printStackTrace();
 		}
 		
+		player.drawVisitedMark(g);
+		
 		m.doMove(player, g);
-	
+		
 		//Display the move that was just made.
-		paint(g);
+		player.draw(g);
 
 		//check if the player is overlapping the goal
 		if (currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal) {
 			return true; 
 		}
 		
-		revalidate();
-		
+		validate();
+		repaint();
 		return false;
 	}
 
+	// returns the dimension of a unit on the board
+	public int getUnitDimension(){
+		return unitDimension;
+	}
+	
+	public void setUnitDimension(int dim){
+		unitDimension = dim;
+	}
+	
 	//Super for drawing the Level and the Player on the board.
+	@Override
 	public void paint(Graphics g)
 	{
+		// draw the grid
+		super.paint(g);
+		
+		for(int i = 0; i< currentLevel.getLayout().size(); i++)
+		{
+			for(int j = 0; j < currentLevel.getLayout().get(0).size(); j ++)
+			{
+				g.setColor(Color.black);
+				g.drawRect(j*unitDimension,  i*unitDimension, unitDimension,  unitDimension);
+
+				Unit current = currentLevel.getLayout().get(i).get(j);
+				g.setColor(current.getColor());
+
+				g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);
+			}
+		}
+		
 		currentLevel.draw(g);
 		player.draw(g);
 	}

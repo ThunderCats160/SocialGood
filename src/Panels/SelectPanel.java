@@ -63,9 +63,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	
 	//InitGUI must be called as a default
 	public void initGUI() {
-		JButton b1 = new JButton();
-		b1.setText("DSFHDSFKJS");
-		add(b1);
+		
 	}
 	
 	public void setAddToWhile(boolean value){
@@ -119,7 +117,6 @@ public class SelectPanel extends JPanel implements ActionListener {
 
 	//Runs when the user clicks the "Create a function" button
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		
 		game.mainGamePanel.remove(stratPanel);
 		game.mainGamePanel.setVisible(false);

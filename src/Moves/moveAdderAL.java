@@ -42,8 +42,7 @@ public class moveAdderAL implements ActionListener {
 		} else {
 			stratPanel.add(new JLabel(toAdd.name)); 
 		}
-		stratPanel.setVisible(false); 
-		stratPanel.setVisible(true); 
+		
 		stratPanel.revalidate();
 		stratPanel.repaint();
 		

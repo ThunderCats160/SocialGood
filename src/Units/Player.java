@@ -64,7 +64,7 @@ public class Player extends Unit{
 	//Drawing is based off creating a rectangle. The top left corner of the rectangle is passed in and a rectangle is painted.
 	public void draw(Graphics g) {
 		g.setColor(color);
-		g.fillRect(xPos*dim,  yPos*dim,  dim, dim);
+		g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim - 2, dim -2);
 	}
 
 

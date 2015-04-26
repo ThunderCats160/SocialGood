@@ -28,6 +28,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	Game game; 
 	Board board; 
 	
+	//Currently useless
 	private int numFunctions; 
 	
 	public Boolean addingToFunction; 
@@ -116,6 +117,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 	}
 
 
+	//Runs when the user clicks the "Create a function" button
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
@@ -135,6 +137,8 @@ public class SelectPanel extends JPanel implements ActionListener {
 		add(dfb); 
 	}
 	
+	//Takes the moves that the function will run and the name of the function
+	//Adds a button that will add the related function
 	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
 	{
 		JButton b = new JButton(name); 
@@ -153,6 +157,7 @@ public class SelectPanel extends JPanel implements ActionListener {
 		
 	}
 	
+	//Currently useless, just ignore
 	public void resetNumFunctions()
 	{
 		numFunctions = 1; 

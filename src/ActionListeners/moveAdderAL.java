@@ -35,7 +35,7 @@ public class moveAdderAL implements ActionListener {
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		//Only add moves if the user still has moves to add
 		if(stratPanel.currentNumberMovesAvailable > 0)
 		{
 			
@@ -49,7 +49,8 @@ public class moveAdderAL implements ActionListener {
 				
 			
 			else if(selectPanel.addingToFunction){
-	
+				
+				//No while loops allowed in custom functions
 				if(!toAdd.isWhileMove)
 					selectPanel.createFunctionPanel.addMove(toAdd); 				
 			}

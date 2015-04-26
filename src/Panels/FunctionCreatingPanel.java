@@ -58,6 +58,7 @@ public class FunctionCreatingPanel extends JPanel{
 		add(nameField);
 	}
 	
+	//Adds a move and puts the move's name on the panel
 	public void addMove(Move toAdd)
 	{
 		moveList.add(toAdd); 
@@ -66,6 +67,7 @@ public class FunctionCreatingPanel extends JPanel{
 		setVisible(true); 
 	}
 	
+	//Clears the panel to be used next time
 	public void reset()
 	{
 		moveList.clear(); 

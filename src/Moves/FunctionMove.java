@@ -22,6 +22,7 @@ public class FunctionMove extends Move{
 	
 	public void doMove(Player player, Graphics g)
 	{	
+		//Do every move in the function
 		for(int i =0; i< moveList.size(); i++){
 			System.out.println(moveList.get(i).name);
 		}

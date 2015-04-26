@@ -27,7 +27,7 @@ public class Game extends Applet {
 	
 	// PROPERTIES
 	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
-	public JPanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
+	public MainGamePanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
 	JPanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	JPanel instructionalPanel;
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
@@ -41,6 +41,8 @@ public class Game extends Applet {
 	public static final int APPLET_WIDTH = 960;
 	public static final int APPLET_HEIGHT = 600;
 	
+	URL base; 							//the location of the Applet
+	
 	public Game(){
 		initGUI();
 		
@@ -50,7 +52,7 @@ public class Game extends Applet {
 	{
 		
 		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
-		URL base = getDocumentBase(); 
+		base = getDocumentBase(); 
 		Image instructionsPic = getImage(base, "r.png"); 
 		JLabel instructionsPicLabel = new JLabel(new ImageIcon(instructionsPic));
 	
@@ -62,6 +64,7 @@ public class Game extends Applet {
 		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
 				
 		teacherPanel.add(teacherPicLabel); 
+		
 	}
 
 	//Init function to put values into the instantiated objects above.
@@ -91,6 +94,7 @@ public class Game extends Applet {
 	public void startNewGame(){
 		//Create the main game panel and set its layout.
 		mainGamePanel = new MainGamePanel(this); 
+		mainGamePanel.setPlayerImage(getImage(base, "r.png")); 
 		
 		// add the panel to our applet
 		add(mainGamePanel);
@@ -99,6 +103,7 @@ public class Game extends Applet {
 		// repaint everything
 		validate();
 		repaint();
+		
 		
 		
 		

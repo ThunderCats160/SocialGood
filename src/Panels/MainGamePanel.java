@@ -99,12 +99,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		descriptionPanel.setPreferredSize(descP);
 		add(descriptionPanel, "South");
 		
-	
-		
 		
 		setVisible(true);
-		validate();
-		repaint();
+		game.refreshApplet();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -135,13 +132,15 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	public void paint(Graphics theGraphic) {
 		super.paint(theGraphic);
 		
-		selectPanel.validate();
+		game.validate();
+		
+		selectPanel.revalidate();
 		selectPanel.repaint();
 		
 		board.revalidate();
 		board.repaint();
 		
-		stratPanel.validate();
+		stratPanel.revalidate();
 		stratPanel.repaint();
 		
 		descriptionPanel.revalidate();
@@ -218,6 +217,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	{
 		board.setPlayerImage(image);
 	}
+	
 	public void setPlayerVisitedMark(BufferedImage image){
 		board.setPlayerVisitedMark(image); 
 	}

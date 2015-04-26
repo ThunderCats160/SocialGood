@@ -27,7 +27,7 @@ public class functionMoveAdderAL implements ActionListener {
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
-		functionButton = newFB; 
+		functionButton = newFB;
 	}
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {

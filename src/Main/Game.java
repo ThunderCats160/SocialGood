@@ -236,4 +236,9 @@ public class Game extends Applet {
 		
 		return null; 
 	}
+	
+	public void refreshApplet(){
+		validate();
+		repaint();
+	}
 }

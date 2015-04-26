@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 
 
 
@@ -209,4 +211,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		descriptionPanel.setDescription(levels.get(0).getDescription()); 
 	}
 
+	public void setPlayerImage(Image image)
+	{
+		board.setPlayerImage(image);
+	}
 }

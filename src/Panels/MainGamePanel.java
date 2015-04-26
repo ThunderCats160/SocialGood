@@ -218,6 +218,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	{
 		board.setPlayerImage(image);
 	}
+	public void setPlayerVisitedMark(BufferedImage image){
+		board.setPlayerVisitedMark(image); 
+	}
 
 	public ArrayList<Level> getLevels() {
 		return levels;
@@ -235,4 +238,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	public void setCurrentLevelIndex(int currentLevelIndex) {
 		this.currentLevelIndex = currentLevelIndex;
 	}
+	
+	
 }

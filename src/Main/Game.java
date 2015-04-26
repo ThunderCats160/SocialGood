@@ -124,6 +124,7 @@ public class Game extends Applet {
 			System.out.println("I NULL"); 
 		
 		mainGamePanel.setPlayerImage(getBufferedImage("r.png")); 
+		mainGamePanel.setPlayerVisitedMark(getBufferedImage("pawPrints.png")); 
 		
 		// add the panel to our applet
 		add(mainGamePanel);

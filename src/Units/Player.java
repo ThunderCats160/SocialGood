@@ -2,6 +2,7 @@ package Units;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 //The player class houses the xy coordinates of the user's character.
@@ -23,6 +24,8 @@ public class Player extends Unit implements ImageObserver{
 	private final Color playerColor = Color.blue;
 	
 	private int direction; 
+	
+	private BufferedImage visitedMark; 
 
 	public Player(Color newColor, int xPos, int yPos, int newDim)
 	{
@@ -34,6 +37,7 @@ public class Player extends Unit implements ImageObserver{
 		
 		direction = EAST; 
 
+		visitedMark = null; 
 	}
 	//Getter for X
 	public int getX()
@@ -67,8 +71,32 @@ public class Player extends Unit implements ImageObserver{
 	}
 	
 	public void drawVisitedMark(Graphics g){
-		g.setColor(traceColor);
-		g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim -2, dim - 2);
+		
+		
+		int x = xPos*dim +1; 
+		int y = yPos*dim +1; 
+		int w = dim -2; 
+		int h = dim - 2; 
+		
+		if(visitedMark == null)
+		{
+			g.setColor(traceColor);
+			g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim -2, dim - 2);
+		}
+		else
+		{
+			BufferedImage subImg = null; 
+			if(direction == NORTH)
+				subImg = visitedMark.getSubimage(600, 0, 200, 200); 
+			if(direction == SOUTH)
+				subImg = visitedMark.getSubimage(0, 0, 200, 200); 
+			if(direction == WEST)
+				subImg = visitedMark.getSubimage(200, 0, 200, 200);
+			if(direction == EAST)
+				subImg = visitedMark.getSubimage(400, 0, 200, 200); 
+			g.drawImage(subImg, x, y, w, h, null); 
+		}
+		
 	}
 	
 	//Code to draw the player's character.
@@ -97,6 +125,10 @@ public class Player extends Unit implements ImageObserver{
 	public void setDirection(int dir)
 	{
 		direction = dir; 
+	}
+	public void setVisitedMark(BufferedImage img)
+	{
+		visitedMark = img; 
 	}
 	
 	

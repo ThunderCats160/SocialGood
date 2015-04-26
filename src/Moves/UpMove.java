@@ -35,6 +35,7 @@ public class UpMove extends Move{
 		if(player.getY() > 0 && !layout.get(player.getY() - 1).get(player.getX()).isObstacle)
 		{
 			player.setY(player.getY()-1);
+			player.setDirection(player.NORTH); 
 		}
 	
 	}

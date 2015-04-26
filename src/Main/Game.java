@@ -4,9 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -120,7 +123,7 @@ public class Game extends Applet {
 		if(i == null)
 			System.out.println("I NULL"); 
 		
-		mainGamePanel.setPlayerImage(getImage(base, "r.png")); 
+		mainGamePanel.setPlayerImage(getBufferedImage("r.png")); 
 		
 		// add the panel to our applet
 		add(mainGamePanel);
@@ -215,5 +218,21 @@ public class Game extends Applet {
 	public URL getBase()
 	{
 		return base; 
+	}
+	public BufferedImage getBufferedImage(String imageName)
+	{
+		try {
+			URL newU = new URL(base, imageName);
+			return ImageIO.read(newU); 
+			
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return null; 
 	}
 }

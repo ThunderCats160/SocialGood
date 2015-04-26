@@ -2,6 +2,7 @@ package Main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +36,7 @@ public class Board extends JPanel{
 		
 	}
 	
-	public void setPlayerImage(Image image)
+	public void setPlayerImage(BufferedImage image)
 	{
 		player.setImage(image); 
 	}

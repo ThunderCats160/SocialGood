@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import Moves.DownMove;
@@ -139,7 +140,7 @@ public class Level {
 		levelLayout.get(Y).set(X, new Goal(Color.yellow, null)); 
 	}
 	//Sets the Goal for the level at the position indicated
-	public void addGoalAtPosition(int X, int Y, Image image)
+	public void addGoalAtPosition(int X, int Y, BufferedImage image)
 	{
 		levelLayout.get(Y).set(X, new Goal(Color.yellow, image)); 
 	}
@@ -160,7 +161,7 @@ public class Level {
 	}
 	
 	//Sets the obstacle in the level
-	public void addObstacleAtPosition(int X, int Y, Image image)
+	public void addObstacleAtPosition(int X, int Y, BufferedImage image)
 	{
 		levelLayout.get(Y).set(X,  new Obstacle(Color.gray, image)); 
 	}

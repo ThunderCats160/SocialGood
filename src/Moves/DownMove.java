@@ -35,6 +35,7 @@ public class DownMove extends Move{
 		if(player.getY() < layout.size() -1 && !layout.get(player.getY() +1).get(player.getX()).isObstacle)
 		{
 			player.setY(player.getY()+1);
+			player.setDirection(player.SOUTH);
 		}
 		
 		

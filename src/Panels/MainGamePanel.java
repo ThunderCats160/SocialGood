@@ -164,7 +164,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		l3.setCustomFunctionsAvailable(true);
-		//levels.add(l3);
+		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(40, board); 

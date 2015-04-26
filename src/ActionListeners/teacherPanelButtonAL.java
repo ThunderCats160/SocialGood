@@ -17,7 +17,6 @@ public class teacherPanelButtonAL implements ActionListener{
 	
 	//When the button is pressed, this actionPerformed changes the display to the instructions page
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 
 		//adds the mainGamePanel
 		game.add(game.getTeacherPanel()); 

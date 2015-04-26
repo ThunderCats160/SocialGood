@@ -41,7 +41,7 @@ public class Game extends Applet {
 		initGUI();
 	}
 
-	//Init function to put values into the instantiated objects above.
+	//Init function to put values into the instantiated panel above.
 	public void initGUI() {
 		Dimension dim = new Dimension(50, 50);
 		
@@ -51,7 +51,7 @@ public class Game extends Applet {
 		setPreferredSize(dim);
 		setMinimumSize(dim);
 		setMaximumSize(dim);
-		setSize(2000, 2000);
+		setSize(APPLET_WIDTH,APPLET_HEIGHT);
 		
 		//creates the instructions page
 		createInstructionPanel();

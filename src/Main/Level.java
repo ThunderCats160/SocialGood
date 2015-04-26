@@ -53,7 +53,7 @@ public class Level {
 		
 		board = b; 
 		
-		board.setUnitDimension(newDim);
+		//board.setUnitDimension(newDim);
 		
 		
 		levelLayout = new ArrayList<ArrayList<Unit>>();

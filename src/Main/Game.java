@@ -16,8 +16,11 @@ import javax.swing.JPanel;
 import Panels.DescriptionPanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
+import Panels.InstructionPanelGoBackAL;
+import Panels.TeacherPanelGoBackAL;
 import Panels.instructionsPanelButtonAL;
 import Panels.introPanelButtonAL;
+import Panels.teacherPanelButtonAL;
 
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
 public class Game extends Applet implements ActionListener {
@@ -34,6 +37,7 @@ public class Game extends Applet implements ActionListener {
 	public JPanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
 	JPanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	JPanel instructionalPanel;
+	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	
 	public final int FRAME_WIDTH = 700;	// width of our frame
 	public final int FRAME_HEIGHT = 503;// height of our frame
@@ -54,6 +58,9 @@ public class Game extends Applet implements ActionListener {
 		
 		//creates the instructions page
 		createInstructionPanel();
+		
+		//creates the teacher's page
+		createTeacherPanel(); 
 		
 		//Show the introduction Screen
 		initIntroScreen(); 
@@ -121,14 +128,17 @@ public class Game extends Applet implements ActionListener {
 		introScreenPanel.add(new JLabel("Welcome to the Game!!!")); 
 		JButton getStartedButton = new JButton("Get Started!");
 		JButton instructionsPageButton = new JButton("Instructions");
+		JButton teacherPageButton = new JButton("Instructions For Teachers"); 
 		
 		//Make sure that the button on the JPanel has a listener.
 		getStartedButton.addActionListener(new introPanelButtonAL(this));
 		instructionsPageButton.addActionListener(new instructionsPanelButtonAL(this));
+		teacherPageButton.addActionListener(new teacherPanelButtonAL(this)); 
 		
 		//adds these two buttons to the Intro Screen Panel
 		introScreenPanel.add(getStartedButton); 
 		introScreenPanel.add(instructionsPageButton);
+		introScreenPanel.add(teacherPageButton); 
 		
 		add(introScreenPanel); 
 	}
@@ -221,13 +231,26 @@ public class Game extends Applet implements ActionListener {
 		instructionalPanel.add(new JLabel("Instructions:"));
 		
 		JButton b = new JButton("Go back"); 
-		b.addActionListener(new instructionPanelAL(this));
+		b.addActionListener(new InstructionPanelGoBackAL(this));
 		instructionalPanel.add(b); 
+	}
+	
+	public void createTeacherPanel(){
+		teacherPanel = new JPanel(); 
+		teacherPanel.add(new JLabel("Here is where the instructions for teachers goes")); 
+		
+		JButton b = new JButton("Go back"); 
+		b.addActionListener(new TeacherPanelGoBackAL(this)); 
+		teacherPanel.add(b); 
 	}
 	
 	// GETTERS FOR OUR PRIMARY PANELS	
 	public JPanel getInstructionPanel() {
 		return instructionalPanel;
+	}
+	
+	public JPanel getTeacherPanel(){
+		return teacherPanel; 
 	}
 	
 	public JPanel getIntroScreenPanel(){

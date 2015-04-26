@@ -1,13 +1,15 @@
-package Main;
+package Panels;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class instructionPanelAL implements ActionListener{
+import Main.Game;
+
+public class InstructionPanelGoBackAL implements ActionListener{
 
 	Game game; 
 	
-	public instructionPanelAL(Game g)
+	public InstructionPanelGoBackAL(Game g)
 	{
 		game = g; 
 	}

@@ -68,7 +68,7 @@ public class Player extends Unit implements ImageObserver{
 	//Drawing is based off creating a rectangle. The top left corner of the rectangle is passed in and a rectangle is painted.
 	public void draw(Graphics g) {
 		g.setColor(color);
-		//g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim - 2, dim -2);
+		g.fillRect(xPos*dim + 1,  yPos*dim + 1,  dim - 2, dim -2);
 		
 		int x = xPos*dim +1; 
 		int y = yPos * dim +1; 
@@ -78,10 +78,7 @@ public class Player extends Unit implements ImageObserver{
 		g.drawImage(image, x, y, w, h, this); 
 	}
 	
-	public void setImage(Image newImage)
-	{
-		image = newImage; 
-	}
+	
 	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
 			int arg4, int arg5) {
 		// TODO Auto-generated method stub

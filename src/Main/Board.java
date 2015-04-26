@@ -173,10 +173,16 @@ public class Board extends JPanel{
 		{
 			for(int j = 0; j < currentLevel.getLayout().get(0).size(); j ++)
 			{
+				
 				g.setColor(Color.lightGray);
 				g.drawRect(j*unitDimension,  i*unitDimension, unitDimension,  unitDimension);
 
 				Unit current = currentLevel.getLayout().get(i).get(j);
+				
+				if(current.getImage() != null)
+				{
+					System.out.println("NOT NULL"); 
+				}
 				g.setColor(current.getColor());
 
 				g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);

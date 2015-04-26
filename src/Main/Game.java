@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.BoxLayout;
@@ -51,19 +52,39 @@ public class Game extends Applet {
 	public void init()
 	{
 		
-		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
+		
+		//Manipulate base to get it to be the full directory of the applet
+		//basically so we can store images in places other than the bin
+		//directory
+		
 		base = getDocumentBase(); 
+		String path = base.toString(); 
+		int index = path.indexOf("bin");
+		String substr = path.substring(0,index); 
+		
+		try {
+			base = new URL(substr);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
+		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
 		Image instructionsPic = getImage(base, "r.png"); 
 		JLabel instructionsPicLabel = new JLabel(new ImageIcon(instructionsPic));
 	
 		instructionalPanel.add(instructionsPicLabel); 
 		
 		//HOW TO ADD AN IMAGE TO THE TEACHER'S SCREEN
-		
+	
 		Image teacherPic = getImage(base, "r.png"); 
 		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
-				
+					
 		teacherPanel.add(teacherPicLabel); 
+		
+		
+		
 		
 	}
 

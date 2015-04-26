@@ -105,11 +105,12 @@ public class Board extends JPanel{
 				//get the list of moves that the conditionalMove is to perform over and over
 				ArrayList<Move> conditionalList = moveList.get(i).getMoveList();
 				
-				if(checkConditional((conditionalMove) moveList.get(i)))
+				if(checkConditional(moveList.get(i)))
 				{
-					System.out.println("inside of loop");
+					
 					for(int m = 0; i < conditionalList.size(); i++)
 					{
+						System.out.println(m + ": move");
 						if(doMove(conditionalList.get(m), g))
 							return true;
 					}
@@ -118,7 +119,7 @@ public class Board extends JPanel{
 			}
 			else
 			{
-				System.out.println("Inside the wrong loop");
+				
 				if(doMove(moveList.get(i), g)){
 					return true; 
 				}
@@ -148,19 +149,27 @@ public class Board extends JPanel{
 		return false;
 	}
 	
-	private Boolean checkConditional(conditionalMove move)
+	private Boolean checkConditional(Move move)
 	{
 		System.out.println("inside of check conditional");
 		Boolean checker = false;
+		String condition = ((conditionalMove) move).getConditionalMove();
+		System.out.println(condition);
 		
+
+		if(condition == "red square" && player.getX() == 2 && player.getY() == 5)
+		{
+			System.out.println("in the red square condition");
+			checker = true;
+		}
+		if(condition == "blue square" && player.getX() == 9 && player.getY() == 4)
+		{
+			checker = true;
+		}
 		
-		
-		String condition = move.getConditionalMove();
-		
-		
-		
-		
-		
+		//red square 2,5
+		//blue square 9,4
+			
 		return checker;
 	}
 

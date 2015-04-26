@@ -96,15 +96,12 @@ public class StratPanel extends JPanel implements ActionListener{
 	public void addMove(Move toAdd) {
 		
 		currentStrat.add(toAdd);
-<<<<<<< HEAD
 		
 		currentNumberMovesAvailable --; 
 		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
-		
-=======
+
 		revalidate();
 		repaint();
->>>>>>> Change rendering for strat panel.
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function

@@ -45,6 +45,10 @@ public class Game extends Applet {
 	public static final int APPLET_WIDTH = 960;
 	public static final int APPLET_HEIGHT = 600;
 	
+	public static final String goalImage = "doghouseGrassSuperLight.png";
+	public static final String userImage = "r.png";
+	public static final String trailImage = "pawPrintsGrassSuperLight.png";
+	
 	private static URL base; 							//the location of the Applet
 	
 	public Game(){
@@ -124,7 +128,7 @@ public class Game extends Applet {
 			System.out.println("I NULL"); 
 		
 		mainGamePanel.setPlayerImage(getBufferedImage("r.png")); 
-		mainGamePanel.setPlayerVisitedMark(getBufferedImage("pawPrints.png")); 
+		mainGamePanel.setPlayerVisitedMark(getBufferedImage(Game.trailImage)); 
 		
 		// add the panel to our applet
 		add(mainGamePanel);
@@ -235,5 +239,10 @@ public class Game extends Applet {
 		} 
 		
 		return null; 
+	}
+	
+	public void refreshApplet(){
+		validate();
+		repaint();
 	}
 }

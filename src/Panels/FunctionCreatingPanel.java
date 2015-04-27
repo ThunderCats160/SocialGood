@@ -26,8 +26,7 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 	
 	public JTextField nameField; 
 	
-	public FunctionCreatingPanel(StratPanel newStratPanel, 
-			SelectPanel newSp, Board b, Game g)
+	public FunctionCreatingPanel(StratPanel newStratPanel, SelectPanel newSp, Board b, Game g)
 	{
 		
 		moveList = new ArrayList<Move>(); 
@@ -42,6 +41,11 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		addNameField(); 
 		addDoneButton(); 
 		
+		setVisible(true);
+		validate();
+		repaint();
+		
+		game.refreshApplet();
 	}
 	
 	public void addDoneButton()
@@ -52,6 +56,7 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		
 		add(butt); 
 	}
+	
 	public void addNameField()
 	{
 		nameField = new JTextField("FunctionName", 20); 
@@ -64,10 +69,10 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 	{
 		moveList.add(toAdd); 
 		add(new JLabel(toAdd.getName()));
-//		setVisible(false); 
-//		setVisible(true); 
+
 		revalidate();
 		repaint();
+		game.refreshApplet();
 	}
 	
 	//Clears the panel to be used next time
@@ -77,7 +82,6 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		removeAll(); 
 		addNameField(); 
 		addDoneButton(); 
-		
 		
 	}
 	

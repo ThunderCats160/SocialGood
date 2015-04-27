@@ -1,15 +1,10 @@
 package ActionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
 
 import Moves.Move;
-import Panels.FunctionCreatingPanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
 
@@ -28,9 +23,7 @@ public class moveAdderAL implements ActionListener {
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
 		
-		//System.out.println("OKAY"); 
-		//System.out.println(toAdd.getName()); 
-		//System.out.println(toAdd.moveList.size()) ;
+
 	}
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {

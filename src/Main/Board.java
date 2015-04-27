@@ -257,6 +257,11 @@ public class Board extends JPanel{
 
 				Unit current = currentLevel.getLayout().get(i).get(j);
 				
+				if(current.isgoal){
+					if(current.getImage() == null)
+						System.out.println("DSJFHDSKJFH"); 
+				}
+					
 				if(current.isRedSquare)
 				{
 					g.setColor(current.getColor());

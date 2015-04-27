@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Buttons.MoveButton;
 import Buttons.TitlePageButton;
 import Interfaces.resettablePanel;
 import Main.Game;
@@ -95,8 +96,8 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		add(numAvailableMovesLabel); 
 		
 		
-		TitlePageButton clearButton = new TitlePageButton("Clear Strategy", 4); 
-		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 50));
+		MoveButton clearButton = new MoveButton("Clear Strategy", 4); 
+		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 30));
 		clearButton.addActionListener(this);
 
 		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
@@ -115,8 +116,8 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		add(numAvailableMovesLabel); 
 		
 		
-		TitlePageButton clearButton = new TitlePageButton("Clear Strategy", 4); 
-		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 50));
+		MoveButton clearButton = new MoveButton("Clear Strategy", 4); 
+		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 30));
 		clearButton.addActionListener(this);
 		add(clearButton);
 	}

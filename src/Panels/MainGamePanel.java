@@ -23,6 +23,8 @@ import javax.swing.JPanel;
 
 
 
+
+import Buttons.RunButton;
 import Main.Game;
 import Main.Board;
 import Main.Level;
@@ -32,7 +34,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	Board board;						//Instantiates a board
 	SelectPanel selectPanel;			//Instantiates the Panel which has buttons for the player to press to select a moving strategy.
 	StratPanel stratPanel;				//Instantiates the Panel which displays the moving strategy the player has selected.
-	JButton goButton;					//Instantiates the button which runs the Player's strategy.
+	RunButton goButton;					//Instantiates the button which runs the Player's strategy.
 	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
 	private ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
 	private int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
@@ -49,7 +51,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Instantiate a new Board with a default constructor
 		board = new Board();
 		//Instantiate a new Button with text "Go". 
-		goButton = new JButton("GO!");
+		goButton = new RunButton("GO!");
 		//Indicate that our goButton should have an ActionListener to listen for a press.
 		goButton.addActionListener(this);
 		

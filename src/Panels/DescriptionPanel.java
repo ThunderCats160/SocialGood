@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Buttons.RunButton;
 import Main.Game;
 
 //The Description Panel holds a JLabel which is used to display text describing the 
@@ -14,14 +15,17 @@ import Main.Game;
 public class DescriptionPanel extends JPanel{
 
 	// The description panel holds a "go" jbutton, and the jlabel to display the text.
-	JButton goButton; 
+	//RunButton goButton; 
 	JLabel currentDesc; 
 	JPanel descPanel;
 	JPanel goButtonPanel;
 	
 	//Constructor to add a button and description to the DescriptionPanel
-	public DescriptionPanel(JButton jb, String desc) {
-		goButton = jb; 
+	public DescriptionPanel(RunButton jb, String desc) {
+		//String buttonText = jb.getText(); 
+		//goButton = new RunButton();
+		//goButton = jb;
+		//jb = (JButton) goButton;
 		
 		currentDesc = new JLabel(desc); 
 		Dimension descP = new Dimension((int)(Game.APPLET_WIDTH/.66), (int)(Game.APPLET_HEIGHT/9.6));

@@ -211,7 +211,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 5: this makes while loops more complicated 
 		Level l5 = new Level(Board.unitDimension, board); 
 		l5.setPlayerSpawnPosition(0, 8);
-		l5.addGoalAtPosition(7, 1, game.getBufferedImage("doghouse.png"));
+
+		l5.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
 
 		l5.makeRightMoveAvailable();
 		l5.makeUpMoveAvailable();
@@ -220,10 +221,33 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.setNumOfUsableMoves(4);
 		l5.setDescription("Here you will need a slightly trickier while loop!");
 		
-		getLevels().add(l5); 
+		//getLevels().add(l5); 
 		
 		//Level 6: this introduces user defined functions
+		Level l6 = new Level(Board.unitDimension, board); 
+		l6.setPlayerSpawnPosition(0,  7);
+		l6.addGoalAtPosition(4, 5, game.getBufferedImage(game.goalImage));
+		l6.makeRightMoveAvailable();
+		l6.makeUpMoveAvailable();
+		l6.setCustomFunctionsAvailable(true); 
+		l6.setNumOfUsableMoves(5); 
+		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
+				+ "not put that in your own function so you don't have to keep re-adding it!" );
+		//getLevels().add(l6); 
 		
+		
+		//Level 7: This makes the player put their own functions in a while loop
+		Level l7 = new Level(Board.unitDimension, board); 
+		l7.setPlayerSpawnPosition(0, 8);
+		l7.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+		l7.makeRightMoveAvailable();
+		l7.makeUpMoveAvailable();
+		l7.makeWhileMoveAvailable();
+		l7.setNumOfUsableMoves(2);
+		l7.setCustomFunctionsAvailable(true); 
+		l7.setDescription("Hey, this looks familiar! But this time you need your own functions");
+		
+		getLevels().add(l7); 
 		
 		//Level 8: this introduces conditional Statements
 		Level l8 = new Level(Board.unitDimension, board);

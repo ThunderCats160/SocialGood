@@ -105,6 +105,19 @@ public class Board extends JPanel{
 								}
 							}
 						}
+						else if(whileList.get(p).isFunctionMove){
+							ArrayList<Move> functionList = whileList.get(p).getMoveList(); 
+							
+							//System.out.println("HERE");
+							//System.out.println(functionList.size()); 
+							
+							
+							for(int r = 0; r< functionList.size(); r++){
+								System.out.println(j); 
+								if(doMove(functionList.get(r), g))
+									return true; 
+							}
+						}
 						else if(doMove(whileList.get(p), g))
 							return true; 
 						
@@ -257,10 +270,7 @@ public class Board extends JPanel{
 
 				Unit current = currentLevel.getLayout().get(i).get(j);
 				
-				if(current.isgoal){
-					if(current.getImage() == null)
-						System.out.println("DSJFHDSKJFH"); 
-				}
+			
 					
 				if(current.isRedSquare)
 				{

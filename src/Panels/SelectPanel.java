@@ -90,6 +90,8 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		title.setFont(new Font("Arial", Font.BOLD, 24));
 		add(title);
 		
+		setBackground(new Color((float).99, (float).99, (float).99, (float).3));
+		
 		setVisible(true);
 	}
 	

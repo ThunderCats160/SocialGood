@@ -40,7 +40,7 @@ public class Board extends JPanel{
 	}
 	
 	public void initGUI(){
-		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 3) - 60, (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
+		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 3) - 90, (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
 		setPreferredSize(boardP);
 		setSize(boardP);
 		setMaximumSize(boardP);

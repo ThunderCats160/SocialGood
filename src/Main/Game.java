@@ -3,6 +3,7 @@ import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class Game extends Applet {
 	InstructionsPanel instructionalPanel;
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
+	private BufferedImage background;
 	
 	/* PUBLIC SETTINGS */
 	public final String FONT_NAME = "Helvetica";
@@ -56,6 +58,7 @@ public class Game extends Applet {
 	public static final String instructionsImage = "instructionsBkg.png";
 	public static final String teacherImage = "pawPrintsGrassSuperLight.png";
 	public static final String enemyImage = "enemyEvil.png";
+	public static final String natureImage = "natureBkg1.png";
 	
 	private static URL base; 							//the location of the Applet
 	

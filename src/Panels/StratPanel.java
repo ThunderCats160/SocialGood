@@ -1,4 +1,5 @@
 package Panels;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -96,6 +97,8 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		clearButton.setText("CLEAR STRATEGY");
 		clearButton.addActionListener(this);
 
+		setBackground(new Color((float).99, (float).99, (float).99, (float).3));
+		
 		add(clearButton);
 		
 		

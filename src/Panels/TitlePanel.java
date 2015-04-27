@@ -29,9 +29,9 @@ public class TitlePanel extends JPanel {
 		setLayout(null);
 		background = null;
 		
-		TitlePageButton getStartedButton = new TitlePageButton("Play Game");
-		TitlePageButton instructionsPageButton = new TitlePageButton("Instructions");
-		TitlePageButton teacherPageButton = new TitlePageButton("Teaching");
+		TitlePageButton getStartedButton = new TitlePageButton("Play Game", 42);
+		TitlePageButton instructionsPageButton = new TitlePageButton("Instructions", 40);
+		TitlePageButton teacherPageButton = new TitlePageButton("Teaching", 49);
 		
 		//Make sure that the button on the JPanel has a listener.
 		getStartedButton.addActionListener(new introPanelButtonAL(game));

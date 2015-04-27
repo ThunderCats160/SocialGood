@@ -215,7 +215,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.setPlayerSpawnPosition(0, 8);
 
 		l5.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
-
 		l5.makeRightMoveAvailable();
 		l5.makeUpMoveAvailable();
 		l5.makeWhileMoveAvailable();

@@ -41,7 +41,7 @@ public class InstructionsPanel extends JPanel{
 		gotItButton.setSize(160, 50);
 		//	Absolutely Position our button	
 		Dimension size = gotItButton.getPreferredSize();
-		gotItButton.setBounds(20, 75 + insets.top, size.width, size.height);
+		gotItButton.setBounds(Game.APPLET_WIDTH - 20 - size.width, 15 + insets.top, size.width, size.height);
 	}
 	
 	public void setBackgroundImg(BufferedImage img){

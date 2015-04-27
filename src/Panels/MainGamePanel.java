@@ -1,6 +1,7 @@
 package Panels;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,6 +13,7 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
@@ -38,6 +40,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	Game game;							// reference to the game
 	public JPanel topLevel;
 	public JPanel bottomLevel;
+	private BufferedImage background;
 	
 	public MainGamePanel(Game g) {
 		game = g;
@@ -57,7 +60,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Game.APPLET_HEIGHT //600
 		//Dimension: Width, Height
 				
-		
+		background = null;
 		
 		//Instantiate a new Board with a default constructor
 		board = new Board(this);
@@ -86,8 +89,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 		stratPanel.setSelectPanel(selectPanel);
 		
-		
-		
 		//Instantiate a new Button with text "Run". 
 		goButton = new RunButton("RUN!");
 		//Indicate that our goButton should have an ActionListener to listen for a press.
@@ -104,11 +105,20 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		topLevel.add(Box.createHorizontalGlue());
 		topLevel.add(stratPanel);
 		
+		
+		
+		
 		bottomLevel = new JPanel();
 		bottomLevel.setLayout(new BoxLayout(bottomLevel, BoxLayout.LINE_AXIS));
 		bottomLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5)));
 		bottomLevel.add(descriptionPanel);
 		bottomLevel.add(goButton);
+		
+		Color myGreenBkg = Color.getHSBColor((float).3, (float).35,(float) .8);
+		board.setBackground(myGreenBkg);
+		topLevel.setBackground(myGreenBkg);
+		setBackground(myGreenBkg);
+		bottomLevel.setBackground(myGreenBkg);
 		
 		add(topLevel, BorderLayout.NORTH);
 		add(bottomLevel, BorderLayout.SOUTH);
@@ -141,7 +151,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	
 	@Override
 	public void paintComponent(Graphics theGraphic) {
+		Graphics2D g = (Graphics2D) theGraphic;
+		if (background != null){
+	      	g.drawImage(background, 0, 0, null);
+	    }
+		
 		super.paintComponent(theGraphic);
+		
 		
 		game.validate();
 		
@@ -171,38 +187,38 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		Level l1 = new Level(Board.unitDimension, board); 
 		l1.setPlayerSpawnPosition(4, 5);
 		l1.addGoalAtPosition(7,5, game.getBufferedImage("doghouseGrass.png")); 
-		l1.setDescription("Welcome to the game! Add your commands to your strategy using"
-						  +" the buttons on the right! Then, hit the GO! button and try and"
+		l1.setDescription("Welcome to Buster's Big Break! Add your commands to your strategy using"
+						  +" the buttons on the left! Then, hit the RUN! button and try and"
 						  +" see if you reach the goal!"); 
 		l1.makeRightMoveAvailable();
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-//		levels.add(l1);
+		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
 		l2.setPlayerSpawnPosition(3, 5);
 		l2.addGoalAtPosition(7,2, game.getBufferedImage(Game.goalImage));
-		l2.setDescription("OH WOW! NOW YOU HAVE TO TURN!"); 
+		l2.setDescription("Careful, now! You'll have to turn this time..."); 
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-//		levels.add(l2); 
+		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
 		l3.setPlayerSpawnPosition(3, 5);
 		l3.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
 		l3.addObstacleAtPosition(5, 5, game.getBufferedImage(Game.enemyImage));
-		l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
+		l3.setDescription("UH OH! The evil cats know we're here! Try using your commands to navigate around it."); 
 		
 		l3.makeDownMoveAvailable();
 		l3.makeLeftMoveAvailable();
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		//l3.setCustomFunctionsAvailable(true);
-//		levels.add(l3);
+		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -218,7 +234,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(4);
 		
-//		getLevels().add(l4); 
+		getLevels().add(l4); 
 		
 		//Level 5: this makes while loops more complicated 
 		Level l5 = new Level(Board.unitDimension, board); 
@@ -230,9 +246,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.makeWhileMoveAvailable();
 
 		l5.setNumOfUsableMoves(4);
-		l5.setDescription("Here you will need a slightly trickier while loop!");
+		l5.setDescription("This one is really challenging!  Think you're up to the challenge?  Here you will need a slightly trickier while loop!");
 		
-//		getLevels().add(l5); 
+		getLevels().add(l5); 
 		
 		//Level 6: this introduces user defined functions
 		Level l6 = new Level(Board.unitDimension, board); 
@@ -243,9 +259,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setCustomFunctionsAvailable(true); 
 		l6.setNumOfUsableMoves(5); 
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
-				+ "not put that in your own function so you don't have to keep re-adding it!" );
+				+ " not put that in your own function so you don't have to keep re-adding it!  Just click the create a function button and select moves like normal!" );
 		getLevels().add(l6); 
-		
 		
 		//Level 7: This makes the player put their own functions in a while loop
 		Level l7 = new Level(Board.unitDimension, board); 
@@ -287,7 +302,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.addObstacleAtPosition(2, 7, evil);
 		l8.addObstacleAtPosition(2, 8, evil);
 		l8.addObstacleAtPosition(2, 9, evil);
-		l8.setDescription("good luck on this extremely difficult level bwhahahaha");
+		l8.setDescription("Good luck on this extremely difficult level bwhahahaha.  The cats are everywhere.");
 		l8.makeRightMoveAvailable();
 		l8.makeUpMoveAvailable();
 		l8.makeDownMoveAvailable();
@@ -328,6 +343,14 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	public void setCurrentLevelIndex(int currentLevelIndex) {
 		this.currentLevelIndex = currentLevelIndex;
 	}
+	
+	public static BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();
+        return resizedImage;  
+    }  
 	
 	
 }

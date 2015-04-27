@@ -3,6 +3,7 @@ import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class Game extends Applet {
 	InstructionsPanel instructionalPanel;
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
+	private BufferedImage background;
 	
 	/* PUBLIC SETTINGS */
 	public final String FONT_NAME = "Helvetica";
@@ -50,12 +52,13 @@ public class Game extends Applet {
 	
 	// Image sources	
 	public static final String goalImage = "doghouseGrassSuperLight.png";
-	public static final String userImage = "r.png";
+	public static final String userImage = "dogSpriteSheetGreen.png";
 	public static final String trailImage = "pawPrintsGrassSuperLight.png";
 	public static final String welcomeBackgroundImage = "titleBkg.png";
 	public static final String instructionsImage = "instructionsBkg.png";
 	public static final String teacherImage = "pawPrintsGrassSuperLight.png";
 	public static final String enemyImage = "enemyEvil.png";
+	public static final String natureImage = "natureBkg1.png";
 	
 	private static URL base; 							//the location of the Applet
 	
@@ -125,11 +128,11 @@ public class Game extends Applet {
 		//Create the main game panel and set its layout.
 		mainGamePanel = new MainGamePanel(this); 
 		
-		Image i = getImage(base, "r.png"); 
+		Image i = getImage(base, Game.userImage); 
 		if(i == null)
 			System.out.println("I NULL"); 
 		
-		mainGamePanel.setPlayerImage(getBufferedImage("r.png")); 
+		mainGamePanel.setPlayerImage(getBufferedImage(Game.userImage)); 
 		mainGamePanel.setPlayerVisitedMark(getBufferedImage(Game.trailImage)); 
 		
 		// add the panel to our applet

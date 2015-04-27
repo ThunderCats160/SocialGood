@@ -56,7 +56,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//The description Panel holds the goButton, as well as an introductory text.
 		descriptionPanel = new DescriptionPanel(goButton, "HELLO"); 
 		//We set the location and layout of the descriptionPanel to be along the BoxLayout's Page_Axis
-		descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
+		//descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
 		
 		//Initializes the Level onto the board
 		initLevels(); 
@@ -86,9 +86,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Dimension: Width, Height
 		BorderLayout b = new BorderLayout();
 		setLayout(b);
-		Dimension selectP = new Dimension(Game.APPLET_WIDTH/6,(int) (Game.APPLET_HEIGHT/2.4));
+		Dimension selectP = new Dimension(Game.APPLET_WIDTH/5,(int) (Game.APPLET_HEIGHT/2.4));
 		Dimension boardP = new Dimension((int)(Game.APPLET_WIDTH/2), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension stratP = new Dimension((int)(Game.APPLET_WIDTH/4), (int)(Game.APPLET_HEIGHT/2.133333));
+		Dimension stratP = new Dimension((int)(Game.APPLET_WIDTH/6), (int)(Game.APPLET_HEIGHT/2.133333));
 		Dimension descP = new Dimension((int)(Game.APPLET_WIDTH/1), (int)(Game.APPLET_HEIGHT/9.6));
 		selectPanel.setPreferredSize(selectP);
 		add(selectPanel, BorderLayout.LINE_START);

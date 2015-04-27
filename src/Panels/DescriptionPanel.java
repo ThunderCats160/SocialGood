@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.Border;
 
 import Buttons.RunButton;
 import Main.Game;
@@ -37,13 +39,15 @@ public class DescriptionPanel extends JPanel{
 		setMinimumSize(descP);
 		
 		setBackground(Color.WHITE);
+		setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		Dimension labelP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4) -40, (int)(Game.APPLET_HEIGHT/5) - 60);
 		currentDesc.setPreferredSize(labelP);
 		
-		
 		JLabel title = new JLabel("Tips and Tricks");
+		title.setFont(new Font("Arial", Font.BOLD, 20));
 		add(title);
+		currentDesc.setFont(new Font("Arial", Font.PLAIN, 16));
 		add(currentDesc, BorderLayout.SOUTH); 
 	}
 	

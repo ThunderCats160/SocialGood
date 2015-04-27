@@ -104,7 +104,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		
 		//Instantiate a new Button with text "Go". 
-		goButton = new RunButton("GO!");
+		goButton = new RunButton("Run!");
 		//Indicate that our goButton should have an ActionListener to listen for a press.
 		goButton.addActionListener(this);
 		size = goButton.getPreferredSize();

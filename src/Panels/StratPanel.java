@@ -110,8 +110,7 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		
 		currentNumberMovesAvailable --; 
 		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
-		revalidate();
-		repaint();
+		validate();
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function

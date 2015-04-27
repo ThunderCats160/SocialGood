@@ -23,9 +23,7 @@ public class moveAdderAL implements ActionListener {
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
 		
-		//System.out.println("OKAY"); 
-		//System.out.println(toAdd.getName()); 
-		//System.out.println(toAdd.moveList.size()) ;
+
 	}
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {

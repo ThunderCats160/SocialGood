@@ -109,16 +109,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 				selectPanel.revalidate();
 			}
 		}
-		
-		
-		
-		
-		
+			
 	}
 
-	
-
-
-
-	
 }

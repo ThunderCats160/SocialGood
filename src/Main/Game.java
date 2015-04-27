@@ -38,7 +38,7 @@ public class Game extends Applet {
 	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
 	public MainGamePanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
 	TitlePanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
-	JPanel instructionalPanel;
+	InstructionsPanel instructionalPanel;
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
 	
@@ -52,14 +52,11 @@ public class Game extends Applet {
 	public static final String userImage = "r.png";
 	public static final String trailImage = "pawPrintsGrassSuperLight.png";
 	public static final String welcomeBackgroundImage = "titleBkg.png";
-	public static final String instructionsImage = "pawPrintsGrassSuperLight.png";
+	public static final String instructionsImage = "instructionsBkg.png";
 	public static final String teacherImage = "pawPrintsGrassSuperLight.png";
 	
 	private static URL base; 							//the location of the Applet
 	
-	public Game(){
-		initGUI();
-	}
 	
 	public void init()
 	{
@@ -80,6 +77,7 @@ public class Game extends Applet {
 			e.printStackTrace();
 		} 
 		
+		initGUI();
 		
 		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
 		Image instructionsPic = getImage(base, Game.instructionsImage); 
@@ -95,8 +93,6 @@ public class Game extends Applet {
 		teacherPanel.add(teacherPicLabel); 
 		
 		initIntroScreen();
-		
-		
 	}
 
 	//Init function to put values into the instantiated objects above.
@@ -164,7 +160,11 @@ public class Game extends Applet {
 	
 	public void createInstructionPanel() {
 		instructionalPanel = new InstructionsPanel(this);
-		
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				instructionalPanel.setBackgroundImg(getBufferedImage(instructionsImage));
+			}
+		});
 		
 	}
 	
@@ -198,13 +198,12 @@ public class Game extends Applet {
 
 	public URL getBase()
 	{
-		return base; 
+		return base;
 	}
 	public static BufferedImage getBufferedImage(String imageName)
 	{
 		try {
 			URL newU = new URL(base, imageName);
-			//System.out.println(newU);
 			return ImageIO.read(newU); 	
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();

@@ -9,15 +9,35 @@ import javax.swing.JButton;
 
 public class TitlePageButton extends JButton {
 	
-	public static Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.9);
+	public Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.9);
+	public Color fontColor = Color.BLACK;
 	private String button_text;
-	private final int button_width = 200;
-	private final int button_height = 50;
+	private int xStagger;
+	private int button_width = 200;
+	private int button_height = 50;
 	
-	public TitlePageButton(String text) {
+	public TitlePageButton(String text, int staggerX) {
 		super(text);
 		button_text = text;
+		xStagger = staggerX;
 		initGUI();
+	}
+	
+	public void setButtonColor(Color c){
+		buttonColor = c;
+	}
+	
+	public void setFontColor(Color c){
+		fontColor = c;
+	}
+	
+	public void setSize(int width, int height){
+		button_width = width;
+		button_height = height;
+		Dimension dim = new Dimension(button_width, button_height);
+		setPreferredSize(dim);
+		setMaximumSize(dim);
+		setMinimumSize(dim);
 	}
 	
 	public void initGUI(){
@@ -33,8 +53,8 @@ public class TitlePageButton extends JButton {
 		super.paintComponent(g);
 		g.setColor(buttonColor);
 		g.fillRect(0, 0, button_width, button_height);
-		g.setColor(Color.BLACK);
+		g.setColor(fontColor);
 		g.setFont(new Font("Arial", Font.PLAIN, 24));
-		g.drawString(button_text, 40, 33);
+		g.drawString(button_text, xStagger, 33);
 	}
 }

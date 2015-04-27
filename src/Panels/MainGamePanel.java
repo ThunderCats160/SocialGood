@@ -273,7 +273,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l7.setCustomFunctionsAvailable(true); 
 		l7.setDescription("Hey, this looks familiar! But this time you need your own functions");
 		
-		getLevels().add(l7); 
+		//getLevels().add(l7); 
 		
 		//Level 8: this introduces conditional Statements
 		Level l8 = new Level(Board.unitDimension, board);

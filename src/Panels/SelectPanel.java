@@ -123,6 +123,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		
 		
 		if(customFunctions)
+			
 			addDefineFunctionButton(); 
 		
 	}
@@ -195,12 +196,13 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	{
 		JButton dfb = new JButton("Create a function!"); 
 		dfb.addActionListener(this); 
-
+		
 		JButton removeFunctionButton = new JButton("Remove a function"); 
 		removeFunctionButton.addActionListener(new removeFunctionButtonAL(this)); 
 		
 
 		add(dfb); 
+		add(Box.createRigidArea(new Dimension(5,5)));
 		add(removeFunctionButton); 
 	}
 	

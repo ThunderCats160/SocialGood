@@ -22,6 +22,7 @@ import ActionListeners.instructionsPanelButtonAL;
 import ActionListeners.introPanelButtonAL;
 import ActionListeners.teacherPanelButtonAL;
 import Panels.DescriptionPanel;
+import Panels.InstructionsPanel;
 import Panels.MainGamePanel;
 
 
@@ -173,28 +174,15 @@ public class Game extends Applet {
 	
 	
 	public void createInstructionPanel() {
-		instructionalPanel = new JPanel();
+		instructionalPanel = new InstructionsPanel(this);
 		
-		instructionalPanel.setLayout(new BoxLayout(instructionalPanel, BoxLayout.PAGE_AXIS));
 		
-		instructionalPanel.add(new JLabel("Instructions:"));
-		
-		JButton b = new JButton("Go back"); 
-		b.addActionListener(new InstructionPanelGoBackAL(this));
-		instructionalPanel.add(b); 
 	}
 	
 	public void createTeacherPanel(){
-		teacherPanel = new JPanel(); 
-		
-		teacherPanel.setLayout(new BoxLayout(teacherPanel, BoxLayout.PAGE_AXIS));
-		
-		teacherPanel.add(new JLabel("Here is where the instructions for teachers goes")); 
-		
-		JButton b = new JButton("Go back"); 
-		b.addActionListener(new TeacherPanelGoBackAL(this)); 
-		teacherPanel.add(b);
+		teacherPanel = new TeacherPanel(this); 
 		activeView = "Teacher Panel";
+		
 	}
 	
 	@Override

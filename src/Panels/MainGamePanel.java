@@ -194,7 +194,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		levels.add(l1);
+		//levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -204,7 +204,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		levels.add(l2); 
+		//levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
@@ -218,7 +218,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		//l3.setCustomFunctionsAvailable(true);
-		levels.add(l3);
+		//levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -260,7 +260,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setNumOfUsableMoves(5); 
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
 				+ " not put that in your own function so you don't have to keep re-adding it!  Just click the create a function button and select moves like normal!" );
-		getLevels().add(l6); 
+		//getLevels().add(l6); 
 
 		
 		//Level 7: This makes the player put their own functions in a while loop

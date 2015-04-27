@@ -71,7 +71,6 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	
 	public void setupCreateFunctionPanel(){
 		createFunctionPanel = new FunctionCreatingPanel(stratPanel, this, board, game); 
-
 	}
 	
 	//InitGUI must be called as a default
@@ -190,10 +189,9 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	//Runs when the user clicks the "Create a function" button
 	public void actionPerformed(ActionEvent arg0) {
 		
-		game.mainGamePanel.remove(stratPanel);
-		game.mainGamePanel.setVisible(false);
-		game.mainGamePanel.setVisible(true); 
-		game.mainGamePanel.add(createFunctionPanel, "East"); 
+		game.mainGamePanel.topLevel.remove(stratPanel);
+		game.mainGamePanel.repaint();
+		game.mainGamePanel.topLevel.add(createFunctionPanel); 
 		
 		addingToFunction = true; 
 
@@ -217,7 +215,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	//Adds a button that will add the related function
 	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
 	{
-		JButton b = new JButton(name); 
+		JButton b = new JButton(name);
 		
 		String SMovesInFunction = "<html>";
 		 

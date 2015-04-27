@@ -28,8 +28,14 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 	
 	public FunctionCreatingPanel(StratPanel newStratPanel, SelectPanel newSp, Board b, Game g)
 	{
-		
 		moveList = new ArrayList<Move>(); 
+		
+		Dimension stratP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
+		setPreferredSize(stratP);
+		setSize(stratP);
+		setMaximumSize(stratP);
+		setMinimumSize(stratP);
+		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); 
 		
 		stratPanel = newStratPanel; 
@@ -37,9 +43,9 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		board = b; 
 		game = g; 
 		
-		
 		addNameField(); 
 		addDoneButton(); 
+		
 		
 		setVisible(true);
 		validate();

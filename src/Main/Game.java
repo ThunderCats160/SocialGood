@@ -55,6 +55,7 @@ public class Game extends Applet {
 	public static final String welcomeBackgroundImage = "titleBkg.png";
 	public static final String instructionsImage = "instructionsBkg.png";
 	public static final String teacherImage = "pawPrintsGrassSuperLight.png";
+	public static final String enemyImage = "enemyEvil.png";
 	
 	private static URL base; 							//the location of the Applet
 	

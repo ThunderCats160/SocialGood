@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import ActionListeners.InstructionPanelGoBackAL;
 import ActionListeners.TeacherPanelGoBackAL;
@@ -36,7 +37,7 @@ public class Game extends Applet {
 	// PROPERTIES
 	DescriptionPanel descriptionPanel; 	//Instantiates the Panel which displays the description of the level. 
 	public MainGamePanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
-	JPanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
+	TitlePanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	JPanel instructionalPanel;
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
@@ -93,7 +94,7 @@ public class Game extends Applet {
 					
 		teacherPanel.add(teacherPicLabel); 
 		
-		
+		initIntroScreen();
 		
 		
 	}
@@ -117,7 +118,7 @@ public class Game extends Applet {
 		createTeacherPanel(); 
 		
 		//Show the introduction Screen
-		initIntroScreen(); 
+		
 		activeView = "Intro Screen";
 	}
 	
@@ -151,7 +152,13 @@ public class Game extends Applet {
 		
 		introScreenPanel = new TitlePanel(this);
 		
+		
 		add(introScreenPanel); 
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				introScreenPanel.setBackgroundImg(getBufferedImage(welcomeBackgroundImage));
+			}
+		});
 	}
 	
 	
@@ -197,6 +204,7 @@ public class Game extends Applet {
 	{
 		try {
 			URL newU = new URL(base, imageName);
+			System.out.println(newU);
 			return ImageIO.read(newU); 	
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();

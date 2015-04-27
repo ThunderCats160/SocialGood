@@ -82,6 +82,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		setMaximumSize(selectP);
 		setMinimumSize(selectP);
 		setVisible(true);
+		setBackground(Color.RED);
 	}
 	
 	public void setAddToWhile(boolean value){

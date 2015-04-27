@@ -1,7 +1,5 @@
 package Panels;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -23,25 +21,28 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	private ArrayList<Move> currentStrat;
 	private SelectPanel selectPanel; 
 	public int currentNumberMovesAvailable; 
-	private int maxAvailableMoves; 
+	private int maxAvailableMoves;
+	private Game game;
 	JLabel numAvailableMovesLabel; 
 	
 	//Default Constructor for the StratPanel
-	public StratPanel()
+	public StratPanel(Game g)
 	{
-		
+		game = g;
 		maxAvailableMoves = 10; 
 		currentNumberMovesAvailable = maxAvailableMoves; 
 		initGUI();
 
-		currentStrat = new ArrayList<Move>();	 
+		currentStrat = new ArrayList<Move>();
 
 	}
-	public void setSelectPanel(SelectPanel newSelectPanel) {
+	public void setSelectPanel(SelectPanel newSelectPanel)
+	{
 		selectPanel = newSelectPanel; 
 	}
 	
-	public void setMaxAvailableMoves(int num){
+	public void setMaxAvailableMoves(int num)
+	{
 		maxAvailableMoves = num; 
 		currentNumberMovesAvailable = maxAvailableMoves; 
 		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
@@ -50,7 +51,8 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	public void decrementAvailableMoves()
 	{
 		currentNumberMovesAvailable --; 
-		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable); 
+		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		revalidate();
 	}
 	
 	//When the clear button is pressed, clear the current strategy and repaint the StratPanel
@@ -64,12 +66,11 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		selectPanel.resetSelectOptions();
 		
 		currentNumberMovesAvailable = maxAvailableMoves; 
-		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable); 
+		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
 		
-		revalidate();
-		repaint();
+		game.getMainGamePanel().revalidate();
+		game.getMainGamePanel().repaint();
 	}
-	
 	
 	//Instantiate the location of the Panel, and create the button that can be used to clear the current strategy
 	public void initGUI()
@@ -89,10 +90,10 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		clearButton.addActionListener(this);
 
 		add(clearButton);
-		setVisible(true);
+		
+		
 	}
 
-	
 	//Getter for the current Strategy
 	public ArrayList<Move> getCurrentStrat(){
 		return  currentStrat;
@@ -105,6 +106,8 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		
 		currentNumberMovesAvailable --; 
 		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		revalidate();
+		repaint();
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function

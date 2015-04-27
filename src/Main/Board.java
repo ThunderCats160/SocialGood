@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import Moves.Move;
 import Moves.conditionalMove;
+import Panels.MainGamePanel;
 import Units.Player;
 import Units.Unit;
 
@@ -26,18 +27,20 @@ public class Board extends JPanel{
 	private Level currentLevel;
 	//Player holds the position of the user's character (currently a block) in XY format.
 	private Player player;
+	private MainGamePanel mainPanel;
 	//Constants needed for drawing.
 	static public int unitDimension = (int) ((int) Game.APPLET_HEIGHT * .08);
 
 
 	//Default constructor. Calls for the player to be made
-	public Board() {
+	public Board(MainGamePanel mgp) {
+		mainPanel = mgp;
 		player = new Player(Color.blue, 5, 10, unitDimension);
 		initGUI();
 	}
 	
 	public void initGUI(){
-		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4), (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
+		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 3) - 60, (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
 		setPreferredSize(boardP);
 		setSize(boardP);
 		setMaximumSize(boardP);
@@ -60,8 +63,8 @@ public class Board extends JPanel{
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		revalidate();
-		repaint();
+		mainPanel.revalidate();
+		mainPanel.repaint();
 		
 	}
 	//Getter for the currentLevel stored in the Board.

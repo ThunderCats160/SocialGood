@@ -1,6 +1,7 @@
 package Panels;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -52,11 +54,11 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Game.APPLET_WIDTH //960
 		//Game.APPLET_HEIGHT //600
 		//Dimension: Width, Height
-		//	set the layout to null cause we're hard AF		
-		setLayout(null);
+				
+		
 		
 		//Instantiate a new Board with a default constructor
-		board = new Board();
+		board = new Board(this);
 		// place the board
 		Dimension size = board.getPreferredSize();
 		board.setBounds((int) Game.APPLET_WIDTH / 5 + 50, 0, size.width, size.height);
@@ -71,7 +73,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		initLevels();
 		
 		//Instantiate a new StrategyPanel
-		stratPanel = new StratPanel();
+		stratPanel = new StratPanel(game);
 		selectPanel = new SelectPanel(stratPanel, game, board);
 		//Sets the number of available moves
 		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
@@ -80,27 +82,31 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		stratPanel.setSelectPanel(selectPanel);
 		
 		
-		// place it on the board
-		size = stratPanel.getPreferredSize();
-		stratPanel.setBounds((int) 4 * (Game.APPLET_WIDTH / 5), 0, size.width, size.height);
-		
-		// place the strat panel on the board
-		size = selectPanel.getPreferredSize();
-		selectPanel.setBounds(5, 5, size.width - 5, size.height - 5);
-		
 		
 		//Instantiate a new Button with text "Run". 
 		goButton = new RunButton("RUN!");
 		//Indicate that our goButton should have an ActionListener to listen for a press.
 		goButton.addActionListener(this);
-		size = goButton.getPreferredSize();
-		goButton.setBounds((int) 4 * (Game.APPLET_WIDTH / 5), (int)(Game.APPLET_HEIGHT/5) * 4, size.width, size.height);
 		
-		add(selectPanel);
-		add(board);
-		add(stratPanel);
-		add(descriptionPanel);
-		add(goButton);
+		setLayout(new BorderLayout());
+		
+		JPanel topLevel = new JPanel();
+		topLevel.setLayout(new BoxLayout(topLevel, BoxLayout.LINE_AXIS));
+		topLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5) * 4));
+		topLevel.add(selectPanel);
+		topLevel.add(Box.createHorizontalGlue());
+		topLevel.add(board);
+		topLevel.add(Box.createHorizontalGlue());
+		topLevel.add(stratPanel);
+		
+		JPanel bottomLevel = new JPanel();
+		bottomLevel.setLayout(new BoxLayout(bottomLevel, BoxLayout.LINE_AXIS));
+		bottomLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5)));
+		bottomLevel.add(descriptionPanel);
+		bottomLevel.add(goButton);
+		
+		add(topLevel, BorderLayout.NORTH);
+		add(bottomLevel, BorderLayout.SOUTH);
 		 
 		
 		setVisible(true);

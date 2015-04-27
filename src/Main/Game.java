@@ -135,6 +135,7 @@ public class Game extends Applet {
 		add(mainGamePanel);
 		activeView = "Main Game";
 		
+		mainGamePanel.setVisible(true);
 		// repaint everything
 		refreshApplet();
 	}

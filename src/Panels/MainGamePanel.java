@@ -72,24 +72,24 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		//Instantiate a new StrategyPanel
 		stratPanel = new StratPanel();
+		selectPanel = new SelectPanel(stratPanel, game, board);
 		//Sets the number of available moves
 		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
+		//Display the moves available to the player based on the currentLevelIndex. 
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		stratPanel.setSelectPanel(selectPanel);
+		
+		
 		// place it on the board
 		size = stratPanel.getPreferredSize();
 		stratPanel.setBounds((int) 4 * (Game.APPLET_WIDTH / 5), 0, size.width, size.height);
 		
-		//	Build and add select panel
-		//Instantiate a new SelectPanel
-		selectPanel = new SelectPanel(stratPanel, game, board);
-		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
-		stratPanel.setSelectPanel(selectPanel);
 		// place the strat panel on the board
 		size = selectPanel.getPreferredSize();
 		selectPanel.setBounds(5, 5, size.width - 5, size.height - 5);
 		
 		
-		//Instantiate a new Button with text "Go". 
+		//Instantiate a new Button with text "Run". 
 		goButton = new RunButton("RUN!");
 		//Indicate that our goButton should have an ActionListener to listen for a press.
 		goButton.addActionListener(this);
@@ -124,58 +124,27 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
 			
 			selectPanel.resetNumFunctions();
-			
 		}
 
 	}
 	
 	@Override
 	public void paintComponent(Graphics theGraphic) {
-		if (SwingUtilities.isEventDispatchThread()){
-			super.paintComponent(theGraphic);
-			
-			game.validate();
-			
-			selectPanel.revalidate();
-			selectPanel.repaint();
-			
-			board.revalidate();
-			board.repaint();
-			
-			stratPanel.revalidate();
-			stratPanel.repaint();
-			
-			descriptionPanel.revalidate();
-			descriptionPanel.repaint();
-		} else {
-			try {
-				super.paintComponent(theGraphic);
-				SwingUtilities.invokeAndWait(new Runnable(){
-					public void run(){
-						
-						game.validate();
-						
-						selectPanel.revalidate();
-						selectPanel.repaint();
-						
-						board.revalidate();
-						board.repaint();
-						
-						stratPanel.revalidate();
-						stratPanel.repaint();
-						
-						descriptionPanel.revalidate();
-						descriptionPanel.repaint();
-					}
-				});
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		super.paintComponent(theGraphic);
+		
+		game.validate();
+		
+		selectPanel.revalidate();
+		selectPanel.repaint();
+		
+		board.revalidate();
+		board.repaint();
+		
+		stratPanel.revalidate();
+		stratPanel.repaint();
+		
+		descriptionPanel.revalidate();
+		descriptionPanel.repaint();
 			
 	}
 	

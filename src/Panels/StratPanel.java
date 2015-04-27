@@ -58,7 +58,7 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	{
 		currentStrat.clear(); 
 		removeAll(); 
-		reinitGUI(); 
+		initGUI(); 
 		
 		selectPanel.setAddToWhile(false); 
 		selectPanel.resetSelectOptions();
@@ -89,22 +89,9 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		clearButton.addActionListener(this);
 
 		add(clearButton);
-		setBackground(Color.RED);
 		setVisible(true);
-		validate();
 	}
 
-	public void reinitGUI(){
-		numAvailableMovesLabel = new JLabel("Moves Left: " + currentNumberMovesAvailable);
-		add(numAvailableMovesLabel); 
-		
-		JButton clearButton = new JButton();
-		clearButton.setText("CLEAR");
-		clearButton.addActionListener(this);
-
-		add(clearButton);
-		setBackground(Color.RED);
-	}
 	
 	//Getter for the current Strategy
 	public ArrayList<Move> getCurrentStrat(){

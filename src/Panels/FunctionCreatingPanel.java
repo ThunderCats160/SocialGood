@@ -1,5 +1,7 @@
 package Panels;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.ArrayList; 
 
 import javax.swing.BoxLayout;
@@ -9,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ActionListeners.DoneWithFunctionAL;
+import Buttons.TitlePageButton;
 import Interfaces.resettablePanel;
 import Main.Board;
 import Main.Game;
@@ -38,6 +41,10 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); 
 		
+		JLabel title = new JLabel("Function Builder");
+		title.setFont(new Font("Arial", Font.BOLD, 20));
+		add(title);
+		
 		stratPanel = newStratPanel; 
 		sp = newSp; 
 		board = b; 
@@ -45,7 +52,7 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		
 		addNameField(); 
 		addDoneButton(); 
-		
+		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
 		
 		setVisible(true);
 		validate();
@@ -56,8 +63,8 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 	
 	public void addDoneButton()
 	{
-		JButton butt = new JButton("Done!"); 
-		
+		TitlePageButton butt = new TitlePageButton("Finish Function", 4); 
+		butt.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 50));
 		butt.addActionListener(new DoneWithFunctionAL(stratPanel, this, sp, board, game));
 		
 		add(butt); 

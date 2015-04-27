@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Buttons.TitlePageButton;
 import Interfaces.resettablePanel;
 import Main.Game;
 import Moves.Move;
@@ -62,7 +63,7 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	{
 		currentStrat.clear(); 
 		removeAll(); 
-		initGUI(); 
+		reinitGUI();
 		
 		selectPanel.setAddToWhile(false); 
 		selectPanel.resetSelectOptions();
@@ -90,18 +91,34 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		add(title);
 		
 		numAvailableMovesLabel = new JLabel("Moves Remaining: " + currentNumberMovesAvailable);
+		numAvailableMovesLabel.setFont( new Font ("Arial", Font.BOLD, 16));
 		add(numAvailableMovesLabel); 
 		
 		
-		JButton clearButton = new JButton();
-		clearButton.setText("CLEAR STRATEGY");
+		TitlePageButton clearButton = new TitlePageButton("Clear Strategy", 4); 
+		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 50));
 		clearButton.addActionListener(this);
 
-		setBackground(new Color((float).99, (float).99, (float).99, (float).3));
+		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
 		
 		add(clearButton);
+			
+	}
+	
+	private void reinitGUI(){
+		JLabel title = new JLabel("Your Strategy");
+		title.setFont(new Font("Arial", Font.BOLD, 24));
+		add(title);
+		
+		numAvailableMovesLabel = new JLabel("Moves Remaining: " + currentNumberMovesAvailable);
+		numAvailableMovesLabel.setFont( new Font ("Arial", Font.BOLD, 16));
+		add(numAvailableMovesLabel); 
 		
 		
+		TitlePageButton clearButton = new TitlePageButton("Clear Strategy", 4); 
+		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 50));
+		clearButton.addActionListener(this);
+		add(clearButton);
 	}
 
 	//Getter for the current Strategy
@@ -115,9 +132,13 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		currentStrat.add(toAdd);
 		
 		currentNumberMovesAvailable --; 
+		
 		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
-		revalidate();
-		repaint();
+		numAvailableMovesLabel.revalidate();
+		numAvailableMovesLabel.repaint();
+		game.getMainGamePanel().revalidate();
+		game.getMainGamePanel().repaint();
+		
 	}
 
 	//When the clear button is pressed,  it calls the clearCurrentStrat function

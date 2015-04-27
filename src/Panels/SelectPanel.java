@@ -18,6 +18,7 @@ import ActionListeners.functionMoveAdderAL;
 import ActionListeners.moveAdderAL;
 import ActionListeners.removeFunctionButtonAL;
 import ActionListeners.whileMoveAdderAL;
+import Buttons.MoveButton;
 import Interfaces.resettablePanel;
 import Main.Board;
 import Main.Game;
@@ -90,7 +91,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		title.setFont(new Font("Arial", Font.BOLD, 24));
 		add(title);
 		
-		setBackground(new Color((float).99, (float).99, (float).99, (float).3));
+		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
 		
 		setVisible(true);
 	}
@@ -128,8 +129,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		for(int i = 0; i < selectOptions.size(); i ++)
 		{
 			//Create a new button for each option in the ArrayList
-			JButton b = new JButton();
-			b.setText(selectOptions.get(i).getName());
+			MoveButton b = new MoveButton(selectOptions.get(i).getName(), 15);
 			
 			if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
 				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
@@ -160,8 +160,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 			for(int i = 0; i < selectOptions.size(); i ++)
 			{
 				//Create a new button for each option in the ArrayList
-				JButton b = new JButton();
-				b.setText(selectOptions.get(i).getName());
+				MoveButton b = new MoveButton(selectOptions.get(i).getName(), 15);
 				
 				if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
 					b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
@@ -181,8 +180,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 			{
 			
 				if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove){
-					JButton b = new JButton();
-					b.setText(selectOptions.get(i).getName());
+					MoveButton b = new MoveButton(selectOptions.get(i).getName(), 15);
 					b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
 					add(b);
 				}
@@ -215,13 +213,15 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	}
 
 	public void addDefineFunctionButton()
-	{
-		JButton dfb = new JButton("Create a function!"); 
+	{	
+		add(Box.createVerticalGlue());
+		MoveButton dfb = new MoveButton("Create a function", 15); 
+		dfb.setButtonColor(new Color(36, 125, 13));
 		dfb.addActionListener(this); 
 		
-		JButton removeFunctionButton = new JButton("Remove a function"); 
+		MoveButton removeFunctionButton = new MoveButton("Remove a function", 15); 
+		removeFunctionButton.setButtonColor(Color.RED);
 		removeFunctionButton.addActionListener(new removeFunctionButtonAL(this)); 
-		
 
 		add(dfb); 
 		add(Box.createRigidArea(new Dimension(5,5)));
@@ -232,7 +232,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	//Adds a button that will add the related function
 	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
 	{
-		JButton b = new JButton(name);
+		MoveButton b = new MoveButton(name, 15);
 		
 		String SMovesInFunction = "<html>";
 		 

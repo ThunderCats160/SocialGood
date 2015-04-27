@@ -11,11 +11,11 @@ import Main.Game;
 
 public class MoveButton extends JButton {
 	
-	public Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.9);
-	public Color fontColor = Color.BLACK;
+	public Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.46);
+	public Color fontColor = Color.WHITE;
 	private String button_text;
 	private int xStagger;
-	private int button_width = ((int)(Game.APPLET_WIDTH / 5) - 40);
+	private int button_width = ((int)(Game.APPLET_WIDTH / 5) - 15);
 	private int button_height = 30;
 	
 	public MoveButton(String text, int staggerX) {
@@ -58,6 +58,6 @@ public class MoveButton extends JButton {
 		g.drawRect(0, 0, button_width - 1, button_height - 1);
 		g.setColor(fontColor);
 		g.setFont(new Font("Arial", Font.PLAIN, 18));
-		g.drawString(button_text, xStagger, 10);
+		g.drawString(button_text, xStagger, 20);
 	}
 }

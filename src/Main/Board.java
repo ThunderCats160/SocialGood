@@ -78,15 +78,35 @@ public class Board extends JPanel{
 			if (moveList.get(i).isWhileMove) {		
 				//Get the list of moves that the whileMove is to perform over and over
 				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
-				
+				System.out.println("inside the while loop");
 				//Only perform the loop 10 times in case of an infinite
 				for(int j = 0; j < 10; j++)
 				{
-					//System.out.println(whileList.size()); 
+					System.out.println(whileList.size()); 
 					for(int p = 0; p < whileList.size(); p++)
-					{					
-						if(doMove(whileList.get(p), g))
+					{		
+						
+						if(whileList.get(p).name == "Conditional")
+						{
+							if(checkConditional(moveList.get(p)))
+							{
+								//get the list of moves that the conditionalMove is to perform over and over
+								ArrayList<Move> conditionalList = moveList.get(p).getMoveList();
+								
+								
+								for(int index = 0; index < conditionalList.size(); index++)
+								{
+									if(doMove(conditionalList.get(index), g))
+									{
+//										System.out.println("in the conditional statement");
+										return true;
+									}
+								}
+							}
+						}
+						else if(doMove(whileList.get(p), g))
 							return true; 
+						
 					}
 				}
 				
@@ -113,10 +133,10 @@ public class Board extends JPanel{
 					
 					for(int index = 0; index < conditionalList.size(); index++)
 					{
-						System.out.println(index + ": move");
+						System.out.println("in the conditional statement");
 						if(doMove(conditionalList.get(index), g))
 						{
-							System.out.println(index + ": insideMove");
+//							System.out.println("in the conditional statement");
 							return true;
 						}
 					}
@@ -168,13 +188,9 @@ public class Board extends JPanel{
 			System.out.println("in the red square condition");
 			checker = true;
 		}
-		if(condition == "blue square" && player.getX() == 9 && player.getY() == 4)
-		{
-			checker = true;
-		}
+	
 		
 		//red square 2,5
-		//blue square 9,4
 			
 		return checker;
 	}

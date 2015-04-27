@@ -167,15 +167,15 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		}
 	}
 	
-	//To reset what the whileMove holds. 
+ 
 	public void resetSelectOptions()
 	{
-		for(int i = 0; i< getSelectOptions().size(); i++)
-		{
-		
-			getSelectOptions().get(i).clearMoveList(); 
-			//System.out.println(selectOptions.get(i).getMoveList().size()); 
-		}
+//		for(int i = 0; i< getSelectOptions().size(); i++)
+//		{
+//		
+//			getSelectOptions().get(i).clearMoveList(); 
+//			//System.out.println(selectOptions.get(i).getMoveList().size()); 
+//		}
 	}
 
 

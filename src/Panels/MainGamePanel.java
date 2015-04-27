@@ -210,7 +210,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 5: this introduces conditional Statements
 		Level l5 = new Level(Board.unitDimension, board);
 		l5.setPlayerSpawnPosition(0, 5);
-		l5.addGoalAtPosition(9, 5, game.getBufferedImage("doghouse.png"));
+		l5.addGoalAtPosition(9, 4, game.getBufferedImage("doghouse.png"));
 		l5.addObstacleAtPosition(2, 0, game.getBufferedImage("dragon_new.png"));
 		l5.addObstacleAtPosition(2, 1, game.getBufferedImage("dragon_new.png"));
 		l5.addObstacleAtPosition(2, 2, game.getBufferedImage("dragon_new.png"));

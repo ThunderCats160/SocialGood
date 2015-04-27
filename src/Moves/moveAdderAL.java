@@ -30,11 +30,11 @@ public class moveAdderAL implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		//Add the selected move to the Strategy Panel
-		if(selectPanel.getAddToWhile()){
+		if(selectPanel.getAddToConditional()){
 			stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
 		}
 		
-		else if(selectPanel.getAddToConditional())
+		else if(selectPanel.getAddToWhile())
 		{
 			stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd);
 		}

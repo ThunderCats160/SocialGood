@@ -218,7 +218,11 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.makeWhileMoveAvailable();
 
 		l5.setNumOfUsableMoves(4);
+		l5.setDescription("Here you will need a slightly trickier while loop!");
+		
 		getLevels().add(l5); 
+		
+		//Level 6: this introduces user defined functions
 		
 		
 		//Level 8: this introduces conditional Statements

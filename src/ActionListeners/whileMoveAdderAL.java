@@ -40,20 +40,17 @@ public class whileMoveAdderAL implements ActionListener {
 		{
 			fcp.addMove(toAdd); 
 			fcp.revalidate(); 
-		}
-		else
-		{
+			selectPanel.getGame().getMainGamePanel().repaint();
+		} else {
 			//Only add the move if the user has moves available
-			if(stratPanel.currentNumberMovesAvailable > 0)
-			{
+			if(stratPanel.currentNumberMovesAvailable > 0) {
 				//Add the selected move to the Strategy Panel
 				stratPanel.addMove(toAdd); 
 
 				stratPanel.add(new JLabel("While(true):")); 
 				selectPanel.setAddToWhile(true); 
 				
-				stratPanel.revalidate();
-				selectPanel.revalidate();
+				selectPanel.getGame().getMainGamePanel().repaint();
 			}
 			
 		}

@@ -2,6 +2,7 @@ package Panels;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 
 		stratPanel = newStratPanel;
 		
+		
+		
 		addingToWhile = false; 
 		removingFunction = false; 
 		addingToConditional = false;
@@ -75,17 +78,26 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	
 	//InitGUI must be called as a default
 	public void initGUI() {
+		setLayout(new BoxLayout( this, BoxLayout.PAGE_AXIS));
+		
 		Dimension selectP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
 		setPreferredSize(selectP);
 		setSize(selectP);
 		setMaximumSize(selectP);
 		setMinimumSize(selectP);
+		
+		JLabel title = new JLabel("Available Moves");
+		title.setFont(new Font("Arial", Font.BOLD, 24));
+		add(title);
+		
 		setVisible(true);
+		
 		setBackground(Color.RED);
 	}
 	
 	public void setAddToWhile(boolean value){
 		addingToWhile = value;
+		game.getMainGamePanel().repaint();
 	}
 
 	public boolean getAddToWhile(){
@@ -106,6 +118,11 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	public void setSelectOptions(ArrayList<Move> newOptions, Boolean customFunctions){
 
 		removeAll();
+		// re-add our title
+		JLabel title = new JLabel("Available Moves");
+		title.setFont(new Font("Arial", Font.BOLD, 24));
+		add(title);
+		
 		selectOptions = newOptions;
 		//Iterates through
 		for(int i = 0; i < selectOptions.size(); i ++)

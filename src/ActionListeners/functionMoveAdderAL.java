@@ -58,8 +58,7 @@ public class functionMoveAdderAL implements ActionListener {
 			stratPanel.add(new JLabel(toAdd.name)); 
 		}
 		
-		stratPanel.revalidate();
-		stratPanel.repaint();	
+		selectPanel.getGame().getMainGamePanel().repaint();	
 	}
 
 }

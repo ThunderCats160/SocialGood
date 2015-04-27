@@ -37,10 +37,10 @@ public class RunButton extends JButton {
 			g.setColor(buttonColor);
 			g.fillRect(0, 0, button_width, button_height);
 			g.setColor(Color.BLACK);
+			g.drawRect(0, 0, button_width, button_height -1);
 			g.setFont(new Font("Arial", Font.BOLD, 60));
-			g.drawString(button_text, 25, 80);
+			g.drawString(button_text, 25, 72);
 		}
-
 
 	}
 

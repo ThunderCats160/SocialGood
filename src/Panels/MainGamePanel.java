@@ -296,10 +296,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.setNumOfUsableMoves(15);
 		
 		getLevels().add(l8);
-
-		
-		
-		
 		
 		//Load the correct Level.
 		board.setCurrentLevel(getLevels().get(0));

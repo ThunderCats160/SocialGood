@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Moves.Move;
@@ -215,7 +216,10 @@ public class Board extends JPanel{
 
 		//check if the player is overlapping the goal
 		if (currentLevel.getLayout().get(player.getY()).get(player.getX()).isgoal) {
-			System.out.println("golden");
+			JOptionPane.showMessageDialog(this,
+				    "You guided Buster home safely! Click OK to proceed to next level",
+				    "Congratulations!",
+				    JOptionPane.PLAIN_MESSAGE);
 			return true; 
 		}
 		

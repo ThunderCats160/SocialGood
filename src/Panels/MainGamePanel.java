@@ -233,13 +233,15 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.addObstacleAtPosition(2, 7, game.getBufferedImage("dragon_new.png"));
 		l5.addObstacleAtPosition(2, 8, game.getBufferedImage("dragon_new.png"));
 		l5.addObstacleAtPosition(2, 9, game.getBufferedImage("dragon_new.png"));
-		l5.setDescription("good luck on this extremely difficult level bwhahahaha");
+		l5.setDescription("good luck on this extremely difficult level bwhahahaha" + 
+							"Quick hint: try using a conditional statment inside of" +
+							"your loop to get Buster Home Sweet Home!");
 		l5.makeRightMoveAvailable();
 		l5.makeUpMoveAvailable();
 		l5.makeDownMoveAvailable();
 		l5.makeWhileMoveAvailable();
 		l5.makeConditionalMoveAvailable();
-		l5.setNumOfUsableMoves(15);
+		l5.setNumOfUsableMoves(5);
 		
 		getLevels().add(l5);
 		

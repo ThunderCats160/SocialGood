@@ -41,9 +41,6 @@ public class Game extends Applet {
 	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
 	
-	public final int FRAME_WIDTH = 700;	// width of our frame
-	public final int FRAME_HEIGHT = 503;// height of our frame
-	
 	/* PUBLIC SETTINGS */
 	public final String FONT_NAME = "Helvetica";
 	public static final int APPLET_WIDTH = 960;

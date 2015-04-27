@@ -1,6 +1,7 @@
 package Panels;
 
 import java.awt.Dimension;
+import java.awt.Insets;
 
 import javax.swing.JPanel;
 
@@ -20,6 +21,8 @@ public class TitlePanel extends JPanel {
 	}
 	
 	public void initGUI(){
+		setLayout(null);
+		
 		TitlePageButton getStartedButton = new TitlePageButton("Play Game");
 		TitlePageButton instructionsPageButton = new TitlePageButton("Instructions");
 		TitlePageButton teacherPageButton = new TitlePageButton("Teaching");
@@ -29,6 +32,8 @@ public class TitlePanel extends JPanel {
 		instructionsPageButton.addActionListener(new instructionsPanelButtonAL(game));
 		teacherPageButton.addActionListener(new teacherPanelButtonAL(game)); 
 		
+		Insets insets = getInsets();
+		
 		//adds these two buttons to the Intro Screen Panel
 		add(getStartedButton); 
 		add(instructionsPageButton);
@@ -36,7 +41,15 @@ public class TitlePanel extends JPanel {
 		
 		//	Absolutely Position our buttons	
 		Dimension size = getStartedButton.getPreferredSize();
-//		getStartedButton.setBounds(25 + insets.left, 5 + insets.top, size.width, size.height);
+		getStartedButton.setBounds((Game.APPLET_WIDTH / 2) - (size.width / 2), 300 + insets.top, size.width, size.height);
+		
+		size = instructionsPageButton.getPreferredSize();
+		instructionsPageButton.setBounds((Game.APPLET_WIDTH / 2) - (size.width / 2), 365 + insets.top, size.width, size.height);
+		
+		size = teacherPageButton.getPreferredSize();
+		teacherPageButton.setBounds((Game.APPLET_WIDTH / 2) - (size.width / 2), 430 + insets.top, size.width, size.height);
 	}
+	
+	
 
 }

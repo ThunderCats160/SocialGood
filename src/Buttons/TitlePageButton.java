@@ -35,6 +35,6 @@ public class TitlePageButton extends JButton {
 		g.fillRect(0, 0, button_width, button_height);
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Arial", Font.PLAIN, 24));
-		g.drawString(button_text, 38, 34);
+		g.drawString(button_text, 40, 33);
 	}
 }

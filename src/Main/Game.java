@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -165,18 +166,12 @@ public class Game extends Applet {
 				instructionalPanel.setBackgroundImg(getBufferedImage(instructionsImage));
 			}
 		});
-		
 	}
 	
 	public void createTeacherPanel(){
 		teacherPanel = new TeacherPanel(this); 
 		activeView = "Teacher Panel";
 		
-	}
-	
-	@Override
-	public void paint(Graphics theGraphic) {
-		super.paint(theGraphic);
 	}
 	
 	// GETTERS FOR OUR PRIMARY PANELS	
@@ -215,7 +210,22 @@ public class Game extends Applet {
 	}
 	
 	public void refreshApplet(){
-		validate();
-		repaint();
+		if (SwingUtilities.isEventDispatchThread()){
+			validate();
+			repaint();
+		} else {
+			try {
+				SwingUtilities.invokeAndWait(new Runnable(){
+					public void run(){
+						validate();
+						repaint();
+					}
+				});
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+		}		
 	}
 }

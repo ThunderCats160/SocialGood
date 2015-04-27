@@ -60,8 +60,8 @@ public class Board extends JPanel{
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		setVisible(false); 
-		setVisible(true); 
+		revalidate();
+		repaint();
 		
 	}
 	//Getter for the currentLevel stored in the Board.
@@ -188,8 +188,6 @@ public class Board extends JPanel{
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		repaint(); 
-		
 		//We return false to indicate that their strategy has failed.
 		return false;
 	}
@@ -239,7 +237,6 @@ public class Board extends JPanel{
 				    "You guided Buster home safely! Click OK to proceed to next level",
 				    "Congratulations!",
 				    JOptionPane.PLAIN_MESSAGE);
-
 			return true; 
 		}
 		
@@ -259,11 +256,11 @@ public class Board extends JPanel{
 	
 	//Super for drawing the Level and the Player on the board.
 	@Override
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
 		// draw the grid
 		BufferedImage grass = Game.getBufferedImage("Grass.png");
-		super.paint(g);
+		super.paintComponent(g);
 		
 		for(int i = 0; i< currentLevel.getLayout().size(); i++)
 		{

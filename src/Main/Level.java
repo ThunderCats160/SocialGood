@@ -68,8 +68,6 @@ public class Level {
 
 		numOfUsableMoves = 10; 
 		
-
-		//TODO: I have no idea what this does.
 		for(int i =0; i < horizontalSize; i ++)
 		{
 			ArrayList<Unit> toAdd = new ArrayList<Unit>();

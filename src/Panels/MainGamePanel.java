@@ -11,18 +11,13 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-
-
-
-
-
-
+import javax.swing.SwingUtilities;
 
 import Buttons.RunButton;
 import Main.Game;
@@ -47,18 +42,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	
 	private void initGUI(){
 		
-		 
-		
-		
-		
-		
 		//We set the location and layout of the descriptionPanel to be along the BoxLayout's Page_Axis
 		//descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
-		
-		
-		
-		
-		
+	
 		//Create the layout of the game:
 		//Put the Selection panel on the left side, the game board in the center, 
 		//the strategy panel on the right, and the description of the level on the bottom.
@@ -104,7 +90,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		
 		//Instantiate a new Button with text "Go". 
-		goButton = new RunButton("Run!");
+		goButton = new RunButton("RUN!");
 		//Indicate that our goButton should have an ActionListener to listen for a press.
 		goButton.addActionListener(this);
 		size = goButton.getPreferredSize();
@@ -118,16 +104,12 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		 
 		
 		setVisible(true);
-		validate();
-		repaint();
-		game.refreshApplet();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-
+		
 		//Run the Player's Strategy.
-		if(board.testStrategy(stratPanel.getCurrentStrat()))
-		{
+		if(board.testStrategy(stratPanel.getCurrentStrat())){
 			System.out.println("YOU WIN"); 
 			//If they're not at the final level, move them up to the next level.
 			if(getCurrentLevelIndex() < getLevels().size() -1)
@@ -148,22 +130,53 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	}
 	
 	@Override
-	public void paint(Graphics theGraphic) {
-		super.paint(theGraphic);
-		
-		game.validate();
-		
-		selectPanel.revalidate();
-		selectPanel.repaint();
-		
-		board.revalidate();
-		board.repaint();
-		
-		stratPanel.revalidate();
-		stratPanel.repaint();
-		
-		descriptionPanel.revalidate();
-		descriptionPanel.repaint();
+	public void paintComponent(Graphics theGraphic) {
+		if (SwingUtilities.isEventDispatchThread()){
+			super.paintComponent(theGraphic);
+			
+			game.validate();
+			
+			selectPanel.revalidate();
+			selectPanel.repaint();
+			
+			board.revalidate();
+			board.repaint();
+			
+			stratPanel.revalidate();
+			stratPanel.repaint();
+			
+			descriptionPanel.revalidate();
+			descriptionPanel.repaint();
+		} else {
+			try {
+				super.paintComponent(theGraphic);
+				SwingUtilities.invokeAndWait(new Runnable(){
+					public void run(){
+						
+						game.validate();
+						
+						selectPanel.revalidate();
+						selectPanel.repaint();
+						
+						board.revalidate();
+						board.repaint();
+						
+						stratPanel.revalidate();
+						stratPanel.repaint();
+						
+						descriptionPanel.revalidate();
+						descriptionPanel.repaint();
+					}
+				});
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			
 	}
 	
 	

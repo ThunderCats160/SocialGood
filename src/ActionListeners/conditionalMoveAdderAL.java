@@ -1,6 +1,7 @@
 package ActionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,7 +20,6 @@ public class conditionalMoveAdderAL implements ActionListener {
 	MainGamePanel mgp; 
 	private String conditional;
 	private JButton redSquare = new JButton("Red Square");
-	private JButton blueSquare = new JButton("Blue Square");
 	private JButton bracket = new JButton("}");
 	
 	
@@ -43,11 +43,9 @@ public class conditionalMoveAdderAL implements ActionListener {
 		
 		
 		redSquare.addActionListener(this);
-		blueSquare.addActionListener(this);
 		bracket.addActionListener(this);
 	
 		selectPanel.add(redSquare);
-		selectPanel.add(blueSquare);
 		
 		selectPanel.revalidate();
 		selectPanel.repaint();
@@ -68,23 +66,21 @@ public class conditionalMoveAdderAL implements ActionListener {
 			selectPanel.add(bracket);
 			selectPanel.revalidate();
 			selectPanel.repaint();
-			
 		}
-		else if(e.getSource().equals(blueSquare))
-		{
-			conditional = "Blue Square";
-			((conditionalMove) toAdd).setConditionalMove("blue square");
-			stratPanel.addMove(toAdd); 
-			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
-			selectPanel.removeAll();
-			selectPanel.reset(false);
-			selectPanel.add(bracket);
-			selectPanel.revalidate();
-			selectPanel.repaint();
-			
-		}
+		
 		else if(e.getSource().equals(bracket))
 		{
+			
+			
+			
+			ArrayList<Move> newMoveList = new ArrayList<Move>(); 
+			
+			for(int i=  0; i < toAdd.moveList.size(); i ++){
+				newMoveList.add(toAdd.moveList.get(i)); 
+			}
+			
+			
+			
 			stratPanel.add(new JLabel("}"));
 			
 			selectPanel.removeAll();
@@ -95,21 +91,63 @@ public class conditionalMoveAdderAL implements ActionListener {
 			selectPanel.repaint();
 			
 			selectPanel.setAddToConditional(false);
+			toAdd.moveList = newMoveList; 
+			
+			
+			
 		}
 		else{
+			
 		//Only add the move if the user has moves available
 			if (stratPanel.currentNumberMovesAvailable > 0) {
+				if(selectPanel.getAddToWhile())
+				{
+					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
+					stratPanel.decrementAvailableMoves();
+				}
+				
+				System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
+				
+
 				
 				selectPanel.setAddToConditional(true); 
+				
+				System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
+
+				ArrayList<Move> newMoveList = new ArrayList<Move>(); 
+				newMoveList = fixWhileLoop();
+				
+				
+				
 				selectPanel.resetSelectOptions();
+				
+
+				
 			
 				displayConditionalOptions();
-				
+
+
+				stratPanel.getCurrentStrat().get(0).moveList = newMoveList;
+
 				stratPanel.revalidate();
 				selectPanel.revalidate();
+				
+
 			}
 		}
 			
+	}
+	
+	public ArrayList<Move> fixWhileLoop()
+	{
+		ArrayList<Move> newMoveList = new ArrayList<Move>(); 
+		
+		for(int i=  0; i < stratPanel.getCurrentStrat().get(0).moveList.size(); i ++){
+			newMoveList.add(stratPanel.getCurrentStrat().get(0).moveList.get(i)); 
+		}	
+		
+		return newMoveList;
+	
 	}
 
 }

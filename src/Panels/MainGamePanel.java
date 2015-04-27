@@ -190,7 +190,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		l3.setCustomFunctionsAvailable(true);
-		levels.add(l3);
+		//levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -205,7 +205,44 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(10);
 		
-		getLevels().add(l4); 
+		//getLevels().add(l4); 
+		
+		//Level 5: this introduces conditional Statements
+		Level l5 = new Level(Board.unitDimension, board);
+		l5.setPlayerSpawnPosition(0, 5);
+		l5.addGoalAtPosition(9, 4, game.getBufferedImage("doghouse.png"));
+		l5.addObstacleAtPosition(2, 0, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 1, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 2, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(3, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(4, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(5, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(6, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(7, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(8, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(9, 3, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(3, 5, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(4, 5, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(5, 5, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(6, 5, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(7, 5, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(8, 5, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 6, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 7, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 8, game.getBufferedImage("dragon_new.png"));
+		l5.addObstacleAtPosition(2, 9, game.getBufferedImage("dragon_new.png"));
+		l5.setDescription("good luck on this extremely difficult level bwhahahaha");
+		l5.makeRightMoveAvailable();
+		l5.makeUpMoveAvailable();
+		l5.makeDownMoveAvailable();
+		l5.makeWhileMoveAvailable();
+		l5.makeConditionalMoveAvailable();
+		l5.setNumOfUsableMoves(15);
+		
+		getLevels().add(l5);
+		
+		
 		
 		
 		//Load the correct Level.

@@ -26,8 +26,7 @@ public class whileMoveAdderAL implements ActionListener {
 	
 	
 	//Constructor
-	public whileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, FunctionCreatingPanel newFCP)
-	{
+	public whileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, FunctionCreatingPanel newFCP) {
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 

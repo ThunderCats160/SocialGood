@@ -21,10 +21,12 @@ import ActionListeners.TeacherPanelGoBackAL;
 import ActionListeners.instructionsPanelButtonAL;
 import ActionListeners.introPanelButtonAL;
 import ActionListeners.teacherPanelButtonAL;
+import Buttons.TitlePageButton;
 import Panels.DescriptionPanel;
 import Panels.InstructionsPanel;
 import Panels.MainGamePanel;
 import Panels.TeacherPanel;
+import Panels.TitlePanel;
 
 
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
@@ -47,15 +49,18 @@ public class Game extends Applet {
 	public static final int APPLET_WIDTH = 960;
 	public static final int APPLET_HEIGHT = 600;
 	
+	// Image sources	
 	public static final String goalImage = "doghouseGrassSuperLight.png";
 	public static final String userImage = "r.png";
 	public static final String trailImage = "pawPrintsGrassSuperLight.png";
+	public static final String welcomeBackgroundImage = "titleBkg.png";
+	public static final String instructionsImage = "pawPrintsGrassSuperLight.png";
+	public static final String teacherImage = "pawPrintsGrassSuperLight.png";
 	
 	private static URL base; 							//the location of the Applet
 	
 	public Game(){
 		initGUI();
-		
 	}
 	
 	public void init()
@@ -74,20 +79,19 @@ public class Game extends Applet {
 		try {
 			base = new URL(substr);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		
 		
 		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
-		Image instructionsPic = getImage(base, "r.png"); 
+		Image instructionsPic = getImage(base, Game.instructionsImage); 
 		JLabel instructionsPicLabel = new JLabel(new ImageIcon(instructionsPic));
 	
 		instructionalPanel.add(instructionsPicLabel); 
 		
 		//HOW TO ADD AN IMAGE TO THE TEACHER'S SCREEN
 	
-		Image teacherPic = getImage(base, "u.png"); 
+		Image teacherPic = getImage(base, Game.teacherImage); 
 		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
 					
 		teacherPanel.add(teacherPicLabel); 
@@ -137,12 +141,7 @@ public class Game extends Applet {
 		activeView = "Main Game";
 		
 		// repaint everything
-		validate();
-		repaint();
-		
-		
-		
-		
+		refreshApplet();
 	}
 	
 	
@@ -153,22 +152,7 @@ public class Game extends Applet {
 		//Here, we introduce the point of the game, and how to play.
 		//We will also indicate to teachers the value of our game.
 		
-		//TODO:Put more text in the JLabel about the game & how to play.
-		introScreenPanel = new JPanel(); 
-		introScreenPanel.add(new JLabel("Welcome to the Game!!!")); 
-		JButton getStartedButton = new JButton("Get Started!");
-		JButton instructionsPageButton = new JButton("Instructions");
-		JButton teacherPageButton = new JButton("Instructions For Teachers"); 
-		
-		//Make sure that the button on the JPanel has a listener.
-		getStartedButton.addActionListener(new introPanelButtonAL(this));
-		instructionsPageButton.addActionListener(new instructionsPanelButtonAL(this));
-		teacherPageButton.addActionListener(new teacherPanelButtonAL(this)); 
-		
-		//adds these two buttons to the Intro Screen Panel
-		introScreenPanel.add(getStartedButton); 
-		introScreenPanel.add(instructionsPageButton);
-		introScreenPanel.add(teacherPageButton); 
+		introScreenPanel = new TitlePanel(this);
 		
 		add(introScreenPanel); 
 	}
@@ -189,7 +173,6 @@ public class Game extends Applet {
 	@Override
 	public void paint(Graphics theGraphic) {
 		super.paint(theGraphic);
-		
 	}
 	
 	// GETTERS FOR OUR PRIMARY PANELS	
@@ -217,13 +200,10 @@ public class Game extends Applet {
 	{
 		try {
 			URL newU = new URL(base, imageName);
-			return ImageIO.read(newU); 
-			
+			return ImageIO.read(newU); 	
 		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		

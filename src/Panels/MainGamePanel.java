@@ -166,7 +166,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		//levels.add(l1);
+		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -176,7 +176,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		//levels.add(l2); 
+		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
@@ -189,8 +189,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeLeftMoveAvailable();
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
-		l3.setCustomFunctionsAvailable(true);
-		//levels.add(l3);
+		//l3.setCustomFunctionsAvailable(true);
+		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -202,48 +202,89 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		l4.makeRightMoveAvailable();
 		l4.makeWhileMoveAvailable(); 
-		l4.makeConditionalMoveAvailable();
-		l4.setNumOfUsableMoves(10);
+
+		//l4.makeConditionalMoveAvailable();
+		l4.setNumOfUsableMoves(4);
 		
-		//getLevels().add(l4); 
+		getLevels().add(l4); 
 		
-		//Level 5: this introduces conditional Statements
-		Level l5 = new Level(Board.unitDimension, board);
-		l5.setPlayerSpawnPosition(0, 5);
-		l5.addRedSquareAtPosition(2,5);
-		l5.addGoalAtPosition(9, 4, game.getBufferedImage("doghouse.png"));
-		l5.addObstacleAtPosition(2, 0, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 1, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 2, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(3, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(4, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(5, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(6, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(7, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(8, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(9, 3, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(3, 5, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(4, 5, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(5, 5, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(6, 5, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(7, 5, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(8, 5, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 6, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 7, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 8, game.getBufferedImage("dragon_new.png"));
-		l5.addObstacleAtPosition(2, 9, game.getBufferedImage("dragon_new.png"));
-		l5.setDescription("good luck on this extremely difficult level bwhahahaha" + 
-							"Quick hint: try using a conditional statment inside of" +
-							"your loop to get Buster Home Sweet Home!");
+		//Level 5: this makes while loops more complicated 
+		Level l5 = new Level(Board.unitDimension, board); 
+		l5.setPlayerSpawnPosition(0, 8);
+
+		l5.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+
 		l5.makeRightMoveAvailable();
 		l5.makeUpMoveAvailable();
-		l5.makeDownMoveAvailable();
 		l5.makeWhileMoveAvailable();
-		l5.makeConditionalMoveAvailable();
-		l5.setNumOfUsableMoves(5);
+
+		l5.setNumOfUsableMoves(4);
+		l5.setDescription("Here you will need a slightly trickier while loop!");
 		
-		getLevels().add(l5);
+		getLevels().add(l5); 
+		
+		//Level 6: this introduces user defined functions
+		Level l6 = new Level(Board.unitDimension, board); 
+		l6.setPlayerSpawnPosition(0,  7);
+		l6.addGoalAtPosition(4, 5, game.getBufferedImage(game.goalImage));
+		l6.makeRightMoveAvailable();
+		l6.makeUpMoveAvailable();
+		l6.setCustomFunctionsAvailable(true); 
+		l6.setNumOfUsableMoves(5); 
+		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
+				+ "not put that in your own function so you don't have to keep re-adding it!" );
+		getLevels().add(l6); 
+		
+		
+		//Level 7: This makes the player put their own functions in a while loop
+		Level l7 = new Level(Board.unitDimension, board); 
+		l7.setPlayerSpawnPosition(0, 8);
+		l7.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+		l7.makeRightMoveAvailable();
+		l7.makeUpMoveAvailable();
+		l7.makeWhileMoveAvailable();
+		l7.setNumOfUsableMoves(2);
+		l7.setCustomFunctionsAvailable(true); 
+		l7.setDescription("Hey, this looks familiar! But this time you need your own functions");
+		
+		getLevels().add(l7); 
+		
+		//Level 8: this introduces conditional Statements
+		Level l8 = new Level(Board.unitDimension, board);
+		l8.setPlayerSpawnPosition(0, 5);
+		l8.addRedSquareAtPosition(2,5);
+		l8.addGoalAtPosition(9, 4, game.getBufferedImage("doghouse.png"));
+		l8.addObstacleAtPosition(2, 0, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 1, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 2, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(3, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(4, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(5, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(6, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(7, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(8, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(9, 3, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(3, 5, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(4, 5, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(5, 5, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(6, 5, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(7, 5, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(8, 5, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 6, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 7, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 8, game.getBufferedImage("dragon_new.png"));
+		l8.addObstacleAtPosition(2, 9, game.getBufferedImage("dragon_new.png"));
+		l8.setDescription("good luck on this extremely difficult level bwhahahaha");
+		l8.makeRightMoveAvailable();
+		l8.makeUpMoveAvailable();
+		l8.makeDownMoveAvailable();
+		l8.makeWhileMoveAvailable();
+		l8.makeConditionalMoveAvailable();
+		l8.setNumOfUsableMoves(15);
+		
+		getLevels().add(l8);
+
 		
 		
 		

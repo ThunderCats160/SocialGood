@@ -43,6 +43,7 @@ public class Level {
 	
 	//The number of moves that can be used for this
 	private int numOfUsableMoves; 
+	private int numOfUsableMovesInFunctions; 
 	
 	
 
@@ -91,6 +92,13 @@ public class Level {
 	
 	public int getNumOfUsableMoves(){
 		return numOfUsableMoves;
+	}
+	public void setNumOfUsableMovesInFunctions(int set){
+		numOfUsableMovesInFunctions = set; 
+	}
+	
+	public int getNumOfUsableMovesInFunctions(){
+		return numOfUsableMovesInFunctions;
 	}
 	
 	public void setCustomFunctionsAvailable(Boolean set)

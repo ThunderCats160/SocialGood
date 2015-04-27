@@ -204,7 +204,7 @@ public class Game extends Applet {
 	{
 		try {
 			URL newU = new URL(base, imageName);
-			System.out.println(newU);
+			//System.out.println(newU);
 			return ImageIO.read(newU); 	
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();

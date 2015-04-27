@@ -20,8 +20,8 @@ public class Unit {
 	//Constructor 
 	public Unit(Color newColor, BufferedImage newImage) {
 		color = newColor;
-		image = newImage; 
-		isgoal = false; 
+		image = newImage;
+		isgoal = false;
 		isObstacle = false; 
 		isRedSquare = false; 
 	}
@@ -29,12 +29,12 @@ public class Unit {
 	{
 		image = newImage; 
 	}
+	
 	public Color getColor() {
 		return color; 
 	}
 	
-	public Image getImage()
-	{
+	public Image getImage() {
 		return image; 
 	}
 	

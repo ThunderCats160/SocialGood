@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Main.Game;
+import Panels.TitlePanel;
 
 //When the Player indicates that they are ready to start playing the game from the button on the
 //introPanel, this class moves the display from the introPanel to the actual Game.

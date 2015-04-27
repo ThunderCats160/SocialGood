@@ -123,7 +123,6 @@ public class Player extends Unit implements ImageObserver{
 		 subI = tempsubI;
 		 */
 		 g.drawImage(subI, x, y, w, h, this); 
-		
 	}
 	
 	

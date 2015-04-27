@@ -34,8 +34,8 @@ public class DoneWithFunctionAL implements ActionListener{
 		//stratPanel.addMove(fm);
 		 
 		//Remove the function panel and re-add the strat Panel
-		game.mainGamePanel.remove(fcPanel);
-		game.mainGamePanel.add(stratPanel, "East"); 
+		game.mainGamePanel.topLevel.remove(fcPanel);
+		game.mainGamePanel.topLevel.add(stratPanel, "East"); 
  
 		game.mainGamePanel.revalidate();
 		game.mainGamePanel.repaint();

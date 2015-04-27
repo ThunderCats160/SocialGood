@@ -14,8 +14,8 @@ public class RunButton extends JButton {
 		// TODO Auto-generated constructor stub
 		public static Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.9);
 		private String button_text;
-		private final int button_width = (int)(Game.APPLET_WIDTH/6);
-		private final int button_height = (int)(Game.APPLET_HEIGHT/2.133333);
+		private final int button_width = (int)(Game.APPLET_WIDTH/5);
+		private final int button_height = (int)(Game.APPLET_HEIGHT/5 - 20);
 		
 		public RunButton(String text) {
 			super(text);
@@ -37,10 +37,10 @@ public class RunButton extends JButton {
 			g.setColor(buttonColor);
 			g.fillRect(0, 0, button_width, button_height);
 			g.setColor(Color.BLACK);
-			g.setFont(new Font("Arial", Font.PLAIN, 24));
-			g.drawString(button_text, 40, 33);
+			g.drawRect(0, 0, button_width, button_height -1);
+			g.setFont(new Font("Arial", Font.BOLD, 60));
+			g.drawString(button_text, 25, 72);
 		}
-
 
 	}
 

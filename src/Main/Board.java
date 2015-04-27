@@ -1,5 +1,6 @@
 package Main;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 
 import Moves.Move;
 import Moves.conditionalMove;
+import Panels.MainGamePanel;
 import Units.Player;
 import Units.Unit;
 
@@ -25,18 +27,24 @@ public class Board extends JPanel{
 	private Level currentLevel;
 	//Player holds the position of the user's character (currently a block) in XY format.
 	private Player player;
+	private MainGamePanel mainPanel;
 	//Constants needed for drawing.
-	static public int unitDimension = 55;
+	static public int unitDimension = (int) ((int) Game.APPLET_HEIGHT * .08);
 
 
 	//Default constructor. Calls for the player to be made
-	public Board() {
+	public Board(MainGamePanel mgp) {
+		mainPanel = mgp;
 		player = new Player(Color.blue, 5, 10, unitDimension);
 		initGUI();
 	}
 	
 	public void initGUI(){
-		
+		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 3) - 60, (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
+		setPreferredSize(boardP);
+		setSize(boardP);
+		setMaximumSize(boardP);
+		setMinimumSize(boardP);
 	}
 	
 	public void setPlayerImage(BufferedImage image)
@@ -55,8 +63,8 @@ public class Board extends JPanel{
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		setVisible(false); 
-		setVisible(true); 
+		mainPanel.revalidate();
+		mainPanel.repaint();
 		
 	}
 	//Getter for the currentLevel stored in the Board.
@@ -183,8 +191,6 @@ public class Board extends JPanel{
 		player.setX(currentLevel.playerSpawnX);
 		player.setY(currentLevel.playerSpawnY);
 		
-		repaint(); 
-		
 		//We return false to indicate that their strategy has failed.
 		return false;
 	}
@@ -234,7 +240,6 @@ public class Board extends JPanel{
 				    "You guided Buster home safely! Click OK to proceed to next level",
 				    "Congratulations!",
 				    JOptionPane.PLAIN_MESSAGE);
-
 			return true; 
 		}
 		
@@ -254,11 +259,11 @@ public class Board extends JPanel{
 	
 	//Super for drawing the Level and the Player on the board.
 	@Override
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
 		// draw the grid
 		BufferedImage grass = Game.getBufferedImage("Grass.png");
-		super.paint(g);
+		super.paintComponent(g);
 		
 		for(int i = 0; i< currentLevel.getLayout().size(); i++)
 		{

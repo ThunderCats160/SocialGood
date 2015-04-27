@@ -1,6 +1,8 @@
 package Panels;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -52,6 +54,8 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 
 		stratPanel = newStratPanel;
 		
+		
+		
 		addingToWhile = false; 
 		removingFunction = false; 
 		addingToConditional = false;
@@ -70,16 +74,30 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	
 	public void setupCreateFunctionPanel(){
 		createFunctionPanel = new FunctionCreatingPanel(stratPanel, this, board, game); 
-
 	}
 	
 	//InitGUI must be called as a default
 	public void initGUI() {
+		setLayout(new BoxLayout( this, BoxLayout.PAGE_AXIS));
 		
+		Dimension selectP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
+		setPreferredSize(selectP);
+		setSize(selectP);
+		setMaximumSize(selectP);
+		setMinimumSize(selectP);
+		
+		JLabel title = new JLabel("Available Moves");
+		title.setFont(new Font("Arial", Font.BOLD, 24));
+		add(title);
+		
+		setVisible(true);
+		
+		setBackground(Color.RED);
 	}
 	
 	public void setAddToWhile(boolean value){
 		addingToWhile = value;
+		game.getMainGamePanel().repaint();
 	}
 
 	public boolean getAddToWhile(){
@@ -100,6 +118,11 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	public void setSelectOptions(ArrayList<Move> newOptions, Boolean customFunctions){
 
 		removeAll();
+		// re-add our title
+		JLabel title = new JLabel("Available Moves");
+		title.setFont(new Font("Arial", Font.BOLD, 24));
+		add(title);
+		
 		selectOptions = newOptions;
 		//Iterates through
 		for(int i = 0; i < selectOptions.size(); i ++)
@@ -183,10 +206,9 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	//Runs when the user clicks the "Create a function" button
 	public void actionPerformed(ActionEvent arg0) {
 		
-		game.mainGamePanel.remove(stratPanel);
-		game.mainGamePanel.setVisible(false);
-		game.mainGamePanel.setVisible(true); 
-		game.mainGamePanel.add(createFunctionPanel, "East"); 
+		game.mainGamePanel.topLevel.remove(stratPanel);
+		game.mainGamePanel.repaint();
+		game.mainGamePanel.topLevel.add(createFunctionPanel); 
 		
 		addingToFunction = true; 
 
@@ -210,7 +232,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	//Adds a button that will add the related function
 	public void addNewFunctionButton(ArrayList<Move> functionMoves, String name)
 	{
-		JButton b = new JButton(name); 
+		JButton b = new JButton(name);
 		
 		String SMovesInFunction = "<html>";
 		 

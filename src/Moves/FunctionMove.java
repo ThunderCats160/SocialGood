@@ -16,8 +16,7 @@ public class FunctionMove extends Move{
 		super(d, b, s); 
 		name = newName; 	
 		moveList = newMoveList;
-		isFunctionMove =true; 
-
+		isFunctionMove = true; 
 	}
 	
 	public void doMove(Player player, Graphics g)

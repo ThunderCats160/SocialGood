@@ -1,6 +1,7 @@
 package Panels;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -11,18 +12,14 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-
-
-
-
-
-
+import javax.swing.SwingUtilities;
 
 import Buttons.RunButton;
 import Main.Game;
@@ -39,6 +36,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	private ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
 	private int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
 	Game game;							// reference to the game
+	public JPanel topLevel;
+	public JPanel bottomLevel;
 	
 	public MainGamePanel(Game g) {
 		game = g;
@@ -47,70 +46,81 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	
 	private void initGUI(){
 		
-		 
-		//Instantiate a new Board with a default constructor
-		board = new Board();
-		//Instantiate a new Button with text "Go". 
-		goButton = new RunButton("GO!");
-		//Indicate that our goButton should have an ActionListener to listen for a press.
-		goButton.addActionListener(this);
-		
-		//The description Panel holds the goButton, as well as an introductory text.
-		descriptionPanel = new DescriptionPanel(goButton, "HELLO"); 
 		//We set the location and layout of the descriptionPanel to be along the BoxLayout's Page_Axis
 		//descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
-		
-		//Initializes the Level onto the board
-		initLevels(); 
-		
-		//Instantiate a new StrategyPanel
-		stratPanel = new StratPanel();
-		
-		//Instantiate a new SelectPanel
-		selectPanel = new SelectPanel(stratPanel, game, board);
-
-		stratPanel.setSelectPanel(selectPanel);
-		
-		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
-
-		//Sets the number of available moves
-		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
-		
-		
+	
 		//Create the layout of the game:
 		//Put the Selection panel on the left side, the game board in the center, 
 		//the strategy panel on the right, and the description of the level on the bottom.
 		
-		
-		//Game.APPLET_WIDTH //600
-		//Game.APPLET_HEIGHT //960
+		//Game.APPLET_WIDTH //960
+		//Game.APPLET_HEIGHT //600
 		//Dimension: Width, Height
-		BorderLayout b = new BorderLayout();
-		setLayout(b);
-		Dimension selectP = new Dimension(Game.APPLET_WIDTH/5,(int) (Game.APPLET_HEIGHT/2.4));
-		Dimension boardP = new Dimension((int)(Game.APPLET_WIDTH/2), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension stratP = new Dimension((int)(Game.APPLET_WIDTH/6), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension descP = new Dimension((int)(Game.APPLET_WIDTH/1), (int)(Game.APPLET_HEIGHT/9.6));
-		selectPanel.setPreferredSize(selectP);
-		add(selectPanel, BorderLayout.LINE_START);
-		board.setPreferredSize(boardP);
-		add(board, BorderLayout.CENTER);	
-		stratPanel.setPreferredSize(stratP);
-		add(stratPanel, "East");
-		descriptionPanel.setPreferredSize(descP);
-		add(descriptionPanel, "South");
+				
 		
+		
+		//Instantiate a new Board with a default constructor
+		board = new Board(this);
+		// place the board
+		Dimension size = board.getPreferredSize();
+		board.setBounds((int) Game.APPLET_WIDTH / 5 + 50, 0, size.width, size.height);
+		
+		//The description Panel holds the goButton, as well as an introductory text.
+		descriptionPanel = new DescriptionPanel("HELLO"); 
+		size = descriptionPanel.getPreferredSize();
+		descriptionPanel.setBounds(0, (int) (Game.APPLET_HEIGHT / 5) * 4 + 20, size.width, size.height);
+		
+		
+		//Initializes the Level onto the board
+		initLevels();
+		
+		//Instantiate a new StrategyPanel
+		stratPanel = new StratPanel(game);
+		//Sets the number of available moves
+		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
+		
+		selectPanel = new SelectPanel(stratPanel, game, board);
+		
+		
+		//Display the moves available to the player based on the currentLevelIndex. 
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		stratPanel.setSelectPanel(selectPanel);
+		
+		
+		
+		//Instantiate a new Button with text "Run". 
+		goButton = new RunButton("RUN!");
+		//Indicate that our goButton should have an ActionListener to listen for a press.
+		goButton.addActionListener(this);
+		
+		setLayout(new BorderLayout());
+		
+		topLevel = new JPanel();
+		topLevel.setLayout(new BoxLayout(topLevel, BoxLayout.LINE_AXIS));
+		topLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5) * 4));
+		topLevel.add(selectPanel);
+		topLevel.add(Box.createHorizontalGlue());
+		topLevel.add(board);
+		topLevel.add(Box.createHorizontalGlue());
+		topLevel.add(stratPanel);
+		
+		bottomLevel = new JPanel();
+		bottomLevel.setLayout(new BoxLayout(bottomLevel, BoxLayout.LINE_AXIS));
+		bottomLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5)));
+		bottomLevel.add(descriptionPanel);
+		bottomLevel.add(goButton);
+		
+		add(topLevel, BorderLayout.NORTH);
+		add(bottomLevel, BorderLayout.SOUTH);
+		 
 		
 		setVisible(true);
-		game.refreshApplet();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-
+		
 		//Run the Player's Strategy.
-		if(board.testStrategy(stratPanel.getCurrentStrat()))
-		{
+		if(board.testStrategy(stratPanel.getCurrentStrat())){
 			System.out.println("YOU WIN"); 
 			//If they're not at the final level, move them up to the next level.
 			if(getCurrentLevelIndex() < getLevels().size() -1)
@@ -125,14 +135,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
 			
 			selectPanel.resetNumFunctions();
-			
 		}
 
 	}
 	
 	@Override
-	public void paint(Graphics theGraphic) {
-		super.paint(theGraphic);
+	public void paintComponent(Graphics theGraphic) {
+		super.paintComponent(theGraphic);
 		
 		game.validate();
 		
@@ -147,6 +156,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		descriptionPanel.revalidate();
 		descriptionPanel.repaint();
+			
 	}
 	
 	
@@ -168,7 +178,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		levels.add(l1);
+//		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -178,13 +188,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		levels.add(l2); 
+//		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
 		l3.setPlayerSpawnPosition(3, 5);
 		l3.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
-		l3.addObstacleAtPosition(5, 5, game.getBufferedImage("dragon_new.png"));
+		l3.addObstacleAtPosition(5, 5, game.getBufferedImage(Game.enemyImage));
 		l3.setDescription("WOW! AN OBSTACLE! TRY USING COMMANDS TO NAVIGATE AROUND IT"); 
 		
 		l3.makeDownMoveAvailable();
@@ -192,7 +202,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		//l3.setCustomFunctionsAvailable(true);
-		levels.add(l3);
+//		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -208,7 +218,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(4);
 		
-		getLevels().add(l4); 
+//		getLevels().add(l4); 
 		
 		//Level 5: this makes while loops more complicated 
 		Level l5 = new Level(Board.unitDimension, board); 
@@ -222,7 +232,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.setNumOfUsableMoves(4);
 		l5.setDescription("Here you will need a slightly trickier while loop!");
 		
-		getLevels().add(l5); 
+//		getLevels().add(l5); 
 		
 		//Level 6: this introduces user defined functions
 		Level l6 = new Level(Board.unitDimension, board); 
@@ -252,30 +262,31 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		//Level 8: this introduces conditional Statements
 		Level l8 = new Level(Board.unitDimension, board);
+		BufferedImage evil = game.getBufferedImage(Game.enemyImage);
 		l8.setPlayerSpawnPosition(0, 5);
 		l8.addRedSquareAtPosition(2,5);
-		l8.addGoalAtPosition(9, 4, game.getBufferedImage("doghouse.png"));
-		l8.addObstacleAtPosition(2, 0, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 1, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 2, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(3, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(4, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(5, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(6, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(7, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(8, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(9, 3, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(3, 5, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(4, 5, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(5, 5, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(6, 5, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(7, 5, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(8, 5, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 6, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 7, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 8, game.getBufferedImage("dragon_new.png"));
-		l8.addObstacleAtPosition(2, 9, game.getBufferedImage("dragon_new.png"));
+		l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));
+		l8.addObstacleAtPosition(2, 0, evil);
+		l8.addObstacleAtPosition(2, 1, evil);
+		l8.addObstacleAtPosition(2, 2, evil);
+		l8.addObstacleAtPosition(2, 3, evil);
+		l8.addObstacleAtPosition(3, 3, evil);
+		l8.addObstacleAtPosition(4, 3, evil);
+		l8.addObstacleAtPosition(5, 3, evil);
+		l8.addObstacleAtPosition(6, 3, evil);
+		l8.addObstacleAtPosition(7, 3, evil);
+		l8.addObstacleAtPosition(8, 3, evil);
+		l8.addObstacleAtPosition(9, 3, evil);
+		l8.addObstacleAtPosition(3, 5, evil);
+		l8.addObstacleAtPosition(4, 5, evil);
+		l8.addObstacleAtPosition(5, 5, evil);
+		l8.addObstacleAtPosition(6, 5, evil);
+		l8.addObstacleAtPosition(7, 5, evil);
+		l8.addObstacleAtPosition(8, 5, evil);
+		l8.addObstacleAtPosition(2, 6, evil);
+		l8.addObstacleAtPosition(2, 7, evil);
+		l8.addObstacleAtPosition(2, 8, evil);
+		l8.addObstacleAtPosition(2, 9, evil);
 		l8.setDescription("good luck on this extremely difficult level bwhahahaha");
 		l8.makeRightMoveAvailable();
 		l8.makeUpMoveAvailable();
@@ -285,16 +296,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.setNumOfUsableMoves(15);
 		
 		getLevels().add(l8);
-
-		
-		
-		
 		
 		//Load the correct Level.
 		board.setCurrentLevel(getLevels().get(0));
 		descriptionPanel.setDescription(getLevels().get(0).getDescription()); 
 	}
 
+	
 	public void setPlayerImage(BufferedImage image)
 	{
 		board.setPlayerImage(image);

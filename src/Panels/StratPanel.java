@@ -1,4 +1,6 @@
 package Panels;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Interfaces.resettablePanel;
+import Main.Game;
 import Moves.Move;
 
 
@@ -19,18 +22,19 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	private ArrayList<Move> currentStrat;
 	private SelectPanel selectPanel; 
 	public int currentNumberMovesAvailable; 
-	private int maxAvailableMoves; 
+	private int maxAvailableMoves;
+	private Game game;
 	JLabel numAvailableMovesLabel; 
 	
 	//Default Constructor for the StratPanel
-	public StratPanel()
+	public StratPanel(Game g)
 	{
-		
+		game = g;
 		maxAvailableMoves = 10; 
 		currentNumberMovesAvailable = maxAvailableMoves; 
 		initGUI();
 
-		currentStrat = new ArrayList<Move>();	 
+		currentStrat = new ArrayList<Move>();
 
 	}
 	public void setSelectPanel(SelectPanel newSelectPanel)
@@ -42,15 +46,14 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	{
 		maxAvailableMoves = num; 
 		currentNumberMovesAvailable = maxAvailableMoves; 
-		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
 	}
 	
 	public void decrementAvailableMoves()
 	{
 		currentNumberMovesAvailable --; 
-		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
-		setVisible(false); 
-		setVisible(true); 
+		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
+		revalidate();
 	}
 	
 	//When the clear button is pressed, clear the current strategy and repaint the StratPanel
@@ -64,23 +67,33 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		selectPanel.resetSelectOptions();
 		
 		currentNumberMovesAvailable = maxAvailableMoves; 
-		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
 		
-		setVisible(false); 
-		setVisible(true); 
-
-		repaint();
+		game.getMainGamePanel().revalidate();
+		game.getMainGamePanel().repaint();
 	}
 	
 	//Instantiate the location of the Panel, and create the button that can be used to clear the current strategy
 	public void initGUI()
 	{
-		numAvailableMovesLabel = new JLabel("Moves Left: " + currentNumberMovesAvailable);
-		add(numAvailableMovesLabel); 
+		Dimension stratP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
+		setPreferredSize(stratP);
+		setSize(stratP);
+		setMaximumSize(stratP);
+		setMinimumSize(stratP);
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		
+		JLabel title = new JLabel("Your Strategy");
+		title.setFont(new Font("Arial", Font.BOLD, 24));
+		add(title);
+		
+		numAvailableMovesLabel = new JLabel("Moves Remaining: " + currentNumberMovesAvailable);
+		add(numAvailableMovesLabel); 
+		
+		
 		JButton clearButton = new JButton();
-		clearButton.setText("CLEAR");
+		clearButton.setText("CLEAR STRATEGY");
 		clearButton.addActionListener(this);
 
 		add(clearButton);
@@ -99,7 +112,7 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		currentStrat.add(toAdd);
 		
 		currentNumberMovesAvailable --; 
-		numAvailableMovesLabel.setText("Moves Left: " + currentNumberMovesAvailable);
+		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
 		revalidate();
 		repaint();
 	}

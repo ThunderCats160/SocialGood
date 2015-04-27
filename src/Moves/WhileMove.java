@@ -14,7 +14,7 @@ public class WhileMove extends Move{
 	public WhileMove(String d, Board b, BufferedImage s)
 	{
 		super(d, b, s); 
-		name = "While"; 
+		name = "LOOP"; 
 		//moveList.add(new LeftMove("d", b, s)); 
 		
 		isWhileMove = true; 

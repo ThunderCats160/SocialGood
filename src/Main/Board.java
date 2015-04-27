@@ -89,18 +89,18 @@ public class Board extends JPanel{
 				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
 				//System.out.println("inside the while loop");
 				//Only perform the loop 10 times in case of an infinite
-				for(int j = 0; j < 10; j++)
+				for(int whileLoopCounter = 0; whileLoopCounter < 10; whileLoopCounter++)
 				{
 					//System.out.println(whileList.size()); 
-					for(int p = 0; p < whileList.size(); p++)
+					for(int whileListCounter = 0; whileListCounter < whileList.size(); whileListCounter++)
 					{		
 						
-						if(whileList.get(p).name == "Conditional")
+						if(whileList.get(whileListCounter).name == "Conditional")
 						{
-							if(checkConditional(moveList.get(p)))
+							if(checkConditional(moveList.get(whileListCounter)))
 							{
 								//get the list of moves that the conditionalMove is to perform over and over
-								ArrayList<Move> conditionalList = moveList.get(p).getMoveList();
+								ArrayList<Move> conditionalList = moveList.get(whileListCounter).getMoveList();
 								
 								
 								for(int index = 0; index < conditionalList.size(); index++)
@@ -113,20 +113,20 @@ public class Board extends JPanel{
 								}
 							}
 						}
-						else if(whileList.get(p).isFunctionMove){
-							ArrayList<Move> functionList = whileList.get(p).getMoveList(); 
+						else if(whileList.get(whileListCounter).isFunctionMove){
+							ArrayList<Move> functionList = whileList.get(whileListCounter).getMoveList(); 
 							
-							//System.out.println("HERE");
-							//System.out.println(functionList.size()); 
+							System.out.println("HERE");
+							System.out.println(functionList.size()); 
 							
 							
-							for(int r = 0; r< functionList.size(); r++){
-								System.out.println(j); 
-								if(doMove(functionList.get(r), g))
+							for(int functionListCounter = 0; functionListCounter< functionList.size(); functionListCounter++){
+								System.out.println(functionListCounter); 
+								if(doMove(functionList.get(functionListCounter), g))
 									return true; 
 							}
 						}
-						else if(doMove(whileList.get(p), g))
+						else if(doMove(whileList.get(whileListCounter), g))
 							return true; 
 						
 					}

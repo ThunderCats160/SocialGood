@@ -183,7 +183,7 @@ public class Board extends JPanel{
 		System.out.println(condition);
 		
 
-		if(condition == "red square" && player.getX() == 2 && player.getY() == 5)
+		if(condition == "red square" && currentLevel.getUnitAtPosition(player.getX(), player.getY()).isRedSquare)
 		{
 			System.out.println("in the red square condition");
 			checker = true;
@@ -251,7 +251,12 @@ public class Board extends JPanel{
 
 				Unit current = currentLevel.getLayout().get(i).get(j);
 				
-				if(current.getImage() != null)
+				if(current.isRedSquare)
+				{
+					g.setColor(current.getColor());
+					g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2); 
+				}
+				else if(current.getImage() != null)
 				{
 					//System.out.println("NOT NULL"); 
 					g.drawImage(current.getImage(), j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2, player); 

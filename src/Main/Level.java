@@ -186,5 +186,15 @@ public class Level {
 		
 		
 	}
+	
+	public void addRedSquareAtPosition(int X, int Y){
+		levelLayout.get(Y).get(X).isRedSquare = true; 
+		levelLayout.get(Y).get(X).setColor(Color.red); 
+		levelLayout.get(Y).get(X).setImage(null);
+	}
+	
+	public Unit getUnitAtPosition(int X, int Y){
+		return levelLayout.get(Y).get(X); 
+	}
 
 }

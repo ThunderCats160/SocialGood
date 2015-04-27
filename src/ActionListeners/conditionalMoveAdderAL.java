@@ -106,13 +106,13 @@ public class conditionalMoveAdderAL implements ActionListener {
 					stratPanel.decrementAvailableMoves();
 				}
 				
-				System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
+				//System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
 				
 
 				
 				selectPanel.setAddToConditional(true); 
 				
-				System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
+				//System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
 
 				ArrayList<Move> newMoveList = new ArrayList<Move>(); 
 				newMoveList = fixWhileLoop();
@@ -126,8 +126,8 @@ public class conditionalMoveAdderAL implements ActionListener {
 			
 				displayConditionalOptions();
 
-
-				stratPanel.getCurrentStrat().get(0).moveList = newMoveList;
+				if(stratPanel.getCurrentStrat().size() > 0)
+					stratPanel.getCurrentStrat().get(0).moveList = newMoveList;
 
 				stratPanel.revalidate();
 				selectPanel.revalidate();
@@ -142,9 +142,12 @@ public class conditionalMoveAdderAL implements ActionListener {
 	{
 		ArrayList<Move> newMoveList = new ArrayList<Move>(); 
 		
-		for(int i=  0; i < stratPanel.getCurrentStrat().get(0).moveList.size(); i ++){
-			newMoveList.add(stratPanel.getCurrentStrat().get(0).moveList.get(i)); 
-		}	
+		if(stratPanel.getCurrentStrat().size() > 0){
+			for(int i=  0; i < stratPanel.getCurrentStrat().get(0).moveList.size(); i ++){
+				newMoveList.add(stratPanel.getCurrentStrat().get(0).moveList.get(i)); 
+			}	
+		}
+		
 		
 		return newMoveList;
 	

@@ -15,12 +15,15 @@ public class Unit {
 	public Boolean isgoal; 
 	public Boolean isObstacle; 
 	
+	public Boolean isRedSquare; 
+	
 	//Constructor 
 	public Unit(Color newColor, BufferedImage newImage) {
 		color = newColor;
 		image = newImage; 
 		isgoal = false; 
 		isObstacle = false; 
+		isRedSquare = false; 
 	}
 	public void setImage(BufferedImage newImage)
 	{
@@ -35,4 +38,7 @@ public class Unit {
 		return image; 
 	}
 	
+	public void setColor(Color newColor){
+		color = newColor; 
+	}
 }

@@ -234,7 +234,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(4);
 		
-		getLevels().add(l4); 
+		//getLevels().add(l4); 
 		
 		//Level 5: this makes while loops more complicated 
 		Level l5 = new Level(Board.unitDimension, board); 
@@ -248,7 +248,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.setNumOfUsableMoves(4);
 		l5.setDescription("This one is really challenging!  Think you're up to the challenge?  Here you will need a slightly trickier while loop!");
 		
-		getLevels().add(l5); 
+		//getLevels().add(l5); 
 		
 		//Level 6: this introduces user defined functions
 		Level l6 = new Level(Board.unitDimension, board); 
@@ -261,6 +261,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
 				+ " not put that in your own function so you don't have to keep re-adding it!  Just click the create a function button and select moves like normal!" );
 		getLevels().add(l6); 
+
 		
 		//Level 7: This makes the player put their own functions in a while loop
 		Level l7 = new Level(Board.unitDimension, board); 
@@ -273,7 +274,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l7.setCustomFunctionsAvailable(true); 
 		l7.setDescription("Hey, this looks familiar! But this time you need your own functions");
 		
-		//getLevels().add(l7); 
+		getLevels().add(l7); 
 		
 		//Level 8: this introduces conditional Statements
 		Level l8 = new Level(Board.unitDimension, board);

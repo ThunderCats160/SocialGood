@@ -121,7 +121,7 @@ public class Board extends JPanel{
 							
 							
 							for(int r = 0; r< functionList.size(); r++){
-								System.out.println(j); 
+								System.out.println(r); 
 								if(doMove(functionList.get(r), g))
 									return true; 
 							}

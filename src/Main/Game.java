@@ -50,7 +50,7 @@ public class Game extends Applet {
 	
 	// Image sources	
 	public static final String goalImage = "doghouseGrassSuperLight.png";
-	public static final String userImage = "r.png";
+	public static final String userImage = "dogSpriteSheetGreen.png";
 	public static final String trailImage = "pawPrintsGrassSuperLight.png";
 	public static final String welcomeBackgroundImage = "titleBkg.png";
 	public static final String instructionsImage = "instructionsBkg.png";
@@ -125,11 +125,11 @@ public class Game extends Applet {
 		//Create the main game panel and set its layout.
 		mainGamePanel = new MainGamePanel(this); 
 		
-		Image i = getImage(base, "r.png"); 
+		Image i = getImage(base, Game.userImage); 
 		if(i == null)
 			System.out.println("I NULL"); 
 		
-		mainGamePanel.setPlayerImage(getBufferedImage("r.png")); 
+		mainGamePanel.setPlayerImage(getBufferedImage(Game.userImage)); 
 		mainGamePanel.setPlayerVisitedMark(getBufferedImage(Game.trailImage)); 
 		
 		// add the panel to our applet

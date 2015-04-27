@@ -91,8 +91,6 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		add(title);
 		
 		setVisible(true);
-		
-		setBackground(Color.RED);
 	}
 	
 	public void setAddToWhile(boolean value){

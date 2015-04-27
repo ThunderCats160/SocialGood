@@ -14,8 +14,8 @@ public class RunButton extends JButton {
 		// TODO Auto-generated constructor stub
 		public static Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.9);
 		private String button_text;
-		private final int button_width = (int)(Game.APPLET_WIDTH/6);
-		private final int button_height = (int)(Game.APPLET_HEIGHT/2.133333);
+		private final int button_width = (int)(Game.APPLET_WIDTH/5);
+		private final int button_height = (int)(Game.APPLET_HEIGHT/5);
 		
 		public RunButton(String text) {
 			super(text);

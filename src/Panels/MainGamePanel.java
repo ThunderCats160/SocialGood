@@ -48,61 +48,78 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	private void initGUI(){
 		
 		 
-		//Instantiate a new Board with a default constructor
-		board = new Board();
-		//Instantiate a new Button with text "Go". 
-		goButton = new RunButton("GO!");
-		//Indicate that our goButton should have an ActionListener to listen for a press.
-		goButton.addActionListener(this);
 		
-		//The description Panel holds the goButton, as well as an introductory text.
-		descriptionPanel = new DescriptionPanel(goButton, "HELLO"); 
+		
+		
+		
 		//We set the location and layout of the descriptionPanel to be along the BoxLayout's Page_Axis
 		//descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
 		
-		//Initializes the Level onto the board
-		initLevels(); 
 		
-		//Instantiate a new StrategyPanel
-		stratPanel = new StratPanel();
 		
-		//Instantiate a new SelectPanel
-		selectPanel = new SelectPanel(stratPanel, game, board);
-
-		stratPanel.setSelectPanel(selectPanel);
-		
-		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
-
-		//Sets the number of available moves
-		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
 		
 		
 		//Create the layout of the game:
 		//Put the Selection panel on the left side, the game board in the center, 
 		//the strategy panel on the right, and the description of the level on the bottom.
 		
-		
-		//Game.APPLET_WIDTH //600
-		//Game.APPLET_HEIGHT //960
+		//Game.APPLET_WIDTH //960
+		//Game.APPLET_HEIGHT //600
 		//Dimension: Width, Height
-		BorderLayout b = new BorderLayout();
-		setLayout(b);
-		Dimension selectP = new Dimension(Game.APPLET_WIDTH/5,(int) (Game.APPLET_HEIGHT/2.4));
-		Dimension boardP = new Dimension((int)(Game.APPLET_WIDTH/2), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension stratP = new Dimension((int)(Game.APPLET_WIDTH/6), (int)(Game.APPLET_HEIGHT/2.133333));
-		Dimension descP = new Dimension((int)(Game.APPLET_WIDTH/1), (int)(Game.APPLET_HEIGHT/9.6));
-		selectPanel.setPreferredSize(selectP);
-		add(selectPanel, BorderLayout.LINE_START);
-		board.setPreferredSize(boardP);
-		add(board, BorderLayout.CENTER);	
-		stratPanel.setPreferredSize(stratP);
-		add(stratPanel, "East");
-		descriptionPanel.setPreferredSize(descP);
-		add(descriptionPanel, "South");
+		//	set the layout to null cause we're hard AF		
+		setLayout(null);
 		
+		//Instantiate a new Board with a default constructor
+		board = new Board();
+		// place the board
+		Dimension size = board.getPreferredSize();
+		board.setBounds((int) Game.APPLET_WIDTH / 5 + 50, 0, size.width, size.height);
+		
+		//The description Panel holds the goButton, as well as an introductory text.
+		descriptionPanel = new DescriptionPanel("HELLO"); 
+		size = descriptionPanel.getPreferredSize();
+		descriptionPanel.setBounds(0, (int) (Game.APPLET_HEIGHT / 5) * 4 + 20, size.width, size.height);
+		
+		
+		//Initializes the Level onto the board
+		initLevels();
+		
+		//Instantiate a new StrategyPanel
+		stratPanel = new StratPanel();
+		//Sets the number of available moves
+		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
+		// place it on the board
+		size = stratPanel.getPreferredSize();
+		stratPanel.setBounds((int) 4 * (Game.APPLET_WIDTH / 5), 0, size.width, size.height);
+		
+		//	Build and add select panel
+		//Instantiate a new SelectPanel
+		selectPanel = new SelectPanel(stratPanel, game, board);
+		//Display the moves available to the player based on the currentLevelIndex. 
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		stratPanel.setSelectPanel(selectPanel);
+		// place the strat panel on the board
+		size = selectPanel.getPreferredSize();
+		selectPanel.setBounds(5, 5, size.width - 5, size.height - 5);
+		
+		
+		//Instantiate a new Button with text "Go". 
+		goButton = new RunButton("GO!");
+		//Indicate that our goButton should have an ActionListener to listen for a press.
+		goButton.addActionListener(this);
+		size = goButton.getPreferredSize();
+		goButton.setBounds((int) 4 * (Game.APPLET_WIDTH / 5), (int)(Game.APPLET_HEIGHT/5) * 4, size.width, size.height);
+		
+		add(selectPanel);
+		add(board);
+		add(stratPanel);
+		add(descriptionPanel);
+		add(goButton);
+		 
 		
 		setVisible(true);
+		validate();
+		repaint();
 		game.refreshApplet();
 	}
 	

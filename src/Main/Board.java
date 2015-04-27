@@ -1,5 +1,6 @@
 package Main;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -26,7 +27,7 @@ public class Board extends JPanel{
 	//Player holds the position of the user's character (currently a block) in XY format.
 	private Player player;
 	//Constants needed for drawing.
-	static public int unitDimension = 55;
+	static public int unitDimension = (int) ((int) Game.APPLET_HEIGHT * .08);
 
 
 	//Default constructor. Calls for the player to be made
@@ -36,7 +37,11 @@ public class Board extends JPanel{
 	}
 	
 	public void initGUI(){
-		
+		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4), (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
+		setPreferredSize(boardP);
+		setSize(boardP);
+		setMaximumSize(boardP);
+		setMinimumSize(boardP);
 	}
 	
 	public void setPlayerImage(BufferedImage image)

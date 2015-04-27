@@ -1,6 +1,8 @@
 package Panels;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,32 +18,33 @@ public class DescriptionPanel extends JPanel{
 
 	// The description panel holds a "go" jbutton, and the jlabel to display the text.
 	//RunButton goButton; 
-	JLabel currentDesc; 
-	JPanel descPanel;
-	JPanel goButtonPanel;
+	JLabel currentDesc;
 	
 	//Constructor to add a button and description to the DescriptionPanel
-	public DescriptionPanel(RunButton jb, String desc) {
-		//String buttonText = jb.getText(); 
-		//goButton = new RunButton();
-		//goButton = jb;
-		//jb = (JButton) goButton;
+	public DescriptionPanel(String desc) {
 		
-		currentDesc = new JLabel(desc); 
-		Dimension descP = new Dimension((int)(Game.APPLET_WIDTH/.66), (int)(Game.APPLET_HEIGHT/9.6));
-		Dimension goBP = new Dimension((int)(Game.APPLET_WIDTH/.32), (int)(Game.APPLET_HEIGHT/9.6));
-		JPanel descPanel = new JPanel();
-		//descPanel.setPreferredSize(descP);
-		descPanel.add(currentDesc);
+		currentDesc = new JLabel(desc);
+		initGUI();
 		
-		JPanel goButtonPanel = new JPanel();
-		//goButtonPanel.setPreferredSize(goBP);
-		goButtonPanel.add(jb);
 		
-		add(descPanel,BorderLayout.PAGE_START); 
+	}
+	
+	public void initGUI(){
+		Dimension descP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4), (int)(Game.APPLET_HEIGHT/5) - 20);
+		setPreferredSize(descP);
+		setSize(descP);
+		setMaximumSize(descP);
+		setMinimumSize(descP);
 		
-		add(goButtonPanel,BorderLayout.PAGE_END); 
+		setBackground(Color.WHITE);
 		
+		Dimension labelP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4) -40, (int)(Game.APPLET_HEIGHT/5) - 60);
+		currentDesc.setPreferredSize(labelP);
+		
+		
+		JLabel title = new JLabel("Tips and Tricks");
+		add(title);
+		add(currentDesc, BorderLayout.SOUTH); 
 	}
 	
 	//Allows us to set the currentDescription displayed on the Description Panel.

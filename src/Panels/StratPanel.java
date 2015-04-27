@@ -1,4 +1,6 @@
 package Panels;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Interfaces.resettablePanel;
+import Main.Game;
 import Moves.Move;
 
 
@@ -78,14 +81,21 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		numAvailableMovesLabel = new JLabel("Moves Left: " + currentNumberMovesAvailable);
 		add(numAvailableMovesLabel); 
 		
+		Dimension stratP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
+		setPreferredSize(stratP);
+		setSize(stratP);
+		setMaximumSize(stratP);
+		setMinimumSize(stratP);
+		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		JButton clearButton = new JButton();
 		clearButton.setText("CLEAR");
 		clearButton.addActionListener(this);
 
 		add(clearButton);
-		
-		
+		setBackground(Color.RED);
+		setVisible(true);
+		validate();
 	}
 
 	//Getter for the current Strategy

@@ -1,4 +1,5 @@
 package Panels;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -75,7 +76,13 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	
 	//InitGUI must be called as a default
 	public void initGUI() {
-		
+		Dimension selectP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
+		setPreferredSize(selectP);
+		setSize(selectP);
+		setMaximumSize(selectP);
+		setMinimumSize(selectP);
+		setVisible(true);
+		setBackground(Color.YELLOW);
 	}
 	
 	public void setAddToWhile(boolean value){

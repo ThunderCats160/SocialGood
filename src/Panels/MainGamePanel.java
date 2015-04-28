@@ -265,7 +265,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
 				+ " not put that in your own function so you don't have to keep re-adding it!"
 				+"Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");
-		getLevels().add(l6); 
+		//getLevels().add(l6); 
 
 		
 		//Level 7: This makes the player put their own functions in a while loop
@@ -278,7 +278,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l7.setNumOfUsableMoves(2);
 		l7.setCustomFunctionsAvailable(true); 
 		l7.setDescription("Hey, this looks familiar! But this time you want to Loop your function. ");
-		
+		l7.setNumOfUsableMovesInFunctions(2); 
 		getLevels().add(l7); 
 		
 		//Level 8: this introduces conditional Statements
@@ -318,6 +318,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.makeWhileMoveAvailable();
 		l8.makeConditionalMoveAvailable();
 		l8.setNumOfUsableMoves(15);
+		
 		
 		getLevels().add(l8);
 		

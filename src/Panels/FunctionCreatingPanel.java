@@ -29,6 +29,8 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 	
 	public JTextField nameField; 
 	
+	JLabel numberOfMovesAvailable; 
+	
 	public FunctionCreatingPanel(StratPanel newStratPanel, SelectPanel newSp, Board b, Game g)
 	{
 		moveList = new ArrayList<Move>(); 
@@ -50,9 +52,21 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 		board = b; 
 		game = g; 
 		
+		
+		//System.out.println(sp.getCurrentNumberAvailableMovesInFunction()); 
+
+		numberOfMovesAvailable = new JLabel(); 
+		numberOfMovesAvailable.setText("Moves left in your function: "+ sp.getCurrentNumberAvailableMovesInFunction()); 
+		numberOfMovesAvailable.setFont(new Font("Arial", Font.BOLD, 13));
+		
+		add(numberOfMovesAvailable); 
 		addNameField(); 
-		addDoneButton(); 
+		addDoneButton();
+		
 		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
+		
+		
+		
 		
 		setVisible(true);
 		validate();
@@ -93,9 +107,15 @@ public class FunctionCreatingPanel extends JPanel implements resettablePanel{
 	{
 		moveList.clear(); 
 		removeAll(); 
+		add(numberOfMovesAvailable); 
 		addNameField(); 
 		addDoneButton(); 
 		
+	}
+	
+	
+	public void setNumMovesAvailable(int set){
+		numberOfMovesAvailable.setText("Moves left in your function: " + set);
 	}
 	
 }

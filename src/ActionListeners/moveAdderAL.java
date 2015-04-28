@@ -31,6 +31,7 @@ public class moveAdderAL implements ActionListener {
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {
 		
+		System.out.println("HERE"); 
 		//Only add moves if the user still has moves to add
 		if(stratPanel.currentNumberMovesAvailable > 0)
 		{

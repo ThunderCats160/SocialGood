@@ -41,7 +41,7 @@ public class Game extends Applet {
 	public MainGamePanel mainGamePanel;				//Instantiates the main JPanel where the game will be played 
 	TitlePanel introScreenPanel;			//Instantiates the introduction page, which explains the basics of how the game is played and serves as an instructional page for Teachers to explain the value of this game.
 	InstructionsPanel instructionalPanel;
-	JPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
+	TeacherPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
 	private BufferedImage background;
 	
@@ -51,15 +51,15 @@ public class Game extends Applet {
 	public static final int APPLET_HEIGHT = 600;
 	
 	// Image sources	
-	public static final String goalImage = "doghouseGrassSuperLight.png";
-	public static final String userImage = "dogSpriteSheetGreen3.png";
-	public static final String trailImage = "pawPrints.png";
-	public static final String welcomeBackgroundImage = "titleBkg.png";
-	public static final String instructionsImage = "instructionsBkg.png";
-	public static final String teacherImage = "pawPrints.png";
-	public static final String enemyImage = "enemyEvil.png";
-	public static final String natureImage = "natureBkg1.png";
-	public static final String tileImage = "grass4.jpg";
+	public static final String goalImage = "img/doghouseGrassSuperLight.png";
+	public static final String userImage = "img/dogSpriteSheetGreen3.png";
+	public static final String trailImage = "img/pawPrints.png";
+	public static final String welcomeBackgroundImage = "img/titleBkg.png";
+	public static final String instructionsImage = "img/instructionsBkg.png";
+	public static final String teacherImage = "img/teachingBkg.png";
+	public static final String enemyImage = "img/enemyEvil.png";
+	public static final String natureImage = "img/natureBkg1.png";
+	public static final String tileImage = "img/grass4.jpg";
 	
 	private static URL base; 							//the location of the Applet
 	
@@ -176,7 +176,11 @@ public class Game extends Applet {
 	
 	public void createTeacherPanel(){
 		teacherPanel = new TeacherPanel(this); 
-		activeView = "Teacher Panel";
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				teacherPanel.setBackgroundImg(getBufferedImage(teacherImage));
+			}
+		});
 		
 	}
 	

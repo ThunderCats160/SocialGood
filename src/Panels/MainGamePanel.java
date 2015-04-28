@@ -189,7 +189,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//The player simply has to move the character 3 spaces to the right.
 		Level l1 = new Level(Board.unitDimension, board); 
 		l1.setPlayerSpawnPosition(4, 5);
-		l1.addGoalAtPosition(7,5, game.getBufferedImage("doghouseGrass.png")); 
+		l1.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
 		l1.setDescription("Welcome to Buster's Big Break! Add your commands to your strategy using"
 						  +" the buttons on the left! Then, hit the RUN! button and try and"
 						  +" see if you reach the goal!"); 
@@ -228,7 +228,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l4.setPlayerSpawnPosition(0, 5); 
 		l4.addGoalAtPosition(9, 5, game.getBufferedImage(Game.goalImage));
 		l4.setDescription("Wow, that goal sure is far away, Try using a loop "
-				+ "to get yourself there without just using 'right' over and over again."
+				+ "to get yourself there without just using 'right' over and over again. "
 				+ "To use a loop, use the Loop Button and then press the commands that you want to repeat.");
 		
 		l4.makeRightMoveAvailable();
@@ -264,7 +264,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setNumOfUsableMovesInFunctions(4);
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
 				+ " not put that in your own function so you don't have to keep re-adding it!"
-				+"Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");
+				+" Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");
 		//getLevels().add(l6); 
 
 		
@@ -310,8 +310,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.addObstacleAtPosition(2, 8, evil);
 		l8.addObstacleAtPosition(2, 9, evil);//*/
 		l8.setDescription("Try using the Conditional Block here!"
-				+ "To use it, press the Conditional button, then the action you want the Conditional block to look out for. Next, press the move you want carried out if Buster is on the block."
-				+ "Finally, press the } Button to end the Conditional block.");
+				+ " To use it, press the Conditional button, then the action you want the Conditional block to look out for. Next, press the move you want carried out if Buster is on the block."
+				+ " Finally, press the } Button to end the Conditional block.");
 		l8.makeRightMoveAvailable();
 		l8.makeUpMoveAvailable();
 		l8.makeDownMoveAvailable();

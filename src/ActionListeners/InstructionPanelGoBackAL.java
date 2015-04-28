@@ -19,6 +19,8 @@ public class InstructionPanelGoBackAL implements ActionListener{
 		game.getInstructionPanel().setVisible(false); 
 		game.getIntroScreenPanel().setVisible(true); 
 		
+		game.refreshApplet();
+		
 	}
 
 }

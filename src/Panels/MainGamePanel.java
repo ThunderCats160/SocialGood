@@ -274,15 +274,14 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l7.setCustomFunctionsAvailable(true); 
 		l7.setDescription("Hey, this looks familiar! But this time you need your own functions");
 		
-		getLevels().add(l7); 
+		//getLevels().add(l7); 
 		
 		//Level 8: this introduces conditional Statements
 		Level l8 = new Level(Board.unitDimension, board);
 		BufferedImage evil = game.getBufferedImage(Game.enemyImage);
 		l8.setPlayerSpawnPosition(0, 5);
 		l8.addRedSquareAtPosition(2,5);
-		l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));
-		l8.addObstacleAtPosition(2, 0, evil);
+		l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));/*.addObstacleAtPosition(2, 0, evil);
 		l8.addObstacleAtPosition(2, 1, evil);
 		l8.addObstacleAtPosition(2, 2, evil);
 		l8.addObstacleAtPosition(2, 3, evil);
@@ -302,7 +301,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.addObstacleAtPosition(2, 6, evil);
 		l8.addObstacleAtPosition(2, 7, evil);
 		l8.addObstacleAtPosition(2, 8, evil);
-		l8.addObstacleAtPosition(2, 9, evil);
+		l8.addObstacleAtPosition(2, 9, evil);*/
 		l8.setDescription("Good luck on this extremely difficult level bwhahahaha.  The cats are everywhere.");
 		l8.makeRightMoveAvailable();
 		l8.makeUpMoveAvailable();

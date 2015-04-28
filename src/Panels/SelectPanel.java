@@ -136,7 +136,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 			else if(selectOptions.get(i).isWhileMove)
 				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 			else if(selectOptions.get(i).isConditionalMove)
-				b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
+				b.addActionListener(new conditionalMoveAdderAL(new conditionalMove("Conditional", board, null), stratPanel, this, game.mainGamePanel));
 				 
 			
 			add(b);
@@ -151,9 +151,9 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		
 	}
 	
-	public void reset(Boolean allMoves)
+	public void reset(Boolean displayAllMoves)
 	{
-		Boolean displayAllMoves = allMoves;
+		
 		
 		if(displayAllMoves)
 		{

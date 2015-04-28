@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
+import Main.Board;
 import Moves.Move;
 import Panels.SelectPanel;
 import Panels.StratPanel;
@@ -32,12 +33,21 @@ public class moveAdderAL implements ActionListener {
 		if(stratPanel.currentNumberMovesAvailable > 0)
 		{
 			
+			
+			
+			//System.out.println("HERE");
+			//System.out.println(selectPanel.getAddToWhile()); 
+			//System.out.println(selectPanel.getAddToConditional()); 
+			
 		
 			//Add the selected move to the Strategy Panel 
 			if(selectPanel.getAddToWhile())
 			{
+				//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).getClass().getName()); 
 				stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
 				stratPanel.decrementAvailableMoves();
+				
+				
 			
 			}
 				
@@ -53,10 +63,13 @@ public class moveAdderAL implements ActionListener {
 			
 			else if(selectPanel.getAddToConditional())
 			{
+				
 				if(!toAdd.isWhileMove) {
 					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd);
 					//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.size());
 					stratPanel.decrementAvailableMoves();
+					
+					//Board.printTest(stratPanel.getCurrentStrat());
 				}
 			}
 			

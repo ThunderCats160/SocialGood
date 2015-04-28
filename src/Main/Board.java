@@ -167,7 +167,7 @@ public class Board extends JPanel{
 							
 							
 							for(int functionListCounter = 0; functionListCounter< functionList.size(); functionListCounter++){
-								System.out.println(functionListCounter); 
+								//System.out.println(functionListCounter); 
 								if(doMove(functionList.get(functionListCounter), g))
 									return true; 
 							}

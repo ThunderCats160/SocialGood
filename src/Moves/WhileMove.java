@@ -1,10 +1,10 @@
-package Moves;
+package moves;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList; 
 
-import Main.Board;
-import Units.Player;
+import units.Player;
+import main.Board;
 
 
 public class WhileMove extends Move{

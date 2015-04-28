@@ -1,4 +1,4 @@
-package Panels;
+package panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,10 +23,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Buttons.RunButton;
-import Main.Game;
-import Main.Board;
-import Main.Level;
+import main.Board;
+import main.Game;
+import main.Level;
+import buttons.RunButton;
 
 public class MainGamePanel extends JPanel implements ActionListener {
 	

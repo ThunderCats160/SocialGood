@@ -1,4 +1,6 @@
-package Panels;
+package panels;
+import interfaces.ResettablePanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,15 +14,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Buttons.MoveButton;
-import Buttons.TitlePageButton;
-import Interfaces.resettablePanel;
-import Main.Game;
-import Moves.Move;
+import main.Game;
+import moves.Move;
+import buttons.MoveButton;
+import buttons.TitlePageButton;
 
 
 //The StratPanel holds an ArrayList of the currentStrategy the player has implemented
-public class StratPanel extends JPanel implements ActionListener, resettablePanel{
+public class StratPanel extends JPanel implements ActionListener, ResettablePanel{
 
 	private ArrayList<Move> currentStrat;
 	private SelectPanel selectPanel; 

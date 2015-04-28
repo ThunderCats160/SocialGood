@@ -1,4 +1,4 @@
-package Panels;
+package panels;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,11 +9,11 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
-import ActionListeners.instructionsPanelButtonAL;
-import ActionListeners.introPanelButtonAL;
-import ActionListeners.teacherPanelButtonAL;
-import Buttons.TitlePageButton;
-import Main.Game;
+import main.Game;
+import buttons.TitlePageButton;
+import actionListeners.InstructionsPanelButtonAL;
+import actionListeners.IntroPanelButtonAL;
+import actionListeners.TeacherPanelButtonAL;
 
 public class TitlePanel extends JPanel {
 	
@@ -34,9 +34,9 @@ public class TitlePanel extends JPanel {
 		TitlePageButton teacherPageButton = new TitlePageButton("Teaching", 49);
 		
 		//Make sure that the button on the JPanel has a listener.
-		getStartedButton.addActionListener(new introPanelButtonAL(game));
-		instructionsPageButton.addActionListener(new instructionsPanelButtonAL(game));
-		teacherPageButton.addActionListener(new teacherPanelButtonAL(game)); 
+		getStartedButton.addActionListener(new IntroPanelButtonAL(game));
+		instructionsPageButton.addActionListener(new InstructionsPanelButtonAL(game));
+		teacherPageButton.addActionListener(new TeacherPanelButtonAL(game)); 
 		
 		Insets insets = getInsets();
 		

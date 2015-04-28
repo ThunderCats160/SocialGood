@@ -1,4 +1,4 @@
-package ActionListeners;
+package actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -9,15 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import Moves.Move;
-import Moves.WhileMove;
-import Panels.FunctionCreatingPanel;
-import Panels.SelectPanel;
-import Panels.StratPanel;
+import panels.FunctionCreatingPanel;
+import panels.SelectPanel;
+import panels.StratPanel;
+import moves.Move;
+import moves.WhileMove;
 
 //Action listener linked to each button
 //When a button is pressed, it adds a move to the current strategy list in stratPanel
-public class whileMoveAdderAL implements ActionListener {
+public class WhileMoveAdderAL implements ActionListener {
 
 	Move toAdd; 
 	StratPanel stratPanel; 
@@ -27,7 +27,7 @@ public class whileMoveAdderAL implements ActionListener {
 	
 	
 	//Constructor
-	public whileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, FunctionCreatingPanel newFCP) {
+	public WhileMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, FunctionCreatingPanel newFCP) {
 		toAdd = m; 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 

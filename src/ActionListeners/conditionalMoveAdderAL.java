@@ -1,4 +1,4 @@
-package ActionListeners;
+package actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import Main.Board;
-import Moves.Move;
-import Moves.conditionalMove;
-import Panels.MainGamePanel;
-import Panels.SelectPanel;
-import Panels.StratPanel;
+import panels.MainGamePanel;
+import panels.SelectPanel;
+import panels.StratPanel;
+import main.Board;
+import moves.Move;
+import moves.ConditionalMove;
 
-public class conditionalMoveAdderAL implements ActionListener {
+public class ConditionalMoveAdderAL implements ActionListener {
 
 	//Variables that are needed to implement the conditional move command
 	Move toAdd; 
@@ -30,9 +30,9 @@ public class conditionalMoveAdderAL implements ActionListener {
 	//Constructor
 	//No returns
 	//the parameters are the move, the strategy panel, the select panel and the main game panel that holds everything
-	public conditionalMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, MainGamePanel mainPanel)
+	public ConditionalMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, MainGamePanel mainPanel)
 	{
-		toAdd = new conditionalMove("Conditional", m.board, null); 
+		toAdd = new ConditionalMove("Conditional", m.board, null); 
 		stratPanel = newStratPanel; 
 		selectPanel = newSelectPanel; 
 		mgp = mainPanel; 
@@ -71,7 +71,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			//this sets the conditional statement to red square so it can write that
 			//on the strat panel
 			conditional = "Red Square";
-			((conditionalMove) toAdd).setConditionalMove("red square");
+			((ConditionalMove) toAdd).setConditionalMove("red square");
 			
 			
 			//this adds the move to the strategy panel
@@ -132,7 +132,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			if (stratPanel.currentNumberMovesAvailable > 0) {
 				
 				//creates a new conditional move
-				toAdd = new conditionalMove("Conditional", selectPanel.getBoard(), null);
+				toAdd = new ConditionalMove("Conditional", selectPanel.getBoard(), null);
 				
 				if(selectPanel.getAddToWhile())
 				{

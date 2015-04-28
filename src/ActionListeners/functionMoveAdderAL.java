@@ -1,4 +1,4 @@
-package ActionListeners;
+package actionListeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,13 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import Moves.Move;
-import Panels.SelectPanel;
-import Panels.StratPanel;
+import panels.SelectPanel;
+import panels.StratPanel;
+import moves.Move;
 
 //Action listener linked to each button
 //When a button is pressed, it adds a move to the current strategy list in stratPanel
-public class functionMoveAdderAL implements ActionListener {
+public class FunctionMoveAdderAL implements ActionListener {
 
 	Move toAdd; 
 	StratPanel stratPanel; 
@@ -20,7 +20,7 @@ public class functionMoveAdderAL implements ActionListener {
 	JButton functionButton; 
 	
 	//Constructor
-	public functionMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, JButton newFB)
+	public FunctionMoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel, JButton newFB)
 	{		
 		toAdd = m; 
 		stratPanel = newStratPanel; 

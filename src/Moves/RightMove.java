@@ -1,12 +1,12 @@
-package Moves;
+package moves;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import Main.Board;
-import Main.Level;
-import Units.Player;
-import Units.Unit;
+import units.Player;
+import units.Unit;
+import main.Board;
+import main.Level;
 
 //RightMove is one of our move options
 //The RightMove is differentiated by its name "RIGHT"

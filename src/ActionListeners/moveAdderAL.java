@@ -1,26 +1,26 @@
-package ActionListeners;
+package actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
-import Main.Board;
-import Moves.Move;
-import Moves.WhileMove;
-import Moves.conditionalMove;
-import Panels.SelectPanel;
-import Panels.StratPanel;
+import panels.SelectPanel;
+import panels.StratPanel;
+import main.Board;
+import moves.Move;
+import moves.WhileMove;
+import moves.ConditionalMove;
 
 //Action listener linked to each button
 //When a button is pressed, it adds a move to the current strategy list in stratPanel
-public class moveAdderAL implements ActionListener {
+public class MoveAdderAL implements ActionListener {
 
 	Move toAdd; 
 	StratPanel stratPanel; 
 	SelectPanel selectPanel; 
 	
 	//Constructor
-	public moveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel)
+	public MoveAdderAL(Move m, StratPanel newStratPanel, SelectPanel newSelectPanel)
 	{		
 		toAdd = m; 
 		stratPanel = newStratPanel; 
@@ -59,7 +59,7 @@ public class moveAdderAL implements ActionListener {
 					//If its adding to a conditional, the conditional must be the most recent
 					//thing added to the current strategy, and thus must be in the last place
 					
-					conditionalMove conMove = (conditionalMove) whileMove.getMoveList().get(whileMove.getMoveList().size() -1); 
+					ConditionalMove conMove = (ConditionalMove) whileMove.getMoveList().get(whileMove.getMoveList().size() -1); 
 					conMove.moveList.add(toAdd); 
 				}
 				else

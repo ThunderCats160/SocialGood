@@ -1,4 +1,6 @@
-package Panels;
+package panels;
+import interfaces.ResettablePanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,14 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ActionListeners.DoneWithFunctionAL;
-import Buttons.TitlePageButton;
-import Interfaces.resettablePanel;
-import Main.Board;
-import Main.Game;
-import Moves.Move;
+import main.Board;
+import main.Game;
+import moves.Move;
+import buttons.TitlePageButton;
+import actionListeners.DoneWithFunctionAL;
 
-public class FunctionCreatingPanel extends JPanel implements resettablePanel{
+public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 
 	public ArrayList<Move> moveList; 
 	

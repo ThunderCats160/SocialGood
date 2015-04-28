@@ -1,16 +1,17 @@
-package UnitTest;
+package unitTests;
 
 //Junit Test imports
 import static org.junit.Assert.*;
 
 import javax.swing.JLabel;
 
+import main.Game;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import Main.Game;
-import Panels.SelectPanel;
-import Panels.StratPanel;
+import panels.SelectPanel;
+import panels.StratPanel;
 
 public class StratPanelTest extends StratPanel {
 	

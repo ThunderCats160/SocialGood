@@ -224,9 +224,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		Level l4 = new Level(Board.unitDimension, board); 
 		l4.setPlayerSpawnPosition(0, 5); 
 		l4.addGoalAtPosition(9, 5, game.getBufferedImage(Game.goalImage));
-		l4.setDescription("Wow, that goal sure is far away, Try using a while-loop "
+		l4.setDescription("Wow, that goal sure is far away, Try using a loop "
 				+ "to get yourself there without just using 'right' over and over again."
-				+ "The loop can do that for you!");
+				+ "To use a loop, use the Loop Button and then press the commands that you want to repeat.");
 		
 		l4.makeRightMoveAvailable();
 		l4.makeWhileMoveAvailable(); 
@@ -246,7 +246,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.makeWhileMoveAvailable();
 
 		l5.setNumOfUsableMoves(4);
-		l5.setDescription("This one is really challenging!  Think you're up to the challenge?  Here you will need a slightly trickier while loop!");
+		l5.setDescription("This one is really challenging!  Think you're up to the challenge?  Here you will need to make two separate moves loop! You only need to press Loop once, and then everything below it will loop.");
 		
 		getLevels().add(l5); 
 		
@@ -259,7 +259,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setCustomFunctionsAvailable(true); 
 		l6.setNumOfUsableMoves(5); 
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
-				+ " not put that in your own function so you don't have to keep re-adding it!  Just click the create a function button and select moves like normal!" );
+				+ " not put that in your own function so you don't have to keep re-adding it!"
+				+"Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");
 		getLevels().add(l6); 
 
 		
@@ -272,7 +273,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l7.makeWhileMoveAvailable();
 		l7.setNumOfUsableMoves(2);
 		l7.setCustomFunctionsAvailable(true); 
-		l7.setDescription("Hey, this looks familiar! But this time you need your own functions");
+		l7.setDescription("Hey, this looks familiar! But this time you want to Loop your function. ");
 		
 		getLevels().add(l7); 
 		
@@ -304,7 +305,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.addObstacleAtPosition(2, 7, evil);
 		l8.addObstacleAtPosition(2, 8, evil);
 		l8.addObstacleAtPosition(2, 9, evil);//*/
-		l8.setDescription("Good luck on this extremely difficult level bwhahahaha.  The cats are everywhere.");
+		l8.setDescription("Try using the Conditional Block here!"
+				+ "To use it, press the Conditional button, then the action you want the Conditional block to look out for. Next, press the move you want carried out if Buster is on the block."
+				+ "Finally, press the } Button to end the Conditional block.");
 		l8.makeRightMoveAvailable();
 		l8.makeUpMoveAvailable();
 		l8.makeDownMoveAvailable();

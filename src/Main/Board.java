@@ -311,7 +311,7 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g)
 	{
 		// draw the grid
-		BufferedImage grass = Game.getBufferedImage("Grass.png");
+		BufferedImage grass = Game.getBufferedImage(Game.tileImage);
 		super.paintComponent(g);
 		
 		for(int i = 0; i< currentLevel.getLayout().size(); i++)

@@ -1,4 +1,4 @@
-package UnitTest;
+package unitTests;
 
 
 //Junit Test imports

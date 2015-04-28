@@ -1,15 +1,15 @@
-package ActionListeners;
+package actionListeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Panels.SelectPanel;
+import panels.SelectPanel;
 
-public class removeFunctionButtonAL implements ActionListener{
+public class RemoveFunctionButtonAL implements ActionListener{
 
 	private SelectPanel selectPanel; 
 	
-	public removeFunctionButtonAL(SelectPanel newSP)
+	public RemoveFunctionButtonAL(SelectPanel newSP)
 	{
 		selectPanel = newSP; 
 	}

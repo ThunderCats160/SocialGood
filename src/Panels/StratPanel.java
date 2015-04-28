@@ -1,4 +1,6 @@
-package Panels;
+package panels;
+import interfaces.ResettablePanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,15 +14,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Buttons.MoveButton;
-import Buttons.TitlePageButton;
-import Interfaces.resettablePanel;
-import Main.Game;
-import Moves.Move;
+import main.Game;
+import moves.Move;
+import buttons.MoveButton;
+import buttons.TitlePageButton;
 
 
 //The StratPanel holds an ArrayList of the currentStrategy the player has implemented
-public class StratPanel extends JPanel implements ActionListener, resettablePanel{
+public class StratPanel extends JPanel implements ActionListener, ResettablePanel{
 
 	private ArrayList<Move> currentStrat;
 	private SelectPanel selectPanel; 
@@ -39,6 +40,9 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 
 		currentStrat = new ArrayList<Move>();
 
+	}
+	public StratPanel(){
+		
 	}
 	public void setSelectPanel(SelectPanel newSelectPanel)
 	{
@@ -72,8 +76,11 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 		currentNumberMovesAvailable = maxAvailableMoves; 
 		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
 		
-		game.getMainGamePanel().revalidate();
-		game.getMainGamePanel().repaint();
+		if(game.getMainGamePanel() != null){
+			game.getMainGamePanel().revalidate();
+			game.getMainGamePanel().repaint();
+		}
+		
 	}
 	
 	//Instantiate the location of the Panel, and create the button that can be used to clear the current strategy
@@ -145,6 +152,12 @@ public class StratPanel extends JPanel implements ActionListener, resettablePane
 	//When the clear button is pressed,  it calls the clearCurrentStrat function
 	public void actionPerformed(ActionEvent e) {
 		reset(false); 
+	}
+	public int getMaxAvailableMoves(){
+		return maxAvailableMoves; 
+	}
+	public SelectPanel getSelectPanel(){
+		return selectPanel; 
 	}
 
 }

@@ -1,10 +1,10 @@
-package Moves;
+package moves;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import Main.Board;
-import Units.Player;
+import units.Player;
+import main.Board;
 
 //The move class holds the data required to make a move.
 //The data is stored primarily in the name string- each move gets its own unique name which tells us what to do.

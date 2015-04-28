@@ -1,6 +1,6 @@
-package Interfaces;
+package interfaces;
 
-public interface resettablePanel {
+public interface ResettablePanel {
 
 	public void reset(Boolean all); 
 }

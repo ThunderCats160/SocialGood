@@ -1,4 +1,4 @@
-package Buttons;
+package buttons;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,7 +7,7 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 
-import Main.Game;
+import main.Game;
 
 public class RunButton extends JButton {
 

@@ -1,9 +1,9 @@
-package ActionListeners;
+package actionListeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Main.Game;
+import main.Game;
 
 public class TeacherPanelGoBackAL implements ActionListener{
 

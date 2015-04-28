@@ -1,4 +1,4 @@
-package Main;
+package main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Moves.Move;
-import Moves.conditionalMove;
-import Panels.MainGamePanel;
-import Units.Player;
-import Units.Unit;
+import panels.MainGamePanel;
+import units.Player;
+import units.Unit;
+import moves.Move;
+import moves.ConditionalMove;
 
 //Board Class holds the implementation for the Board.
 //Uses JPanel
@@ -246,7 +246,7 @@ public class Board extends JPanel{
 
 		//System.out.println("inside of check conditional");
 		Boolean checker = false;
-		String condition = ((conditionalMove) move).getConditionalMove();
+		String condition = ((ConditionalMove) move).getConditionalMove();
 		//System.out.println(condition);
 		
 		//System.out.println(condition); 

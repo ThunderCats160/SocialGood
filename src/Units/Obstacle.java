@@ -1,4 +1,4 @@
-package Units;
+package units;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;

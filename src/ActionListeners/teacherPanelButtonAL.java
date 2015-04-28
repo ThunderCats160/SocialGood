@@ -1,16 +1,16 @@
-package ActionListeners;
+package actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Main.Game;
+import main.Game;
 
-public class teacherPanelButtonAL implements ActionListener{
+public class TeacherPanelButtonAL implements ActionListener{
 	
 	//Holds an instance of the Game
 	Game game; 
 	
 	//Constructor- Takes in the game so that when the button is called, it adds the instructions panel to the display
-	public teacherPanelButtonAL(Game g)
+	public TeacherPanelButtonAL(Game g)
 	{
 		game = g; 
 	}

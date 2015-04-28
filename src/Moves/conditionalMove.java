@@ -1,16 +1,16 @@
-package Moves;
+package moves;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList; 
 
-import Main.Board;
-import Units.Player;
+import units.Player;
+import main.Board;
 
-public class conditionalMove extends Move{
+public class ConditionalMove extends Move{
 
 	private String conditional;
 	
-	public conditionalMove(String d, Board b, BufferedImage s)
+	public ConditionalMove(String d, Board b, BufferedImage s)
 	{
 		super(d, b, s); 
 		name = "Conditional"; 

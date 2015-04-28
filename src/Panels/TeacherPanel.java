@@ -1,4 +1,4 @@
-package Panels;
+package panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,10 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ActionListeners.InstructionPanelGoBackAL;
-import ActionListeners.TeacherPanelGoBackAL;
-import Buttons.TitlePageButton;
-import Main.Game;
+import main.Game;
+import buttons.TitlePageButton;
+import actionListeners.InstructionPanelGoBackAL;
+import actionListeners.TeacherPanelGoBackAL;
 
 public class TeacherPanel extends JPanel{
 	BufferedImage background;

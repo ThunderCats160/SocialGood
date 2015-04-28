@@ -1,4 +1,4 @@
-package Panels;
+package panels;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 
-import Buttons.RunButton;
-import Main.Game;
+import main.Game;
+import buttons.RunButton;
 
 //The Description Panel holds a JLabel which is used to display text describing the 
 //Programming concepts used for this level. 

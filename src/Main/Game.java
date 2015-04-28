@@ -52,13 +52,14 @@ public class Game extends Applet {
 	
 	// Image sources	
 	public static final String goalImage = "doghouseGrassSuperLight.png";
-	public static final String userImage = "dogSpriteSheetGreen.png";
-	public static final String trailImage = "pawPrintsGrassSuperLight.png";
+	public static final String userImage = "dogSpriteSheetGreen3.png";
+	public static final String trailImage = "pawPrints.png";
 	public static final String welcomeBackgroundImage = "titleBkg.png";
 	public static final String instructionsImage = "instructionsBkg.png";
-	public static final String teacherImage = "pawPrintsGrassSuperLight.png";
+	public static final String teacherImage = "pawPrints.png";
 	public static final String enemyImage = "enemyEvil.png";
 	public static final String natureImage = "natureBkg1.png";
+	public static final String tileImage = "grass4.jpg";
 	
 	private static URL base; 							//the location of the Applet
 	

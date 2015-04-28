@@ -260,9 +260,10 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.makeRightMoveAvailable();
 		l6.makeUpMoveAvailable();
 		l6.setCustomFunctionsAvailable(true); 
+
+		l6.setNumOfUsableMovesInFunctions(4);
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here. "
 				+ "Let's use a Function! Functions only count as 1 move and are like a 'nickname' for the commands inside the function. "
-		l6.setNumOfUsableMovesInFunctions(4);
 				+"Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");
 		//getLevels().add(l6); 
 

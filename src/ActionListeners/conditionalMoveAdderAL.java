@@ -74,20 +74,6 @@ public class conditionalMoveAdderAL implements ActionListener {
 			((conditionalMove) toAdd).setConditionalMove("red square");
 			
 			
-			//System.out.println("TOP"); 
-			//System.out.println(""); 
-			//Board.printTest(stratPanel.getCurrentStrat());
-			
-			
-			//stratPanel.addMove(toAdd); 
-			
-			
-			
-			//System.out.println("");
-			//System.out.println("Bottom"); 
-			//System.out.println(""); 
-			//Board.printTest(stratPanel.getCurrentStrat());
-			
 			//this adds the move to the strategy panel
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
 			
@@ -104,67 +90,85 @@ public class conditionalMoveAdderAL implements ActionListener {
 			
 		}
 		
+		//checks to see if the bracket button was pressed
 		else if(e.getSource().equals(bracket))
 		{
 			
 			
-			
+			//creates an array list of moves to add the moves of the conditional to it
 			ArrayList<Move> newMoveList = new ArrayList<Move>(); 
 			
+			//puts the moves that are currently in the conditional move list to this newly created one
 			for(int i=  0; i < toAdd.moveList.size(); i ++){
 				newMoveList.add(toAdd.moveList.get(i)); 
 			}
 			
 			
-			
+			//adds the bracket to the end of the conditional
 			stratPanel.add(new JLabel("}"));
 			
+			//removes then resets the options available to be used
 			selectPanel.removeAll();
-			//selectPanel.resetSelectOptions();
 			selectPanel.reset(true);
 			
+			//resets the screen
 			selectPanel.revalidate();
 			selectPanel.repaint();
 			
+			//makes sure no more moves are added to the conditional move list
 			selectPanel.setAddToConditional(false);
+			
+			//sets the move list of the conditional back to what it was because it was deleted
 			toAdd.moveList = newMoveList; 
 			
 			
 			
 		}
+		
+		//this means that the conditional button was pressed
 		else{
 			
-		//Only add the move if the user has moves available
+			//Only add the move if the user has moves available
 			if (stratPanel.currentNumberMovesAvailable > 0) {
+				
+				//creates a new conditional move
 				toAdd = new conditionalMove("Conditional", selectPanel.getBoard(), null);
+				
 				if(selectPanel.getAddToWhile())
 				{
-					
-					//stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
+					//adds the move to the while move list if it is inside a loop
 					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(
 							toAdd); 
+					
+					//decrements the amount of moves available
 					stratPanel.decrementAvailableMoves();
 				}
+				//if it is not a while loop, it just adds the move the the strategy panel
 				else{
 					stratPanel.addMove(toAdd);  
 				}
 				
-				//System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());	
+				//sets the conditional true so all the moves added after this will be in the conditional statement
 				selectPanel.setAddToConditional(true); 
 				
-				//System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());
-
+				//creates a movelist to make sure the move list stays with loop
 				ArrayList<Move> newMoveList = new ArrayList<Move>(); 
+				
+				//gets the move list and saves it here
 				newMoveList = fixWhileLoop();
 				
 				
 				
 				//selectPanel.resetSelectOptions();	
+				
+				
+				//runs the function for the conditional
 				displayConditionalOptions();
 
 				//if(stratPanel.getCurrentStrat().size() > 0)
 					//stratPanel.getCurrentStrat().get(0).moveList = newMoveList;
 
+				//resets the screen
 				stratPanel.revalidate();
 				selectPanel.revalidate();
 				
@@ -176,6 +180,9 @@ public class conditionalMoveAdderAL implements ActionListener {
 			
 	}
 	
+	//this function transfers the move list of while loop into a new move list and returns
+	//that move list
+	//no parameters
 	public ArrayList<Move> fixWhileLoop()
 	{
 		ArrayList<Move> newMoveList = new ArrayList<Move>(); 

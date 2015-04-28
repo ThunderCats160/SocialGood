@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 
 import Main.Board;
 import Moves.Move;
+import Moves.WhileMove;
+import Moves.conditionalMove;
 import Panels.SelectPanel;
 import Panels.StratPanel;
 
@@ -43,8 +45,31 @@ public class moveAdderAL implements ActionListener {
 			//Add the selected move to the Strategy Panel 
 			if(selectPanel.getAddToWhile())
 			{
-				//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).getClass().getName()); 
-				stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
+				//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).getClass().getName());
+				
+				//If the select panel is adding to a while move, the while move must be the most
+				//recent thing added to the current strategy, and thus must be in the last place
+				WhileMove whileMove = (WhileMove) stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1); 
+				
+				//There could be a conditional statement inside of a whileLoop, so we need
+				//to make this check. 
+				if(selectPanel.getAddToConditional()){
+					
+					//If its adding to a conditional, the conditional must be the most recent
+					//thing added to the current strategy, and thus must be in the last place
+					
+					conditionalMove conMove = (conditionalMove) whileMove.getMoveList().get(whileMove.getMoveList().size() -1); 
+					conMove.moveList.add(toAdd); 
+				}
+				else
+				{
+					whileMove.moveList.add(toAdd);
+				}
+				
+				
+				
+				
+				 
 				stratPanel.decrementAvailableMoves();
 				
 				

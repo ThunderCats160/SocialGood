@@ -94,6 +94,7 @@ public class StratPanel extends JPanel implements ActionListener, ResettablePane
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
+		/*
 		JLabel title = new JLabel("Your Strategy");
 		title.setFont(new Font("Arial", Font.BOLD, 24));
 		add(title);
@@ -106,10 +107,11 @@ public class StratPanel extends JPanel implements ActionListener, ResettablePane
 		MoveButton clearButton = new MoveButton("Clear Strategy", 4); 
 		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 30));
 		clearButton.addActionListener(this);
-
-		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
+		add(clearButton);*/
 		
-		add(clearButton);
+		reinitGUI(); 
+		
+		setBackground(Color.getHSBColor((float).297,(float) .16,(float) .89));
 			
 	}
 	
@@ -144,8 +146,12 @@ public class StratPanel extends JPanel implements ActionListener, ResettablePane
 		numAvailableMovesLabel.setText("Moves Remaining: " + currentNumberMovesAvailable);
 		numAvailableMovesLabel.revalidate();
 		numAvailableMovesLabel.repaint();
-		game.getMainGamePanel().revalidate();
-		game.getMainGamePanel().repaint();
+		
+		if(game.getMainGamePanel()!= null){
+			game.getMainGamePanel().revalidate();
+			game.getMainGamePanel().repaint();
+		}
+		
 		
 	}
 

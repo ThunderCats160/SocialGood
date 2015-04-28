@@ -42,7 +42,10 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	Board board; 
 	
 	//Currently useless
-	private int numFunctions; 
+	public int currentNumberAvailableMovesInFunction; 
+	private int maxAvailableMovesInFunctions;
+	
+	int numFunctions; 
 	
 	public Boolean addingToFunction; 
 	private Boolean removingFunction; 
@@ -68,10 +71,25 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		setupCreateFunctionPanel(); 
 		
 		addingToFunction = false; 
+
 		numFunctions = 1; 
-		
 		initGUI();
 
+	}
+	
+	
+	public void setMaxAvailableMovesInFunctions(int set){
+		maxAvailableMovesInFunctions = set; 
+		currentNumberAvailableMovesInFunction = maxAvailableMovesInFunctions; 
+	}
+	public void resetCurrentNumberAvailableMovesInFunctionToMax(){
+		currentNumberAvailableMovesInFunction = maxAvailableMovesInFunctions; 
+	}
+	public void decrementCurrentNumberAvailableMovesInFunction(){
+		currentNumberAvailableMovesInFunction --; 
+	}
+	public int getCurrentNumberAvailableMovesInFunction(){
+		return currentNumberAvailableMovesInFunction; 
 	}
 	
 	public void setupCreateFunctionPanel(){

@@ -49,6 +49,9 @@ public class DoneWithFunctionAL implements ActionListener{
 		selectPanel.addNewFunctionButton(newMoveList, fcPanel.nameField.getText());
 		selectPanel.addingToFunction = false; 
 		
+		//reset the number of moves that can be used in making a function
+		selectPanel.resetCurrentNumberAvailableMovesInFunctionToMax();
+		
 		fcPanel.reset(false); 
 	}
 

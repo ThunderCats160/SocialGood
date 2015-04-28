@@ -83,7 +83,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
 		
 		selectPanel = new SelectPanel(stratPanel, game, board);
-		
+		selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions());
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
 		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
@@ -142,7 +142,10 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
 			selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 			
+			
 			stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
+			selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions()); 
+			
 			
 			selectPanel.resetNumFunctions();
 		}
@@ -194,7 +197,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		levels.add(l1);
+		//levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -204,7 +207,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		levels.add(l2); 
+		//levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
@@ -218,7 +221,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		//l3.setCustomFunctionsAvailable(true);
-		levels.add(l3);
+		//levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -234,7 +237,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(4);
 		
-		getLevels().add(l4); 
+		//getLevels().add(l4); 
 		
 		//Level 5: this makes while loops more complicated 
 		Level l5 = new Level(Board.unitDimension, board); 
@@ -248,7 +251,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.setNumOfUsableMoves(4);
 		l5.setDescription("This one is really challenging!  Think you're up to the challenge?  Here you will need to make two separate moves loop! You only need to press Loop once, and then everything below it will loop.");
 		
-		getLevels().add(l5); 
+		//getLevels().add(l5); 
 		
 		//Level 6: this introduces user defined functions
 		Level l6 = new Level(Board.unitDimension, board); 
@@ -258,6 +261,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.makeUpMoveAvailable();
 		l6.setCustomFunctionsAvailable(true); 
 		l6.setNumOfUsableMoves(5); 
+		l6.setNumOfUsableMovesInFunctions(4);
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
 				+ " not put that in your own function so you don't have to keep re-adding it!"
 				+"Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");

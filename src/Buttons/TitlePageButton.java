@@ -1,4 +1,4 @@
-package Buttons;
+package buttons;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,4 +1,6 @@
-package Panels;
+package panels;
+import interfaces.ResettablePanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -13,24 +15,23 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ActionListeners.conditionalMoveAdderAL;
-import ActionListeners.functionMoveAdderAL;
-import ActionListeners.moveAdderAL;
-import ActionListeners.removeFunctionButtonAL;
-import ActionListeners.whileMoveAdderAL;
-import Buttons.MoveButton;
-import Interfaces.resettablePanel;
-import Main.Board;
-import Main.Game;
-import Moves.FunctionMove;
-import Moves.Move;
-import Moves.WhileMove;
-import Moves.conditionalMove;
+import main.Board;
+import main.Game;
+import moves.FunctionMove;
+import moves.Move;
+import moves.WhileMove;
+import moves.ConditionalMove;
+import buttons.MoveButton;
+import actionListeners.ConditionalMoveAdderAL;
+import actionListeners.FunctionMoveAdderAL;
+import actionListeners.MoveAdderAL;
+import actionListeners.RemoveFunctionButtonAL;
+import actionListeners.WhileMoveAdderAL;
 
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)
 //It also holds buttons to display the move options
-public class SelectPanel extends JPanel implements ActionListener, resettablePanel {
+public class SelectPanel extends JPanel implements ActionListener, ResettablePanel {
 
 	/* PROPERTIES */
 	private ArrayList<Move> selectOptions;
@@ -160,11 +161,11 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 			MoveButton b = new MoveButton(selectOptions.get(i).getName(), 15);
 			
 			if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
-				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
+				b.addActionListener(new MoveAdderAL(selectOptions.get(i), stratPanel, this));
 			else if(selectOptions.get(i).isWhileMove)
-				b.addActionListener(new whileMoveAdderAL(new WhileMove("While", board, null), stratPanel, this, createFunctionPanel));
+				b.addActionListener(new WhileMoveAdderAL(new WhileMove("While", board, null), stratPanel, this, createFunctionPanel));
 			else if(selectOptions.get(i).isConditionalMove)
-				b.addActionListener(new conditionalMoveAdderAL(new conditionalMove("Conditional", board, null), stratPanel, this, game.mainGamePanel));
+				b.addActionListener(new ConditionalMoveAdderAL(new ConditionalMove("Conditional", board, null), stratPanel, this, game.mainGamePanel));
 				 
 			
 			add(b);
@@ -191,11 +192,11 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 				MoveButton b = new MoveButton(selectOptions.get(i).getName(), 15);
 				
 				if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
-					b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
+					b.addActionListener(new MoveAdderAL(selectOptions.get(i), stratPanel, this));
 				else if(selectOptions.get(i).isWhileMove)
-					b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
+					b.addActionListener(new WhileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
 				else if(selectOptions.get(i).isConditionalMove)
-					b.addActionListener(new conditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
+					b.addActionListener(new ConditionalMoveAdderAL(selectOptions.get(i), stratPanel, this, game.mainGamePanel));
 					 
 				
 				add(b);
@@ -209,7 +210,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 			
 				if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove){
 					MoveButton b = new MoveButton(selectOptions.get(i).getName(), 15);
-					b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
+					b.addActionListener(new MoveAdderAL(selectOptions.get(i), stratPanel, this));
 					add(b);
 				}
 		
@@ -249,7 +250,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		
 		MoveButton removeFunctionButton = new MoveButton("Remove a function", 15); 
 		removeFunctionButton.setButtonColor(Color.RED);
-		removeFunctionButton.addActionListener(new removeFunctionButtonAL(this)); 
+		removeFunctionButton.addActionListener(new RemoveFunctionButtonAL(this)); 
 
 		add(dfb); 
 		add(Box.createRigidArea(new Dimension(5,5)));
@@ -280,7 +281,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		
 		FunctionMove f = new FunctionMove("NOPE", board, null, functionMoves, name); 
 		
-		functionMoveAdderAL m = new functionMoveAdderAL(f, stratPanel, this, b);
+		FunctionMoveAdderAL m = new FunctionMoveAdderAL(f, stratPanel, this, b);
 		
 		b.addActionListener(m);
 		

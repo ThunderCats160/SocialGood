@@ -1,4 +1,4 @@
-package Main;
+package main;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -6,16 +6,16 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import Moves.DownMove;
-import Moves.LeftMove;
-import Moves.Move;
-import Moves.RightMove;
-import Moves.UpMove;
-import Moves.WhileMove;
-import Moves.conditionalMove;
-import Units.Goal;
-import Units.Obstacle;
-import Units.Unit;
+import units.Goal;
+import units.Obstacle;
+import units.Unit;
+import moves.DownMove;
+import moves.LeftMove;
+import moves.Move;
+import moves.RightMove;
+import moves.UpMove;
+import moves.WhileMove;
+import moves.ConditionalMove;
 
 //The level class holds the layout for the level, the string description for the level, and the available moves for this level.
 //Depending on the currentLevel, these things will change.
@@ -131,7 +131,7 @@ public class Level {
 	}
 	public void makeConditionalMoveAvailable()
 	{
-		availableMoves.add(new conditionalMove("Conditional", board, null));
+		availableMoves.add(new ConditionalMove("Conditional", board, null));
 	}
 
 	//Setter for the Description for the level.

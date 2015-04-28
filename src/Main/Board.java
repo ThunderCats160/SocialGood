@@ -141,8 +141,10 @@ public class Board extends JPanel{
 						
 						if(whileList.get(whileListCounter).isConditionalMove)
 						{
+							
 							if(checkConditional(whileList.get(whileListCounter)))
 							{
+								
 								//get the list of moves that the conditionalMove is to perform over and over
 								ArrayList<Move> conditionalList = whileList.get(whileListCounter).getMoveList();
 								
@@ -160,8 +162,8 @@ public class Board extends JPanel{
 						else if(whileList.get(whileListCounter).isFunctionMove){
 							ArrayList<Move> functionList = whileList.get(whileListCounter).getMoveList(); 
 							
-							System.out.println("HERE");
-							System.out.println(functionList.size()); 
+							//System.out.println("HERE");
+							//System.out.println(functionList.size()); 
 							
 							
 							for(int functionListCounter = 0; functionListCounter< functionList.size(); functionListCounter++){
@@ -246,6 +248,8 @@ public class Board extends JPanel{
 		Boolean checker = false;
 		String condition = ((conditionalMove) move).getConditionalMove();
 		//System.out.println(condition);
+		
+		//System.out.println(condition); 
 		
 
 		if(condition == "red square" && currentLevel.getUnitAtPosition(player.getX(), player.getY()).isRedSquare)

@@ -24,6 +24,7 @@ import Main.Board;
 import Main.Game;
 import Moves.FunctionMove;
 import Moves.Move;
+import Moves.WhileMove;
 import Moves.conditionalMove;
 
 //The Select Panel holds an ArrayList of the move options for the level
@@ -134,7 +135,7 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 			if(!selectOptions.get(i).isWhileMove && !selectOptions.get(i).isConditionalMove)
 				b.addActionListener(new moveAdderAL(selectOptions.get(i), stratPanel, this));
 			else if(selectOptions.get(i).isWhileMove)
-				b.addActionListener(new whileMoveAdderAL(selectOptions.get(i), stratPanel, this, createFunctionPanel));
+				b.addActionListener(new whileMoveAdderAL(new WhileMove("While", board, null), stratPanel, this, createFunctionPanel));
 			else if(selectOptions.get(i).isConditionalMove)
 				b.addActionListener(new conditionalMoveAdderAL(new conditionalMove("Conditional", board, null), stratPanel, this, game.mainGamePanel));
 				 
@@ -287,6 +288,9 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		return removingFunction; 
 	}
 
+	public Board getBoard(){
+		return board; 
+	}
 
 
 }

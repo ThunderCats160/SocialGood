@@ -281,7 +281,9 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		BufferedImage evil = game.getBufferedImage(Game.enemyImage);
 		l8.setPlayerSpawnPosition(0, 5);
 		l8.addRedSquareAtPosition(2,5);
-		l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));/*.addObstacleAtPosition(2, 0, evil);
+		l8.addRedSquareAtPosition(2,8); 
+		l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));/*
+		l8.addObstacleAtPosition(2, 0, evil);
 		l8.addObstacleAtPosition(2, 1, evil);
 		l8.addObstacleAtPosition(2, 2, evil);
 		l8.addObstacleAtPosition(2, 3, evil);
@@ -301,7 +303,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.addObstacleAtPosition(2, 6, evil);
 		l8.addObstacleAtPosition(2, 7, evil);
 		l8.addObstacleAtPosition(2, 8, evil);
-		l8.addObstacleAtPosition(2, 9, evil);*/
+		l8.addObstacleAtPosition(2, 9, evil);//*/
 		l8.setDescription("Good luck on this extremely difficult level bwhahahaha.  The cats are everywhere.");
 		l8.makeRightMoveAvailable();
 		l8.makeUpMoveAvailable();

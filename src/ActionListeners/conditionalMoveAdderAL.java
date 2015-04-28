@@ -65,7 +65,7 @@ public class conditionalMoveAdderAL implements ActionListener {
 			
 			
 			//System.out.println("TOP"); 
-			System.out.println(""); 
+			//System.out.println(""); 
 			//Board.printTest(stratPanel.getCurrentStrat());
 			
 			
@@ -73,9 +73,9 @@ public class conditionalMoveAdderAL implements ActionListener {
 			
 			
 			
-			System.out.println("");
+			//System.out.println("");
 			//System.out.println("Bottom"); 
-			System.out.println(""); 
+			//System.out.println(""); 
 			//Board.printTest(stratPanel.getCurrentStrat());
 			
 			stratPanel.add(new JLabel("Conditional(" + conditional + ") {")); 
@@ -122,13 +122,17 @@ public class conditionalMoveAdderAL implements ActionListener {
 			
 		//Only add the move if the user has moves available
 			if (stratPanel.currentNumberMovesAvailable > 0) {
+				toAdd = new conditionalMove("Conditional", selectPanel.getBoard(), null);
 				if(selectPanel.getAddToWhile())
 				{
-					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
+					
+					//stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
+					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(
+							toAdd); 
 					stratPanel.decrementAvailableMoves();
 				}
 				else{
-					stratPanel.addMove(toAdd); 
+					stratPanel.addMove(toAdd);  
 				}
 				
 				//System.out.println(stratPanel.getCurrentStrat().get(0).moveList.size());	

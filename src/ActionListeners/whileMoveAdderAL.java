@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import Moves.Move;
+import Moves.WhileMove;
 import Panels.FunctionCreatingPanel;
 import Panels.SelectPanel;
 import Panels.StratPanel;
@@ -45,7 +46,7 @@ public class whileMoveAdderAL implements ActionListener {
 			//Only add the move if the user has moves available
 			if(stratPanel.currentNumberMovesAvailable > 0) {
 				//Add the selected move to the Strategy Panel
-				stratPanel.addMove(toAdd); 
+				stratPanel.addMove(new WhileMove("While", selectPanel.getBoard(), null)); 
 
 				stratPanel.add(new JLabel("LOOP:")); 
 				selectPanel.setAddToWhile(true); 

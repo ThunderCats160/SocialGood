@@ -73,14 +73,58 @@ public class Board extends JPanel{
 		return currentLevel; 		
 	}
 
+	
+	public static void printTest(ArrayList<Move> moveList){
+		System.out.println("Here are the items in moveList"); 
+		for(int lol = 0; lol < moveList.size(); lol++){
+			
+			System.out.println(moveList.get(lol).name);
+			if(moveList.get(lol).isWhileMove)
+			{
+				System.out.println("Contents of the whileLoop"); 
+				for(int lmao = 0; lmao < moveList.get(lol).moveList.size(); lmao ++){
+					System.out.println(moveList.get(lol).moveList.get(lmao).name); 
+					//System.out.println(moveList.get(lol).moveList.get(lmao).getClass().getName()); 
+
+					
+					if(moveList.get(lol).moveList.get(lmao).isConditionalMove){
+						System.out.println("Contents of the Conditional"); 
+						for(int x = 0; x < moveList.get(lol).moveList.get(lmao).moveList.size(); x ++){
+							System.out.println(moveList.get(lol).moveList.get(lmao).moveList.get(x).name); 
+							//System.out.println(moveList.get(lol).moveList.get(lmao).getClass().getName()); 
+							
+						}
+						System.out.println("Ending contents of conditional"); 
+					}
+					
+					
+				}
+				System.out.println("Ending contents of while loop"); 
+			}
+			if(moveList.get(lol).isConditionalMove){
+				System.out.println("Contents of the Conditional"); 
+				for(int lmao = 0; lmao < moveList.get(lol).moveList.size(); lmao ++){
+					System.out.println(moveList.get(lol).moveList.get(lmao).name); 
+					//System.out.println(moveList.get(lol).moveList.get(lmao).getClass().getName()); 
+					
+				}
+				System.out.println("Ending contents of conditional"); 
+			}
+		}
+		System.out.println("End of contents of moveList"); 
+	}
 	//If the user clicks "Run", we want to see if their strategy works. We move pieces around on the board to test their strategy.
 	public Boolean testStrategy(ArrayList<Move> moveList){
 
 		Graphics g = getGraphics();
-
+		printTest(moveList); 
+		
+		
+		///*
 		//Iterate through the list of moves in order to move the Player around the board.
 		for(int i = 0; i < moveList.size(); i++) {
 			
+			 
 			//Carry out the current move in the iteration
 			//The graphics item and board are passed so the whileMove can 
 			//create a loop similar to this one
@@ -91,16 +135,18 @@ public class Board extends JPanel{
 				//Only perform the loop 10 times in case of an infinite
 				for(int whileLoopCounter = 0; whileLoopCounter < 10; whileLoopCounter++)
 				{
-					//System.out.println(whileList.size()); 
+					 
 					for(int whileListCounter = 0; whileListCounter < whileList.size(); whileListCounter++)
 					{		
 						
-						if(whileList.get(whileListCounter).name == "Conditional")
+						if(whileList.get(whileListCounter).isConditionalMove)
 						{
-							if(checkConditional(moveList.get(whileListCounter)))
+							
+							if(checkConditional(whileList.get(whileListCounter)))
 							{
+								
 								//get the list of moves that the conditionalMove is to perform over and over
-								ArrayList<Move> conditionalList = moveList.get(whileListCounter).getMoveList();
+								ArrayList<Move> conditionalList = whileList.get(whileListCounter).getMoveList();
 								
 								
 								for(int index = 0; index < conditionalList.size(); index++)
@@ -116,12 +162,12 @@ public class Board extends JPanel{
 						else if(whileList.get(whileListCounter).isFunctionMove){
 							ArrayList<Move> functionList = whileList.get(whileListCounter).getMoveList(); 
 							
-							System.out.println("HERE");
-							System.out.println(functionList.size()); 
+							//System.out.println("HERE");
+							//System.out.println(functionList.size()); 
 							
 							
 							for(int functionListCounter = 0; functionListCounter< functionList.size(); functionListCounter++){
-								System.out.println(functionListCounter); 
+								//System.out.println(functionListCounter); 
 								if(doMove(functionList.get(functionListCounter), g))
 									return true; 
 							}
@@ -177,7 +223,7 @@ public class Board extends JPanel{
 			
 
 		}
-		
+		//*/
 		//Sleep again so the User can see their final position
 		try {
 			Thread.sleep(500);
@@ -197,10 +243,13 @@ public class Board extends JPanel{
 	
 	private Boolean checkConditional(Move move)
 	{
+
 		//System.out.println("inside of check conditional");
 		Boolean checker = false;
 		String condition = ((conditionalMove) move).getConditionalMove();
 		//System.out.println(condition);
+		
+		//System.out.println(condition); 
 		
 
 		if(condition == "red square" && currentLevel.getUnitAtPosition(player.getX(), player.getY()).isRedSquare)

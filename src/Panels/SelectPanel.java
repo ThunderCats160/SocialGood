@@ -82,6 +82,9 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 
 	}
 	
+	public SelectPanel(){
+		
+	}
 	
 	public void setMaxAvailableMovesInFunctions(int set){
 		//System.out.println("HELL)"); 
@@ -126,7 +129,8 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	
 	public void setAddToWhile(boolean value){
 		addingToWhile = value;
-		game.getMainGamePanel().repaint();
+		if(game.getMainGamePanel() != null)
+			game.getMainGamePanel().repaint();
 	}
 
 	public boolean getAddToWhile(){

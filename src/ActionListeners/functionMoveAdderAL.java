@@ -43,20 +43,20 @@ public class functionMoveAdderAL implements ActionListener {
 		}
 			
 		
-		
-		//Add the selected move to the Strategy Panel
-		if(selectPanel.getAddToWhile()){
-			stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd); 
-		}
-			
-		else
-			stratPanel.addMove(toAdd); 
-		//Add the name of the Strategy to display
-		if(selectPanel.getAddToWhile() == true){
+		if(stratPanel.currentNumberMovesAvailable > 0){
+			//Add the selected move to the Strategy Panel
+			if(selectPanel.getAddToWhile()){
+				stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd);
+				stratPanel.decrementAvailableMoves();
+			}
+				
+			else{
+				stratPanel.addMove(toAdd); 
+			}
+			//Add the name of the Strategy to display
 			stratPanel.add(new JLabel(toAdd.name));
-		} else {
-			stratPanel.add(new JLabel(toAdd.name)); 
 		}
+		
 		
 		selectPanel.getGame().getMainGamePanel().repaint();	
 	}

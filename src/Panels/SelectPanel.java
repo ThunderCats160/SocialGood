@@ -42,7 +42,10 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 	Board board; 
 	
 	//Currently useless
-	private int numFunctions; 
+	public int currentNumberAvailableMovesInFunction; 
+	private int maxAvailableMovesInFunctions;
+	
+	int numFunctions; 
 	
 	public Boolean addingToFunction; 
 	private Boolean removingFunction; 
@@ -65,13 +68,37 @@ public class SelectPanel extends JPanel implements ActionListener, resettablePan
 		game = g; 
 		board = b; 
 		
+		maxAvailableMovesInFunctions = 100; 
+		currentNumberAvailableMovesInFunction = maxAvailableMovesInFunctions; 
+		
 		setupCreateFunctionPanel(); 
 		
 		addingToFunction = false; 
-		numFunctions = 1; 
-		
-		initGUI();
 
+		numFunctions = 1; 
+		initGUI();
+		
+		
+
+	}
+	
+	
+	public void setMaxAvailableMovesInFunctions(int set){
+		//System.out.println("HELL)"); 
+		maxAvailableMovesInFunctions = set; 
+		currentNumberAvailableMovesInFunction = maxAvailableMovesInFunctions; 
+		createFunctionPanel.setNumMovesAvailable(currentNumberAvailableMovesInFunction);
+	}
+	public void resetCurrentNumberAvailableMovesInFunctionToMax(){
+		currentNumberAvailableMovesInFunction = maxAvailableMovesInFunctions; 
+		createFunctionPanel.setNumMovesAvailable(currentNumberAvailableMovesInFunction);
+	}
+	public void decrementCurrentNumberAvailableMovesInFunction(){
+		currentNumberAvailableMovesInFunction --; 
+		createFunctionPanel.setNumMovesAvailable(currentNumberAvailableMovesInFunction);
+	}
+	public int getCurrentNumberAvailableMovesInFunction(){
+		return currentNumberAvailableMovesInFunction; 
 	}
 	
 	public void setupCreateFunctionPanel(){

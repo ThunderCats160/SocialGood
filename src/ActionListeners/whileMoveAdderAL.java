@@ -39,7 +39,7 @@ public class whileMoveAdderAL implements ActionListener {
 		
 		if(selectPanel.addingToFunction)
 		{
-			fcp.addMove(toAdd); 
+			//fcp.addMove(toAdd); 
 			fcp.revalidate(); 
 			selectPanel.getGame().getMainGamePanel().repaint();
 		} else {

@@ -2,7 +2,6 @@ package actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import panels.TitlePanel;
 import main.Game;
 
 //When the Player indicates that they are ready to start playing the game from the button on the

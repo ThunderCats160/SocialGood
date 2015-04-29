@@ -5,14 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 
 import main.Game;
-import buttons.RunButton;
 
 //The Description Panel holds a JLabel which is used to display text describing the 
 //Programming concepts used for this level. 
@@ -31,16 +27,21 @@ public class DescriptionPanel extends JPanel{
 		
 	}
 	
+	//Initiate the GUI
 	public void initGUI(){
+		//Set Panel Size based on proportion
 		Dimension descP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4), (int)(Game.APPLET_HEIGHT/5) - 20);
 		setPreferredSize(descP);
 		setSize(descP);
 		setMaximumSize(descP);
 		setMinimumSize(descP);
 		
+		//Panel Background
 		setBackground(Color.WHITE);
+		//Panel Border
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		
+		//The Description Panel has a subpanel for the Tips and Tricks Panel.
 		Dimension labelP = new Dimension((int)((Game.APPLET_WIDTH/5) * 4) -40, (int)(Game.APPLET_HEIGHT/5) - 60);
 		currentDesc.setPreferredSize(labelP);
 		

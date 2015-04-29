@@ -1,6 +1,5 @@
 package units;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 //The Obstacle class holds the graphical information for displaying the Obstacle.

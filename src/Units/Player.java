@@ -1,5 +1,4 @@
 package units;
-import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,18 +22,17 @@ public class Player extends Unit implements ImageObserver{
 	private int dim;
 	
 	private final Color traceColor = Color.LIGHT_GRAY;
-	private final Color playerColor = Color.blue;
 	
 	private int direction; 
 	
 	private BufferedImage visitedMark; 
 
-	public Player(Color newColor, int xPos, int yPos, int newDim)
+	public Player(Color newColor, int xPos1, int yPos1, int newDim)
 	{
 		super(newColor, null);
 
-		xPos = xPos;
-		yPos = yPos;
+		xPos = xPos1;
+		yPos = yPos1;
 		dim = newDim;
 		
 		direction = EAST; 

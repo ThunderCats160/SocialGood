@@ -8,15 +8,11 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.Game;
-import buttons.TitlePageButton;
 import actionListeners.InstructionPanelGoBackAL;
-import actionListeners.TeacherPanelGoBackAL;
+import buttons.TitlePageButton;
 
 public class TeacherPanel extends JPanel{
 	BufferedImage background;

@@ -14,6 +14,8 @@ import main.Game;
 import actionListeners.InstructionPanelGoBackAL;
 import buttons.TitlePageButton;
 
+//The Instructions Panel is the Panel displayed when the Instructions Button is pressed.
+//It is basically a text image, and a button that returns it to the menu.
 public class InstructionsPanel extends JPanel{
 	
 	BufferedImage background;

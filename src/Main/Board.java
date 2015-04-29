@@ -36,6 +36,8 @@ public class Board extends JPanel{
 		initGUI();
 	}
 	
+	//there are no returns or parameters for this function
+	//this sets the dimensions of the board
 	public void initGUI(){
 		Dimension boardP = new Dimension((int)((Game.APPLET_WIDTH/5) * 3) - 90, (int)(Game.APPLET_HEIGHT/5) * 4 + 20);
 		setPreferredSize(boardP);
@@ -44,14 +46,23 @@ public class Board extends JPanel{
 		setMinimumSize(boardP);
 	}
 	
+	//this function sets the player image
+	//there are no returns
+	//the parameter is the image you would like the player to be
 	public void setPlayerImage(BufferedImage image)
 	{
 		player.setImage(image); 
 	}
+	
+	//this function sets the player visited mark
+	//there are no returns
+	//the parameter is the image you would like it to be
 	public void setPlayerVisitedMark(BufferedImage image){
 		player.setVisitedMark(image); 
 	}
 	
+	//this function returns the player
+	//there are no parameters
 	public Player getPlayer()
 	{
 		return player;
@@ -75,7 +86,9 @@ public class Board extends JPanel{
 		return currentLevel; 		
 	}
 
-	
+	//this function was used to error check
+	//there is no returns
+	//the parameter is an array list of moves that will be printed
 	public static void printTest(ArrayList<Move> moveList){
 		System.out.println("Here are the items in moveList"); 
 		for(int lol = 0; lol < moveList.size(); lol++){
@@ -115,11 +128,14 @@ public class Board extends JPanel{
 		}
 		System.out.println("End of contents of moveList"); 
 	}
+	
 	//If the user clicks "Run", we want to see if their strategy works. We move pieces around on the board to test their strategy.
+	//the returns says if there strategy was successful or not
+	//the parameter are the list of moves being tested
 	public Boolean testStrategy(ArrayList<Move> moveList){
 
 		Graphics g = getGraphics();
-		printTest(moveList); 
+		//printTest(moveList); 
 		
 		
 		///*
@@ -131,19 +147,20 @@ public class Board extends JPanel{
 			//The graphics item and board are passed so the whileMove can 
 			//create a loop similar to this one
 			if (moveList.get(i).isWhileMove) {		
+				
 				//Get the list of moves that the whileMove is to perform over and over
 				ArrayList<Move> whileList = moveList.get(i).getMoveList(); 
-				//System.out.println("inside the while loop");
+				
 				//Only perform the loop 10 times in case of an infinite
 				for(int whileLoopCounter = 0; whileLoopCounter < 10; whileLoopCounter++)
 				{
 					 
 					for(int whileListCounter = 0; whileListCounter < whileList.size(); whileListCounter++)
 					{		
-						
+						//checks to see if it is a conditional move
 						if(whileList.get(whileListCounter).isConditionalMove)
 						{
-							
+							//checks the condition if it is a conditional move
 							if(checkConditional(whileList.get(whileListCounter)))
 							{
 								
@@ -153,23 +170,21 @@ public class Board extends JPanel{
 								
 								for(int index = 0; index < conditionalList.size(); index++)
 								{
+									//does the conditional moves if there are any
 									if(doMove(conditionalList.get(index), g))
 									{
-//										//System.out.println("in the conditional statement");
 										return true;
 									}
 								}
 							}
 						}
+						//checks if it is a function
 						else if(whileList.get(whileListCounter).isFunctionMove){
-							ArrayList<Move> functionList = whileList.get(whileListCounter).getMoveList(); 
-							
-							//System.out.println("HERE");
-							//System.out.println(functionList.size()); 
+							ArrayList<Move> functionList = whileList.get(whileListCounter).getMoveList();
 							
 							
 							for(int functionListCounter = 0; functionListCounter< functionList.size(); functionListCounter++){
-								//System.out.println(functionListCounter); 
+								//does the function moves
 								if(doMove(functionList.get(functionListCounter), g))
 									return true; 
 							}
@@ -180,39 +195,40 @@ public class Board extends JPanel{
 					}
 				}
 				
-			}
+			}//end of a while moveList
+			
+			//checks if the move is a function move
 			else if(moveList.get(i).isFunctionMove)
 			{
 				ArrayList<Move> functionList = moveList.get(i).getMoveList(); 
-				
+				//runs all the moves that are in the function
 				for(int j = 0; j< functionList.size(); j++){
 					if(doMove(functionList.get(j), g))
 						return true; 
 				}
 			}
+			
+			//checks if the move is a conditional move
 			else if(moveList.get(i).isConditionalMove)
 			{
 				
-				
+				//checks the condition of the move
 				if(checkConditional(moveList.get(i)))
 				{
-					//get the list of moves that the conditionalMove is to perform over and over
 					ArrayList<Move> conditionalList = moveList.get(i).getMoveList();
-					//System.out.println(conditionalList.size());
-					
+					//performs the moves if the condition is true
 					
 					for(int index = 0; index < conditionalList.size(); index++)
 					{
-						//System.out.println("in the conditional statement");
 						if(doMove(conditionalList.get(index), g))
 						{
-							//System.out.println("in the conditional statement");
 							return true;
 						}
 					}
 				}
 				
 			}
+			//does all the rest of the moves
 			else
 			{
 				
@@ -243,26 +259,22 @@ public class Board extends JPanel{
 		return false;
 	}
 	
+	//this function checks the condition of the conditional moves
+	//there are no returns
+	//the parameter is the move that is passed in
 	public Boolean checkConditional(Move move)
 	{
 
-		//System.out.println("inside of check conditional");
 		Boolean checker = false;
+		//gets the condition
 		String condition = ((ConditionalMove) move).getConditionalMove();
-		//System.out.println(condition);
-		
-		//System.out.println(condition); 
-		
-
+			
+		//the only condition that is possible is this one
 		if(condition == "red square" && currentLevel.getUnitAtPosition(player.getX(), player.getY()).isRedSquare)
 		{
-			//System.out.println("in the red square condition");
 			checker = true;
 		}
-	
-		
-		//red square 2,5
-			
+				
 		return checker;
 	}
 
@@ -309,7 +321,7 @@ public class Board extends JPanel{
 	@Override
 	public void paintComponent(Graphics g)
 	{
-		// draw the grid
+		// draws the grid
 		BufferedImage grass = Game.getBufferedImage(Game.tileImage);
 		super.paintComponent(g);
 		
@@ -332,20 +344,16 @@ public class Board extends JPanel{
 				}
 				else if(current.getImage() != null)
 				{
-					//System.out.println("NOT NULL"); 
 					g.drawImage(current.getImage(), j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2, player); 
 				}
 				else
 				{
-					//g.setColor(current.getColor());
 					g.drawImage(grass, j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2,null); 
-					//g.fillRect(j*unitDimension + 1, i*unitDimension + 1, unitDimension - 2, unitDimension - 2);
 				}
 			}
 		}
 		
-		//doesn't do anything
-		//currentLevel.draw(g);
+
 		player.draw(g);
 	}
 

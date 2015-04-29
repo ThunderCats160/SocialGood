@@ -11,6 +11,7 @@ import main.Game;
 
 public class MoveButton extends JButton {
 	
+	//these are all properties that will be used in the creation of the buttons
 	public Color buttonColor = Color.getHSBColor((float).58, (float)0.42, (float)0.46);
 	public Color fontColor = Color.WHITE;
 	private String button_text;
@@ -44,16 +45,24 @@ public class MoveButton extends JButton {
 	
 	//this function sets the size of the button
 	//there are no returns
-	//the parameters are the width and height that you would 
+	//the parameters are the width and height that you would like the button to be
 	public void setSize(int width, int height){
+		
+		//changes the width and height
 		button_width = width;
 		button_height = height;
+		
+		//creates new dimensions
 		Dimension dim = new Dimension(button_width, button_height);
+		
+		//sets the dimensions
 		setPreferredSize(dim);
 		setMaximumSize(dim);
 		setMinimumSize(dim);
 	}
 	
+	//this function has no parameters or returns
+	//this functions sets up the dimensions of the buttons
 	public void initGUI(){
 		Dimension dim = new Dimension(button_width, button_height);
 		setPreferredSize(dim);
@@ -62,6 +71,7 @@ public class MoveButton extends JButton {
 		setContentAreaFilled(false);
 	}
 	
+	//this function paints the buttons onto the screen
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);

@@ -28,7 +28,7 @@ import buttons.TitlePageButton;
 import actionListeners.InstructionPanelGoBackAL;
 import actionListeners.TeacherPanelGoBackAL;
 import actionListeners.InstructionsPanelButtonAL;
-import actionListeners.IntroPanelButtonAL;
+import actionListeners.introPanelButtonAL;
 import actionListeners.TeacherPanelButtonAL;
 
 
@@ -113,11 +113,13 @@ public class Game extends Applet {
 		setMaximumSize(dim);
 		setSize(APPLET_WIDTH,APPLET_HEIGHT);
 		
+		//creates the teacher's page
+		createTeacherPanel(); 
+		
 		//creates the instructions page
 		createInstructionPanel();
 		
-		//creates the teacher's page
-		createTeacherPanel(); 
+		
 		
 		//Show the introduction Screen
 		
@@ -125,16 +127,16 @@ public class Game extends Applet {
 	}
 	
 	/* Function to start a new game */
-	public void startNewGame(){
+	public void startNewGame(Boolean loadImages){
 		//Create the main game panel and set its layout.
-		mainGamePanel = new MainGamePanel(this, true); 
+		mainGamePanel = new MainGamePanel(this, loadImages); 
 		
-		Image i = getImage(base, Game.userImage); 
-		if(i == null)
-			System.out.println("I NULL"); 
 		
-		mainGamePanel.setPlayerImage(getBufferedImage(Game.userImage)); 
-		mainGamePanel.setPlayerVisitedMark(getBufferedImage(Game.trailImage)); 
+		if(loadImages){
+			mainGamePanel.setPlayerImage(getBufferedImage(Game.userImage)); 
+			mainGamePanel.setPlayerVisitedMark(getBufferedImage(Game.trailImage)); 
+			
+		}
 		
 		// add the panel to our applet
 		add(mainGamePanel);
@@ -237,5 +239,9 @@ public class Game extends Applet {
 				e.printStackTrace();
 			}
 		}		
+	}
+	
+	public String getActiveView(){
+		return activeView; 
 	}
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import buttons.MoveButton;
 import panels.MainGamePanel;
 import panels.SelectPanel;
 import panels.StratPanel;
@@ -21,8 +22,8 @@ public class ConditionalMoveAdderAL implements ActionListener {
 	SelectPanel selectPanel; 
 	MainGamePanel mgp; 
 	private String conditional;
-	private JButton redSquare = new JButton("Red Square");
-	private JButton bracket = new JButton("}");
+	private MoveButton redSquare = new MoveButton("Red Square", 15);
+	private MoveButton bracket = new MoveButton("}", 15);
 	
 	
 	

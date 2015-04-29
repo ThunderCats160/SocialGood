@@ -80,13 +80,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Instantiate a new StrategyPanel
 		stratPanel = new StratPanel(game);
 		//Sets the number of available moves
-		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
+		//stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
 		
 		selectPanel = new SelectPanel(stratPanel, game, board);
-		selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions());
+		//selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions());
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		//selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 		stratPanel.setSelectPanel(selectPanel);
 		
 		//Instantiate a new Button with text "Run". 
@@ -124,6 +124,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		add(bottomLevel, BorderLayout.SOUTH);
 		 
 		
+		loadLevel(); 
+		
 		setVisible(true);
 	}
 	
@@ -138,19 +140,26 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			
 			board.setCurrentLevel(getLevels().get(getCurrentLevelIndex()));
 			//Clear the Strategy Panel in preparation of the new level.
-			stratPanel.reset(false); 	
-			descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
-			selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+			stratPanel.reset(false); 
 			
+			loadLevel(); 
 			
-			stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
-			selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions()); 
-			
-			
-			selectPanel.resetNumFunctions();
 		}
 
 	}
+	
+	public void loadLevel(){
+		descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		
+		
+		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
+		selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions()); 
+		
+		
+		selectPanel.resetNumFunctions();
+	}
+	
 	
 	@Override
 	public void paintComponent(Graphics theGraphic) {
@@ -202,7 +211,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l1.setNumOfUsableMoves(400);
 		//l1.makeUpMoveAvailable();
 		
-		//levels.add(l1);
+		levels.add(l1);
 		
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
@@ -217,7 +226,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
 		
-		//levels.add(l2); 
+		levels.add(l2); 
 		
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
@@ -239,7 +248,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l3.makeRightMoveAvailable();
 		l3.makeUpMoveAvailable();
 		//l3.setCustomFunctionsAvailable(true);
-		//levels.add(l3);
+		levels.add(l3);
 		
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
@@ -258,7 +267,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//l4.makeConditionalMoveAvailable();
 		l4.setNumOfUsableMoves(4);
 		
-		//getLevels().add(l4); 
+		getLevels().add(l4); 
 		
 		//Level 5: this makes while loops more complicated 
 		Level l5 = new Level(Board.unitDimension, board); 
@@ -275,7 +284,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l5.setNumOfUsableMoves(4);
 		l5.setDescription("This one is really challenging!  Think you're up to the challenge?  Here you will need to make two separate moves loop! You only need to press Loop once, and then everything below it will loop.");
 		
-		//getLevels().add(l5); 
+		getLevels().add(l5); 
 		
 		//Level 6: this introduces user defined functions
 		Level l6 = new Level(Board.unitDimension, board); 
@@ -293,7 +302,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l6.setDescription("Hey, you're going to be doing UP - RIGHT a bunch here, why"
 				+ " not put that in your own function so you don't have to keep re-adding it!"
 				+" Press the Create a function button, then name it. Press moves you want to put in the function, and then press the Finish Function. Next, add the function to the Strategy by clicking on it. ");
-		//getLevels().add(l6); 
+		getLevels().add(l6); 
 
 		
 		//Level 7: This makes the player put their own functions in a while loop
@@ -356,7 +365,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.makeDownMoveAvailable();
 		l8.makeWhileMoveAvailable();
 		l8.makeConditionalMoveAvailable();
-		l8.setNumOfUsableMoves(15);
+		l8.setNumOfUsableMoves(5);
 		
 		
 		getLevels().add(l8);
@@ -389,8 +398,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	}
 
 	
-	public void setCurrentLevelIndex(int currentLevelIndex) {
-		this.currentLevelIndex = currentLevelIndex;
+	public void setCurrentLevelIndex(int newCurrentLevelIndex) {
+		this.currentLevelIndex = newCurrentLevelIndex;
 	}
 	
 	public static BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  

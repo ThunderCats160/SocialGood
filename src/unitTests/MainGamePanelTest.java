@@ -23,7 +23,7 @@ public class MainGamePanelTest {
 	public void testInitGUI()
 	{
 		Game g = new Game(); 
-		MainGamePanel mp = new MainGamePanel(g); 
+		MainGamePanel mp = new MainGamePanel(g, false); 
 		
 		
 		

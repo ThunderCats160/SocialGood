@@ -15,14 +15,14 @@ import org.junit.Test;
 import panels.MainGamePanel;
 
 
-
-
 public class BoardTest {
 
 	MainGamePanel mainPanel;
 	Board board;
 	Game game;
 	
+	//Creates the game, mainGamePanel, and board that will be
+	//used in the tests
 	@Before
 	public void setUp()
 	{

@@ -36,6 +36,7 @@ public class Board extends JPanel{
 		initGUI();
 	}
 	
+
 	//there are no returns or parameters for this function
 	//this sets the dimensions of the board
 	public void initGUI(){
@@ -46,23 +47,28 @@ public class Board extends JPanel{
 		setMinimumSize(boardP);
 	}
 	
+
 	//this function sets the player image
 	//there are no returns
 	//the parameter is the image you would like the player to be
+
 	public void setPlayerImage(BufferedImage image)
 	{
 		player.setImage(image); 
 	}
 	
+
 	//this function sets the player visited mark
 	//there are no returns
 	//the parameter is the image you would like it to be
+
 	public void setPlayerVisitedMark(BufferedImage image){
 		player.setVisitedMark(image); 
 	}
-	
+
 	//this function returns the player
 	//there are no parameters
+
 	public Player getPlayer()
 	{
 		return player;
@@ -86,27 +92,25 @@ public class Board extends JPanel{
 		return currentLevel; 		
 	}
 
-	//this function was used to error check
-	//there is no returns
-	//the parameter is an array list of moves that will be printed
+
+	//A bug checking function. Prints everything in the user's
+	//current strategy in an understandable way. 
+
 	public static void printTest(ArrayList<Move> moveList){
 		System.out.println("Here are the items in moveList"); 
-		for(int lol = 0; lol < moveList.size(); lol++){
+		for(int moveListIndex = 0; moveListIndex < moveList.size(); moveListIndex++){
 			
-			System.out.println(moveList.get(lol).name);
-			if(moveList.get(lol).isWhileMove)
+			System.out.println(moveList.get(moveListIndex).name);
+			if(moveList.get(moveListIndex).isWhileMove)
 			{
 				System.out.println("Contents of the whileLoop"); 
-				for(int lmao = 0; lmao < moveList.get(lol).moveList.size(); lmao ++){
-					System.out.println(moveList.get(lol).moveList.get(lmao).name); 
-					//System.out.println(moveList.get(lol).moveList.get(lmao).getClass().getName()); 
-
+				for(int whileListIndex = 0; whileListIndex < moveList.get(moveListIndex).moveList.size(); whileListIndex ++){
+					System.out.println(moveList.get(moveListIndex).moveList.get(whileListIndex).name); 
 					
-					if(moveList.get(lol).moveList.get(lmao).isConditionalMove){
+					if(moveList.get(moveListIndex).moveList.get(whileListIndex).isConditionalMove){
 						System.out.println("Contents of the Conditional"); 
-						for(int x = 0; x < moveList.get(lol).moveList.get(lmao).moveList.size(); x ++){
-							System.out.println(moveList.get(lol).moveList.get(lmao).moveList.get(x).name); 
-							//System.out.println(moveList.get(lol).moveList.get(lmao).getClass().getName()); 
+						for(int x = 0; x < moveList.get(moveListIndex).moveList.get(whileListIndex).moveList.size(); x ++){
+							System.out.println(moveList.get(moveListIndex).moveList.get(whileListIndex).moveList.get(x).name); 
 							
 						}
 						System.out.println("Ending contents of conditional"); 
@@ -116,11 +120,10 @@ public class Board extends JPanel{
 				}
 				System.out.println("Ending contents of while loop"); 
 			}
-			if(moveList.get(lol).isConditionalMove){
+			if(moveList.get(moveListIndex).isConditionalMove){
 				System.out.println("Contents of the Conditional"); 
-				for(int lmao = 0; lmao < moveList.get(lol).moveList.size(); lmao ++){
-					System.out.println(moveList.get(lol).moveList.get(lmao).name); 
-					//System.out.println(moveList.get(lol).moveList.get(lmao).getClass().getName()); 
+				for(int conditionalListIndex = 0; conditionalListIndex < moveList.get(moveListIndex).moveList.size(); conditionalListIndex ++){
+					System.out.println(moveList.get(moveListIndex).moveList.get(conditionalListIndex).name); 
 					
 				}
 				System.out.println("Ending contents of conditional"); 
@@ -180,11 +183,13 @@ public class Board extends JPanel{
 						}
 						//checks if it is a function
 						else if(whileList.get(whileListCounter).isFunctionMove){
+
 							ArrayList<Move> functionList = whileList.get(whileListCounter).getMoveList();
 							
 							
 							for(int functionListCounter = 0; functionListCounter< functionList.size(); functionListCounter++){
 								//does the function moves
+
 								if(doMove(functionList.get(functionListCounter), g))
 									return true; 
 							}
@@ -216,10 +221,12 @@ public class Board extends JPanel{
 				if(checkConditional(moveList.get(i)))
 				{
 					ArrayList<Move> conditionalList = moveList.get(i).getMoveList();
+
 					//performs the moves if the condition is true
 					
 					for(int index = 0; index < conditionalList.size(); index++)
 					{
+
 						if(doMove(conditionalList.get(index), g))
 						{
 							return true;
@@ -241,7 +248,7 @@ public class Board extends JPanel{
 			
 
 		}
-		//*/
+
 		//Sleep again so the User can see their final position
 		try {
 			Thread.sleep(500);
@@ -259,22 +266,26 @@ public class Board extends JPanel{
 		return false;
 	}
 	
+
 	//this function checks the condition of the conditional moves
 	//there are no returns
 	//the parameter is the move that is passed in
+
 	public Boolean checkConditional(Move move)
 	{
 
 		Boolean checker = false;
 		//gets the condition
 		String condition = ((ConditionalMove) move).getConditionalMove();
+
 			
 		//the only condition that is possible is this one
+
 		if(condition == "red square" && currentLevel.getUnitAtPosition(player.getX(), player.getY()).isRedSquare)
 		{
 			checker = true;
 		}
-				
+
 		return checker;
 	}
 
@@ -325,6 +336,7 @@ public class Board extends JPanel{
 		BufferedImage grass = Game.getBufferedImage(Game.tileImage);
 		super.paintComponent(g);
 		
+		//Loop through and draw every item on the board
 		for(int i = 0; i< currentLevel.getLayout().size(); i++)
 		{
 			for(int j = 0; j < currentLevel.getLayout().get(0).size(); j ++)

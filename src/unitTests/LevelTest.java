@@ -22,6 +22,9 @@ public class LevelTest {
 		level = new Level(40, null); 
 	}
 	
+	//Tests for the make ___move available functions
+	//Work by making sure the correct class of move has been added to available
+	//move list
 	@Test
 	public void makeRightMoveAvailableTest(){
 		level.makeRightMoveAvailable();
@@ -71,18 +74,17 @@ public class LevelTest {
 		
 	}
 	
+	
+	//Add ___atPosition tests
+	//Test by making sure the added unit is put at the correct place in the layout
+	//and has the correct properties
 	@Test
 	public void addGoalAtPositionTest(){
 		level.addGoalAtPosition(3, 6); 
 		assertEquals(level.getLayout().get(6).get(3).getClass().getName(), "units.Goal"); 
 	}
 	
-	@Test
-	public void setPlayerSpawnPositionTest(){
-		level.setPlayerSpawnPosition(12, 14);
-		assertEquals(12, level.getPlayerSpawnX()); 
-		assertEquals(14, level.getPlayerSpawnY()); 
-	}
+	
 	
 	@Test
 	public void addObstacleAtPositionTest(){
@@ -94,5 +96,14 @@ public class LevelTest {
 	public void addRedSquareAtPositionTest(){
 		level.addRedSquareAtPosition(6,3); 
 		assertEquals(true, level.getLayout().get(3).get(6).isRedSquare); 
+	}
+	
+	//Tests the setPlayerSpawnPosition, sets the spawn position, then makes sure
+	//the spawn position really is what it was set to be. 
+	@Test
+	public void setPlayerSpawnPositionTest(){
+		level.setPlayerSpawnPosition(12, 14);
+		assertEquals(12, level.getPlayerSpawnX()); 
+		assertEquals(14, level.getPlayerSpawnY()); 
 	}
 }

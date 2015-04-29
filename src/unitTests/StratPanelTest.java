@@ -21,6 +21,7 @@ public class StratPanelTest extends StratPanel {
 	StratPanel stratPanel; 
 	SelectPanel selectPanel; 
 	
+	//Sets up the game, stratPanel, and selectPanel that will be used in the test
 	@Before
 	public void setUp()
 	{
@@ -30,6 +31,8 @@ public class StratPanelTest extends StratPanel {
 		selectPanel = new SelectPanel(stratPanel, g, null); 
 	}
 	
+	//Sets the maxAvailableMoves, then test that it was set to the
+	//correct number
 	@Test
 	public void testSetMaxAvailableMoves(){
 
@@ -39,7 +42,7 @@ public class StratPanelTest extends StratPanel {
 		assertEquals(13, stratPanel.getMaxAvailableMoves()); 
 	}
 	
-	
+	//Tests that setting the selectPanel sets the correct selectPanel
 	@Test 
 	public void testSetSelectPanel(){
 		
@@ -48,6 +51,7 @@ public class StratPanelTest extends StratPanel {
 		
 	}
 	
+	//Tests that decrementAvailableMoves reduces the number of moves available by one
 	@Test
 	public void testDecrementAvailableMoves(){
 		stratPanel.setMaxAvailableMoves(13);
@@ -55,6 +59,8 @@ public class StratPanelTest extends StratPanel {
 		assertEquals(12, stratPanel.currentNumberMovesAvailable); 
 	}
 	
+	//Tests that reset gets rid of any new components added, 
+	//resets addToWhile to false, and resets the current number of available mvoes
 	@Test
 	public void testReset(){
 		
@@ -75,6 +81,7 @@ public class StratPanelTest extends StratPanel {
 		
 	}
 	
+	//Tests that initGUI adds the proper number of componenets to the panel
 	@Test
 	public void testInitGUI(){
 		stratPanel.removeAll(); 
@@ -87,6 +94,8 @@ public class StratPanelTest extends StratPanel {
 		assertEquals(3, stratPanel.getComponents().length);
 	}
 	
+	//Tests that adding a move increases the size of the moveList by 1, and decreases the 
+	//current number of moves available by 1
 	@Test
 	public void testAddMove(){
 		RightMove m = new RightMove("", null, null); 

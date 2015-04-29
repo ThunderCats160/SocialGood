@@ -15,6 +15,8 @@ public class GameTest {
 		game = new Game(); 
 	}
 	
+	//Tests startNewGame by making sure the game switches to the correct applet view
+	// and that the game successfully sets up the mainGamePanel
 	@Test
 	public void startNewGameTest(){
 		game.startNewGame(false);

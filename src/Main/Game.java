@@ -24,6 +24,22 @@ import panels.TitlePanel;
 
 
 
+//
+//Project 4
+//Name: Harry Eldridge, Michael Martin, Bobby Pinter, Kevin Meurer
+//E-mail: hme7@Georgetown.edu, kam346@georgetown.edu, mm3630@georgetown.edu, rfp30@georgetown.edu
+//Instructor: Singh
+//COSC 150
+//
+//In accordance with the class policies and Georgetown's Honor Code,
+//I certify that, with the exceptions of the lecture notes and those
+//items noted below, I have neither given nor received any assistance
+//on this project.
+//
+//Description: A java applet meant to teach children algorithmic thinking and
+//some basic programming principles through a game about moving a dog. 
+//
+
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
 public class Game extends Applet {
 
@@ -77,13 +93,13 @@ public class Game extends Applet {
 		
 		initGUI();
 		
-		//HOW TO ADD AN IMAGE TO THE INSTRUCTIONS SCREEN
+		//ADDING AN IMAGE TO THE INSTRUCTIONS SCREEN
 		Image instructionsPic = getImage(base, Game.instructionsImage); 
 		JLabel instructionsPicLabel = new JLabel(new ImageIcon(instructionsPic));
 	
 		instructionalPanel.add(instructionsPicLabel); 
 		
-		//HOW TO ADD AN IMAGE TO THE TEACHER'S SCREEN
+		//ADDING AN IMAGE TO THE TEACHER'S SCREEN
 	
 		Image teacherPic = getImage(base, Game.teacherImage); 
 		JLabel teacherPicLabel = new JLabel(new ImageIcon(teacherPic));
@@ -159,6 +175,7 @@ public class Game extends Applet {
 	}
 	
 	
+	//Sets up the instruction panel
 	public void createInstructionPanel() {
 		instructionalPanel = new InstructionsPanel(this);
 		SwingUtilities.invokeLater(new Runnable(){
@@ -168,6 +185,7 @@ public class Game extends Applet {
 		});
 	}
 	
+	//Sets up the instruction panel
 	public void createTeacherPanel(){
 		teacherPanel = new TeacherPanel(this); 
 		SwingUtilities.invokeLater(new Runnable(){
@@ -199,6 +217,9 @@ public class Game extends Applet {
 	{
 		return base;
 	}
+	
+	//How the applet loads images, a static function so can be
+	//accessed anywhere in the program
 	public static BufferedImage getBufferedImage(String imageName)
 	{
 		try {
@@ -212,6 +233,7 @@ public class Game extends Applet {
 		
 		return null; 
 	}
+	
 	
 	public void refreshApplet(){
 		if (SwingUtilities.isEventDispatchThread()){
@@ -233,6 +255,7 @@ public class Game extends Applet {
 		}		
 	}
 	
+	//Getter for activeView
 	public String getActiveView(){
 		return activeView; 
 	}

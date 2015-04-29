@@ -17,8 +17,11 @@ import moves.Move;
 import actionListeners.DoneWithFunctionAL;
 import buttons.TitlePageButton;
 
+//This Panel is actually an Interface! It is used to help the player create a Panel.
+//This Panel sits on top of where the Strategy Panel normally sits, and relies on mouseclicks in both itself, and the SelectPanel.
 public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 
+	
 	public ArrayList<Move> moveList; 
 	
 	StratPanel stratPanel; 
@@ -31,10 +34,12 @@ public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 	
 	JLabel numberOfMovesAvailable; 
 	
+	//Implemented with a StratPanel and SelectPanel, in addition to a Board and Game
 	public FunctionCreatingPanel(StratPanel newStratPanel, SelectPanel newSp, Board b, Game g)
 	{
 		moveList = new ArrayList<Move>(); 
 		
+		//Setting the size of the Panel
 		Dimension stratP = new Dimension((int) Game.APPLET_WIDTH / 5, (int) (Game.APPLET_HEIGHT / 5) * 4);
 		setPreferredSize(stratP);
 		setSize(stratP);
@@ -43,6 +48,7 @@ public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); 
 		
+		//Creating the UI for the Panel
 		JLabel title = new JLabel("Function Builder");
 		title.setFont(new Font("Arial", Font.BOLD, 20));
 		add(title);
@@ -53,8 +59,10 @@ public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 		game = g; 
 		
 		
-		//System.out.println(sp.getCurrentNumberAvailableMovesInFunction()); 
+		
 
+		//Must keep track of the number of moves available for the function
+		//We don't want a function to be too large, it would defeat the purpose!
 		numberOfMovesAvailable = new JLabel(); 
 		numberOfMovesAvailable.setText("Moves left in your function: "+ sp.getCurrentNumberAvailableMovesInFunction()); 
 		numberOfMovesAvailable.setFont(new Font("Arial", Font.BOLD, 13));
@@ -77,6 +85,7 @@ public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 	
 	public void addDoneButton()
 	{
+		//When they are done with their function, they can press the Done Button to bring back the strategy panel.
 		TitlePageButton butt = new TitlePageButton("Finish Function", 4); 
 		butt.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 50));
 		butt.addActionListener(new DoneWithFunctionAL(stratPanel, this, sp, board, game));
@@ -86,6 +95,7 @@ public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 	
 	public void addNameField()
 	{
+		//Lets the user change the name of their function
 		nameField = new JTextField("FunctionName", 20); 
 		nameField.setMaximumSize(new Dimension(300, 40));
 		add(nameField);

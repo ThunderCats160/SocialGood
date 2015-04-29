@@ -20,15 +20,8 @@ import panels.InstructionsPanel;
 import panels.MainGamePanel;
 import panels.TeacherPanel;
 import panels.TitlePanel;
-<<<<<<< HEAD
-import buttons.TitlePageButton;
-import actionListeners.InstructionPanelGoBackAL;
-import actionListeners.TeacherPanelGoBackAL;
-import actionListeners.InstructionsPanelButtonAL;
-import actionListeners.introPanelButtonAL;
-import actionListeners.TeacherPanelButtonAL;
-=======
->>>>>>> RemoveWarnings1
+
+
 
 
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.

@@ -14,6 +14,7 @@ import main.Game;
 import actionListeners.InstructionPanelGoBackAL;
 import buttons.TitlePageButton;
 
+//TeacherPanel, like Instructions Panel, displays the Teacher's Instruction Image
 public class TeacherPanel extends JPanel{
 	BufferedImage background;
 	

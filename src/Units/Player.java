@@ -16,6 +16,13 @@ public class Player extends Unit implements ImageObserver{
 	public final int WEST = 39; 
 	public final int EAST = 39*2; 
 	
+	public final int VISITED_DIM = 200; 
+	public final int VISITED_NORTH = 600; 
+	public final int VISITED_SOUTH = 0; 
+	public final int VISITED_WEST = 200; 
+	public final int VISITED_EAST = 400; 
+	
+	
 	private int xPos;
 	private int yPos;
 
@@ -87,13 +94,13 @@ public class Player extends Unit implements ImageObserver{
 		{
 			BufferedImage subImg = null; 
 			if(direction == NORTH)
-				subImg = visitedMark.getSubimage(600, 0, 200, 200); 
+				subImg = visitedMark.getSubimage(VISITED_NORTH, 0, VISITED_DIM, VISITED_DIM); 
 			if(direction == SOUTH)
-				subImg = visitedMark.getSubimage(0, 0, 200, 200); 
+				subImg = visitedMark.getSubimage(VISITED_SOUTH, 0, VISITED_DIM, VISITED_DIM); 
 			if(direction == WEST)
-				subImg = visitedMark.getSubimage(200, 0, 200, 200);
+				subImg = visitedMark.getSubimage(VISITED_WEST, 0, VISITED_DIM, VISITED_DIM);
 			if(direction == EAST)
-				subImg = visitedMark.getSubimage(400, 0, 200, 200); 
+				subImg = visitedMark.getSubimage(VISITED_EAST, 0, VISITED_DIM, VISITED_DIM); 
 			g.drawImage(subImg, x, y, w, h, null); 
 		}
 		

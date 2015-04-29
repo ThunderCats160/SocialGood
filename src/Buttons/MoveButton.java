@@ -42,6 +42,9 @@ public class MoveButton extends JButton {
 		fontColor = c;
 	}
 	
+	//this function sets the size of the button
+	//there are no returns
+	//the parameters are the width and height that you would 
 	public void setSize(int width, int height){
 		button_width = width;
 		button_height = height;

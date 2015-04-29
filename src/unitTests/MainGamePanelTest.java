@@ -17,7 +17,10 @@ import panels.MainGamePanel;
 public class MainGamePanelTest {
 	
 	
-	
+	@Before
+	public void setup(){
+		
+	}
 	
 	@Test
 	public void testInitGUI()
@@ -25,8 +28,14 @@ public class MainGamePanelTest {
 		Game g = new Game(); 
 		MainGamePanel mp = new MainGamePanel(g, false); 
 		
+		assertEquals(2, mp.getComponents().length); 
 		
 		
+		
+	}
+	
+	@Test
+	public void testInitLevels(){
 		
 	}
 

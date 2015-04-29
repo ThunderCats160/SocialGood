@@ -246,7 +246,7 @@ public class Board extends JPanel{
 		return false;
 	}
 	
-	private Boolean checkConditional(Move move)
+	public Boolean checkConditional(Move move)
 	{
 
 		//System.out.println("inside of check conditional");
@@ -307,9 +307,6 @@ public class Board extends JPanel{
 		return unitDimension;
 	}
 	
-	//public void setUnitDimension(int dim){
-		//unitDimension = dim;
-	//}
 	
 	//Super for drawing the Level and the Player on the board.
 	@Override

@@ -1,17 +1,14 @@
 package unitTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.awt.Color;
 
 import main.Board;
-import main.Game;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import panels.SelectPanel;
-import panels.StratPanel;
 import units.Player;
 
 public class PlayerTest {

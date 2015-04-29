@@ -1,10 +1,9 @@
 package moves;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList; 
 
-import units.Player;
 import main.Board;
+import units.Player;
 
 public class ConditionalMove extends Move{
 

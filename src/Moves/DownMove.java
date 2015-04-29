@@ -4,10 +4,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import units.Player;
-import units.Unit;
 import main.Board;
 import main.Level;
+import units.Player;
+import units.Unit;
 
 //DownMove is one of our move options
 //The DownMove is differentiated by its name "DOWN"

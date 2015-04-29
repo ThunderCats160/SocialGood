@@ -2,20 +2,17 @@ package main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import moves.ConditionalMove;
+import moves.Move;
 import panels.MainGamePanel;
 import units.Player;
 import units.Unit;
-import moves.Move;
-import moves.ConditionalMove;
 
 //Board Class holds the implementation for the Board.
 //Uses JPanel

@@ -4,10 +4,9 @@ import interfaces.ResettablePanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,8 +14,8 @@ import javax.swing.JTextField;
 import main.Board;
 import main.Game;
 import moves.Move;
-import buttons.TitlePageButton;
 import actionListeners.DoneWithFunctionAL;
+import buttons.TitlePageButton;
 
 public class FunctionCreatingPanel extends JPanel implements ResettablePanel{
 

@@ -1,7 +1,7 @@
 package unitTests;
 
 //Junit Test imports
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.awt.Dimension;
 

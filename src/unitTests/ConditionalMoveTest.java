@@ -1,6 +1,7 @@
 package unitTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import moves.ConditionalMove;
 import moves.LeftMove;
 import moves.Move;

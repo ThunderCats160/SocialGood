@@ -2,8 +2,6 @@ package main;
 import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -12,9 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -24,12 +20,15 @@ import panels.InstructionsPanel;
 import panels.MainGamePanel;
 import panels.TeacherPanel;
 import panels.TitlePanel;
+<<<<<<< HEAD
 import buttons.TitlePageButton;
 import actionListeners.InstructionPanelGoBackAL;
 import actionListeners.TeacherPanelGoBackAL;
 import actionListeners.InstructionsPanelButtonAL;
 import actionListeners.introPanelButtonAL;
 import actionListeners.TeacherPanelButtonAL;
+=======
+>>>>>>> RemoveWarnings1
 
 
 //The game class is the underlying class for the entire game. It runs on an Applet, and implements ActionListener which takes in mouse movements.
@@ -43,7 +42,7 @@ public class Game extends Applet {
 	InstructionsPanel instructionalPanel;
 	TeacherPanel teacherPanel; 				//The Teacher's panel, explains to teachers how to use the game to educate kids
 	String activeView;
-	private BufferedImage background;
+	
 	
 	/* PUBLIC SETTINGS */
 	public final String FONT_NAME = "Helvetica";

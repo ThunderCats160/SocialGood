@@ -5,10 +5,6 @@ import main.Level;
 
 
 //Junit Test imports
-import static org.junit.Assert.*;
-
-import javax.swing.JPanel;
-
 import main.Game;
 
 import org.junit.Before;

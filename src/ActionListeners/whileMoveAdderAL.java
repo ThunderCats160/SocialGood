@@ -1,19 +1,14 @@
 package actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
 
+import moves.Move;
+import moves.WhileMove;
 import panels.FunctionCreatingPanel;
 import panels.SelectPanel;
 import panels.StratPanel;
-import moves.Move;
-import moves.WhileMove;
 
 //Action listener linked to each button
 //When a button is pressed, it adds a move to the current strategy list in stratPanel

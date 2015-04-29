@@ -10,10 +10,10 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 import main.Game;
-import buttons.TitlePageButton;
 import actionListeners.InstructionsPanelButtonAL;
 import actionListeners.introPanelButtonAL;
 import actionListeners.TeacherPanelButtonAL;
+import buttons.TitlePageButton;
 
 public class TitlePanel extends JPanel {
 	

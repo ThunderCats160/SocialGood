@@ -4,12 +4,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
-import panels.SelectPanel;
-import panels.StratPanel;
-import main.Board;
+import moves.ConditionalMove;
 import moves.Move;
 import moves.WhileMove;
-import moves.ConditionalMove;
+import panels.SelectPanel;
+import panels.StratPanel;
 
 //Action listener linked to each button
 //When a button is pressed, it adds a move to the current strategy list in stratPanel

@@ -5,14 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 
 import main.Game;
-import buttons.RunButton;
 
 //The Description Panel holds a JLabel which is used to display text describing the 
 //Programming concepts used for this level. 

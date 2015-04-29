@@ -1,20 +1,13 @@
 package unitTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import main.Board;
 import main.Game;
 import main.Level;
 import moves.ConditionalMove;
-import moves.LeftMove;
-import moves.Move;
-import moves.RightMove;
-import moves.UpMove;
 
 import org.junit.Before;
 import org.junit.Test;

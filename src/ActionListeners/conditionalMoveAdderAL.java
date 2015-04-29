@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+
 import buttons.MoveButton;
+
+import moves.ConditionalMove;
+import moves.Move;
+
 import panels.MainGamePanel;
 import panels.SelectPanel;
 import panels.StratPanel;
-import main.Board;
-import moves.Move;
-import moves.ConditionalMove;
 
 public class ConditionalMoveAdderAL implements ActionListener {
 

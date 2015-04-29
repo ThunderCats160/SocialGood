@@ -3,12 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import panels.FunctionCreatingPanel;
-import panels.SelectPanel;
-import panels.StratPanel;
 import main.Board;
 import main.Game;
 import moves.Move;
+import panels.FunctionCreatingPanel;
+import panels.SelectPanel;
+import panels.StratPanel;
 
 public class DoneWithFunctionAL implements ActionListener{
 

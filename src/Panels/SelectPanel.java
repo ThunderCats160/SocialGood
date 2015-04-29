@@ -3,7 +3,6 @@ import interfaces.ResettablePanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,22 +10,21 @@ import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.Board;
 import main.Game;
+import moves.ConditionalMove;
 import moves.FunctionMove;
 import moves.Move;
 import moves.WhileMove;
-import moves.ConditionalMove;
-import buttons.MoveButton;
 import actionListeners.ConditionalMoveAdderAL;
 import actionListeners.FunctionMoveAdderAL;
 import actionListeners.MoveAdderAL;
 import actionListeners.RemoveFunctionButtonAL;
 import actionListeners.WhileMoveAdderAL;
+import buttons.MoveButton;
 
 //The Select Panel holds an ArrayList of the move options for the level
 //It also holds a copy of the strategy panel (which gets inputs from the select Panel)

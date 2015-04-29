@@ -25,7 +25,7 @@ public class BoardTest {
 	public void setUp()
 	{
 		game = new Game(); 
-		mainPanel = new MainGamePanel(game);
+		mainPanel = new MainGamePanel(game, false);
 		board = new Board(mainPanel);
 	}
 	
@@ -34,12 +34,10 @@ public class BoardTest {
 	{
 		
 		
-//		board.setPlayerImage(game.getBufferedImage(Game.userImage));
-//		
-//		
-//		assertEquals(game.getBufferedImage(Game.userImage), board.getPlayer().getImage());
+		board.setPlayerImage(game.getBufferedImage(Game.userImage));	
 		
-		assertEquals(11,11);
+		assertEquals(game.getBufferedImage(Game.userImage), board.getPlayer().getImage());
+	
 		
 	}
 	

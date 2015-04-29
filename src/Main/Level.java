@@ -27,7 +27,7 @@ public class Level {
 	private ArrayList<Move> availableMoves;
 
 	
-
+	//The length and width of the playing area
 	int horizontalSize = 10;
 	int verticalSize = 10;
 	
@@ -84,6 +84,8 @@ public class Level {
 
 	}
 	
+	
+	//Setters for available move number properties
 	public void setNumOfUsableMoves(int set){
 		numOfUsableMoves = set; 
 	}
@@ -108,6 +110,9 @@ public class Level {
 		return customFunctionsAvailable; 
 	}
 	
+	
+	//Make ___Move available functions, adds the relevant move to the available
+	//move list for each
 	public void makeRightMoveAvailable()
 	{
 		availableMoves.add(new RightMove("Go right", board, null));
@@ -193,16 +198,19 @@ public class Level {
 		
 	}
 	
+	//Makes the unit at the passed position a red square
 	public void addRedSquareAtPosition(int X, int Y){
 		levelLayout.get(Y).get(X).isRedSquare = true; 
 		levelLayout.get(Y).get(X).setColor(Color.red); 
 		levelLayout.get(Y).get(X).setImage(null);
 	}
 	
+	//A getter for any unit on the game board
 	public Unit getUnitAtPosition(int X, int Y){
 		return levelLayout.get(Y).get(X); 
 	}
 	
+	//Getters for the player's spawn position
 	public int getPlayerSpawnX(){
 		return playerSpawnX; 
 	}

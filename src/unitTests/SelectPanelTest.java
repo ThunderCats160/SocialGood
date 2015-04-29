@@ -19,6 +19,8 @@ public class SelectPanelTest {
 	StratPanel stratPanel; 
 	MainGamePanel mainPanel;
 	
+	//Sets up the game, stratPanel and mainGamePanel that 
+	//will be used in the test
 	@Before
 	public void setUp()
 	{
@@ -27,6 +29,8 @@ public class SelectPanelTest {
 		mainPanel = new MainGamePanel(g, false);
 	}
 	
+	//Tests to make sure it loads in the correct number
+	//of functions from each level
 	@Test
 	public void testNumberOfFunctions(){
 		mainPanel.setCurrentLevelIndex(1);

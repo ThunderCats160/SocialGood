@@ -18,6 +18,9 @@ public class MoveButton extends JButton {
 	private int button_width = ((int)(Game.APPLET_WIDTH / 5) - 15);
 	private int button_height = 30;
 	
+	//this is the constructor, no returns
+	//the parameters are a string of text and an int 
+	//which are used for the button text
 	public MoveButton(String text, int staggerX) {
 		super(text);
 		button_text = text;
@@ -25,10 +28,16 @@ public class MoveButton extends JButton {
 		initGUI();
 	}
 	
+	//this function sets the button color to the color that is passed in
+	//no returns
+	//the parameter is the color you would like the button to be
 	public void setButtonColor(Color c){
 		buttonColor = c;
 	}
 	
+	//this function sets the font color of the button
+	//no returns
+	//the parameter is the color you would like to font to be
 	public void setFontColor(Color c){
 		fontColor = c;
 	}

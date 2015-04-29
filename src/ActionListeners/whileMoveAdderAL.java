@@ -43,9 +43,11 @@ public class WhileMoveAdderAL implements ActionListener {
 				//Add the selected move to the Strategy Panel
 				stratPanel.addMove(new WhileMove("While", selectPanel.getBoard(), null)); 
 
+				//adds the label LOOP to the strat panel
 				stratPanel.add(new JLabel("LOOP:")); 
 				selectPanel.setAddToWhile(true); 
 				
+				//resets the screen
 				selectPanel.getGame().getMainGamePanel().repaint();
 			}
 			

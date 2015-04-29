@@ -113,11 +113,13 @@ public class Game extends Applet {
 		setMaximumSize(dim);
 		setSize(APPLET_WIDTH,APPLET_HEIGHT);
 		
+		//creates the teacher's page
+		createTeacherPanel(); 
+		
 		//creates the instructions page
 		createInstructionPanel();
 		
-		//creates the teacher's page
-		createTeacherPanel(); 
+		
 		
 		//Show the introduction Screen
 		

@@ -27,6 +27,7 @@ public class IntroPanelButtonAL implements ActionListener{
 		
 		//sets the intro screen panel to false
 		game.getIntroScreenPanel().setVisible(false);
+		game.getTeacherPanel().setVisible(false);
 		
 		//sets the main game panel to visible
 		game.getMainGamePanel().setVisible(true);

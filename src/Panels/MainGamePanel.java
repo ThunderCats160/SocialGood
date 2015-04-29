@@ -189,7 +189,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//The player simply has to move the character 3 spaces to the right.
 		Level l1 = new Level(Board.unitDimension, board); 
 		l1.setPlayerSpawnPosition(4, 5);
-		l1.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
+		l1.addGoalAtPosition(7,5, Game.getBufferedImage(Game.goalImage)); 
 		l1.setDescription("Welcome to Buster's Big Break! Add your commands to your strategy using"
 						  +" the buttons on the left! Then, hit the RUN! button and try and"
 						  +" see if you reach the goal!"); 

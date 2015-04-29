@@ -80,13 +80,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Instantiate a new StrategyPanel
 		stratPanel = new StratPanel(game);
 		//Sets the number of available moves
-		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
+		//stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves());
 		
 		selectPanel = new SelectPanel(stratPanel, game, board);
-		selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions());
+		//selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions());
 		
 		//Display the moves available to the player based on the currentLevelIndex. 
-		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		//selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
 		stratPanel.setSelectPanel(selectPanel);
 		
 		//Instantiate a new Button with text "Run". 
@@ -124,6 +124,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		add(bottomLevel, BorderLayout.SOUTH);
 		 
 		
+		loadLevel(); 
+		
 		setVisible(true);
 	}
 	
@@ -138,19 +140,26 @@ public class MainGamePanel extends JPanel implements ActionListener {
 			
 			board.setCurrentLevel(getLevels().get(getCurrentLevelIndex()));
 			//Clear the Strategy Panel in preparation of the new level.
-			stratPanel.reset(false); 	
-			descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
-			selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+			stratPanel.reset(false); 
 			
+			loadLevel(); 
 			
-			stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
-			selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions()); 
-			
-			
-			selectPanel.resetNumFunctions();
 		}
 
 	}
+	
+	public void loadLevel(){
+		descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
+		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());
+		
+		
+		stratPanel.setMaxAvailableMoves(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMoves()); 
+		selectPanel.setMaxAvailableMovesInFunctions(getLevels().get(getCurrentLevelIndex()).getNumOfUsableMovesInFunctions()); 
+		
+		
+		selectPanel.resetNumFunctions();
+	}
+	
 	
 	@Override
 	public void paintComponent(Graphics theGraphic) {

@@ -6,12 +6,12 @@ import main.Game;
 
 //When the Player indicates that they are ready to start playing the game from the button on the
 //introPanel, this class moves the display from the introPanel to the actual Game.
-public class introPanelButtonAL implements ActionListener{
+public class IntroPanelButtonAL implements ActionListener{
 	//Holds an instance of the Game
 	Game game; 
 	
 	//Constructor- Takes in the game so that when the button is called, it adds the maingamePanel to the display
-	public introPanelButtonAL(Game g)
+	public IntroPanelButtonAL(Game g)
 	{
 		game = g;
 	}

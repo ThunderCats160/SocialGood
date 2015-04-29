@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import main.Game;
 import actionListeners.InstructionsPanelButtonAL;
-import actionListeners.introPanelButtonAL;
+import actionListeners.IntroPanelButtonAL;
 import actionListeners.TeacherPanelButtonAL;
 import buttons.TitlePageButton;
 
@@ -34,7 +34,7 @@ public class TitlePanel extends JPanel {
 		TitlePageButton teacherPageButton = new TitlePageButton("Teaching", 49);
 		
 		//Make sure that the button on the JPanel has a listener.
-		getStartedButton.addActionListener(new introPanelButtonAL(game));
+		getStartedButton.addActionListener(new IntroPanelButtonAL(game));
 		instructionsPageButton.addActionListener(new InstructionsPanelButtonAL(game));
 		teacherPageButton.addActionListener(new TeacherPanelButtonAL(game)); 
 		

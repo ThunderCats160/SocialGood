@@ -68,6 +68,8 @@ public class Level {
 
 		numOfUsableMoves = 10; 
 		
+		
+		//Setup the gamespace
 		for(int i =0; i < horizontalSize; i ++)
 		{
 			ArrayList<Unit> toAdd = new ArrayList<Unit>();
@@ -201,6 +203,13 @@ public class Level {
 	
 	public Unit getUnitAtPosition(int X, int Y){
 		return levelLayout.get(Y).get(X); 
+	}
+	
+	public int getPlayerSpawnX(){
+		return playerSpawnX; 
+	}
+	public int getPlayerSpawnY(){
+		return playerSpawnY; 
 	}
 
 }

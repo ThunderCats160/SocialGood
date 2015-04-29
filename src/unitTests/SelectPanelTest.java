@@ -41,7 +41,7 @@ public class SelectPanelTest {
 		int expected = testlevels.get(1).getAvailableMoves().size();
 		assertEquals(2,expected,0);
 		
-		
 	}
+	
 
 }

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import main.Game;
 import buttons.TitlePageButton;
 import actionListeners.InstructionsPanelButtonAL;
-import actionListeners.IntroPanelButtonAL;
+import actionListeners.introPanelButtonAL;
 import actionListeners.TeacherPanelButtonAL;
 
 public class TitlePanel extends JPanel {
@@ -34,7 +34,7 @@ public class TitlePanel extends JPanel {
 		TitlePageButton teacherPageButton = new TitlePageButton("Teaching", 49);
 		
 		//Make sure that the button on the JPanel has a listener.
-		getStartedButton.addActionListener(new IntroPanelButtonAL(game));
+		getStartedButton.addActionListener(new introPanelButtonAL(game));
 		instructionsPageButton.addActionListener(new InstructionsPanelButtonAL(game));
 		teacherPageButton.addActionListener(new TeacherPanelButtonAL(game)); 
 		

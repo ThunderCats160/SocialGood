@@ -365,7 +365,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		l8.makeDownMoveAvailable();
 		l8.makeWhileMoveAvailable();
 		l8.makeConditionalMoveAvailable();
-		l8.setNumOfUsableMoves(15);
+		l8.setNumOfUsableMoves(5);
 		
 		
 		getLevels().add(l8);

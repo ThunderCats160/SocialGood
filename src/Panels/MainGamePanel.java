@@ -143,7 +143,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 
 	}
 	
-	//
+	//Sets many of the constraints for each panel
 	public void loadLevel(){
 		descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
 		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());

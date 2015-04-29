@@ -13,6 +13,7 @@ import units.Unit;
 //The action doMove actually carries out the move- it changes the X coordinate of the player by  -1.
 public class LeftMove extends Move{
 
+	//the constructor
 	public LeftMove(String d, Board b, BufferedImage s)
 	{
 		super(d, b, s); 
@@ -21,6 +22,8 @@ public class LeftMove extends Move{
 	}
 	
 	//Actually carries out the move when "moveList.get(i).doMove(player);" (Board 63) is called.
+	//there is no returns
+	//the two parameters are the player that is being moved and the graphics to add it to the screen
 	public void doMove(Player player, Graphics g)
 	{
 		//Criteria for carrying out move:

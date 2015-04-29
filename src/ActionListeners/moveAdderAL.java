@@ -30,22 +30,13 @@ public class MoveAdderAL implements ActionListener {
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println("HERE"); 
 		//Only add moves if the user still has moves to add
 		if(stratPanel.currentNumberMovesAvailable > 0)
 		{
-			
-			
-			
-			//System.out.println("HERE");
-			//System.out.println(selectPanel.getAddToWhile()); 
-			//System.out.println(selectPanel.getAddToConditional()); 
-			
-		
+					
 			//Add the selected move to the Strategy Panel 
 			if(selectPanel.getAddToWhile())
 			{
-				//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).getClass().getName());
 				
 				//If the select panel is adding to a while move, the while move must be the most
 				//recent thing added to the current strategy, and thus must be in the last place
@@ -69,14 +60,14 @@ public class MoveAdderAL implements ActionListener {
 				
 				
 				
-				 
+				 //decrements the amount of available moves for the user
 				stratPanel.decrementAvailableMoves();
 				
 				
 			
 			}
 				
-			
+			//checks if you are adding to a function
 			else if(selectPanel.addingToFunction)
 			{
 				
@@ -86,7 +77,8 @@ public class MoveAdderAL implements ActionListener {
 					//Check if there are move slots left in the function
 					if(selectPanel.getCurrentNumberAvailableMovesInFunction() > 0){
 						
-						//System.out.println(selectPanel.getCurrentNumberAvailableMovesInFunction()); 
+						//adds the move to the function move list
+						//and decrements the moves available in the function
 						selectPanel.createFunctionPanel.addMove(toAdd);
 						selectPanel.decrementCurrentNumberAvailableMovesInFunction();
 						
@@ -96,15 +88,13 @@ public class MoveAdderAL implements ActionListener {
 				}
 			}
 			
+			//checks if the moves are being added to the conditional
 			else if(selectPanel.getAddToConditional())
 			{
-				
+				//checks to see if the move is not a while move
 				if(!toAdd.isWhileMove) {
 					stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.add(toAdd);
-					//System.out.println(stratPanel.getCurrentStrat().get(stratPanel.getCurrentStrat().size()-1).moveList.size());
 					stratPanel.decrementAvailableMoves();
-					
-					//Board.printTest(stratPanel.getCurrentStrat());
 				}
 			}
 			
@@ -121,6 +111,8 @@ public class MoveAdderAL implements ActionListener {
 				stratPanel.add(new JLabel(toAdd.name));
 				
 			}
+			
+			//resets the screen
 			
 			stratPanel.validate();
 			stratPanel.repaint();

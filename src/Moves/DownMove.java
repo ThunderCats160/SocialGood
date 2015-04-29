@@ -14,6 +14,9 @@ import units.Unit;
 //The action doMove actually carries out the move- it changes the Y coordinate of the player down by 1.
 public class DownMove extends Move{
 
+	//the constructor
+	//no returns
+	//the parameters are the parameters that are used by the MOVE class which is extended here
 	public DownMove(String d, Board b, BufferedImage s)
 	{
 		super(d, b, s); 
@@ -22,6 +25,8 @@ public class DownMove extends Move{
 	}
 	
 	//Actually carries out the move when "moveList.get(i).doMove(player);" (Board 63) is called.
+	//there are no returns
+	//the parameters are the player that is being moved and the graphics to draw it
 	public void doMove(Player player, Graphics g)
 	{
 		//Criteria for carrying out move:

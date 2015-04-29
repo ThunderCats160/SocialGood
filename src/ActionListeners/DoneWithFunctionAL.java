@@ -29,14 +29,17 @@ public class DoneWithFunctionAL implements ActionListener{
 		game = g; 
 	}
 	
+	//button listener function
+	//no return
+	//passes in the actionevent which is the button that was pressed
 	public void actionPerformed(ActionEvent arg0) {
-		//FunctionMove fm = new FunctionMove("A Function", board, null, fcPanel.moveList); 
-		//stratPanel.addMove(fm);
+		
 		 
 		//Remove the function panel and re-add the strat Panel
 		game.mainGamePanel.topLevel.remove(fcPanel);
 		game.mainGamePanel.topLevel.add(stratPanel, "East"); 
  
+		//resets the screen
 		game.mainGamePanel.revalidate();
 		game.mainGamePanel.repaint();
 		
@@ -51,6 +54,7 @@ public class DoneWithFunctionAL implements ActionListener{
 		
 		//reset the number of moves that can be used in making a function
 		selectPanel.resetCurrentNumberAvailableMovesInFunctionToMax();
+		
 		
 		fcPanel.reset(false); 
 	}

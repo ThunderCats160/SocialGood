@@ -30,19 +30,21 @@ public class FunctionMoveAdderAL implements ActionListener {
 	//When the button is pressed to add the move to the strategylist:
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		//checks to see if you are removing a funciton
 		if(selectPanel.getRemovingFunction())
 		{
+			//if you are you remove the function button
 			selectPanel.remove(functionButton);
 			selectPanel.setRemovingFunction(false); 
 			
+			//reset the screen
 			selectPanel.setVisible(false);
 			selectPanel.setVisible(true); 
 			
 			return; 
 		}
 			
-		
+		//checks to make sure moves can be made
 		if(stratPanel.currentNumberMovesAvailable > 0){
 			//Add the selected move to the Strategy Panel
 			if(selectPanel.getAddToWhile()){
@@ -57,7 +59,7 @@ public class FunctionMoveAdderAL implements ActionListener {
 			stratPanel.add(new JLabel(toAdd.name));
 		}
 		
-		
+		//repaints the screen
 		selectPanel.getGame().getMainGamePanel().repaint();	
 	}
 

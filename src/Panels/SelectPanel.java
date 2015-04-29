@@ -86,7 +86,6 @@ public class SelectPanel extends JPanel implements ActionListener, ResettablePan
 	}
 	
 	public void setMaxAvailableMovesInFunctions(int set){
-		//System.out.println("HELL)"); 
 		maxAvailableMovesInFunctions = set; 
 		currentNumberAvailableMovesInFunction = maxAvailableMovesInFunctions; 
 		createFunctionPanel.setNumMovesAvailable(currentNumberAvailableMovesInFunction);
@@ -243,6 +242,7 @@ public class SelectPanel extends JPanel implements ActionListener, ResettablePan
 
 	}
 
+	//Gives the Player the ability the add a function
 	public void addDefineFunctionButton()
 	{	
 		add(Box.createVerticalGlue());

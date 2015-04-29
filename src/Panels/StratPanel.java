@@ -91,20 +91,7 @@ public class StratPanel extends JPanel implements ActionListener, ResettablePane
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
-		/*
-		JLabel title = new JLabel("Your Strategy");
-		title.setFont(new Font("Arial", Font.BOLD, 24));
-		add(title);
-		
-		numAvailableMovesLabel = new JLabel("Moves Remaining: " + currentNumberMovesAvailable);
-		numAvailableMovesLabel.setFont( new Font ("Arial", Font.BOLD, 16));
-		add(numAvailableMovesLabel); 
-		
-		
-		MoveButton clearButton = new MoveButton("Clear Strategy", 4); 
-		clearButton.setSize(new Dimension( (Game.APPLET_WIDTH / 5) - 20, 30));
-		clearButton.addActionListener(this);
-		add(clearButton);*/
+
 		
 		reinitGUI(); 
 		

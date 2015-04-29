@@ -11,9 +11,11 @@ import javax.swing.JPanel;
 
 import main.Game;
 import actionListeners.InstructionsPanelButtonAL;
-import actionListeners.IntroPanelButtonAL;
+import actionListeners.introPanelButtonAL;
 import actionListeners.TeacherPanelButtonAL;
 import buttons.TitlePageButton;
+
+//The titlepanel shows the first page. It has 3 buttons: Play game, Instructions, and Teaching Page.
 
 public class TitlePanel extends JPanel {
 	
@@ -34,7 +36,7 @@ public class TitlePanel extends JPanel {
 		TitlePageButton teacherPageButton = new TitlePageButton("Teaching", 49);
 		
 		//Make sure that the button on the JPanel has a listener.
-		getStartedButton.addActionListener(new IntroPanelButtonAL(game));
+		getStartedButton.addActionListener(new introPanelButtonAL(game));
 		instructionsPageButton.addActionListener(new InstructionsPanelButtonAL(game));
 		teacherPageButton.addActionListener(new TeacherPanelButtonAL(game)); 
 		

@@ -30,8 +30,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	private ArrayList<Level> levels;			//Instantiates an ArrayList holding the levels implemented in the game. 
 	private int currentLevelIndex; 				//Instantiates an integer which holds the current Level being implemented in the game, used to iterate through the ArrayList<Level> levels
 	Game game;							// reference to the game
-	public JPanel topLevel;
-	public JPanel bottomLevel;
+	public JPanel topLevel;				//The toplevel JPanel holds the board, selectPanel, and stratPanel
+	public JPanel bottomLevel;			//The buttonlevel JPanel holds the descriptionPanel and the goButton.
 	private BufferedImage background;
 	
 	public MainGamePanel(Game g, Boolean loadImages) {
@@ -88,6 +88,8 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		setLayout(new BorderLayout());
 		
+		
+		//Put the Panels on their correct holding JPanel
 		topLevel = new JPanel();
 		topLevel.setLayout(new BoxLayout(topLevel, BoxLayout.LINE_AXIS));
 		topLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5) * 4));
@@ -99,13 +101,14 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		
 		
-		
+		//Put the Panels on their correct holding JPanel
 		bottomLevel = new JPanel();
 		bottomLevel.setLayout(new BoxLayout(bottomLevel, BoxLayout.LINE_AXIS));
 		bottomLevel.setPreferredSize(new Dimension((int) Game.APPLET_WIDTH, (int) (Game.APPLET_HEIGHT / 5)));
 		bottomLevel.add(descriptionPanel);
 		bottomLevel.add(goButton);
 		
+		//Setting the backgrounds for the Panels
 		Color myGreenBkg = Color.getHSBColor((float).3, (float).35,(float) .8);
 		board.setBackground(myGreenBkg);
 		topLevel.setBackground(myGreenBkg);
@@ -140,6 +143,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 
 	}
 	
+	//Sets many of the constraints for each panel
 	public void loadLevel(){
 		descriptionPanel.setDescription(getLevels().get(getCurrentLevelIndex()).getDescription());
 		selectPanel.setSelectOptions(getLevels().get(getCurrentLevelIndex()).getAvailableMoves(), getLevels().get(getCurrentLevelIndex()).getCustomFunctionsAvailable());

@@ -55,6 +55,11 @@ public class Board extends JPanel{
 		player.setVisitedMark(image); 
 	}
 	
+	public Player getPlayer()
+	{
+		return player;
+	}
+	
 	//The Level of the game decides the initial location for the player and obstacles.
 	public void setCurrentLevel(Level newLevel){
 		

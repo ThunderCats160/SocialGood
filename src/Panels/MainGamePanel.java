@@ -42,12 +42,12 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	public JPanel bottomLevel;
 	private BufferedImage background;
 	
-	public MainGamePanel(Game g) {
+	public MainGamePanel(Game g, Boolean loadImages) {
 		game = g;
-		initGUI();
+		initGUI(loadImages);
 	}
 	
-	private void initGUI(){
+	private void initGUI(Boolean loadImages){
 		
 		//We set the location and layout of the descriptionPanel to be along the BoxLayout's Page_Axis
 		//descriptionPanel.setLayout(new BoxLayout(descriptionPanel, BoxLayout.PAGE_AXIS));
@@ -75,7 +75,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		
 		//Initializes the Level onto the board
-		initLevels();
+		initLevels(loadImages);
 		
 		//Instantiate a new StrategyPanel
 		stratPanel = new StratPanel(game);
@@ -180,7 +180,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 	
 	
 	//We create the levels here.
-	public void initLevels()
+	public void initLevels(Boolean loadImages)
 	{
 		//levels will hold each of our created levels.
 		setLevels(new ArrayList<Level>()); 
@@ -189,7 +189,12 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//The player simply has to move the character 3 spaces to the right.
 		Level l1 = new Level(Board.unitDimension, board); 
 		l1.setPlayerSpawnPosition(4, 5);
-		l1.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
+		
+		if(loadImages)
+			l1.addGoalAtPosition(7,5, Game.getBufferedImage(Game.goalImage)); 
+		else
+			l1.addGoalAtPosition(7,5); 
+		
 		l1.setDescription("Welcome to Buster's Big Break! Add your commands to your strategy using"
 						  +" the buttons on the left! Then, hit the RUN! button and try and"
 						  +" see if you reach the goal!"); 
@@ -202,7 +207,12 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 2: Our second level. This requires them to move the character, and then turn after the correct number of spaces.
 		Level l2 = new Level(Board.unitDimension, board); 
 		l2.setPlayerSpawnPosition(3, 5);
-		l2.addGoalAtPosition(7,2, game.getBufferedImage(Game.goalImage));
+		
+		if(loadImages)
+			l2.addGoalAtPosition(7,2, game.getBufferedImage(Game.goalImage));
+		else
+			l2.addGoalAtPosition(7,2);
+			
 		l2.setDescription("Careful, now! You'll have to turn this time..."); 
 		l2.makeRightMoveAvailable();
 		l2.makeUpMoveAvailable();
@@ -212,8 +222,16 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 3: Our third level. This level introduces the first obstacle. The Player gets the choice of going above or below the obstacle, but cannot go through it.
 		Level l3 = new Level(Board.unitDimension, board); 
 		l3.setPlayerSpawnPosition(3, 5);
-		l3.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
-		l3.addObstacleAtPosition(5, 5, game.getBufferedImage(Game.enemyImage));
+		
+		if(loadImages){
+			l3.addGoalAtPosition(7,5, game.getBufferedImage(Game.goalImage)); 
+			l3.addObstacleAtPosition(5, 5, game.getBufferedImage(Game.enemyImage));
+		}
+		else{
+			l3.addGoalAtPosition(7,5); 
+			l3.addObstacleAtPosition(5, 5);
+		}
+		
 		l3.setDescription("UH OH! The evil cats know we're here! Try using your commands to navigate around it."); 
 		
 		l3.makeDownMoveAvailable();
@@ -226,7 +244,10 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 4: This introduces while loops
 		Level l4 = new Level(Board.unitDimension, board); 
 		l4.setPlayerSpawnPosition(0, 5); 
-		l4.addGoalAtPosition(9, 5, game.getBufferedImage(Game.goalImage));
+		if(loadImages)
+			l4.addGoalAtPosition(9, 5, game.getBufferedImage(Game.goalImage));
+		else
+			l4.addGoalAtPosition(9, 5);
 		l4.setDescription("Wow, that goal sure is far away, Try using a loop "
 				+ "to get yourself there without just using 'right' over and over again. "
 				+ "To use a loop, use the Loop Button and then press the commands that you want to repeat.");
@@ -243,7 +264,10 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		Level l5 = new Level(Board.unitDimension, board); 
 		l5.setPlayerSpawnPosition(0, 8);
 
-		l5.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+		if(loadImages)
+			l5.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+		else
+			l5.addGoalAtPosition(7, 1);
 		l5.makeRightMoveAvailable();
 		l5.makeUpMoveAvailable();
 		l5.makeWhileMoveAvailable();
@@ -256,7 +280,11 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 6: this introduces user defined functions
 		Level l6 = new Level(Board.unitDimension, board); 
 		l6.setPlayerSpawnPosition(0,  7);
-		l6.addGoalAtPosition(4, 5, game.getBufferedImage(game.goalImage));
+		if(loadImages)
+			l6.addGoalAtPosition(4, 5, game.getBufferedImage(game.goalImage));
+		else
+			l6.addGoalAtPosition(4, 5);
+		
 		l6.makeRightMoveAvailable();
 		l6.makeUpMoveAvailable();
 		l6.setCustomFunctionsAvailable(true); 
@@ -271,7 +299,11 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		//Level 7: This makes the player put their own functions in a while loop
 		Level l7 = new Level(Board.unitDimension, board); 
 		l7.setPlayerSpawnPosition(0, 8);
-		l7.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+		if(loadImages)
+			l7.addGoalAtPosition(7, 1, game.getBufferedImage(game.goalImage));
+		else
+			l7.addGoalAtPosition(7, 1);
+		
 		l7.makeRightMoveAvailable();
 		l7.makeUpMoveAvailable();
 		l7.makeWhileMoveAvailable();
@@ -283,11 +315,18 @@ public class MainGamePanel extends JPanel implements ActionListener {
 		
 		//Level 8: this introduces conditional Statements
 		Level l8 = new Level(Board.unitDimension, board);
-		BufferedImage evil = game.getBufferedImage(Game.enemyImage);
+		BufferedImage evil = null; 
+		if(loadImages){
+			evil = game.getBufferedImage(Game.enemyImage);
+		}
+		
 		l8.setPlayerSpawnPosition(0, 5);
 		l8.addRedSquareAtPosition(2,5);
 		l8.addRedSquareAtPosition(2,8); 
-		l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));
+		if(loadImages)
+			l8.addGoalAtPosition(9, 4, game.getBufferedImage(Game.goalImage));
+		else
+			l8.addGoalAtPosition(9, 4);
 		l8.addObstacleAtPosition(2, 0, evil);
 		l8.addObstacleAtPosition(2, 1, evil);
 		l8.addObstacleAtPosition(2, 2, evil);

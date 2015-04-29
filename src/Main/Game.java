@@ -127,7 +127,7 @@ public class Game extends Applet {
 	/* Function to start a new game */
 	public void startNewGame(){
 		//Create the main game panel and set its layout.
-		mainGamePanel = new MainGamePanel(this); 
+		mainGamePanel = new MainGamePanel(this, true); 
 		
 		Image i = getImage(base, Game.userImage); 
 		if(i == null)

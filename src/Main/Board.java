@@ -55,6 +55,11 @@ public class Board extends JPanel{
 		player.setVisitedMark(image); 
 	}
 	
+	public Player getPlayer()
+	{
+		return player;
+	}
+	
 	//The Level of the game decides the initial location for the player and obstacles.
 	public void setCurrentLevel(Level newLevel){
 		
@@ -241,7 +246,7 @@ public class Board extends JPanel{
 		return false;
 	}
 	
-	private Boolean checkConditional(Move move)
+	public Boolean checkConditional(Move move)
 	{
 
 		//System.out.println("inside of check conditional");
@@ -302,9 +307,6 @@ public class Board extends JPanel{
 		return unitDimension;
 	}
 	
-	//public void setUnitDimension(int dim){
-		//unitDimension = dim;
-	//}
 	
 	//Super for drawing the Level and the Player on the board.
 	@Override

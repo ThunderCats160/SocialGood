@@ -136,6 +136,10 @@ public class Player extends Unit implements ImageObserver{
 	{
 		direction = dir; 
 	}
+	public int getDirection()
+	{
+		return direction;
+	}
 	public void setVisitedMark(BufferedImage img)
 	{
 		visitedMark = img; 

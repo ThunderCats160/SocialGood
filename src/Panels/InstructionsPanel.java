@@ -18,21 +18,27 @@ import buttons.TitlePageButton;
 //It is basically a text image, and a button that returns it to the menu.
 public class InstructionsPanel extends JPanel{
 	
+	//The image that will be the background for the panel
 	BufferedImage background;
 	
 	public InstructionsPanel(Game g){
 		initGUI(g); 
 	}
 	
+	//Init
 	public void initGUI(Game g){
 		background = null;
 		
 		setLayout(null);
+		//Returns the Player to the home page.
 		TitlePageButton gotItButton = new TitlePageButton("Home", 50);
 		
+		//The button needs an action listener
 		gotItButton.addActionListener(new InstructionPanelGoBackAL(g));
 		add(gotItButton); 
 		
+		
+		//The button is given some style
 		Insets insets = getInsets();
 		
 		gotItButton.setButtonColor(Color.getHSBColor((float).57,(float) .30,(float) .37));
@@ -43,6 +49,7 @@ public class InstructionsPanel extends JPanel{
 		gotItButton.setBounds(Game.APPLET_WIDTH - 20 - size.width, 15 + insets.top, size.width, size.height);
 	}
 	
+	//Puts the instructions image onto the background
 	public void setBackgroundImg(BufferedImage img){
 		try {
 			background = resizeImage(img, 960, 600, img.getType());
@@ -51,6 +58,7 @@ public class InstructionsPanel extends JPanel{
 		}
 	}
 	
+	//Resizes the instructions image if needed
 	private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
         BufferedImage resizedImage = new BufferedImage(width, height, type);  
         Graphics2D g = resizedImage.createGraphics();  
